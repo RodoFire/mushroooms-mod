@@ -16,7 +16,7 @@ public class BlueLuminescentFoliagePlacer extends FoliagePlacer {
     public static final Codec<BlueLuminescentFoliagePlacer> CODEC = RecordCodecBuilder.create(chestnutFoliagePlacerInstance ->
             fillFoliagePlacerFields(chestnutFoliagePlacerInstance).and(Codec.intRange(0, 12).fieldOf("height")
                     .forGetter(instance -> instance.height)).apply(chestnutFoliagePlacerInstance, BlueLuminescentFoliagePlacer::new));
-    private final int height;
+    final int height;
 
     public BlueLuminescentFoliagePlacer(IntProvider radius, IntProvider offset, int height) {
         super(radius, offset);

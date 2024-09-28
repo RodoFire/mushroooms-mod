@@ -42,9 +42,9 @@ public class ModEntities {
             new Identifier(MushrooomsMod.MOD_ID, "locked_inventory_armor_stand"), FabricEntityTypeBuilder.create(SpawnGroup.MISC, LockedInventoryArmorStand::new)
                     .dimensions(EntityDimensions.fixed(0.9f, 1.8f)).build());
 
-    public static final EntityType<MosquitoEntity> MOSQUITO_ENTITY = Registry.register(Registries.ENTITY_TYPE,
+    /*public static final EntityType<MosquitoEntity> MOSQUITO_ENTITY = Registry.register(Registries.ENTITY_TYPE,
             new Identifier(MushrooomsMod.MOD_ID, "mosquito"), FabricEntityTypeBuilder.create(SpawnGroup.AMBIENT, MosquitoEntity::new)
-                    .dimensions(EntityDimensions.fixed(0.2f, 0.5f)).build());
+                    .dimensions(EntityDimensions.fixed(0.2f, 0.5f)).build());*/
 
 
 

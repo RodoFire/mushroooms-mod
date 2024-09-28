@@ -1,5 +1,6 @@
 package net.rodofire.mushrooomsmod.world.features.placedfeatures;
 
+import net.minecraft.block.Blocks;
 import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
@@ -15,6 +16,10 @@ import java.util.List;
 
 public class ModSurfacePlacedFeatures {
     //Very huge names but anyway
+    //tree
+    public static final RegistryKey<PlacedFeature> CHERRY_BLOSSOM_TREE_SURFACE_PLACED_FEATURE = registerKey("cherry_blossom_tree_surface_placed_feature");
+    public static final RegistryKey<PlacedFeature> PELTOGYNE_TREE_SURFACED_PLACED_KEY = registerKey("peltology_tree_surface_placed_key");
+    public static final RegistryKey<PlacedFeature> COLORFUL_TREE_SURFACE_PLACED_KEY = registerKey("colorful_tree_surface_placed_key");
     //Huge Mushrooms
     public static final RegistryKey<PlacedFeature> PINK_LUMINESCENT_MUSHROOM_TREE_SURFACE_PLACED_KEY = registerKey("pink_luminescent_mushrooom_tree_surface_placed_key");
     public static final RegistryKey<PlacedFeature> BLUE_MUSHROOM_TREE_SURFACE_PLACED_KEY = registerKey("blue_mushrooom_tree_surface_placed_key");
@@ -49,6 +54,8 @@ public class ModSurfacePlacedFeatures {
     public static final RegistryKey<PlacedFeature> PREHISTURPLE_SCHROOM_SURFACE_PLACED_KEY = registerKey("prehisturple_surface_placed_key");
     public static final RegistryKey<PlacedFeature> PREHISTO_BLUE_SCHROOM_SURFACE_PLACED_KEY = registerKey("prehisto_blue_surface_placed_key");
     public static final RegistryKey<PlacedFeature> PREHISTO_GREEN_SCHROOM_SURFACE_PLACED_KEY = registerKey("prehisto_green_surface_placed_key");
+
+
     public static final RegistryKey<PlacedFeature> YELLOW_PERENNIAL_SURFACE_PLACED_KEY = registerKey("yellow_perennial_surface_placed_key");
     public static final RegistryKey<PlacedFeature> PINK_PERENNIAL_SURFACE_PLACED_KEY = registerKey("pink_perennial_surface_placed_key");
     public static final RegistryKey<PlacedFeature> BLUE_PERENNIAL_SURFACE_PLACED_KEY = registerKey("blue_perennial_surface_placed_key");
@@ -56,6 +63,16 @@ public class ModSurfacePlacedFeatures {
     public static final RegistryKey<PlacedFeature> LUMINESCENT_PERENNIAL_SURFACE_PLACED_KEY = registerKey("luminescent_perennial_surface_placed_key");
     public static final RegistryKey<PlacedFeature> ORANGE_PERENNIAL_SURFACE_PLACED_KEY = registerKey("orange_perennial_surface_placed_key");
     public static final RegistryKey<PlacedFeature> PURPLE_PERENNIAL_SURFACE_PLACED_KEY = registerKey("purple_perennial_surface_placed_key");
+
+    public static final RegistryKey<PlacedFeature> SMALL_PATCH_YELLOW_PERENNIAL_SURFACE_PLACED_KEY = registerKey("small_patch_yellow_perennial_surface_placed_key");
+    public static final RegistryKey<PlacedFeature> SMALL_PATCH_PINK_PERENNIAL_SURFACE_PLACED_KEY = registerKey("small_patch_pink_perennial_surface_placed_key");
+    public static final RegistryKey<PlacedFeature> SMALL_PATCH_BLUE_PERENNIAL_SURFACE_PLACED_KEY = registerKey("small_patch_blue_perennial_surface_placed_key");
+    public static final RegistryKey<PlacedFeature> SMALL_PATCH_GREEN_PERENNIAL_SURFACE_PLACED_KEY = registerKey("small_patch_green_perennial_surface_placed_key");
+    public static final RegistryKey<PlacedFeature> SMALL_PATCH_LUMINESCENT_PERENNIAL_SURFACE_PLACED_KEY = registerKey("small_patch_luminescent_perennial_surface_placed_key");
+    public static final RegistryKey<PlacedFeature> SMALL_PATCH_ORANGE_PERENNIAL_SURFACE_PLACED_KEY = registerKey("small_patch_orange_perennial_surface_placed_key");
+    public static final RegistryKey<PlacedFeature> SMALL_PATCH_PURPLE_PERENNIAL_SURFACE_PLACED_KEY = registerKey("small_patch_purple_perennial_surface_placed_key");
+
+
     public static final RegistryKey<PlacedFeature> RED_QUINCE_SURFACE_PLACED_KEY = registerKey("red_quince_surface_placed_key");
     public static final RegistryKey<PlacedFeature> YELLOW_QUINCE_SURFACE_PLACED_KEY = registerKey("yellow_quince_surface_placed_key");
     public static final RegistryKey<PlacedFeature> TINY_LILAC_SURFACE_PLACED_KEY = registerKey("tiny_lilac_surface_placed_key");
@@ -86,12 +103,18 @@ public class ModSurfacePlacedFeatures {
     public static final RegistryKey<PlacedFeature> COLORFUL_BUSH_SURFACE_PLACED_KEY = registerKey("colorful_bush_surface_placed_key");
 
     //terrain
-    public static final RegistryKey<PlacedFeature> ARCH_SURFACE_PLACED_KEY = registerKey("arch_surface_placed_key");
+    public static final RegistryKey<PlacedFeature> SAKURA_ARCH_SURFACE_PLACED_KEY = registerKey("arch_surface_placed_key");
+    public static final RegistryKey<PlacedFeature> SAKURA_ROCK_STRAIGHT_PLACED_KEY = registerKey("sakura_rock_straight_placed_key");
     public static final RegistryKey<PlacedFeature> SPIRAL_MUSHROOM_FEATURE = registerKey("spiral_mushroom_feature");
 
 
     public static void bootstrap(Registerable<PlacedFeature> context) {
         var configuredFeatureRegistryEntryLookup = context.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE);
+        //tree
+        register(context, CHERRY_BLOSSOM_TREE_SURFACE_PLACED_FEATURE, configuredFeatureRegistryEntryLookup.getOrThrow(TreeConfiguredFeatures.CHERRY), VegetationPlacedFeatures.treeModifiersWithWouldSurvive(PlacedFeatures.createCountExtraModifier(1, 0.2f, 2), Blocks.CHERRY_SAPLING));
+        register(context, PELTOGYNE_TREE_SURFACED_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.PELTOGYNE_TREE_KEY), VegetationPlacedFeatures.treeModifiersWithWouldSurvive(PlacedFeatures.createCountExtraModifier(1, 0.2f, 2), ModBlocks.PELTOGYNE_SAPLING));
+        register(context, COLORFUL_TREE_SURFACE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.COLORFUL_TREE_KEY), VegetationPlacedFeatures.treeModifiersWithWouldSurvive(PlacedFeatures.createCountExtraModifier(1, 0.1f, 2), Blocks.OAK_SAPLING));
+
         //Mushrooms
         register(context, PINK_LUMINESCENT_MUSHROOM_TREE_SURFACE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.PINK_LUMINESCENT_MUSHROOM_TREE_KEY), VegetationPlacedFeatures.treeModifiersWithWouldSurvive(PlacedFeatures.createCountExtraModifier(1, 0.1f, 2), ModBlocks.LUMINESCENT_PINK_MUSHROOM));
         register(context, BLUE_MUSHROOM_TREE_SURFACE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.BLUE_MUSHROOM_TREE_KEY), VegetationPlacedFeatures.treeModifiersWithWouldSurvive(PlacedFeatures.createCountExtraModifier(6, 0.2f, 3), ModBlocks.BLUE_MUSHROOM));
@@ -120,6 +143,7 @@ public class ModSurfacePlacedFeatures {
         register(context, PREHISTO_BLUE_SCHROOM_SURFACE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.PREHISTO_BLUE_SCHROOM_KEY), RarityFilterPlacementModifier.of(4), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BiomePlacementModifier.of());
         register(context, PREHISTO_PINK_SCHROOM_SURFACE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.PREHISTO_PINK_SCHROOM_KEY), RarityFilterPlacementModifier.of(4), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BiomePlacementModifier.of());
 
+
         register(context, YELLOW_PERENNIAL_SURFACE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.YELLOW_PERENNIAL_KEY), CountPlacementModifier.of(2), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BiomePlacementModifier.of());
         register(context, PINK_PERENNIAL_SURFACE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.PINK_PERENNIAL_KEY), CountPlacementModifier.of(2), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BiomePlacementModifier.of());
         register(context, BLUE_PERENNIAL_SURFACE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.BLUE_PERENNIAL_KEY), CountPlacementModifier.of(2), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BiomePlacementModifier.of());
@@ -127,8 +151,17 @@ public class ModSurfacePlacedFeatures {
         register(context, LUMINESCENT_PERENNIAL_SURFACE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.LUMINESCENT_PERENNIAL_KEY), CountPlacementModifier.of(2), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BiomePlacementModifier.of());
         register(context, ORANGE_PERENNIAL_SURFACE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.ORANGE_PERENNIAL_KEY), CountPlacementModifier.of(2), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BiomePlacementModifier.of());
         register(context, PURPLE_PERENNIAL_SURFACE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.PURPLE_PERENNIAL_KEY), CountPlacementModifier.of(2), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BiomePlacementModifier.of());
-        register(context, YELLOW_QUINCE_SURFACE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.YELLOW_QUINCE_KEY), CountPlacementModifier.of(2), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BiomePlacementModifier.of());
 
+        register(context, SMALL_PATCH_YELLOW_PERENNIAL_SURFACE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.SMALL_PATCH_YELLOW_PERENNIAL_KEY), RarityFilterPlacementModifier.of(2), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BiomePlacementModifier.of());
+        register(context, SMALL_PATCH_PINK_PERENNIAL_SURFACE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.SMALL_PATCH_PINK_PERENNIAL_KEY), RarityFilterPlacementModifier.of(2), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BiomePlacementModifier.of());
+        register(context, SMALL_PATCH_BLUE_PERENNIAL_SURFACE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.SMALL_PATCH_BLUE_PERENNIAL_KEY), RarityFilterPlacementModifier.of(2), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BiomePlacementModifier.of());
+        register(context, SMALL_PATCH_GREEN_PERENNIAL_SURFACE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.SMALL_PATCH_GREEN_PERENNIAL_KEY), RarityFilterPlacementModifier.of(2), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BiomePlacementModifier.of());
+        register(context, SMALL_PATCH_LUMINESCENT_PERENNIAL_SURFACE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.SMALL_PATCH_LUMINESCENT_PERENNIAL_KEY), RarityFilterPlacementModifier.of(2), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BiomePlacementModifier.of());
+        register(context, SMALL_PATCH_ORANGE_PERENNIAL_SURFACE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.SMALL_PATCH_ORANGE_PERENNIAL_KEY), RarityFilterPlacementModifier.of(2), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BiomePlacementModifier.of());
+        register(context, SMALL_PATCH_PURPLE_PERENNIAL_SURFACE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.SMALL_PATCH_PURPLE_PERENNIAL_KEY), RarityFilterPlacementModifier.of(2), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BiomePlacementModifier.of());
+
+
+        register(context, YELLOW_QUINCE_SURFACE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.YELLOW_QUINCE_KEY), CountPlacementModifier.of(2), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BiomePlacementModifier.of());
         register(context, RED_QUINCE_SURFACE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.RED_QUINCE_KEY), RarityFilterPlacementModifier.of(4), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BiomePlacementModifier.of());
         register(context, TINY_LILAC_SURFACE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.TINY_LILAC_KEY), RarityFilterPlacementModifier.of(4), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BiomePlacementModifier.of());
         register(context, YELICE_SURFACE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.YELICE_KEY), RarityFilterPlacementModifier.of(4), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BiomePlacementModifier.of());
@@ -159,7 +192,8 @@ public class ModSurfacePlacedFeatures {
         register(context, COLORFUL_BUSH_SURFACE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.COLORFUL_BUSH_KEY), CountPlacementModifier.of(1), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BiomePlacementModifier.of());
 
         //terrain
-        register(context, ARCH_SURFACE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.ARCH_KEY), CountPlacementModifier.of(1), SquarePlacementModifier.of(), PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP, BiomePlacementModifier.of());
+        register(context, SAKURA_ARCH_SURFACE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.SAKURA_ARCH_KEY), RarityFilterPlacementModifier.of(25), SquarePlacementModifier.of(), PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP, BiomePlacementModifier.of());
+        register(context, SAKURA_ROCK_STRAIGHT_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.SAKURA_ROCK_STRAIGHT_KEY), RarityFilterPlacementModifier.of(1), SquarePlacementModifier.of(), PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP, BiomePlacementModifier.of());
         register(context, SPIRAL_MUSHROOM_FEATURE, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.SPIRAL_MUSHROOM_KEY), CountPlacementModifier.of(4), SquarePlacementModifier.of(), PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP, BiomePlacementModifier.of());
 
     }

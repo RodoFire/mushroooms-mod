@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    {
+      "tag": "mushrooomsmod:blue_luminescent_logs"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "item": "mushrooomsmod:planks_blue_luminescent"
+  }
+}

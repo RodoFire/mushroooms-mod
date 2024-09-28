@@ -133,6 +133,8 @@ public class ModModelProvider extends FabricModelProvider {
         //Potted Sapplings
         generator.registerFlowerPotPlant(ModBlocks.BLUE_LUMINESCENT_SAPPLING, ModBlocks.POTTED_BLUE_LUMINESCENT_SAPPLING, BlockStateModelGenerator.TintType.NOT_TINTED);
         generator.registerFlowerPotPlant(ModBlocks.OAK_BERRIES_SAPLING, ModBlocks.POTTED_OAK_BERRIES_SAPLING, BlockStateModelGenerator.TintType.NOT_TINTED);
+        generator.registerFlowerPotPlant(ModBlocks.PELTOGYNE_SAPLING, ModBlocks.POTTED_PELTOGYNE_SAPLING, BlockStateModelGenerator.TintType.NOT_TINTED);
+        generator.registerFlowerPotPlant(ModBlocks.COLORFUL_TREE_SAPLING, ModBlocks.POTTED_COLORFUL_TREE_SAPLING, BlockStateModelGenerator.TintType.NOT_TINTED);
 
         //Vines
         generator.registerTintableCross(ModBlocks.BLUE_LUMINESCENT_VINES, BlockStateModelGenerator.TintType.NOT_TINTED);
@@ -164,7 +166,11 @@ public class ModModelProvider extends FabricModelProvider {
         generator.registerSimpleCubeAll(ModBlocks.LAVA_BLACKSTONE_TINY_BRICKS);
         //Wood
         generator.registerLog(ModBlocks.BLUE_LUMINESCENT_LOG).log(ModBlocks.BLUE_LUMINESCENT_LOG).wood(ModBlocks.BLUE_LUMINESCENT_WOOD);
+        generator.registerLog(ModBlocks.PELTOGYNE_LOG).log(ModBlocks.PELTOGYNE_LOG).wood(ModBlocks.PELTOGYNE_WOOD);
+
         generator.registerLog(ModBlocks.BLUE_LUMINESCENT_STRIPPED_LOG).log(ModBlocks.BLUE_LUMINESCENT_STRIPPED_LOG).wood(ModBlocks.BLUE_LUMINESCENT_STRIPPED_WOOD);
+        generator.registerLog(ModBlocks.PELTOGYNE_STRIPPED_LOG).log(ModBlocks.PELTOGYNE_STRIPPED_LOG).wood(ModBlocks.PELTOGYNE_STRIPPED_WOOD);
+
         BlockStateModelGenerator.BlockTexturePool blue_luminescent_wood_pool = generator.registerCubeAllModelTexturePool(ModBlocks.BLUE_LUMINESCENT_PLANKS);
 
         blue_luminescent_wood_pool.button(ModBlocks.BLUE_LUMINESCENT_BUTTON);
@@ -176,6 +182,18 @@ public class ModModelProvider extends FabricModelProvider {
 
         generator.registerDoor(ModBlocks.BLUE_LUMINESCENT_DOOR);
         generator.registerTrapdoor(ModBlocks.BLUE_LUMINESCENT_TRAPDOOR);
+
+        BlockStateModelGenerator.BlockTexturePool peltogyne_wood_pool = generator.registerCubeAllModelTexturePool(ModBlocks.PELTOGYNE_PLANKS);
+
+        peltogyne_wood_pool.button(ModBlocks.PELTOGYNE_BUTTON);
+        peltogyne_wood_pool.pressurePlate(ModBlocks.PELTOGYNE_PRESSURE_PLATE);
+        peltogyne_wood_pool.fence(ModBlocks.PELTOGYNE_FENCE);
+        peltogyne_wood_pool.fenceGate(ModBlocks.PELTOGYNE_FENCE_GATE);
+        peltogyne_wood_pool.stairs(ModBlocks.PELTOGYNE_STAIRS);
+        peltogyne_wood_pool.slab(ModBlocks.PELTOGYNE_SLAB);
+
+        generator.registerDoor(ModBlocks.PELTOGYNE_DOOR);
+        generator.registerTrapdoor(ModBlocks.PELTOGYNE_TRAPDOOR);
 
 
 
@@ -202,7 +220,7 @@ public class ModModelProvider extends FabricModelProvider {
         generator.registerParentedItemModel(ModItems.CRYSTAL_CREEPER_SPAWN_EGG, ModelIds.getMinecraftNamespacedItem("template_spawn_egg"));
         generator.registerParentedItemModel(ModItems.CRYSTAL_GOLEM_SPAWN_EGG, ModelIds.getMinecraftNamespacedItem("template_spawn_egg"));
         generator.registerParentedItemModel(ModItems.SCHROOM_STICK_SPAWN_EGG, ModelIds.getMinecraftNamespacedItem("template_spawn_egg"));
-        generator.registerParentedItemModel(ModItems.MOSQUITO_SPAWN_EGG, ModelIds.getMinecraftNamespacedItem("template_spawn_egg"));
+        //generator.registerParentedItemModel(ModItems.MOSQUITO_SPAWN_EGG, ModelIds.getMinecraftNamespacedItem("template_spawn_egg"));
 
         generator.blockStateCollector.accept(VariantsBlockStateSupplier.create(ModBlocks.BLUE_CRYSTAL)
                 .coordinate(BlockStateVariantMap.create(Properties.AGE_1, Properties.VERTICAL_DIRECTION)

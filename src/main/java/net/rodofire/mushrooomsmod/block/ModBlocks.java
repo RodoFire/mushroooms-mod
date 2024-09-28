@@ -28,7 +28,9 @@ import net.rodofire.mushrooomsmod.particle.ModParticles;
 import net.rodofire.mushrooomsmod.sound.ModBlockSoundGroup;
 import net.rodofire.mushrooomsmod.world.features.configuredfeatures.ModConfiguredFeatures;
 import net.rodofire.mushrooomsmod.world.features.configuredfeatures.custom.tree.sapplinggenerator.BlueLuminescentSapplingGenerator;
+import net.rodofire.mushrooomsmod.world.features.configuredfeatures.custom.tree.sapplinggenerator.ColorfulTreeSaplingGenerator;
 import net.rodofire.mushrooomsmod.world.features.configuredfeatures.custom.tree.sapplinggenerator.OakBerriesSaplingGenerator;
+import net.rodofire.mushrooomsmod.world.features.configuredfeatures.custom.tree.sapplinggenerator.PeltogyneSaplingGenerator;
 
 
 public class ModBlocks {
@@ -203,60 +205,61 @@ public class ModBlocks {
 
     /*-----------Potted Blocks-----------*/
     //Potted Mushrooms
-    public static final Block POTTED_STERILE_BLUE_MUSHROOM = Registry.register(Registries.BLOCK, new Identifier(MushrooomsMod.MOD_ID, "potted_sterile_blue_mushroom"), new FlowerPotBlock(STERILE_BLUE_MUSHROOM, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
-    public static final Block POTTED_MUSHROOM_SMALL_BROWN = Registry.register(Registries.BLOCK, new Identifier(MushrooomsMod.MOD_ID, "potted_mushroom_small_brown"), new FlowerPotBlock(MUSHROOM_SMALL_BROWN, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
-    public static final Block POTTED_MUSHROOM_SMALL_RED = Registry.register(Registries.BLOCK, new Identifier(MushrooomsMod.MOD_ID, "potted_mushroom_small_red"), new FlowerPotBlock(MUSHROOM_SMALL_RED, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
-    public static final Block POTTED_MUSHROOM_DEATH_TRUMPET = Registry.register(Registries.BLOCK, new Identifier(MushrooomsMod.MOD_ID, "potted_mushroom_death_trumpet"), new FlowerPotBlock(MUSHROOM_DEATH_TRUMPET, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
+    public static final Block POTTED_STERILE_BLUE_MUSHROOM = registerHiddenBlock(("potted_sterile_blue_mushroom"), new FlowerPotBlock(STERILE_BLUE_MUSHROOM, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
+    public static final Block POTTED_MUSHROOM_SMALL_BROWN = registerHiddenBlock(("potted_mushroom_small_brown"), new FlowerPotBlock(MUSHROOM_SMALL_BROWN, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
+    public static final Block POTTED_MUSHROOM_SMALL_RED = registerHiddenBlock(("potted_mushroom_small_red"), new FlowerPotBlock(MUSHROOM_SMALL_RED, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
+    public static final Block POTTED_MUSHROOM_DEATH_TRUMPET = registerHiddenBlock(("potted_mushroom_death_trumpet"), new FlowerPotBlock(MUSHROOM_DEATH_TRUMPET, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
 
     //Potted Flowers
-    public static final Block POTTED_GREEN_MUSHROOM = Registry.register(Registries.BLOCK, new Identifier(MushrooomsMod.MOD_ID, "potted_green_mushroom"), new FlowerPotBlock(GREEN_MUSHROOM, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
-    public static final Block POTTED_BLUE_MUSHROOM = Registry.register(Registries.BLOCK, new Identifier(MushrooomsMod.MOD_ID, "potted_blue_mushroom"), new FlowerPotBlock(BLUE_MUSHROOM, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
-    public static final Block POTTED_PURPLE_MUSHROOM = Registry.register(Registries.BLOCK, new Identifier(MushrooomsMod.MOD_ID, "potted_purple_mushroom"), new FlowerPotBlock(PURPLE_MUSHROOM, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
-    public static final Block POTTED_BLUE_LUMINESCENT_MUSHROOM = Registry.register(Registries.BLOCK, new Identifier(MushrooomsMod.MOD_ID, "potted_blue_luminescent_mushroom"), new FlowerPotBlock(BLUE_LUMINESCENT_MUSHROOM, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque().luminance(5)));
-    public static final Block POTTED_LUMINESCENT_PINK_MUSHROOM = Registry.register(Registries.BLOCK, new Identifier(MushrooomsMod.MOD_ID, "potted_luminescent_pink_mushroom"), new FlowerPotBlock(LUMINESCENT_PINK_MUSHROOM, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
-    public static final Block POTTED_ORANGE_MUSHROOM = Registry.register(Registries.BLOCK, new Identifier(MushrooomsMod.MOD_ID, "potted_orange_mushroom"), new FlowerPotBlock(ORANGE_MUSHROOM, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
-    public static final Block POTTED_YELLOW_MUSHROOM = Registry.register(Registries.BLOCK, new Identifier(MushrooomsMod.MOD_ID, "potted_yellow_mushroom"), new FlowerPotBlock(YELLOW_MUSHROOM, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
-    public static final Block POTTED_FERTILE_RED_MUSHROOM = Registry.register(Registries.BLOCK, new Identifier(MushrooomsMod.MOD_ID, "potted_mushroom_fertile_red"), new FlowerPotBlock(FERTILE_RED_MUSHROOM, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
+    public static final Block POTTED_GREEN_MUSHROOM = registerHiddenBlock(("potted_green_mushroom"), new FlowerPotBlock(GREEN_MUSHROOM, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
+    public static final Block POTTED_BLUE_MUSHROOM = registerHiddenBlock(("potted_blue_mushroom"), new FlowerPotBlock(BLUE_MUSHROOM, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
+    public static final Block POTTED_PURPLE_MUSHROOM = registerHiddenBlock(("potted_purple_mushroom"), new FlowerPotBlock(PURPLE_MUSHROOM, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
+    public static final Block POTTED_BLUE_LUMINESCENT_MUSHROOM = registerHiddenBlock(("potted_blue_luminescent_mushroom"), new FlowerPotBlock(BLUE_LUMINESCENT_MUSHROOM, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque().luminance(5)));
+    public static final Block POTTED_LUMINESCENT_PINK_MUSHROOM = registerHiddenBlock(("potted_luminescent_pink_mushroom"), new FlowerPotBlock(LUMINESCENT_PINK_MUSHROOM, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
+    public static final Block POTTED_ORANGE_MUSHROOM = registerHiddenBlock(("potted_orange_mushroom"), new FlowerPotBlock(ORANGE_MUSHROOM, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
+    public static final Block POTTED_YELLOW_MUSHROOM = registerHiddenBlock(("potted_yellow_mushroom"), new FlowerPotBlock(YELLOW_MUSHROOM, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
+    public static final Block POTTED_FERTILE_RED_MUSHROOM = registerHiddenBlock(("potted_mushroom_fertile_red"), new FlowerPotBlock(FERTILE_RED_MUSHROOM, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
 
-    public static final Block POTTED_OCULAE = Registry.register(Registries.BLOCK, new Identifier(MushrooomsMod.MOD_ID, "potted_oculae"), new FlowerPotBlock(OCULAE, FabricBlockSettings.copyOf(Blocks.POTTED_ALLIUM).nonOpaque()));
-    public static final Block POTTED_CYANUS_RUBENS = Registry.register(Registries.BLOCK, new Identifier(MushrooomsMod.MOD_ID, "potted_cyanus_rubens"), new FlowerPotBlock(CYANUS_RUBENS, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
-    public static final Block POTTED_CYANEA = Registry.register(Registries.BLOCK, new Identifier(MushrooomsMod.MOD_ID, "potted_cyanea"), new FlowerPotBlock(CYANEA, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
-    public static final Block POTTED_SOL_OCCIDENTIS = Registry.register(Registries.BLOCK, new Identifier(MushrooomsMod.MOD_ID, "potted_sol_occidentis"), new FlowerPotBlock(SOL_OCCIDENTIS, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
-    public static final Block POTTED_FUTIALI = Registry.register(Registries.BLOCK, new Identifier(MushrooomsMod.MOD_ID, "potted_futiali"), new FlowerPotBlock(FUTIALI, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
-    public static final Block POTTED_NOCTULICA = Registry.register(Registries.BLOCK, new Identifier(MushrooomsMod.MOD_ID, "potted_noctulica"), new FlowerPotBlock(NOCTULICA, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
-    public static final Block POTTED_PREHISTORIC_ROSE = Registry.register(Registries.BLOCK, new Identifier(MushrooomsMod.MOD_ID, "potted_prehistoric_rose"), new FlowerPotBlock(PREHISTORIC_ROSE, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
-    public static final Block POTTED_PREHISTO_BLUE_SCHROOM = Registry.register(Registries.BLOCK, new Identifier(MushrooomsMod.MOD_ID, "potted_prehisto_blue_schroom"), new FlowerPotBlock(PREHISTO_BLUE_SCHROOM, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
-    public static final Block POTTED_PREHISTO_PINK_SCHROOM = Registry.register(Registries.BLOCK, new Identifier(MushrooomsMod.MOD_ID, "potted_prehisto_pink_schroom"), new FlowerPotBlock(PREHISTO_PINK_SCHROOM, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
-    public static final Block POTTED_PREHISTURPLE_SCHROOM = Registry.register(Registries.BLOCK, new Identifier(MushrooomsMod.MOD_ID, "potted_prehisturple_schroom"), new FlowerPotBlock(PREHISTURPLE_SCHROOM, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
-    public static final Block POTTED_PREHISTO_GREEN_SCHROOM = Registry.register(Registries.BLOCK, new Identifier(MushrooomsMod.MOD_ID, "potted_prehisto_green_schroom"), new FlowerPotBlock(PREHISTO_GREEN_SCHROOM, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
+    public static final Block POTTED_OCULAE = registerHiddenBlock(("potted_oculae"), new FlowerPotBlock(OCULAE, FabricBlockSettings.copyOf(Blocks.POTTED_ALLIUM).nonOpaque()));
+    public static final Block POTTED_CYANUS_RUBENS = registerHiddenBlock(("potted_cyanus_rubens"), new FlowerPotBlock(CYANUS_RUBENS, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
+    public static final Block POTTED_CYANEA = registerHiddenBlock(("potted_cyanea"), new FlowerPotBlock(CYANEA, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
+    public static final Block POTTED_SOL_OCCIDENTIS = registerHiddenBlock(("potted_sol_occidentis"), new FlowerPotBlock(SOL_OCCIDENTIS, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
+    public static final Block POTTED_FUTIALI = registerHiddenBlock(("potted_futiali"), new FlowerPotBlock(FUTIALI, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
+    public static final Block POTTED_NOCTULICA = registerHiddenBlock(("potted_noctulica"), new FlowerPotBlock(NOCTULICA, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
+    public static final Block POTTED_PREHISTORIC_ROSE = registerHiddenBlock(("potted_prehistoric_rose"), new FlowerPotBlock(PREHISTORIC_ROSE, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
+    public static final Block POTTED_PREHISTO_BLUE_SCHROOM = registerHiddenBlock(("potted_prehisto_blue_schroom"), new FlowerPotBlock(PREHISTO_BLUE_SCHROOM, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
+    public static final Block POTTED_PREHISTO_PINK_SCHROOM = registerHiddenBlock(("potted_prehisto_pink_schroom"), new FlowerPotBlock(PREHISTO_PINK_SCHROOM, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
+    public static final Block POTTED_PREHISTURPLE_SCHROOM = registerHiddenBlock(("potted_prehisturple_schroom"), new FlowerPotBlock(PREHISTURPLE_SCHROOM, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
+    public static final Block POTTED_PREHISTO_GREEN_SCHROOM = registerHiddenBlock(("potted_prehisto_green_schroom"), new FlowerPotBlock(PREHISTO_GREEN_SCHROOM, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
 
-    public static final Block POTTED_YELLOW_PERENNIAL = Registry.register(Registries.BLOCK, new Identifier(MushrooomsMod.MOD_ID, "potted_perennial_yellow"), new FlowerPotBlock(YELLOW_PERENNIAL, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
-    public static final Block POTTED_GREEN_PERENNIAL = Registry.register(Registries.BLOCK, new Identifier(MushrooomsMod.MOD_ID, "potted_perennial_green"), new FlowerPotBlock(GREEN_PERENNIAL, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
-    public static final Block POTTED_ORANGE_PERENNIAL = Registry.register(Registries.BLOCK, new Identifier(MushrooomsMod.MOD_ID, "potted_perennial_orange"), new FlowerPotBlock(ORANGE_PERENNIAL, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
-    public static final Block POTTED_BLUE_PERENNIAL = Registry.register(Registries.BLOCK, new Identifier(MushrooomsMod.MOD_ID, "potted_perennial_blue"), new FlowerPotBlock(BLUE_PERENNIAL, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
-    public static final Block POTTED_LUMINESCENT_PERENNIAL = Registry.register(Registries.BLOCK, new Identifier(MushrooomsMod.MOD_ID, "potted_perennial_luminescent"), new FlowerPotBlock(LUMINESCENT_PERENNIAL, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
-    public static final Block POTTED_PINK_PERENNIAL = Registry.register(Registries.BLOCK, new Identifier(MushrooomsMod.MOD_ID, "potted_perennial_pink"), new FlowerPotBlock(PINK_PERENNIAL, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
+    public static final Block POTTED_YELLOW_PERENNIAL = registerHiddenBlock(("potted_perennial_yellow"), new FlowerPotBlock(YELLOW_PERENNIAL, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
+    public static final Block POTTED_GREEN_PERENNIAL = registerHiddenBlock(("potted_perennial_green"), new FlowerPotBlock(GREEN_PERENNIAL, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
+    public static final Block POTTED_ORANGE_PERENNIAL = registerHiddenBlock(("potted_perennial_orange"), new FlowerPotBlock(ORANGE_PERENNIAL, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
+    public static final Block POTTED_BLUE_PERENNIAL = registerHiddenBlock(("potted_perennial_blue"), new FlowerPotBlock(BLUE_PERENNIAL, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
+    public static final Block POTTED_LUMINESCENT_PERENNIAL = registerHiddenBlock(("potted_perennial_luminescent"), new FlowerPotBlock(LUMINESCENT_PERENNIAL, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
+    public static final Block POTTED_PINK_PERENNIAL = registerHiddenBlock(("potted_perennial_pink"), new FlowerPotBlock(PINK_PERENNIAL, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
 
-    public static final Block POTTED_PURPLE_PERENNIAL = Registry.register(Registries.BLOCK, new Identifier(MushrooomsMod.MOD_ID, "potted_perennial_purple"), new FlowerPotBlock(PURPLE_PERENNIAL, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
-    public static final Block POTTED_RED_QUINCE = Registry.register(Registries.BLOCK, new Identifier(MushrooomsMod.MOD_ID, "potted_quince_red"), new FlowerPotBlock(RED_QUINCE, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
-    public static final Block POTTED_YELLOW_QUINCE = Registry.register(Registries.BLOCK, new Identifier(MushrooomsMod.MOD_ID, "potted_quince_yellow"), new FlowerPotBlock(YELLOW_QUINCE, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
-    public static final Block POTTED_YELICE = Registry.register(Registries.BLOCK, new Identifier(MushrooomsMod.MOD_ID, "potted_yelice"), new FlowerPotBlock(YELICE, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
-    public static final Block POTTED_FLAMESTHYSIA = Registry.register(Registries.BLOCK, new Identifier(MushrooomsMod.MOD_ID, "potted_flamesthysia"), new FlowerPotBlock(FLAMESTHYSIA, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
-    public static final Block POTTED_APAGANTHE = Registry.register(Registries.BLOCK, new Identifier(MushrooomsMod.MOD_ID, "potted_apaganthe"), new FlowerPotBlock(APAGANTHE, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
-    public static final Block POTTED_WYSTERIA = Registry.register(Registries.BLOCK, new Identifier(MushrooomsMod.MOD_ID, "potted_wysteria"), new FlowerPotBlock(WYSTERIA, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
-    public static final Block POTTED_BLUEBELL = Registry.register(Registries.BLOCK, new Identifier(MushrooomsMod.MOD_ID, "potted_bluebell"), new FlowerPotBlock(WYSTERIA, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
-    public static final Block POTTED_VIPERIN = Registry.register(Registries.BLOCK, new Identifier(MushrooomsMod.MOD_ID, "potted_viperin"), new FlowerPotBlock(VIPERIN, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
-    public static final Block POTTED_HIBISCUS = Registry.register(Registries.BLOCK, new Identifier(MushrooomsMod.MOD_ID, "potted_hibiscus"), new FlowerPotBlock(HIBISCUS, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
-    public static final Block POTTED_PLATUM = Registry.register(Registries.BLOCK, new Identifier(MushrooomsMod.MOD_ID, "potted_platum"), new FlowerPotBlock(PLATUM, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
-    public static final Block POTTED_DIANTHUS = Registry.register(Registries.BLOCK, new Identifier(MushrooomsMod.MOD_ID, "potted_dianthus"), new FlowerPotBlock(DIANTHUS, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
-    public static final Block POTTED_CYCAS = Registry.register(Registries.BLOCK, new Identifier(MushrooomsMod.MOD_ID, "potted_cycas"), new FlowerPotBlock(CYCAS, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
-    public static final Block POTTED_ARUM = Registry.register(Registries.BLOCK, new Identifier(MushrooomsMod.MOD_ID, "potted_arum"), new FlowerPotBlock(ARUM, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
-    public static final Block POTTED_HYDRANGEA = Registry.register(Registries.BLOCK, new Identifier(MushrooomsMod.MOD_ID, "potted_hydrangea"), new FlowerPotBlock(HYDRANGEA, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
-    public static final Block POTTED_ANEMONE = Registry.register(Registries.BLOCK, new Identifier(MushrooomsMod.MOD_ID, "potted_anemone"), new FlowerPotBlock(ANEMONE, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
-    public static final Block POTTED_JACYNTHE = Registry.register(Registries.BLOCK, new Identifier(MushrooomsMod.MOD_ID, "potted_jacynthe"), new FlowerPotBlock(JACYNTHE, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
-    public static final Block POTTED_BLUE_LUMINESCENT_SAPPLING = Registry.register(Registries.BLOCK, new Identifier(MushrooomsMod.MOD_ID, "potted_blue_luminescent_sappling"), new FlowerPotBlock(ModBlocks.BLUE_LUMINESCENT_SAPPLING, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
-    public static final Block OAK_BERRIES_LEAVES = registerBlock("leaves_oak_berries", new BerriesLeaves(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES).nonOpaque().mapColor(MapColor.DARK_GREEN).strength(0.2f).ticksRandomly().sounds(BlockSoundGroup.GRASS).nonOpaque().allowsSpawning(Blocks::canSpawnOnLeaves).suffocates(Blocks::never).blockVision(Blocks::never).burnable().pistonBehavior(PistonBehavior.DESTROY).solidBlock(Blocks::never).luminance(BerriesLeaves.getLuminanceSupplier())));
-
+    public static final Block POTTED_PURPLE_PERENNIAL = registerHiddenBlock(("potted_perennial_purple"), new FlowerPotBlock(PURPLE_PERENNIAL, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
+    public static final Block POTTED_RED_QUINCE = registerHiddenBlock(("potted_quince_red"), new FlowerPotBlock(RED_QUINCE, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
+    public static final Block POTTED_YELLOW_QUINCE = registerHiddenBlock(("potted_quince_yellow"), new FlowerPotBlock(YELLOW_QUINCE, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
+    public static final Block POTTED_YELICE = registerHiddenBlock(("potted_yelice"), new FlowerPotBlock(YELICE, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
+    public static final Block POTTED_FLAMESTHYSIA = registerHiddenBlock(("potted_flamesthysia"), new FlowerPotBlock(FLAMESTHYSIA, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
+    public static final Block POTTED_APAGANTHE = registerHiddenBlock(("potted_apaganthe"), new FlowerPotBlock(APAGANTHE, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
+    public static final Block POTTED_WYSTERIA = registerHiddenBlock(("potted_wysteria"), new FlowerPotBlock(WYSTERIA, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
+    public static final Block POTTED_BLUEBELL = registerHiddenBlock(("potted_bluebell"), new FlowerPotBlock(WYSTERIA, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
+    public static final Block POTTED_VIPERIN = registerHiddenBlock(("potted_viperin"), new FlowerPotBlock(VIPERIN, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
+    public static final Block POTTED_HIBISCUS = registerHiddenBlock(("potted_hibiscus"), new FlowerPotBlock(HIBISCUS, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
+    public static final Block POTTED_PLATUM = registerHiddenBlock(("potted_platum"), new FlowerPotBlock(PLATUM, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
+    public static final Block POTTED_DIANTHUS = registerHiddenBlock(("potted_dianthus"), new FlowerPotBlock(DIANTHUS, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
+    public static final Block POTTED_CYCAS = registerHiddenBlock(("potted_cycas"), new FlowerPotBlock(CYCAS, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
+    public static final Block POTTED_ARUM = registerHiddenBlock(("potted_arum"), new FlowerPotBlock(ARUM, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
+    public static final Block POTTED_HYDRANGEA = registerHiddenBlock(("potted_hydrangea"), new FlowerPotBlock(HYDRANGEA, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
+    public static final Block POTTED_ANEMONE = registerHiddenBlock(("potted_anemone"), new FlowerPotBlock(ANEMONE, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
+    public static final Block POTTED_JACYNTHE = registerHiddenBlock(("potted_jacynthe"), new FlowerPotBlock(JACYNTHE, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
+    public static final Block POTTED_BLUE_LUMINESCENT_SAPPLING = registerHiddenBlock(("potted_blue_luminescent_sappling"), new FlowerPotBlock(ModBlocks.BLUE_LUMINESCENT_SAPPLING, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
+    public static final Block POTTED_OAK_BERRIES_SAPLING = registerHiddenBlock(("potted_oak_berries_sapling"), new FlowerPotBlock(ModBlocks.OAK_BERRIES_LEAVES, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
+    public static final Block POTTED_COLORFUL_TREE_SAPLING = registerHiddenBlock(("potted_colorful_tree_sapling"), new FlowerPotBlock(ModBlocks.COLORFUL_TREE_SAPLING, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
+    public static final Block POTTED_PELTOGYNE_SAPLING = registerHiddenBlock(("potted_peltogyne_sapling"), new FlowerPotBlock(ModBlocks.PELTOGYNE_SAPLING, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
 
     //Grass
     public static final Block TINY_GRASS = registerBlock("tiny_grass", new PlantBlock(FabricBlockSettings.copyOf(Blocks.GRASS)));
@@ -280,7 +283,9 @@ public class ModBlocks {
     public static final Block GREEN_COLORFUL_LEAVES = registerBlock("leaves_colorful_green", new LeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES).nonOpaque()));
     public static final Block BLUE_COLORFUL_LEAVES = registerBlock("leaves_colorful_blue", new LeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES).nonOpaque()));
     public static final Block PURPLE_COLORFUL_LEAVES = registerBlock("leaves_colorful_purple", new LeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES).nonOpaque()));
-    public static final Block POTTED_OAK_BERRIES_SAPLING = Registry.register(Registries.BLOCK, new Identifier(MushrooomsMod.MOD_ID, "potted_oak_berries_sapling"), new FlowerPotBlock(ModBlocks.OAK_BERRIES_LEAVES, FabricBlockSettings.copyOf(Blocks.POTTED_RED_MUSHROOM).nonOpaque()));
+    public static final Block PELTOGYNE_LEAVES = registerBlock("leaves_peltogyne", new LeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES).nonOpaque()));
+    public static final Block OAK_BERRIES_LEAVES = registerBlock("leaves_oak_berries", new BerriesLeaves(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES).nonOpaque().mapColor(MapColor.DARK_GREEN).strength(0.2f).ticksRandomly().sounds(BlockSoundGroup.GRASS).nonOpaque().allowsSpawning(Blocks::canSpawnOnLeaves).suffocates(Blocks::never).blockVision(Blocks::never).burnable().pistonBehavior(PistonBehavior.DESTROY).solidBlock(Blocks::never).luminance(BerriesLeaves.getLuminanceSupplier())));
+
 
     //Light Blocks
     public static final Block RED_LANTERN = registerBlock("lantern_red", new LanternBlock(FabricBlockSettings.copyOf(Blocks.LANTERN).luminance(15).nonOpaque()));
@@ -298,20 +303,49 @@ public class ModBlocks {
 
     //Wood
     public static final Block BLUE_LUMINESCENT_LOG = registerBlock("log_blue_luminescent", new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_LOG)));
-    public static final Block BLUE_LUMINESCENT_STRIPPED_LOG = registerBlock("log_stripped_blue_luminescent", new PillarBlock(FabricBlockSettings.copyOf(Blocks.STRIPPED_OAK_LOG)));
-    public static final Block BLUE_LUMINESCENT_STRIPPED_WOOD = registerBlock("wood_stripped_blue_luminescent", new PillarBlock(FabricBlockSettings.copyOf(Blocks.STRIPPED_OAK_WOOD)));
+    public static final Block PELTOGYNE_LOG = registerBlock("log_peltogyne", new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_LOG)));
+
     public static final Block BLUE_LUMINESCENT_WOOD = registerBlock("wood_blue_luminescent", new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_WOOD)));
+    public static final Block PELTOGYNE_WOOD = registerBlock("wood_peltogyne", new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_WOOD)));
+
+    public static final Block BLUE_LUMINESCENT_STRIPPED_LOG = registerBlock("log_stripped_blue_luminescent", new PillarBlock(FabricBlockSettings.copyOf(Blocks.STRIPPED_OAK_LOG)));
+    public static final Block PELTOGYNE_STRIPPED_LOG = registerBlock("log_stripped_peltogyne", new PillarBlock(FabricBlockSettings.copyOf(Blocks.STRIPPED_OAK_LOG)));
+
+    public static final Block BLUE_LUMINESCENT_STRIPPED_WOOD = registerBlock("wood_stripped_blue_luminescent", new PillarBlock(FabricBlockSettings.copyOf(Blocks.STRIPPED_OAK_WOOD)));
+    public static final Block PELTOGYNE_STRIPPED_WOOD = registerBlock("wood_stripped_peltogyne", new PillarBlock(FabricBlockSettings.copyOf(Blocks.STRIPPED_OAK_WOOD)));
+
     public static final Block BLUE_LUMINESCENT_PLANKS = registerBlock("planks_blue_luminescent", new Block(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)));
+    public static final Block PELTOGYNE_PLANKS = registerBlock("planks_peltogyne", new Block(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)));
+
     public static final Block BLUE_LUMINESCENT_TRAPDOOR = registerBlock("trapdoor_blue_luminescent", new TrapdoorBlock(FabricBlockSettings.copyOf(Blocks.OAK_TRAPDOOR), BlockSetType.OAK));
+    public static final Block PELTOGYNE_TRAPDOOR = registerBlock("trapdoor_peltogyne", new TrapdoorBlock(FabricBlockSettings.copyOf(Blocks.OAK_TRAPDOOR), BlockSetType.OAK));
+
     public static final Block BLUE_LUMINESCENT_DOOR = registerBlock("door_blue_luminescent", new DoorBlock(FabricBlockSettings.copyOf(Blocks.OAK_DOOR), BlockSetType.OAK));
+    public static final Block PELTOGYNE_DOOR = registerBlock("door_peltogyne", new DoorBlock(FabricBlockSettings.copyOf(Blocks.OAK_DOOR), BlockSetType.OAK));
+
     public static final Block BLUE_LUMINESCENT_BUTTON = registerBlock("button_blue_luminescent", new ButtonBlock(FabricBlockSettings.copyOf(Blocks.OAK_BUTTON), BlockSetType.OAK, 20, true));
+    public static final Block PELTOGYNE_BUTTON = registerBlock("button_peltogyne", new ButtonBlock(FabricBlockSettings.copyOf(Blocks.OAK_BUTTON), BlockSetType.OAK, 20, true));
+
     public static final Block BLUE_LUMINESCENT_PRESSURE_PLATE = registerBlock("pressure_plate_blue_luminescent", new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, FabricBlockSettings.copyOf(Blocks.OAK_PRESSURE_PLATE), BlockSetType.OAK));
+    public static final Block PELTOGYNE_PRESSURE_PLATE = registerBlock("pressure_plate_peltogyne", new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, FabricBlockSettings.copyOf(Blocks.OAK_PRESSURE_PLATE), BlockSetType.OAK));
+
     public static final Block BLUE_LUMINESCENT_FENCE = registerBlock("fence_blue_luminescent", new FenceBlock(FabricBlockSettings.copyOf(Blocks.OAK_FENCE)));
-    public static final Block BLUE_LUMINESCENT_FENCE_GATE = registerBlock("fence_gate_blue_luminescent", new FenceGateBlock(FabricBlockSettings.copyOf(Blocks.OAK_FENCE_GATE), WoodType.OAK));
-    public static final Block BLUE_LUMINESCENT_SAPPLING = registerBlock("sappling_blue_luminescent", new SaplingBlock(new BlueLuminescentSapplingGenerator(), FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)));
+    public static final Block PELTOGYNE_FENCE = registerBlock("fence_peltogyne", new FenceBlock(FabricBlockSettings.copyOf(Blocks.OAK_FENCE)));
+
     public static final Block BLUE_LUMINESCENT_STAIRS = registerBlock("stairs_blue_luminescent", new StairsBlock(BLUE_LUMINESCENT_PLANKS.getDefaultState(), FabricBlockSettings.copyOf(Blocks.OAK_STAIRS).luminance(8)));
+    public static final Block PELTOGYNE_STAIRS = registerBlock("stairs_peltogyne", new StairsBlock(PELTOGYNE_PLANKS.getDefaultState(), FabricBlockSettings.copyOf(Blocks.OAK_STAIRS).luminance(8)));
+
     public static final Block BLUE_LUMINESCENT_SLAB = registerBlock("slab_blue_luminescent", new SlabBlock(FabricBlockSettings.copyOf(Blocks.OAK_SLAB)));
+    public static final Block PELTOGYNE_SLAB = registerBlock("slab_peltogyne", new SlabBlock(FabricBlockSettings.copyOf(Blocks.OAK_SLAB)));
+
+    public static final Block BLUE_LUMINESCENT_FENCE_GATE = registerBlock("fence_gate_blue_luminescent", new FenceGateBlock(FabricBlockSettings.copyOf(Blocks.OAK_FENCE_GATE), WoodType.OAK));
+    public static final Block PELTOGYNE_FENCE_GATE = registerBlock("fence_gate_peltogyne", new FenceGateBlock(FabricBlockSettings.copyOf(Blocks.OAK_FENCE_GATE), WoodType.OAK));
+
+    public static final Block COLORFUL_TREE_SAPLING = registerBlock("sapling_colorful_tree", new SaplingBlock(new ColorfulTreeSaplingGenerator(), FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)));
+    public static final Block BLUE_LUMINESCENT_SAPPLING = registerBlock("sappling_blue_luminescent", new SaplingBlock(new BlueLuminescentSapplingGenerator(), FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)));
     public static final Block OAK_BERRIES_SAPLING = registerBlock("sapling_oak_berries", new SaplingBlock(new OakBerriesSaplingGenerator(), FabricBlockSettings.copyOf(Blocks.OAK_SAPLING).luminance(9)));
+    public static final Block PELTOGYNE_SAPLING = registerBlock("sapling_peltogyne", new SaplingBlock(new PeltogyneSaplingGenerator(), FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)));
+
     //Crystal Blocks
     public static final Block PINK_CRYSTAL = registerHiddenBlock("crystal_pink", new PinkCrystal(FabricBlockSettings.copyOf(Blocks.AMETHYST_CLUSTER)));
     public static final Block BLUE_CRYSTAL = registerHiddenBlock("crystal_blue", new StraightCrystal(FabricBlockSettings.create().solid().nonOpaque().sounds(BlockSoundGroup.AMETHYST_CLUSTER).strength(1.5f).pistonBehavior(PistonBehavior.DESTROY).luminance(8)));

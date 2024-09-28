@@ -186,13 +186,24 @@ public class ModBlockRenderType {
         getCutout(ModBlocks.PINK_COLORFUL_LEAVES);
         getCutout(ModBlocks.ORANGE_COLORFUL_LEAVES);
         getCutout(ModBlocks.OAK_BERRIES_LEAVES);
+        getCutout(ModBlocks.PELTOGYNE_LEAVES);
 
 
         getCutout(ModBlocks.BLUE_LUMINESCENT_TRAPDOOR);
+        getCutout(ModBlocks.PELTOGYNE_TRAPDOOR);
+
         getCutout(ModBlocks.BLUE_LUMINESCENT_DOOR);
+        getCutout(ModBlocks.PELTOGYNE_DOOR);
+
         getCutout(ModBlocks.BLUE_LUMINESCENT_SAPPLING);
+        getCutout(ModBlocks.PELTOGYNE_SAPLING);
+        getCutout(ModBlocks.COLORFUL_TREE_SAPLING);
+
         getCutout(ModBlocks.BLUE_LUMINESCENT_SLAB);
+        getCutout(ModBlocks.PELTOGYNE_SLAB);
+
         getCutout(ModBlocks.BLUE_LUMINESCENT_STAIRS);
+        getCutout(ModBlocks.PELTOGYNE_STAIRS);
 
 
         getCutout(ModBlocks.GREEN_LANTERN);

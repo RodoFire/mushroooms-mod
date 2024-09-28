@@ -8,18 +8,18 @@
   },
   "downfall": 0.4,
   "effects": {
-    "fog_color": 2269670,
-    "foliage_color": 13763580,
-    "grass_color": 8324092,
+    "fog_color": 8111592,
+    "foliage_color": 7131474,
+    "grass_color": 6935885,
     "mood_sound": {
       "block_search_extent": 8,
       "offset": 2.0,
       "sound": "minecraft:ambient.cave",
       "tick_delay": 6000
     },
-    "sky_color": 3197208,
-    "water_color": 4181722,
-    "water_fog_color": 12524326
+    "sky_color": 1615078,
+    "water_color": 2729983,
+    "water_fog_color": 420527
   },
   "features": [
     [],
@@ -28,8 +28,7 @@
       "minecraft:lake_lava_surface"
     ],
     [
-      "minecraft:amethyst_geode",
-      "minecraft:forest_rock"
+      "minecraft:amethyst_geode"
     ],
     [
       "minecraft:monster_room",
@@ -38,15 +37,6 @@
     [],
     [],
     [
-      "minecraft:ore_dirt",
-      "minecraft:ore_gravel",
-      "minecraft:ore_granite_upper",
-      "minecraft:ore_granite_lower",
-      "minecraft:ore_diorite_upper",
-      "minecraft:ore_diorite_lower",
-      "minecraft:ore_andesite_upper",
-      "minecraft:ore_andesite_lower",
-      "minecraft:ore_tuff",
       "minecraft:ore_coal_upper",
       "minecraft:ore_coal_lower",
       "minecraft:ore_iron_upper",
@@ -70,11 +60,14 @@
       "minecraft:spring_lava"
     ],
     [
-      "minecraft:glow_lichen",
-      "minecraft:trees_plains",
-      "mushrooomsmod:orange_mushrooom_tree_surface_placed_key",
-      "mushrooomsmod:yellow_mushrooom_tree_surface_placed_key",
-      "mushrooomsmod:green_mushrooom_tree_surface_placed_key"
+      "mushrooomsmod:colorful_tree_surface_placed_key",
+      "minecraft:patch_grass_plain",
+      "mushrooomsmod:small_patch_purple_perennial_surface_placed_key",
+      "mushrooomsmod:small_patch_pink_perennial_surface_placed_key",
+      "mushrooomsmod:small_patch_green_perennial_surface_placed_key",
+      "mushrooomsmod:small_patch_orange_perennial_surface_placed_key",
+      "mushrooomsmod:small_patch_luminescent_perennial_surface_placed_key",
+      "mushrooomsmod:small_patch_yellow_perennial_surface_placed_key"
     ],
     [
       "minecraft:freeze_top_layer"
@@ -93,12 +86,6 @@
     ],
     "axolotls": [],
     "creature": [
-      {
-        "type": "minecraft:wolf",
-        "maxCount": 4,
-        "minCount": 4,
-        "weight": 5
-      },
       {
         "type": "minecraft:sheep",
         "maxCount": 4,

@@ -18,7 +18,7 @@ public class MushrooomsModClient implements ClientModInitializer {
     public void onInitializeClient() {
         ModNetwork.registerS2CPackets();
 
-
+        //colors
         ModColor.createBlockColors();
         ModColor.createItemColors();
 

@@ -1,7 +1,9 @@
-// 1.20.1	2024-09-10T18:40:00.1938585	Mushroooms Mod/Tags for minecraft:item
+// 1.20.1	2024-09-27T21:38:20.5005281	Mushroooms Mod/Tags for minecraft:item
 1a04c1084bd77ff4610776cd85467cacc1db14fb data\mushrooomsmod\tags\items\diamond_item.json
 c6eb108ab6a4f07a234be67bf389acd4d1e1f3a7 data\mushrooomsmod\tags\items\hammers.json
+b0c84b5d21aa383b9784523522e2cceeed6285b5 data\mushrooomsmod\tags\items\blue_luminescent_logs.json
 5dbe61893b18d0c3cd2386b919129559d438a002 data\mushrooomsmod\tags\items\mushroom_powder.json
-533bdc92b699bcccd9aea012225d26c0fc0dee66 data\minecraft\tags\items\logs_that_burn.json
-d8fc1ec190a49df19c459827b158d78ff16fcae1 data\minecraft\tags\items\planks.json
+cb8ab836ceea24a0200666076129ccaf50d1f71f data\minecraft\tags\items\logs_that_burn.json
+d27437485014694eafbfb209bc826f2f353e68ba data\mushrooomsmod\tags\items\peltogyne_logs.json
+cc45e64592a80644b73b35481ba5d506d7027e2c data\minecraft\tags\items\planks.json
 2b43e4059686deb83ce5f7d818ff6a7c78a85e8b data\mushrooomsmod\tags\items\forgeable_items.json

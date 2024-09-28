@@ -47,6 +47,7 @@
   "block.mushrooomsmod.leaves_colorful_pink" : "Colorful Pink Leaves",
   "block.mushrooomsmod.leaves_colorful_blue" : "Colorful Blue Leaves",
   "block.mushrooomsmod.leaves_oak_berries": "Oak Berries Leaves",
+  "block.mushrooomsmod.leaves_peltogyne": "Peltogyne Leaves",
 
   "block.mushrooomsmod.mushroom_stem_blue_luminescent" : "Blue Luminescent Mushroom Stem",
   "block.mushrooomsmod.mushroom_stem_transparent" : "Transparent Mushroom Stem",
@@ -81,6 +82,21 @@
   "block.mushrooomsmod.slab_blue_luminescent" : "Blue Luminescent Slab",
   "block.mushrooomsmod.sappling_blue_luminescent" : "Blue Luminescent Sappling",
   "block.mushrooomsmod.sapling_oak_berries": "Oak Berries Sapling",
+  "block.mushrooomsmod.log_peltogyne": "Peltogyne Log",
+  "block.mushrooomsmod.log_stripped_peltogyne": "Stripped Peltogyne Log",
+  "block.mushrooomsmod.wood_stripped_peltogyne": "Stripped Peltogyne Wood",
+  "block.mushrooomsmod.wood_peltogyne": "Peltogyne Wood",
+  "block.mushrooomsmod.planks_peltogyne": "Peltogyne Planks",
+  "block.mushrooomsmod.trapdoor_peltogyne": "Peltogyne Trapdoor",
+  "block.mushrooomsmod.door_peltogyne": "Peltogyne door",
+  "block.mushrooomsmod.button_peltogyne": "Peltogyne Button",
+  "block.mushrooomsmod.pressure_plate_peltogyne": "Peltogyne Pressure Plate",
+  "block.mushrooomsmod.fence_peltogyne": "Peltogyne Fence",
+  "block.mushrooomsmod.fence_gate_peltogyne": "Peltogyne Fence Gate",
+  "block.mushrooomsmod.stairs_peltogyne": "Peltogyne Stairs",
+  "block.mushrooomsmod.slab_peltogyne": "Peltogyne Slab",
+  "block.mushrooomsmod.sapling_peltogyne": "Peltogyne Sappling",
+  "block.mushrooomsmod.sapling_colorful_tree": "Colorful Tree Sappling",
 
   "block.mushrooomsmod.rhyolite" : "Rhyolite",
   "block.mushrooomsmod.rhyolite_tiles": "Rhyolite Tiles",
@@ -93,6 +109,7 @@
   "block.mushrooomsmod.mushroom_pink_luminescent" : "Pink Luminescent Mushroom",
   "block.mushrooomsmod.mushroom_orange" : "Orange Mushroom",
   "block.mushrooomsmod.mushroom_yellow" : "Yellow Mushroom",
+  "block.mushrooomsmod.pick_blue": "Blue Pick",
 
   "block.mushrooomsmod.sterile_blue_mushroom" : "Blue Sterile Mushroom",
   "block.mushrooomsmod.mushroom_fertile_red": "Red Fertile Mushroom",
@@ -225,6 +242,7 @@
   "tooltip.mushrooomsmod.hammer.attack_damage" : "Attack Damage ",
   "tooltip.mushrooomsmod.hammer.usage" : "Use Left Click on a Forge With an Item to Crush it ",
   "item.mushrooomsmod.inventory_armor_stand_item": "Inventory Armor Stand",
+  "item.mushrooomsmod.key": "Key",
   "tooltip.mushrooomsmod.inventory_armor_stand_usage": "Armor Stand that can store your entire inventory and give it back",
   "tooltip.mushrooomsmod.inventory_armor_stand_use": "Step on it and the inventory will be changed",
 
@@ -236,6 +254,13 @@
 
 
   "biome.mushrooomsmod.blue_luminescent_schroom_cave" : "Blue Luminescent Schroom Cave",
+  "biome.mushrooomsmod.blue_muschroom_forest": "Blue Mushroom Forest",
+  "biome.mushrooomsmod.colorful_forest": "Colorful Forest",
+  "biome.mushrooomsmod.colorful_plain": "Colorful Plains",
+  "biome.mushrooomsmod.crystal_cave": "Crystal Cave",
+  "biome.mushrooomsmod.forest_cave": "Forest Cave",
+  "biome.mushrooomsmod.sakura_forest": "Sakura Forest",
+  "biome.mushrooomsmod.vanilla_schroom_cave": "Vanilla Schroom Cave",
 
   "tooltip.mushrooomsmod.crushable_items" : "Item that can be crushed in a Forge",
   "tooltip.mushrooomsmod.fermented_mushroom_block" : "Use mushroom powder to degradate the mushroom block.",

@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.function.BiConsumer;
 
 public class BlueLuminescentTrunkPlacer extends TrunkPlacer {
-    public static final Codec<BlueLuminescentTrunkPlacer> codec = RecordCodecBuilder.create(objectInstance -> fillTrunkPlacerFields(objectInstance).apply(objectInstance, BlueLuminescentTrunkPlacer::new));
+    public static final Codec<BlueLuminescentTrunkPlacer> CODEC = RecordCodecBuilder.create(objectInstance -> fillTrunkPlacerFields(objectInstance).apply(objectInstance, BlueLuminescentTrunkPlacer::new));
 
     public BlueLuminescentTrunkPlacer(int baseHeight, int firstRandomHeight, int secondRandomHeight) {
         super(baseHeight, firstRandomHeight, secondRandomHeight);

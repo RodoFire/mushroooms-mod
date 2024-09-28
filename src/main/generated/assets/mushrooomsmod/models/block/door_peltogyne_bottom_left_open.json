@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_bottom_left_open",
+  "textures": {
+    "bottom": "mushrooomsmod:block/door_peltogyne_bottom",
+    "top": "mushrooomsmod:block/door_peltogyne_top"
+  }
+}

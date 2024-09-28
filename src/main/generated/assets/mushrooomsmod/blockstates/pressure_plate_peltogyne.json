@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "powered=false": {
+      "model": "mushrooomsmod:block/pressure_plate_peltogyne"
+    },
+    "powered=true": {
+      "model": "mushrooomsmod:block/pressure_plate_peltogyne_down"
+    }
+  }
+}

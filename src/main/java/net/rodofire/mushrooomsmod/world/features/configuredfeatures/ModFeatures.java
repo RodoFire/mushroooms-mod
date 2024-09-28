@@ -10,6 +10,7 @@ import net.rodofire.mushrooomsmod.world.features.configuredfeatures.custom.mushr
 import net.rodofire.mushrooomsmod.world.features.configuredfeatures.custom.mushrooms.structuremushrooms.CustomGreenSecondMushroomFeature;
 import net.rodofire.mushrooomsmod.world.features.configuredfeatures.custom.mushrooms.structuremushrooms.CustomRedFertileMushroom;
 import net.rodofire.mushrooomsmod.world.features.configuredfeatures.custom.mushrooms.structuremushrooms.CustomRedHugeMushroomFeature;
+import net.rodofire.mushrooomsmod.world.features.configuredfeatures.custom.rock.SakuraPlainStraightRockFeature;
 
 public abstract class ModFeatures<FC extends FeatureConfig> {
 
@@ -49,6 +50,7 @@ public abstract class ModFeatures<FC extends FeatureConfig> {
 
     //terrain
     public static Feature<ArchConfig> ARCH;
+    public static Feature<DefaultFeatureConfig> SAKURA_ROCK_STRAIGHT;
     public static Feature<DefaultFeatureConfig> SPIRAL_MUSHROOM;
 
     //dev
@@ -82,7 +84,8 @@ public abstract class ModFeatures<FC extends FeatureConfig> {
 
         AMBER_MINERAL = registercustomfeature("amber_mineral_feature", new AmberFeature(DefaultFeatureConfig.CODEC));
 
-        ARCH = registercustomfeature("arch", new ArchFeature(ArchConfig.CODEC));
+        ARCH = registercustomfeature("arch", new SakuraArchFeature(ArchConfig.CODEC));
+        SAKURA_ROCK_STRAIGHT = registercustomfeature("sakura_rock_straight", new SakuraPlainStraightRockFeature(DefaultFeatureConfig.CODEC));
         SPIRAL_MUSHROOM = registercustomfeature("spiral_mushroom", new SpiralMushroom(DefaultFeatureConfig.CODEC));
 
         FEATURE_TESTER = registercustomfeature("feature_tester", new DevFeature(ModSimpleBlockFeatureConfig.CODEC));

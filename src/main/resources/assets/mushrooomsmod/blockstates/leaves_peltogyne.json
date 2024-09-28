@@ -1,0 +1,18 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "mushrooomsmod:block/leaves_peltogyne1",
+        "weight": 2
+      },
+      {
+        "model": "mushrooomsmod:block/leaves_peltogyne2",
+        "weight": 2
+      },
+      {
+        "model": "mushrooomsmod:block/leaves_peltogyne3",
+        "weight": 1
+      }
+    ]
+  }
+}

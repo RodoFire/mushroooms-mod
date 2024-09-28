@@ -10,7 +10,7 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.WorldView;
 
 public class PickBlue extends Block {
-    public static final VoxelShape SHAPE = Block.createCuboidShape(4, 0, 4, 24, 12, 12);
+    public static final VoxelShape SHAPE = Block.createCuboidShape(4, 0, 4, 12, 24, 12);
 
     public PickBlue(Settings settings) {
         super(settings);

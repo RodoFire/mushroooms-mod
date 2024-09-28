@@ -2,7 +2,6 @@ package net.rodofire.mushrooomsmod.world.features.configuredfeatures.custom;
 
 import com.mojang.serialization.Codec;
 import me.emafire003.dev.structureplacerapi.StructurePlacerAPI;
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.LeavesBlock;
@@ -55,7 +54,7 @@ public class ColorfulBushFeature extends Feature<DefaultFeatureConfig> {
         if (!canGenerate(world, pos, 3, 2, rotation)) return false;
         StructurePlacerAPI bush = new StructurePlacerAPI(world, new Identifier(MushrooomsMod.MOD_ID, "bush/bush_" + capnumber), pos, rotation);
         bush.loadStructure();
-        BlockState blockState = getLeaveBlock().getDefaultState().with(LeavesBlock.PERSISTENT, true);
+        BlockState blockState = getLeaveBlock().with(LeavesBlock.PERSISTENT, true);
         int a = 0;
         int b = 0;
         if (rotation == BlockRotation.CLOCKWISE_180 || rotation == BlockRotation.COUNTERCLOCKWISE_90) b = -5;
@@ -81,16 +80,16 @@ public class ColorfulBushFeature extends Feature<DefaultFeatureConfig> {
         return true;
     }
 
-    public Block getLeaveBlock() {
+    private BlockState getLeaveBlock() {
         int random = Random.create().nextBetween(0, 6);
         return switch (random) {
-            case 0 -> ModBlocks.BLUE_COLORFUL_LEAVES;
-            case 1 -> ModBlocks.RED_COLORFUL_LEAVES;
-            case 2 -> ModBlocks.YELLOW_COLORFUL_LEAVES;
-            case 3 -> ModBlocks.GREEN_COLORFUL_LEAVES;
-            case 4 -> ModBlocks.ORANGE_COLORFUL_LEAVES;
-            case 5 -> ModBlocks.PURPLE_COLORFUL_LEAVES;
-            default -> ModBlocks.PINK_COLORFUL_LEAVES;
+            case 0 -> ModBlocks.BLUE_COLORFUL_LEAVES.getDefaultState();
+            case 1 -> ModBlocks.RED_COLORFUL_LEAVES.getDefaultState();
+            case 2 -> ModBlocks.YELLOW_COLORFUL_LEAVES.getDefaultState();
+            case 3 -> ModBlocks.GREEN_COLORFUL_LEAVES.getDefaultState();
+            case 4 -> ModBlocks.ORANGE_COLORFUL_LEAVES.getDefaultState();
+            case 5 -> ModBlocks.PURPLE_COLORFUL_LEAVES.getDefaultState();
+            default -> ModBlocks.PINK_COLORFUL_LEAVES.getDefaultState();
         };
     }
 

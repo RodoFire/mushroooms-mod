@@ -41,16 +41,33 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModItems.AMBER_ITEM);
 
         getOrCreateTagBuilder(ItemTags.PLANKS)
-                .add(ModBlocks.BLUE_LUMINESCENT_PLANKS.asItem());
+                .add(ModBlocks.BLUE_LUMINESCENT_PLANKS.asItem())
+                .add(ModBlocks.PELTOGYNE_PLANKS.asItem());
 
         getOrCreateTagBuilder(ItemTags.LOGS_THAT_BURN)
                 .add(ModBlocks.BLUE_LUMINESCENT_LOG.asItem())
                 .add(ModBlocks.BLUE_LUMINESCENT_STRIPPED_LOG.asItem())
                 .add(ModBlocks.BLUE_LUMINESCENT_STRIPPED_WOOD.asItem())
-                .add(ModBlocks.BLUE_LUMINESCENT_WOOD.asItem());
+                .add(ModBlocks.BLUE_LUMINESCENT_WOOD.asItem())
+
+                .add(ModBlocks.PELTOGYNE_LOG.asItem())
+                .add(ModBlocks.PELTOGYNE_STRIPPED_LOG.asItem())
+                .add(ModBlocks.PELTOGYNE_WOOD.asItem())
+                .add(ModBlocks.PELTOGYNE_STRIPPED_WOOD.asItem());
 
         getOrCreateTagBuilder(ModTags.Items.HAMMERS)
                 .add(ModItems.IRON_HAMMER);
 
+        getOrCreateTagBuilder(ModTags.Items.BLUE_LUMINESCENT_LOGS)
+                .add(ModBlocks.BLUE_LUMINESCENT_LOG.asItem())
+                .add(ModBlocks.BLUE_LUMINESCENT_STRIPPED_LOG.asItem())
+                .add(ModBlocks.BLUE_LUMINESCENT_WOOD.asItem())
+                .add(ModBlocks.BLUE_LUMINESCENT_WOOD.asItem());
+
+        getOrCreateTagBuilder(ModTags.Items.PELTOGYNE_LOGS)
+                .add(ModBlocks.PELTOGYNE_LOG.asItem())
+                .add(ModBlocks.PELTOGYNE_STRIPPED_LOG.asItem())
+                .add(ModBlocks.PELTOGYNE_WOOD.asItem())
+                .add(ModBlocks.PELTOGYNE_WOOD.asItem());
     }
 }

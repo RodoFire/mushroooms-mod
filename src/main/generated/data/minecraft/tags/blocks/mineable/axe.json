@@ -56,6 +56,19 @@
     "mushrooomsmod:stairs_blue_luminescent",
     "mushrooomsmod:slab_blue_luminescent",
     "mushrooomsmod:fence_blue_luminescent",
-    "mushrooomsmod:fence_gate_blue_luminescent"
+    "mushrooomsmod:fence_gate_blue_luminescent",
+    "mushrooomsmod:log_peltogyne",
+    "mushrooomsmod:wood_peltogyne",
+    "mushrooomsmod:log_stripped_peltogyne",
+    "mushrooomsmod:wood_stripped_peltogyne",
+    "mushrooomsmod:planks_peltogyne",
+    "mushrooomsmod:stairs_peltogyne",
+    "mushrooomsmod:slab_peltogyne",
+    "mushrooomsmod:fence_peltogyne",
+    "mushrooomsmod:fence_gate_peltogyne",
+    "mushrooomsmod:door_peltogyne",
+    "mushrooomsmod:trapdoor_peltogyne",
+    "mushrooomsmod:pressure_plate_peltogyne",
+    "mushrooomsmod:button_peltogyne"
   ]
 }

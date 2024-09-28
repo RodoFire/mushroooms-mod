@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "R": {
+      "item": "mushrooomsmod:log_peltogyne"
+    }
+  },
+  "pattern": [
+    "RR",
+    "RR"
+  ],
+  "result": {
+    "count": 4,
+    "item": "mushrooomsmod:wood_peltogyne"
+  },
+  "show_notification": true
+}

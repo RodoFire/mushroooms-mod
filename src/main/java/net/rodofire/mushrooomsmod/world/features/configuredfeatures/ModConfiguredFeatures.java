@@ -20,8 +20,7 @@ import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
 import net.rodofire.mushrooomsmod.MushrooomsMod;
 import net.rodofire.mushrooomsmod.block.ModBlocks;
 import net.rodofire.mushrooomsmod.world.features.config.*;
-import net.rodofire.mushrooomsmod.world.features.configuredfeatures.custom.tree.codetree.BlueLuminescentFoliagePlacer;
-import net.rodofire.mushrooomsmod.world.features.configuredfeatures.custom.tree.codetree.BlueLuminescentTrunkPlacer;
+import net.rodofire.mushrooomsmod.world.features.configuredfeatures.custom.tree.codetree.*;
 import net.rodofire.mushrooomsmod.world.features.configuredfeatures.custom.tree.decorator.OakBerriesTreeDecorator;
 
 import java.util.Collections;
@@ -31,6 +30,8 @@ public class ModConfiguredFeatures<FC extends FeatureConfig> {
     //Tree
     public static final RegistryKey<ConfiguredFeature<?, ?>> BLUE_LUMINESCENT_TREE_KEY = registerKey("blue_luminescent_tree");
     public static final RegistryKey<ConfiguredFeature<?, ?>> OAK_BERRIES_TREE_KEY = registerKey("oak_berries_tree_key");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> PELTOGYNE_TREE_KEY = registerKey("peltogyne_tree_key");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> COLORFUL_TREE_KEY = registerKey("colorful_tree_key");
 
     //huge mushrooms
     public static final RegistryKey<ConfiguredFeature<?, ?>> BLUE_MUSHROOM_TREE_KEY = registerKey("blue_mushroom_tree_key");
@@ -81,6 +82,7 @@ public class ModConfiguredFeatures<FC extends FeatureConfig> {
     public static final RegistryKey<ConfiguredFeature<?, ?>> PREHISTO_BLUE_SCHROOM_KEY = registerKey("prehisto_blue_schroom_key");
     public static final RegistryKey<ConfiguredFeature<?, ?>> PREHISTO_GREEN_SCHROOM_KEY = registerKey("prehisto_green_schroom_key");
     public static final RegistryKey<ConfiguredFeature<?, ?>> PREHISTURPLE_SCHROOM_KEY = registerKey("prehisturple_schroom_key");
+
     public static final RegistryKey<ConfiguredFeature<?, ?>> YELLOW_PERENNIAL_KEY = registerKey("yellow_perennial_key");
     public static final RegistryKey<ConfiguredFeature<?, ?>> BLUE_PERENNIAL_KEY = registerKey("blue_perennial_key");
     public static final RegistryKey<ConfiguredFeature<?, ?>> GREEN_PERENNIAL_KEY = registerKey("green_perennial_key");
@@ -88,6 +90,15 @@ public class ModConfiguredFeatures<FC extends FeatureConfig> {
     public static final RegistryKey<ConfiguredFeature<?, ?>> PINK_PERENNIAL_KEY = registerKey("pink_perennial_key");
     public static final RegistryKey<ConfiguredFeature<?, ?>> PURPLE_PERENNIAL_KEY = registerKey("purple_perennial_key");
     public static final RegistryKey<ConfiguredFeature<?, ?>> LUMINESCENT_PERENNIAL_KEY = registerKey("luminescent_perennial_key");
+
+    public static final RegistryKey<ConfiguredFeature<?, ?>> SMALL_PATCH_YELLOW_PERENNIAL_KEY = registerKey("small_patch_yellow_perennial_key");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> SMALL_PATCH_BLUE_PERENNIAL_KEY = registerKey("small_patch_blue_perennial_key");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> SMALL_PATCH_GREEN_PERENNIAL_KEY = registerKey("small_patch_green_perennial_key");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> SMALL_PATCH_ORANGE_PERENNIAL_KEY = registerKey("small_patch_orange_perennial_key");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> SMALL_PATCH_PINK_PERENNIAL_KEY = registerKey("small_patch_pink_perennial_key");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> SMALL_PATCH_PURPLE_PERENNIAL_KEY = registerKey("small_patch_purple_perennial_key");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> SMALL_PATCH_LUMINESCENT_PERENNIAL_KEY = registerKey("small_patch_luminescent_perennial_key");
+
     public static final RegistryKey<ConfiguredFeature<?, ?>> RED_QUINCE_KEY = registerKey("red_quince_key");
     public static final RegistryKey<ConfiguredFeature<?, ?>> YELLOW_QUINCE_KEY = registerKey("yellow_quince_key");
     public static final RegistryKey<ConfiguredFeature<?, ?>> TINY_LILAC_KEY = registerKey("tiny_lilac_key");
@@ -129,26 +140,26 @@ public class ModConfiguredFeatures<FC extends FeatureConfig> {
     public static final RegistryKey<ConfiguredFeature<?, ?>> COLORFUL_BUSH_KEY = registerKey("colorful_bush_key");
 
     //Crystal
-    public static final RegistryKey<ConfiguredFeature<?,?>> RED_CRYSTAL_KEY = registerKey("red_crystal_key");
-    public static final RegistryKey<ConfiguredFeature<?,?>> BLUE_CRYSTAL_KEY = registerKey("blue_crystal_key");
-    public static final RegistryKey<ConfiguredFeature<?,?>> WHITE_CRYSTAL_KEY = registerKey("white_crystal_key");
-    public static final RegistryKey<ConfiguredFeature<?,?>> BLUE_CRYSTAL_PILLAR_KEY = registerKey("blue_crystal_pillar_key");
-    public static final RegistryKey<ConfiguredFeature<?,?>> RED_CRYSTAL_PILLAR_KEY = registerKey("red_crystal_pillar_key");
-    public static final RegistryKey<ConfiguredFeature<?,?>> WHITE_CRYSTAL_PILLAR_KEY = registerKey("white_crystal_pillar_key");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> RED_CRYSTAL_KEY = registerKey("red_crystal_key");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> BLUE_CRYSTAL_KEY = registerKey("blue_crystal_key");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> WHITE_CRYSTAL_KEY = registerKey("white_crystal_key");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> BLUE_CRYSTAL_PILLAR_KEY = registerKey("blue_crystal_pillar_key");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> RED_CRYSTAL_PILLAR_KEY = registerKey("red_crystal_pillar_key");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> WHITE_CRYSTAL_PILLAR_KEY = registerKey("white_crystal_pillar_key");
     public static final RegistryKey<ConfiguredFeature<?, ?>> CRYSTAL_BLUE_KEY = registerKey("crystal_blue_key");
 
     //Ore
-    public static final RegistryKey<ConfiguredFeature<?,?>> AMBER_ORE_KEY = registerKey("amber_ore_key");
-    public static final RegistryKey<ConfiguredFeature<?,?>> RHYOLITE_KEY = registerKey("rhyolite_key");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> AMBER_ORE_KEY = registerKey("amber_ore_key");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> RHYOLITE_KEY = registerKey("rhyolite_key");
     public static final RegistryKey<ConfiguredFeature<?, ?>> AMBER_MINERAL_KEY = registerKey("amber_mineral_key");
 
     //terrain
-    public static final RegistryKey<ConfiguredFeature<?, ?>> ARCH_KEY = registerKey("arch_key");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> SAKURA_ARCH_KEY = registerKey("sakura_arch_key");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> SAKURA_ROCK_STRAIGHT_KEY = registerKey("sakura_rock_straight_key");
     public static final RegistryKey<ConfiguredFeature<?, ?>> SPIRAL_MUSHROOM_KEY = registerKey("spiral_mushroom_key");
 
     //Dev
-    public static final RegistryKey<ConfiguredFeature<?,?>> FEATURE_TESTER_KEY = registerKey("feature_teste_key");
-
+    public static final RegistryKey<ConfiguredFeature<?, ?>> FEATURE_TESTER_KEY = registerKey("feature_teste_key");
 
 
     public static void bootstrap(Registerable<ConfiguredFeature<?, ?>> context) {
@@ -162,6 +173,16 @@ public class ModConfiguredFeatures<FC extends FeatureConfig> {
                 BlockStateProvider.of(Blocks.OAK_LOG), new StraightTrunkPlacer(4, 2, 0),
                 BlockStateProvider.of(ModBlocks.OAK_BERRIES_LEAVES.getDefaultState().with(Properties.BERRIES, false)), new BlobFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(0), 3),
                 new TwoLayersFeatureSize(1, 0, 1)).decorators(Collections.singletonList(OakBerriesTreeDecorator.INSTANCE)).build());
+
+        register(context, PELTOGYNE_TREE_KEY, Feature.TREE, new TreeFeatureConfig.Builder(
+                BlockStateProvider.of(ModBlocks.PELTOGYNE_LOG), new PeltogyneTrunkPlacer(8, 4, 3),
+                BlockStateProvider.of(ModBlocks.PELTOGYNE_LEAVES), new PeltogyneFoliagePlacer(ConstantIntProvider.create(4), ConstantIntProvider.create(10), 3),
+                new TwoLayersFeatureSize(1, 0, 1)).build());
+
+        register(context, COLORFUL_TREE_KEY, Feature.TREE, new TreeFeatureConfig.Builder(
+                BlockStateProvider.of(Blocks.OAK_LOG), new ColorfulTreeTrunkPlacer(6, 3, 2),
+                BlockStateProvider.of(ModBlocks.PELTOGYNE_LEAVES), new ColorfulTreeFoliagePlacer(ConstantIntProvider.create(4), ConstantIntProvider.create(10), 3),
+                new TwoLayersFeatureSize(1, 0, 1)).build());
         //huge mushrooms
         register(context, BLUE_MUSHROOM_TREE_KEY, ModFeatures.HUGE_BLUE_MUSHROOM, new ModMushroomFeatureConfig(BlockStateProvider.of(ModBlocks.BLUE_MUSHROOM_BLOCK), BlockStateProvider.of(Blocks.MUSHROOM_STEM), BlockStateProvider.of(Blocks.MUSHROOM_STEM), 4));
         register(context, PURPLE_MUSHROOM_TREE_KEY, ModFeatures.HUGE_PURPLE_MUSHROOM, new HugeMushroomFeatureConfig(BlockStateProvider.of(ModBlocks.PURPLE_MUSHROOM_BLOCK), BlockStateProvider.of(Blocks.MUSHROOM_STEM), 5));
@@ -210,6 +231,7 @@ public class ModConfiguredFeatures<FC extends FeatureConfig> {
         register(context, PREHISTO_GREEN_SCHROOM_KEY, Feature.FLOWER, new RandomPatchFeatureConfig(32, 6, 2, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.PREHISTO_GREEN_SCHROOM)))));
         register(context, PREHISTO_PINK_SCHROOM_KEY, Feature.FLOWER, new RandomPatchFeatureConfig(37, 6, 2, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.PREHISTO_PINK_SCHROOM)))));
 
+
         register(context, PURPLE_PERENNIAL_KEY, Feature.FLOWER, new RandomPatchFeatureConfig(28, 3, 2, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.PURPLE_PERENNIAL)))));
         register(context, YELLOW_PERENNIAL_KEY, Feature.FLOWER, new RandomPatchFeatureConfig(28, 3, 2, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.YELLOW_PERENNIAL)))));
         register(context, PINK_PERENNIAL_KEY, Feature.FLOWER, new RandomPatchFeatureConfig(28, 3, 2, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.PINK_PERENNIAL)))));
@@ -217,6 +239,15 @@ public class ModConfiguredFeatures<FC extends FeatureConfig> {
         register(context, BLUE_PERENNIAL_KEY, Feature.FLOWER, new RandomPatchFeatureConfig(28, 3, 2, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.BLUE_PERENNIAL)))));
         register(context, GREEN_PERENNIAL_KEY, Feature.FLOWER, new RandomPatchFeatureConfig(28, 3, 2, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.GREEN_PERENNIAL)))));
         register(context, LUMINESCENT_PERENNIAL_KEY, Feature.FLOWER, new RandomPatchFeatureConfig(28, 3, 2, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.LUMINESCENT_PERENNIAL)))));
+
+        register(context, SMALL_PATCH_PURPLE_PERENNIAL_KEY, Feature.FLOWER, new RandomPatchFeatureConfig(16, 3, 2, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.PURPLE_PERENNIAL)))));
+        register(context, SMALL_PATCH_YELLOW_PERENNIAL_KEY, Feature.FLOWER, new RandomPatchFeatureConfig(16, 3, 2, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.YELLOW_PERENNIAL)))));
+        register(context, SMALL_PATCH_PINK_PERENNIAL_KEY, Feature.FLOWER, new RandomPatchFeatureConfig(16, 3, 2, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.PINK_PERENNIAL)))));
+        register(context, SMALL_PATCH_ORANGE_PERENNIAL_KEY, Feature.FLOWER, new RandomPatchFeatureConfig(16, 3, 2, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.ORANGE_PERENNIAL)))));
+        register(context, SMALL_PATCH_BLUE_PERENNIAL_KEY, Feature.FLOWER, new RandomPatchFeatureConfig(16, 3, 2, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.BLUE_PERENNIAL)))));
+        register(context, SMALL_PATCH_GREEN_PERENNIAL_KEY, Feature.FLOWER, new RandomPatchFeatureConfig(16, 3, 2, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.GREEN_PERENNIAL)))));
+        register(context, SMALL_PATCH_LUMINESCENT_PERENNIAL_KEY, Feature.FLOWER, new RandomPatchFeatureConfig(16, 3, 2, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.LUMINESCENT_PERENNIAL)))));
+
 
         register(context, RED_QUINCE_KEY, Feature.FLOWER, new RandomPatchFeatureConfig(32, 6, 2, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.RED_QUINCE)))));
         register(context, YELLOW_QUINCE_KEY, Feature.FLOWER, new RandomPatchFeatureConfig(32, 6, 2, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.YELLOW_QUINCE)))));
@@ -261,7 +292,7 @@ public class ModConfiguredFeatures<FC extends FeatureConfig> {
         register(context, COLORFUL_BUSH_KEY, ModFeatures.COLORFUL_BUSH, new DefaultFeatureConfig());
 
         //Crystal
-        register(context, RED_CRYSTAL_KEY, ModFeatures.CRYSTAL, new CrystalConfig(15,9,BlockStateProvider.of(ModBlocks.RED_CRYSTAL)));
+        register(context, RED_CRYSTAL_KEY, ModFeatures.CRYSTAL, new CrystalConfig(15, 9, BlockStateProvider.of(ModBlocks.RED_CRYSTAL)));
         register(context, BLUE_CRYSTAL_KEY, ModFeatures.CRYSTAL, new CrystalConfig(15, 9, BlockStateProvider.of(ModBlocks.BLUE_CRYSTAL)));
         register(context, WHITE_CRYSTAL_KEY, Feature.FLOWER, new RandomPatchFeatureConfig(33, 9, 3, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.WHITE_CRYSTAL)))));
         register(context, BLUE_CRYSTAL_PILLAR_KEY, ModFeatures.CRYSTAL_PILLAR, new ModSimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.BLUE_CRYSTAL_BLOCK)));
@@ -283,7 +314,8 @@ public class ModConfiguredFeatures<FC extends FeatureConfig> {
         register(context, RHYOLITE_KEY, Feature.ORE, new OreFeatureConfig(overworldRhyoliteOre, 14));
 
         //terrain
-        register(context, ARCH_KEY, ModFeatures.ARCH, new ArchConfig(10, 3, 60, 30, 30, 30, 30));
+        register(context, SAKURA_ARCH_KEY, ModFeatures.ARCH, new ArchConfig(10, 3, 60, 30, 30, 30, 30));
+        register(context, SAKURA_ROCK_STRAIGHT_KEY, ModFeatures.SAKURA_ROCK_STRAIGHT, new DefaultFeatureConfig());
         register(context, SPIRAL_MUSHROOM_KEY, ModFeatures.SPIRAL_MUSHROOM, new DefaultFeatureConfig());
 
         //Dev

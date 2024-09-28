@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column_horizontal",
+  "textures": {
+    "end": "mushrooomsmod:block/log_stripped_peltogyne_top",
+    "side": "mushrooomsmod:block/log_stripped_peltogyne"
+  }
+}

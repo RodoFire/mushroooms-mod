@@ -14,6 +14,6 @@ public class ModEntitiesAttribute {
         FabricDefaultAttributeRegistry.register(ModEntities.SCHROOM_STICK, SchroomStickEntity.setAttributes());
         FabricDefaultAttributeRegistry.register(ModEntities.INVENTORY_ARMOR_STAND_ENTITY, LivingEntity.createLivingAttributes());
         FabricDefaultAttributeRegistry.register(ModEntities.LOCKED_INVENTORY_ARMOR_STAND, LivingEntity.createLivingAttributes());
-        FabricDefaultAttributeRegistry.register(ModEntities.MOSQUITO_ENTITY, MosquitoEntity.setAttributes());
+        //FabricDefaultAttributeRegistry.register(ModEntities.MOSQUITO_ENTITY, MosquitoEntity.setAttributes());
     }
 }

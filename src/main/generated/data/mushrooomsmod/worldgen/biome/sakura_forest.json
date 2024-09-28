@@ -8,18 +8,16 @@
   },
   "downfall": 0.4,
   "effects": {
-    "fog_color": 2269670,
-    "foliage_color": 13763580,
-    "grass_color": 8324092,
+    "fog_color": 12638463,
     "mood_sound": {
       "block_search_extent": 8,
       "offset": 2.0,
       "sound": "minecraft:ambient.cave",
       "tick_delay": 6000
     },
-    "sky_color": 3197208,
-    "water_color": 4181722,
-    "water_fog_color": 12524326
+    "sky_color": 9160186,
+    "water_color": 4159204,
+    "water_fog_color": 329011
   },
   "features": [
     [],
@@ -28,8 +26,7 @@
       "minecraft:lake_lava_surface"
     ],
     [
-      "minecraft:amethyst_geode",
-      "minecraft:forest_rock"
+      "minecraft:amethyst_geode"
     ],
     [
       "minecraft:monster_room",
@@ -46,23 +43,7 @@
       "minecraft:ore_diorite_lower",
       "minecraft:ore_andesite_upper",
       "minecraft:ore_andesite_lower",
-      "minecraft:ore_tuff",
-      "minecraft:ore_coal_upper",
-      "minecraft:ore_coal_lower",
-      "minecraft:ore_iron_upper",
-      "minecraft:ore_iron_middle",
-      "minecraft:ore_iron_small",
-      "minecraft:ore_gold",
-      "minecraft:ore_gold_lower",
-      "minecraft:ore_redstone",
-      "minecraft:ore_redstone_lower",
-      "minecraft:ore_diamond",
-      "minecraft:ore_diamond_large",
-      "minecraft:ore_diamond_buried",
-      "minecraft:ore_lapis",
-      "minecraft:ore_lapis_buried",
-      "minecraft:ore_copper",
-      "minecraft:underwater_magma"
+      "minecraft:ore_tuff"
     ],
     [],
     [
@@ -71,13 +52,18 @@
     ],
     [
       "minecraft:glow_lichen",
-      "minecraft:trees_plains",
-      "mushrooomsmod:orange_mushrooom_tree_surface_placed_key",
-      "mushrooomsmod:yellow_mushrooom_tree_surface_placed_key",
-      "mushrooomsmod:green_mushrooom_tree_surface_placed_key"
+      "mushrooomsmod:cherry_blossom_tree_surface_placed_feature",
+      "mushrooomsmod:peltology_tree_surface_placed_key",
+      "minecraft:patch_grass_plain",
+      "mushrooomsmod:pink_heater_surface_placed_key",
+      "mushrooomsmod:dianthus_surface_placed_key",
+      "mushrooomsmod:hydrangea_surface_placed_key",
+      "mushrooomsmod:pink_perennial_surface_placed_key"
     ],
     [
-      "minecraft:freeze_top_layer"
+      "minecraft:freeze_top_layer",
+      "mushrooomsmod:sakura_rock_straight_placed_key",
+      "mushrooomsmod:arch_surface_placed_key"
     ]
   ],
   "has_precipitation": true,

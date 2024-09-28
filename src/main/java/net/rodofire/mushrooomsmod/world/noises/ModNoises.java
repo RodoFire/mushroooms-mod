@@ -10,11 +10,13 @@ import net.rodofire.mushrooomsmod.MushrooomsMod;
 public class ModNoises {
     //No idea for the name
     public static final RegistryKey<DoublePerlinNoiseSampler.NoiseParameters> EMMENTAL_NOISE = registerKey("emmental_noise");
+    public static final RegistryKey<DoublePerlinNoiseSampler.NoiseParameters> INTERMEDIATE_NOISE = registerKey("intermediate_noise");
     public static final RegistryKey<DoublePerlinNoiseSampler.NoiseParameters> PATCH_NOISE = registerKey("patch_noise");
 
 
     public static void bootstrap(Registerable<DoublePerlinNoiseSampler.NoiseParameters> context){
         register(context, EMMENTAL_NOISE, -1, 1.0d);
+        register(context, INTERMEDIATE_NOISE, -2, 1.0d);
         register(context, PATCH_NOISE, -4, 1.0d);
     }
 

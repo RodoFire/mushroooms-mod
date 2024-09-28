@@ -32,6 +32,20 @@ public class ModItemGroup {
                         entries.add(ModBlocks.BLUE_LUMINESCENT_PRESSURE_PLATE);
                         entries.add(ModBlocks.BLUE_LUMINESCENT_BUTTON);
 
+                        entries.add(ModBlocks.PELTOGYNE_LOG);
+                        entries.add(ModBlocks.PELTOGYNE_WOOD);
+                        entries.add(ModBlocks.PELTOGYNE_STRIPPED_LOG);
+                        entries.add(ModBlocks.PELTOGYNE_STRIPPED_WOOD);
+                        entries.add(ModBlocks.PELTOGYNE_PLANKS);
+                        entries.add(ModBlocks.PELTOGYNE_STAIRS);
+                        entries.add(ModBlocks.PELTOGYNE_SLAB);
+                        entries.add(ModBlocks.PELTOGYNE_FENCE);
+                        entries.add(ModBlocks.PELTOGYNE_FENCE_GATE);
+                        entries.add(ModBlocks.PELTOGYNE_DOOR);
+                        entries.add(ModBlocks.PELTOGYNE_TRAPDOOR);
+                        entries.add(ModBlocks.PELTOGYNE_PRESSURE_PLATE);
+                        entries.add(ModBlocks.PELTOGYNE_BUTTON);
+
                         //Building Blocks
                         entries.add(ModBlocks.LAVA_BLACKSTONE);
                         entries.add(ModBlocks.LAVA_BLACKSTONE_BRICKS);
@@ -123,6 +137,7 @@ public class ModItemGroup {
                         entries.add(ModBlocks.RED_COLORFUL_LEAVES);
                         entries.add(ModBlocks.PINK_COLORFUL_LEAVES);
                         entries.add(ModBlocks.OAK_BERRIES_LEAVES);
+                        entries.add(ModBlocks.PELTOGYNE_LEAVES);
 
                         //Mushrooms
                         entries.add(ModBlocks.BLUE_LUMINESCENT_MUSHROOM);
@@ -139,6 +154,8 @@ public class ModItemGroup {
                         //Sapling
                         entries.add(ModBlocks.BLUE_LUMINESCENT_SAPPLING);
                         entries.add(ModBlocks.OAK_BERRIES_SAPLING);
+                        entries.add(ModBlocks.PELTOGYNE_SAPLING);
+                        entries.add(ModBlocks.COLORFUL_TREE_SAPLING);
 
                         //Flowers Mushrooms
                         entries.add(ModBlocks.STERILE_BLUE_MUSHROOM);
@@ -239,7 +256,7 @@ public class ModItemGroup {
                         entries.add(ModItems.PLOTI_SPAWN_EGG);
                         entries.add(ModItems.CRYSTAL_CREEPER_SPAWN_EGG);
                         entries.add(ModItems.CRYSTAL_GOLEM_SPAWN_EGG);
-                        entries.add(ModItems.MOSQUITO_SPAWN_EGG);
+                        //entries.add(ModItems.MOSQUITO_SPAWN_EGG);
                         //entries.add(ModItems.SCHROOM_STICK_SPAWN_EGG);
 
                         //crystal

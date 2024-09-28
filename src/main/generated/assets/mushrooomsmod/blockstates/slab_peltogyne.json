@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "mushrooomsmod:block/slab_peltogyne"
+    },
+    "type=double": {
+      "model": "mushrooomsmod:block/planks_peltogyne"
+    },
+    "type=top": {
+      "model": "mushrooomsmod:block/slab_peltogyne_top"
+    }
+  }
+}

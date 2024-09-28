@@ -24,6 +24,11 @@ public class ModTags {
         public static final TagKey<Item> FORGEABLE_ITEMS = createTag("forgeable_items");
         public static final TagKey<Item> HAMMERS = createTag("hammers");
 
+        public static final TagKey<Item> BLUE_LUMINESCENT_LOGS = createTag("blue_luminescent_logs");
+        public static final TagKey<Item> PELTOGYNE_LOGS = createTag("peltogyne_logs");
+
+
+
         private static TagKey<Item> createTag(String name) {
             return TagKey.of(RegistryKeys.ITEM, new Identifier(MushrooomsMod.MOD_ID, name));
         }

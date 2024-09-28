@@ -31,6 +31,17 @@ public class ModBiomeFeatures {
             builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, ModSurfacePlacedFeatures.YELLOW_PERENNIAL_SURFACE_PLACED_KEY);
         }
 
+        public static void addColorfulForestFeatures(GenerationSettings.LookupBackedBuilder builder) {
+            builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, ModSurfacePlacedFeatures.COLORFUL_TREE_SURFACE_PLACED_KEY);
+            builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, VegetationPlacedFeatures.PATCH_GRASS_PLAIN);
+            builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, ModSurfacePlacedFeatures.SMALL_PATCH_PURPLE_PERENNIAL_SURFACE_PLACED_KEY);
+            builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, ModSurfacePlacedFeatures.SMALL_PATCH_PINK_PERENNIAL_SURFACE_PLACED_KEY);
+            builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, ModSurfacePlacedFeatures.SMALL_PATCH_GREEN_PERENNIAL_SURFACE_PLACED_KEY);
+            builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, ModSurfacePlacedFeatures.SMALL_PATCH_ORANGE_PERENNIAL_SURFACE_PLACED_KEY);
+            builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, ModSurfacePlacedFeatures.SMALL_PATCH_LUMINESCENT_PERENNIAL_SURFACE_PLACED_KEY);
+            builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, ModSurfacePlacedFeatures.SMALL_PATCH_YELLOW_PERENNIAL_SURFACE_PLACED_KEY);
+        }
+
         public static void addSchroomIsland1Features(GenerationSettings.LookupBackedBuilder builder) {
             builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, ModSurfacePlacedFeatures.ORANGE_MUSHROOM_TREE_SURFACE_PLACED_KEY);
             builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, ModSurfacePlacedFeatures.YELLOW_MUSHROOM_TREE_SURFACE_PLACED_KEY);
@@ -53,6 +64,18 @@ public class ModBiomeFeatures {
 
         public static void addMagicalPlainsFeatures(GenerationSettings.LookupBackedBuilder builder) {
 
+        }
+
+        public static void addSakuraForestFeatures(GenerationSettings.LookupBackedBuilder builder) {
+            builder.feature(GenerationStep.Feature.TOP_LAYER_MODIFICATION, ModSurfacePlacedFeatures.SAKURA_ROCK_STRAIGHT_PLACED_KEY);
+            builder.feature(GenerationStep.Feature.TOP_LAYER_MODIFICATION, ModSurfacePlacedFeatures.SAKURA_ARCH_SURFACE_PLACED_KEY);
+            builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, ModSurfacePlacedFeatures.CHERRY_BLOSSOM_TREE_SURFACE_PLACED_FEATURE);
+            builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, ModSurfacePlacedFeatures.PELTOGYNE_TREE_SURFACED_PLACED_KEY);
+            builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, VegetationPlacedFeatures.PATCH_GRASS_PLAIN);
+            builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, ModSurfacePlacedFeatures.PINK_HEATER_SURFACE_PLACED_KEY);
+            builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, ModSurfacePlacedFeatures.DIANTHUS_SURFACE_PLACED_KEY);
+            builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, ModSurfacePlacedFeatures.HYDRANGEA_SURFACE_PLACED_KEY);
+            builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, ModSurfacePlacedFeatures.PINK_PERENNIAL_SURFACE_PLACED_KEY);
         }
     }
 

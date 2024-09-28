@@ -53,7 +53,7 @@ public class ModItems {
     public static final Item CRYSTAL_CREEPER_SPAWN_EGG = registerItem("crystal_creeper_spawn_egg", new SpawnEggItem(ModEntities.CRYSTAL_CREEPER, 0x50D122, 0xDE310F, new FabricItemSettings()));
     public static final Item CRYSTAL_GOLEM_SPAWN_EGG = registerItem("crystal_golem_spawn_egg", new SpawnEggItem(ModEntities.CRYSTAL_GOLEM, 0x9A9A9A, 0xE57FF3, new FabricItemSettings()));
     public static final Item SCHROOM_STICK_SPAWN_EGG = registerItem("schroom_stick_spawn_egg", new SpawnEggItem(ModEntities.SCHROOM_STICK, 0xd3ccc4, 0xd81a1a, new FabricItemSettings()));
-    public static final Item MOSQUITO_SPAWN_EGG = registerItem("mosquito_spawn_egg", new SpawnEggItem(ModEntities.MOSQUITO_ENTITY, 0x897540, 0x222221, new FabricItemSettings()));
+    //public static final Item MOSQUITO_SPAWN_EGG = registerItem("mosquito_spawn_egg", new SpawnEggItem(ModEntities.MOSQUITO_ENTITY, 0x897540, 0x222221, new FabricItemSettings()));
 
 
     //Crystals related

@@ -1,9 +1,9 @@
 {
-  "feature": "mushrooomsmod:arch_key",
+  "feature": "mushrooomsmod:sakura_arch_key",
   "placement": [
     {
-      "type": "minecraft:count",
-      "count": 1
+      "type": "minecraft:rarity_filter",
+      "chance": 25
     },
     {
       "type": "minecraft:in_square"

@@ -4,6 +4,11 @@
     "mushrooomsmod:log_blue_luminescent",
     "mushrooomsmod:log_stripped_blue_luminescent",
     "mushrooomsmod:wood_stripped_blue_luminescent",
-    "mushrooomsmod:wood_blue_luminescent"
+    "mushrooomsmod:wood_blue_luminescent",
+    "mushrooomsmod:log_peltogyne",
+    "mushrooomsmod:wood_peltogyne",
+    "mushrooomsmod:log_stripped_peltogyne",
+    "mushrooomsmod:wood_stripped_peltogyne",
+    "mushrooomsmod:planks_peltogyne"
   ]
 }
