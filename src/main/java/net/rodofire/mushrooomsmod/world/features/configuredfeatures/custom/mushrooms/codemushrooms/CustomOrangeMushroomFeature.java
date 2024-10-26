@@ -82,8 +82,8 @@ public class CustomOrangeMushroomFeature extends CustomOrangeMushroom {
         BlockState blockState = config.capProvider.get(random, pos);
         BlockState blockState2 = Blocks.AIR.getDefaultState();
 
-        GenSpheres.generateFullElipsoid(world, (int) (large * 0.9f), (int) (large * 2.4f), (int) (large * 0.9f), pos.add(0, (int) (height - 2.4 * large + 4), 0), blockState);
-        GenSpheres.generateFullElipsoid(world, (int) ((large - 1) * 0.9f), (int) ((large - 1) * 2.4f), (int) ((large - 1) * 0.9f), pos.add(0, (int) (height - 2.4 * large + 4), 0), blockState);
+        GenSpheres.generateFullEllipsoid(world, (int) (large * 0.9f), (int) (large * 2.4f), (int) (large * 0.9f), pos.add(0, (int) (height - 2.4 * large + 4), 0), blockState);
+        GenSpheres.generateFullEllipsoid(world, (int) ((large - 1) * 0.9f), (int) ((large - 1) * 2.4f), (int) ((large - 1) * 0.9f), pos.add(0, (int) (height - 2.4 * large + 4), 0), blockState);
         /*for (float secondlarge = large - 2; secondlarge <= large; secondlarge = secondlarge + 0.25f) {
             for (double i = -Math.PI / (3 * large); i <= Math.PI / 2; i = i + Math.PI / (8 * large)) {
                 for (double j = -Math.PI; j <= Math.PI; j = j + Math.PI / (7 * large)) {
@@ -175,8 +175,8 @@ public class CustomOrangeMushroomFeature extends CustomOrangeMushroom {
         BlockState blockState = config.capProvider.get(random, pos);
         BlockState blockState2 = Blocks.AIR.getDefaultState();
 
-        GenSpheres.generateFullElipsoid(world, large, (int) (2.4 * large), large, pos.add(0, height - large + 3, 0), blockState, true);
-        GenSpheres.generateFullElipsoid(world, large - 1, (int) (2.4 * (large - 1)), large - 1, pos.add(0, height - large - 1, 0), blockState2, true);
+        GenSpheres.generateFullEllipsoid(world, large, (int) (2.4 * large), large, pos.add(0, height - large + 3, 0), blockState, true);
+        GenSpheres.generateFullEllipsoid(world, large - 1, (int) (2.4 * (large - 1)), large - 1, pos.add(0, height - large - 1, 0), blockState2, true);
         /*for (float secondlarge = large - 2; secondlarge <= large; secondlarge = secondlarge + 0.25f) {
             for (double i = -Math.PI / (3 * large); i <= Math.PI / 2; i = i + Math.PI / (7 * large)) {
                 for (double j = -Math.PI; j <= Math.PI; j = j + Math.PI / (6 * large)) {

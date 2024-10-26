@@ -55,14 +55,14 @@ public class SpiralMushroom extends Feature<DefaultFeatureConfig> {
         spiral.setBlockLayers(new BlockLayer(List.of(block, block, block, block, block, block, block2, block2, block2, block2, block3, block3, block4)));
 
 
-        spiral.setOutlineRadiusx(2);
-        spiral.setOutlineRadiusx(2);
+        spiral.setOutlineRadiusX(2);
+        spiral.setOutlineRadiusX(2);
 
-        spiral.setRadiusx(new Pair<>(large, 1));
-        spiral.setRadiusz(new Pair<>(large, 1));
+        spiral.setRadiusX(new Pair<>(large, 1));
+        spiral.setRadiusX(new Pair<>(large, 1));
 
         spiral.setOffset(Random.create().nextBetween(0, 360));
-        spiral.setYrotation(Random.create().nextBetween(-20, 20));
+        spiral.setYRotation(Random.create().nextBetween(-20, 20));
 
         List<Set<BlockPos>> posList = spiral.getBlockPos();
         if (!canPlace(world, posList)) return false;

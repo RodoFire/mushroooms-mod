@@ -53,10 +53,9 @@ public class SakuraArchFeature extends Feature<ArchConfig> {
 
         torus.setBlockLayers(
                 new BlockLayer(
-                        Blocks.GRASS_BLOCK.getDefaultState(), 1),
+                        Blocks.GRASS_BLOCK.getDefaultState(), 1, Set.of(Blocks.GRASS_BLOCK, Blocks.DIRT)),
 
                 stone);
-        torus.setBlocksToForce(List.of(Blocks.GRASS_BLOCK, Blocks.DIRT));
 
         //torus.setTorusType(TorusGen.TorusType.HORIZONTAL_HALF);
 
@@ -66,14 +65,14 @@ public class SakuraArchFeature extends Feature<ArchConfig> {
         placeNoise.SetFrequency(0.2f);
         torus.setNoise(placeNoise);
 
-        torus.setOuterRadiusz(radiusz);
+        torus.setOuterRadiusZ(radiusz);
         torus.setLayersType(Shape.LayersType.SURFACE);
 
         int rotationX = Random.create().nextBetween(0, 180);
         int rotattionY = -Random.create().nextBetween(50, 140);
 
-        torus.setXrotation(rotationX);
-        torus.setYrotation(rotattionY);
+        torus.setZRotation(rotationX);
+        torus.setYRotation(rotattionY);
         //torus.setSecondxrotation(Random.create().nextBetween(0, 180));
 
         List<Set<BlockPos>> poslist = torus.getBlockPos();

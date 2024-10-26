@@ -47,15 +47,15 @@ public abstract class DefaultRockFeature extends Feature<DefaultFeatureConfig> {
         SphereGen circleGen = new SphereGen(world, pos, Shape.PlaceMoment.WORLD_GEN, 0);
         circleGen.setHalfSphere(SphereGen.SphereType.HALF);
 
-        circleGen.setRadiusx(dimensions.getX());
-        circleGen.setRadiusy(dimensions.getY());
-        circleGen.setRadiusz(dimensions.getZ());
+        circleGen.setRadiusX(dimensions.getX());
+        circleGen.setRadiusY(dimensions.getY());
+        circleGen.setRadiusZ(dimensions.getZ());
 
-        circleGen.setXrotation(Random.create().nextBetween(-20, 20));
-        circleGen.setYrotation(Random.create().nextBetween(-20, 20));
+        circleGen.setYRotation(Random.create().nextBetween(-20, 20));
+        circleGen.setZRotation(Random.create().nextBetween(-20, 20));
 
+        layer.addBlocksToForce(Set.of(Blocks.GRASS_BLOCK, Blocks.DIRT));
         circleGen.setBlockLayers(layer);
-        circleGen.setBlocksToForce(List.of(Blocks.GRASS_BLOCK, Blocks.DIRT));
 
 
         circleGen.setLayerPlace(Shape.LayerPlace.NOISE3D);

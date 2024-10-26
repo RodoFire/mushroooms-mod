@@ -44,58 +44,58 @@ public class CustomYellowMushroomFeature extends CustomYellowMushroom {
 
 
         for (int i = 0; i <= height; i++) {
-            double x = i * FastMaths.getFastCos(theta) * FastMaths.getFastCos(phi);
-            double z = i * FastMaths.getFastSin(theta) * FastMaths.getFastCos(phi);
+            double x = i * FastMaths.getFastCos((float) theta) * FastMaths.getFastCos((float) phi);
+            double z = i * FastMaths.getFastSin((float) phi) * FastMaths.getFastCos((float) phi);
             mutable.set(pos, (int) x, i, (int) z);
             this.setBlockState(world, mutable, blockState);
 
             //cos
-            x = i * FastMaths.getFastCos(theta) * FastMaths.getFastCos(phi) + FastMaths.getFastCos(theta);
+            x = i * FastMaths.getFastCos((float) phi) * FastMaths.getFastCos((float) phi) + FastMaths.getFastCos((float) phi);
             mutable.set(pos, (int) x, i + randomn1, (int) z);
             this.setBlockState(world, mutable, blockState);
 
 
-            x = i * FastMaths.getFastCos(theta) * FastMaths.getFastCos(phi) - FastMaths.getFastCos(theta);
+            x = i * FastMaths.getFastCos((float) phi) * FastMaths.getFastCos((float) phi) - FastMaths.getFastCos((float) phi);
             mutable.set(pos, (int) x, i + randomn2, (int) z);
             this.setBlockState(world, mutable, blockState);
 
 
-            x = i * FastMaths.getFastCos(theta) * FastMaths.getFastCos(phi);
-            z = i * FastMaths.getFastSin(theta) * FastMaths.getFastCos(phi) - FastMaths.getFastCos(theta);
+            x = i * FastMaths.getFastCos((float) phi) * FastMaths.getFastCos((float) phi);
+            z = i * FastMaths.getFastSin((float) phi) * FastMaths.getFastCos((float) phi) - FastMaths.getFastCos((float) phi);
             mutable.set(pos, (int) x, i + randomn3, (int) z);
             this.setBlockState(world, mutable, blockState);
 
 
-            z = i * FastMaths.getFastSin(theta) * FastMaths.getFastCos(phi) + FastMaths.getFastCos(theta);
+            z = i * FastMaths.getFastSin((float) phi) * FastMaths.getFastCos((float) phi) + FastMaths.getFastCos((float) phi);
             mutable.set(pos, (int) x, i + randomn4, (int) z);
             this.setBlockState(world, mutable, blockState);
 
             //sin
 
-            z = i * FastMaths.getFastSin(theta) * FastMaths.getFastCos(phi);
-            x = i * FastMaths.getFastCos(theta) * FastMaths.getFastCos(phi) + FastMaths.getFastSin(theta);
+            z = i * FastMaths.getFastSin((float) phi) * FastMaths.getFastCos((float) phi);
+            x = i * FastMaths.getFastCos((float) phi) * FastMaths.getFastCos((float) phi) + FastMaths.getFastSin((float) phi);
             mutable.set(pos, (int) x, i + randomn5, (int) z);
             this.setBlockState(world, mutable, blockState);
 
 
-            x = i * FastMaths.getFastCos(theta) * FastMaths.getFastCos(phi) - FastMaths.getFastSin(theta);
+            x = i * FastMaths.getFastCos((float) phi) * FastMaths.getFastCos((float) phi) - FastMaths.getFastSin((float) phi);
             mutable.set(pos, (int) x, i + randomn6, (int) z);
             this.setBlockState(world, mutable, blockState);
 
 
-            x = i * FastMaths.getFastCos(theta) * FastMaths.getFastCos(phi);
-            z = i * FastMaths.getFastSin(theta) * FastMaths.getFastCos(phi) - FastMaths.getFastSin(theta);
+            x = i * FastMaths.getFastCos((float) phi) * FastMaths.getFastCos((float) phi);
+            z = i * FastMaths.getFastSin((float) phi) * FastMaths.getFastCos((float) phi) - FastMaths.getFastSin((float) phi);
             mutable.set(pos, (int) x, i + randomn7, (int) z);
             this.setBlockState(world, mutable, blockState);
 
-            z = i * FastMaths.getFastSin(theta) * FastMaths.getFastCos(phi) + FastMaths.getFastSin(theta);
+            z = i * FastMaths.getFastSin((float) phi) * FastMaths.getFastCos((float) phi) + FastMaths.getFastSin((float) phi);
             mutable.set(pos, (int) x, i + randomn8, (int) z);
             this.setBlockState(world, mutable, blockState);
 
 
         }
-        double x = height * FastMaths.getFastCos(theta) * FastMaths.getFastCos(phi);
-        double z = height * FastMaths.getFastSin(theta) * FastMaths.getFastCos(phi);
+        double x = height * FastMaths.getFastCos((float) phi) * FastMaths.getFastCos((float) phi);
+        double z = height * FastMaths.getFastSin((float) phi) * FastMaths.getFastCos((float) phi);
 
 
         Integer[] coordinates = new Integer[2];
@@ -111,14 +111,14 @@ public class CustomYellowMushroomFeature extends CustomYellowMushroom {
 
 
         for (int i = 0; i <= height; i++) {
-            double x = i * FastMaths.getFastCos(theta) * FastMaths.getFastCos(phi);
-            double z = i * FastMaths.getFastSin(theta) * FastMaths.getFastCos(phi);
+            double x = i * FastMaths.getFastCos((float) phi) * FastMaths.getFastCos((float) phi);
+            double z = i * FastMaths.getFastSin((float) phi) * FastMaths.getFastCos((float) phi);
             mutable.set(pos, (int) x, i, (int) z);
             this.setBlockState(world, mutable, blockState);
         }
 
-        double x = height * FastMaths.getFastCos(theta) * FastMaths.getFastCos(phi);
-        double z = height * FastMaths.getFastSin(theta) * FastMaths.getFastCos(phi);
+        double x = height * FastMaths.getFastCos((float) phi) * FastMaths.getFastCos((float) phi);
+        double z = height * FastMaths.getFastSin((float) phi) * FastMaths.getFastCos((float) phi);
 
 
         Integer[] coordinates = new Integer[2];
@@ -136,8 +136,8 @@ public class CustomYellowMushroomFeature extends CustomYellowMushroom {
         int randomx = coordinates[0];
         int randomz = coordinates[1];
         BlockState blockState1 = config.stemProvider.get(random, pos);
-        GenSpheres.generateFullElipsoid(world, (int) (1.5 * large), large, (int) (1.5 * large), pos.add(randomx, height - large + 4, randomz), blockState);
-        GenSpheres.generateFullElipsoid(world, (int) (1.5 * (large - 1)), large, (int) (1.5 * (large - 1)), pos.add(randomx, height - large, randomz), blockState2);
+        GenSpheres.generateFullEllipsoid(world, (int) (1.5 * large), large, (int) (1.5 * large), pos.add(randomx, height - large + 4, randomz), blockState);
+        GenSpheres.generateFullEllipsoid(world, (int) (1.5 * (large - 1)), large, (int) (1.5 * (large - 1)), pos.add(randomx, height - large, randomz), blockState2);
         /*for (float secondlarge = 0; secondlarge <= large; secondlarge = secondlarge + 0.25f) {
             for (double i = -Math.PI / (3 * large); i <= Math.PI / 2; i = i + Math.PI / (6 * large)) {
                 for (double j = -Math.PI; j <= Math.PI; j = j + Math.PI / (6 * large)) {
@@ -172,8 +172,8 @@ public class CustomYellowMushroomFeature extends CustomYellowMushroom {
         BlockState blockState2 = Blocks.AIR.getDefaultState();
         int randomx = coordinates[0];
         int randomz = coordinates[1];
-        GenSpheres.generateFullElipsoid(world, 2 * large, large, 2 * large, pos.add(randomx, height - large + 4, randomz), blockState);
-        GenSpheres.generateFullElipsoid(world, (int) (2 * (large - 0.75f)), large, (int) (2 * (large - 0.75f)), pos.add(randomx, height - large, randomz), blockState2);
+        GenSpheres.generateFullEllipsoid(world, 2 * large, large, 2 * large, pos.add(randomx, height - large + 4, randomz), blockState);
+        GenSpheres.generateFullEllipsoid(world, (int) (2 * (large - 0.75f)), large, (int) (2 * (large - 0.75f)), pos.add(randomx, height - large, randomz), blockState2);
         /*for (float secondlarge = 0; secondlarge <= large; secondlarge = secondlarge + 0.25f) {
             for (double i = -Math.PI / (3 * large); i <= Math.PI / 2; i = i + Math.PI / (8 * large)) {
                 for (double j = -Math.PI; j <= Math.PI; j = j + Math.PI / (8 * large)) {
@@ -243,7 +243,7 @@ public class CustomYellowMushroomFeature extends CustomYellowMushroom {
         coordinates.add((double) randomx);
         coordinates.add((double) randomz);
         coordinates.add(phi);
-        coordinates.add(theta);
+        coordinates.add(phi);
 
         return coordinates;
     }

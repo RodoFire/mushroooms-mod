@@ -17,6 +17,7 @@ import net.rodofire.mushrooomsmod.block.ModBlocks;
 import net.rodofire.mushrooomsmod.world.features.config.ModMushroomFeatureConfig;
 
 import java.util.List;
+import java.util.Set;
 
 public class CustomBlueMushroomFeature extends CustomBlueMushroom {
     public CustomBlueMushroomFeature(Codec<ModMushroomFeatureConfig> configCodec) {
@@ -47,7 +48,7 @@ public class CustomBlueMushroomFeature extends CustomBlueMushroom {
                 for (float y = -height; y <= height; ++y) {
                     if (x * x / (float) largexsquared + y * y / (float) largeysquared + z * z / (float) largexsquared <= 1.0F) {
                         mutable.set(pos, (int) x, (int) (y + a), (int) z);
-                        BlockPlaceUtil.setRandomBlockWithVerification(world, force, List.of(ModBlocks.BLUE_MUSHROOM_BLOCK), List.of(state), mutable);
+                        BlockPlaceUtil.setRandomBlockWithVerification(world, force, Set.of(ModBlocks.BLUE_MUSHROOM_BLOCK), List.of(state), mutable);
                     }
                 }
             }
@@ -86,12 +87,12 @@ public class CustomBlueMushroomFeature extends CustomBlueMushroom {
 
             for (int u = 0; u <= height; u++) {
 
-                double a = c1 + c2 * FastMaths.getFastCos(u * c3);
+                double a = c1 + c2 * FastMaths.getFastCos((float) (u * c3));
 
                 for (double v = 0; v <= 360; v += 45 / j) {
 
-                    int x = (int) (a * FastMaths.getFastCos(v));
-                    int z = (int) (a * FastMaths.getFastSin(v));
+                    int x = (int) (a * FastMaths.getFastCos((float) v));
+                    int z = (int) (a * FastMaths.getFastSin((float) v));
                     mutable.set(pos, x, u, z);
                     float t = 4 * noise.GetNoise(mutable.getX(), mutable.getZ());
                     if (u == 0) {
