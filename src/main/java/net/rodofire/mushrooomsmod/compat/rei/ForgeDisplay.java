@@ -16,7 +16,21 @@ import java.util.Collections;
 import java.util.List;
 
 public class ForgeDisplay extends BasicDisplay {
-    private RecipeEntry<ForgeRecipe> recipe;
+    public ForgeDisplay(RecipeEntry<ForgeRecipe> recipe) {
+        super(List.of(EntryIngredients.ofIngredient(recipe.value().recipeItem())),
+                List.of(EntryIngredient.of(EntryStacks.of(recipe.value().output()))));
+    }
+
+    @Override
+    public CategoryIdentifier<?> getCategoryIdentifier() {
+        return ForgeCategory.FORGE_EMPOWERING;
+    }
+
+    @Override
+    public @Nullable DisplaySerializer<? extends Display> getSerializer() {
+        return null;
+    }
+    /*private RecipeEntry<ForgeRecipe> recipe;
 
     public ForgeDisplay(EntryIngredient inputs, EntryIngredient outputs) {
         super(Collections.singletonList(inputs), Collections.singletonList(outputs));
@@ -45,7 +59,7 @@ public class ForgeDisplay extends BasicDisplay {
     @Override
     public @Nullable DisplaySerializer<? extends Display> getSerializer() {
         return null;
-    }
+    }*/
 
 
 }

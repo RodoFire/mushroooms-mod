@@ -39,12 +39,12 @@ public record ForgeRecipe(@NotNull Ingredient recipeItem,
 
     @Override
     public RecipeSerializer<? extends Recipe<SingleStackRecipeInput>> getSerializer() {
-        return ForgeSerializer.INSTANCE;
+        return ModRecipes.FORGING_SERIALIZER;
     }
 
     @Override
     public RecipeType<? extends Recipe<SingleStackRecipeInput>> getType() {
-        return Type.INSTANCE;
+        return ModRecipes.FORGING_TYPE;
     }
 
 
