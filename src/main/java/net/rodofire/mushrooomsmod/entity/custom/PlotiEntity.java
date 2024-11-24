@@ -75,7 +75,7 @@ public class PlotiEntity extends AnimalEntity implements GeoEntity {
     @Override
     protected void initDataTracker(DataTracker.Builder builder) {
         super.initDataTracker(builder);
-        this.dataTracker.set(SIT_FLAGS, false);
+        builder.add(SIT_FLAGS, false);
     }
 
     private PlayState predicate(AnimationState<GeoAnimatable> geoAnimatableAnimationState) {

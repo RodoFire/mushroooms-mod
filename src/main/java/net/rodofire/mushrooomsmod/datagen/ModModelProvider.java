@@ -219,7 +219,7 @@ public class ModModelProvider extends FabricModelProvider {
         generator.registerParentedItemModel(ModItems.PLOTI_SPAWN_EGG, ModelIds.getMinecraftNamespacedItem("template_spawn_egg"));
         generator.registerParentedItemModel(ModItems.CRYSTAL_CREEPER_SPAWN_EGG, ModelIds.getMinecraftNamespacedItem("template_spawn_egg"));
         generator.registerParentedItemModel(ModItems.CRYSTAL_GOLEM_SPAWN_EGG, ModelIds.getMinecraftNamespacedItem("template_spawn_egg"));
-        generator.registerParentedItemModel(ModItems.SCHROOM_STICK_SPAWN_EGG, ModelIds.getMinecraftNamespacedItem("template_spawn_egg"));
+        //generator.registerParentedItemModel(ModItems.SCHROOM_STICK_SPAWN_EGG, ModelIds.getMinecraftNamespacedItem("template_spawn_egg"));
         //generator.registerParentedItemModel(ModItems.MOSQUITO_SPAWN_EGG, ModelIds.getMinecraftNamespacedItem("template_spawn_egg"));
 
         generator.blockStateCollector.accept(VariantsBlockStateSupplier.create(ModBlocks.BLUE_CRYSTAL)

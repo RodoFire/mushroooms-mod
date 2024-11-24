@@ -13,7 +13,7 @@ public class ModEntitiesAttribute {
         FabricDefaultAttributeRegistry.register(ModEntities.PLOTI, PlotiEntity.setAttributes());
         FabricDefaultAttributeRegistry.register(ModEntities.CRYSTAL_CREEPER, CustomCreeperEntity.createCreeperAttributes());
         FabricDefaultAttributeRegistry.register(ModEntities.CRYSTAL_GOLEM, CrystalGolemEntity.createCrystalGolemAttributes());
-        FabricDefaultAttributeRegistry.register(ModEntities.SCHROOM_STICK, SchroomStickEntity.setAttributes());
+        //FabricDefaultAttributeRegistry.register(ModEntities.SCHROOM_STICK, SchroomStickEntity.setAttributes());
         FabricDefaultAttributeRegistry.register(ModEntities.INVENTORY_ARMOR_STAND_ENTITY, LivingEntity.createLivingAttributes());
         FabricDefaultAttributeRegistry.register(ModEntities.LOCKED_INVENTORY_ARMOR_STAND, LivingEntity.createLivingAttributes());
         //FabricDefaultAttributeRegistry.register(ModEntities.MOSQUITO_ENTITY, MosquitoEntity.setAttributes());

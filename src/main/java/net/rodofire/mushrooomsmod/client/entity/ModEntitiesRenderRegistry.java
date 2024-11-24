@@ -11,7 +11,7 @@ public class ModEntitiesRenderRegistry {
         EntityRendererRegistry.register(ModEntities.PLOTI, PlotiRenderer::new);
         EntityRendererRegistry.register(ModEntities.CRYSTAL_CREEPER, CrystalCreeperRenderer::new);
         EntityRendererRegistry.register(ModEntities.CRYSTAL_GOLEM, CrystalGolemRenderer::new);
-        EntityRendererRegistry.register(ModEntities.SCHROOM_STICK, SchroomStickRenderer::new);
+        //EntityRendererRegistry.register(ModEntities.SCHROOM_STICK, SchroomStickRenderer::new);
         EntityRendererRegistry.register(ModEntities.INVENTORY_ARMOR_STAND_ENTITY, InventoryArmorStandRenderer::new);
         EntityRendererRegistry.register(ModEntities.LOCKED_INVENTORY_ARMOR_STAND, InventoryArmorStandRenderer::new);
         //EntityRendererRegistry.register(ModEntities.MOSQUITO_ENTITY, MosquitoRenderer::new);
