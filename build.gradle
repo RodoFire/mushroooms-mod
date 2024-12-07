@@ -138,6 +138,7 @@ publishMods {
 		clientRequired = true
 		requires("fabric-api")
 		changelogType = "markdown"
+		type = STABLE
 	}
 
 	modrinth {
