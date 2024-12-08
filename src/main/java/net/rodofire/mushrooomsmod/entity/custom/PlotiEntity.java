@@ -83,9 +83,9 @@ public class PlotiEntity extends AnimalEntity implements GeoEntity {
         } else if (this.isSit() && geoAnimatableAnimationState.isMoving()) {
             geoAnimatableAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.ploti.side_walking", Animation.LoopType.LOOP));
         } else if (this.isSitting()) {
-            geoAnimatableAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.ploti.sit", Animation.LoopType.HOLD_ON_LAST_FRAME));
+            geoAnimatableAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.ploti.sitting", Animation.LoopType.HOLD_ON_LAST_FRAME));
         } else if (this.isUnsitting()) {
-            geoAnimatableAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.ploti.unsit", Animation.LoopType.HOLD_ON_LAST_FRAME));
+            geoAnimatableAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.ploti.unsitting", Animation.LoopType.HOLD_ON_LAST_FRAME));
         } else {
             geoAnimatableAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.ploti.idle", Animation.LoopType.LOOP));
         }
