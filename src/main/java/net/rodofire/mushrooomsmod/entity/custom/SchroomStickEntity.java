@@ -1,15 +1,12 @@
 package net.rodofire.mushrooomsmod.entity.custom;
 
-import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityPose;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.entity.damage.DamageType;
 import net.minecraft.entity.damage.DamageTypes;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
@@ -38,7 +35,6 @@ public class SchroomStickEntity extends AnimalEntity implements GeoEntity {
     public static final EntityDimensions JUMP_DIMENSION = EntityDimensions.changing(0.5F, 0.5F).scaled(0.7F);
     public static final EntityDimensions STOP_DIMENSION = EntityDimensions.changing(0.4F, 0.4F).scaled(0.7F);
 
-    int tick = 0;
 
     private static final TrackedData<Boolean> GAVING_UP =
             DataTracker.registerData(SchroomStickEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
@@ -69,10 +65,10 @@ public class SchroomStickEntity extends AnimalEntity implements GeoEntity {
         this.goalSelector.add(5, new LookAroundGoal(this));
         this.goalSelector.add(6, new GiveUpGoal(this));
         this.goalSelector.add(7, new JumpGoal(this));
-        this.targetSelector.add(1, new ActiveTargetGoal<SchroomStickEntity>(this, SchroomStickEntity.class, true));
-        this.targetSelector.add(2, new ActiveTargetGoal<PlayerEntity>(this, PlayerEntity.class, true));
-        this.targetSelector.add(3, new ActiveTargetGoal<PlotiEntity>(this, PlotiEntity.class, true));
-        this.targetSelector.add(4, new ActiveTargetGoal<VillagerEntity>(this, VillagerEntity.class, true));
+        this.targetSelector.add(1, new ActiveTargetGoal<>(this, SchroomStickEntity.class, true));
+        this.targetSelector.add(2, new ActiveTargetGoal<>(this, PlayerEntity.class, true));
+        this.targetSelector.add(3, new ActiveTargetGoal<>(this, PlotiEntity.class, true));
+        this.targetSelector.add(4, new ActiveTargetGoal<>(this, VillagerEntity.class, true));
     }
 
     public static DefaultAttributeContainer.Builder setAttributes() {
@@ -130,17 +126,6 @@ public class SchroomStickEntity extends AnimalEntity implements GeoEntity {
         };
     }
 
-    /*@Override
-    protected void playBlockFallSound() {
-        System.out.println("hi");
-        if (isJumping()) {
-            System.out.println("hi");
-            this.playSound(ModSounds.BOOST_MUSHROOM, 0.5F, 0.75F);
-        } else {
-            super.playBlockFallSound();
-        }
-    }*/
-
     @Override
     public FallSounds getFallSounds() {
         if (isJumping()) {
@@ -152,7 +137,7 @@ public class SchroomStickEntity extends AnimalEntity implements GeoEntity {
 
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllerRegistrar) {
-        controllerRegistrar.add(new AnimationController<GeoAnimatable>(this, "controller", 0, this::predicate));
+        controllerRegistrar.add(new AnimationController<>(this, "controller", 0, this::predicate));
     }
 
     private PlayState predicate(AnimationState<GeoAnimatable> geoAnimatableAnimationState) {
@@ -175,7 +160,7 @@ public class SchroomStickEntity extends AnimalEntity implements GeoEntity {
         this.setVelocity(vec3d.x, (double) this.getJumpVelocity() * 1.85, vec3d.z);
         if (this.isSprinting()) {
             float f = this.getYaw() * (float) (Math.PI / 180.0);
-            this.setVelocity(this.getVelocity().add((double) (-MathHelper.sin(f) * 0.2F), 0.0, (double) (MathHelper.cos(f) * 0.2F)));
+            this.setVelocity(this.getVelocity().add(-MathHelper.sin(f) * 0.2F, 0.0, MathHelper.cos(f) * 0.2F));
         }
 
         this.velocityDirty = true;
@@ -251,7 +236,6 @@ public class SchroomStickEntity extends AnimalEntity implements GeoEntity {
         private final SchroomStickEntity schroomStickEntity;
         private int tick;
         final int maxInt = 46;
-        Vec3d direction = new Vec3d(Random.create().nextBetween(-10, 10), 0, Random.create().nextBetween(-10, 10)).normalize();
 
         public JumpGoal(SchroomStickEntity schroomStickEntity) {
             this.schroomStickEntity = schroomStickEntity;
