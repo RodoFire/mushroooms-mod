@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab",
-  "textures": {
-    "bottom": "mushrooomsmod:block/planks_peltogyne",
-    "side": "mushrooomsmod:block/planks_peltogyne",
-    "top": "mushrooomsmod:block/planks_peltogyne"
-  }
-}

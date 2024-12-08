@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cube_column",
-  "textures": {
-    "end": "mushrooomsmod:block/log_stripped_blue_luminescent_top",
-    "side": "mushrooomsmod:block/log_stripped_blue_luminescent"
-  }
-}

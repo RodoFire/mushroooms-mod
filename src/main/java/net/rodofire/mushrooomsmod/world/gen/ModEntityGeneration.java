@@ -12,8 +12,8 @@ import net.rodofire.mushrooomsmod.world.biome.overworld.ModOverworldBiomes;
 
 public class ModEntityGeneration {
     public static void addSpawn() {
-        BiomeModifications.addSpawn(BiomeSelectors.includeByKey(ModOverworldBiomes.CRYSTAL_CAVE), SpawnGroup.CREATURE, ModEntities.CRYSTAL_GOLEM, 25, 1, 1);
-        BiomeModifications.addSpawn(BiomeSelectors.includeByKey(ModOverworldBiomes.CRYSTAL_CAVE), SpawnGroup.MONSTER, ModEntities.CRYSTAL_CREEPER, 130, 1, 4);
+        BiomeModifications.addSpawn(BiomeSelectors.includeByKey(ModOverworldBiomes.CRYSTAL_CAVE), SpawnGroup.CREATURE, ModEntities.CRYSTAL_GOLEM, 100, 1, 1);
+        BiomeModifications.addSpawn(BiomeSelectors.includeByKey(ModOverworldBiomes.CRYSTAL_CAVE), SpawnGroup.MONSTER, ModEntities.CRYSTAL_CREEPER, 150, 1, 4);
 
         spawnRestriction();
     }
