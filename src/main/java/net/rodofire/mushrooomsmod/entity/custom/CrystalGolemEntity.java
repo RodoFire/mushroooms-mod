@@ -7,6 +7,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
@@ -14,6 +15,7 @@ import net.minecraft.entity.mob.Angerable;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.passive.GolemEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
@@ -67,9 +69,9 @@ public class CrystalGolemEntity extends GolemEntity implements Angerable, GeoEnt
         this.goalSelector.add(3, new WanderAroundGoal(this, 0.2f));
         this.targetSelector.add(4, new RevengeGoal(this));
         this.goalSelector.add(5, new LookAtEntityGoal(this, PlayerEntity.class, 6.0f));
-        this.targetSelector.add(3, new ActiveTargetGoal<PlayerEntity>(this, PlayerEntity.class, 10, true, false, this::shouldAngerAt));
-        this.targetSelector.add(3, new ActiveTargetGoal<MobEntity>(this, MobEntity.class, 5, false, false, this::shouldAngerAt));
-        this.targetSelector.add(4, new UniversalAngerGoal<CrystalGolemEntity>(this, false));
+        this.targetSelector.add(1, new ActiveTargetGoal<>(this, PlayerEntity.class, 10, true, false, this::shouldAngerAt));
+        this.targetSelector.add(2, new ActiveTargetGoal<>(this, MobEntity.class, 5, false, false, this::shouldAngerAt));
+        this.targetSelector.add(3, new UniversalAngerGoal<>(this, false));
     }
 
     public static DefaultAttributeContainer.Builder createCrystalGolemAttributes() {
@@ -122,8 +124,26 @@ public class CrystalGolemEntity extends GolemEntity implements Angerable, GeoEnt
         super.tickMovement();
     }
 
-    //TODO
-    //make the golem invulnerable to arrows
+    /*@Override
+    protected float modifyAppliedDamage(DamageSource source, float amount) {
+        if (source.getSource() instanceof PersistentProjectileEntity) {
+            float f = this.random.nextInt(4)==0? 0.0f : 0.25f;
+            source.getSource().setOnFireFor(1);
+            return f * amount;
+        }
+        return super.modifyAppliedDamage(source, amount);
+    }*/
+
+    @Override
+    public boolean damage(DamageSource source, float amount) {
+        if (source.getSource() instanceof PersistentProjectileEntity && this.random.nextInt(2) == 0) {
+            return false;
+        }
+        return super.damage(source, amount);
+    }
+
+
+
 
     private boolean attack() {
         Box boundingBox = this.getBoundingBox().expand(5);
