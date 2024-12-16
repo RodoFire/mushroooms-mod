@@ -63,10 +63,9 @@ public abstract class CustomLuminescentPinkMushroom extends Feature<HugeMushroom
 
     protected boolean canGenerate(WorldAccess world, BlockPos pos, int height, BlockPos.Mutable mutablePos, HugeMushroomFeatureConfig config) {
         int i = pos.getY();
-        //idk what this is
-        /*if (i < world.getBottomY() + 1 || i + height + 1 >= world.getTopY(Heightmap.Type.)) {
+        if (i < world.getBottomY() + 1 || i + height + 1 >= world.getDimension().height()) {
             return false;
-        }*/
+        }
         BlockState blockState = world.getBlockState(pos.down());
         if (!HugeMushroomFeature.isSoil(blockState) && !blockState.isIn(BlockTags.MUSHROOM_GROW_BLOCK)) {
             return false;

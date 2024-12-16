@@ -44,7 +44,7 @@ public class ModBiomeFeatures {
 
         public static void addSchroomIsland1Features(GenerationSettings.LookupBackedBuilder builder) {
             builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, ModSurfacePlacedFeatures.ORANGE_MUSHROOM_TREE_SURFACE_PLACED_KEY);
-            builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, ModSurfacePlacedFeatures.YELLOW_MUSHROOM_TREE_SURFACE_PLACED_KEY);
+            builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, ModSurfacePlacedFeatures.YELLOW_MUSHROOM_TREE_SURFACE_PLACED_KEY_WG);
             builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, ModSurfacePlacedFeatures.GREEN_MUSHROOM_TREE_SURFACE_PLACED_KEY);
         }
 

@@ -10,12 +10,13 @@ import net.minecraft.world.StructureWorldAccess;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.util.FeatureContext;
-import net.rodofire.easierworldcreator.shapegen.SphereGen;
-import net.rodofire.easierworldcreator.shapeutil.BlockLayer;
-import net.rodofire.easierworldcreator.shapeutil.Shape;
-import net.rodofire.easierworldcreator.worldgenutil.FastNoiseLite;
+import net.rodofire.easierworldcreator.blockdata.layer.BlockLayer;
+import net.rodofire.easierworldcreator.blockdata.layer.BlockLayerComparator;
+import net.rodofire.easierworldcreator.shape.block.gen.SphereGen;
+import net.rodofire.easierworldcreator.shape.block.instanciator.AbstractBlockShapeBase;
+import net.rodofire.easierworldcreator.shape.block.instanciator.AbstractBlockShapePlaceType;
+import net.rodofire.easierworldcreator.util.FastNoiseLite;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -43,9 +44,8 @@ public abstract class DefaultRockFeature extends Feature<DefaultFeatureConfig> {
         }
         BlockLayer layer = this.getBlockLayer();
         Vec3i dimensions = this.getDimesions();
-        layer.setBlocksToForce(Set.of(Blocks.GRASS_BLOCK, Blocks.DIRT));
 
-        SphereGen circleGen = new SphereGen(world, pos, Shape.PlaceMoment.WORLD_GEN, 0);
+        SphereGen circleGen = new SphereGen(world, pos, AbstractBlockShapeBase.PlaceMoment.WORLD_GEN, 0);
         circleGen.setHalfSphere(SphereGen.SphereType.HALF);
 
         circleGen.setRadiusX(dimensions.getX());
@@ -55,10 +55,11 @@ public abstract class DefaultRockFeature extends Feature<DefaultFeatureConfig> {
         circleGen.setZRotation(Random.create().nextBetween(-20, 20));
         circleGen.setYRotation(Random.create().nextBetween(-20, 20));
 
-        circleGen.setBlockLayers(layer);
+        layer.setBlocksToForce(Set.of(Blocks.GRASS_BLOCK, Blocks.DIRT));
+        circleGen.setBlockLayer(new BlockLayerComparator(layer));
 
 
-        circleGen.setLayerPlace(Shape.LayerPlace.NOISE3D);
+        circleGen.setLayerPlace(AbstractBlockShapePlaceType.LayerPlace.NOISE3D);
         FastNoiseLite placeNoise = new FastNoiseLite((int) world.getSeed());
         placeNoise.SetFrequency(0.2f);
         circleGen.setNoise(placeNoise);

@@ -63,7 +63,7 @@ public class PinkMushroomVinesHeadBlock extends AbstractPlantStemBlock
 
 
     @Override
-    public ItemStack getPickStack(WorldView world, BlockPos pos, BlockState state) {
+    protected ItemStack getPickStack(WorldView world, BlockPos pos, BlockState state, boolean includeData) {
         return new ItemStack(ModItems.PINK_MUSHROOM_VINES_ITEM);
     }
 

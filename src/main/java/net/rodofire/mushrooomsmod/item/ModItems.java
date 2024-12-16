@@ -51,11 +51,11 @@ public class ModItems {
     //public static final Item GREEN_TORCH = registerItem("torch_green_item", settings -> new VerticallyAttachableBlockItem(ModBlocks.GREEN_TORCH, ModBlocks.WALL_GREEN_TORCH, Direction.DOWN, settings.useBlockPrefixedTranslationKey()));
 
     //Egg
-    public static final Item GROKI_SPAWN_EGG = registerItem("groki_spawn_egg", settings -> new SpawnEggItem(ModEntities.GROKI, 0x765A34, 0x1BC2CF, settings));
-    public static final Item BOLETE_COW_SPAWN_EGG = registerItem("bolete_cow_spawn_egg", settings -> new SpawnEggItem(ModEntities.BOLETE_COW, 0xBF28DD, 0xF4DBF9, settings));
-    public static final Item PLOTI_SPAWN_EGG = registerItem("ploti_spawn_egg", settings -> new SpawnEggItem(ModEntities.PLOTI, 0x674f35, 0x4e361c, settings));
-    public static final Item CRYSTAL_CREEPER_SPAWN_EGG = registerItem("crystal_creeper_spawn_egg", settings -> new SpawnEggItem(ModEntities.CRYSTAL_CREEPER, 0x50D122, 0xDE310F, settings));
-    public static final Item CRYSTAL_GOLEM_SPAWN_EGG = registerItem("crystal_golem_spawn_egg", settings -> new SpawnEggItem(ModEntities.CRYSTAL_GOLEM, 0x9A9A9A, 0xE57FF3, settings));
+    public static final Item GROKI_SPAWN_EGG = registerItem("groki_spawn_egg", settings -> new SpawnEggItem(ModEntities.GROKI, settings));
+    public static final Item BOLETE_COW_SPAWN_EGG = registerItem("bolete_cow_spawn_egg", settings -> new SpawnEggItem(ModEntities.BOLETE_COW, settings));
+    public static final Item PLOTI_SPAWN_EGG = registerItem("ploti_spawn_egg", settings -> new SpawnEggItem(ModEntities.PLOTI, settings));
+    public static final Item CRYSTAL_CREEPER_SPAWN_EGG = registerItem("crystal_creeper_spawn_egg", settings -> new SpawnEggItem(ModEntities.CRYSTAL_CREEPER, settings));
+    public static final Item CRYSTAL_GOLEM_SPAWN_EGG = registerItem("crystal_golem_spawn_egg", settings -> new SpawnEggItem(ModEntities.CRYSTAL_GOLEM, settings));
     //public static final Item SCHROOM_STICK_SPAWN_EGG = registerItem("schroom_stick_spawn_egg", settings -> new SpawnEggItem(ModEntities.SCHROOM_STICK, 0xd3ccc4, 0xd81a1a, settings));
     //public static final Item MOSQUITO_SPAWN_EGG = registerItem("mosquito_spawn_egg", new SpawnEggItem(ModEntities.MOSQUITO_ENTITY, 0x897540, 0x222221, settings));
 
@@ -74,7 +74,8 @@ public class ModItems {
     private static Item registerItem(String id, Function<Item.Settings, Item> factory) {
         return Registry.register(Registries.ITEM, Identifier.of(MushrooomsMod.MOD_ID, id), factory.apply(new Item.Settings().registryKey(keyOf(id))));
     }
-    private static Item registerBlockItem(String name, Block block, Item.Settings settings){
+
+    private static Item registerBlockItem(String name, Block block, Item.Settings settings) {
         return Registry.register(Registries.ITEM, Identifier.of(MushrooomsMod.MOD_ID, name), new BlockItem(block, settings.useBlockPrefixedTranslationKey().registryKey(keyOf(name))));
     }
 

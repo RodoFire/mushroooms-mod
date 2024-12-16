@@ -89,11 +89,6 @@ public class RapangeFlowers extends BlockWithEntity {
     }
 
     @Override
-    public BlockRenderType getRenderType(BlockState state) {
-        return BlockRenderType.ENTITYBLOCK_ANIMATED;
-    }
-
-    @Override
     public boolean hasRandomTicks(BlockState state) {
         return true;
     }

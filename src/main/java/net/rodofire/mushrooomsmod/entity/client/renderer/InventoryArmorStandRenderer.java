@@ -4,6 +4,8 @@ import net.minecraft.client.model.ModelPart;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.EntityRendererFactory;
+import net.minecraft.client.render.entity.equipment.EquipmentModelLoader;
+import net.minecraft.client.render.entity.equipment.EquipmentRenderer;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.EquipmentSlot;
@@ -40,7 +42,7 @@ public class InventoryArmorStandRenderer extends DynamicGeoEntityRenderer<Invent
 
     public InventoryArmorStandRenderer(EntityRendererFactory.Context renderManager) {
         super(renderManager, new InventoryArmorStandModel());
-        addRenderLayer(new ItemArmorGeoLayer<>(this) {
+        addRenderLayer(new ItemArmorGeoLayer<>(this,renderManager.getEquipmentRenderer()) {
             @Nullable
             @Override
             protected ItemStack getArmorItemForBone(GeoBone bone, InventoryArmorStandEntity animatable) {

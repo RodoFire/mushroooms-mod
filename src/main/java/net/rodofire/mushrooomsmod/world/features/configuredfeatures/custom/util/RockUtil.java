@@ -3,8 +3,8 @@ package net.rodofire.mushrooomsmod.world.features.configuredfeatures.custom.util
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.math.random.Random;
-import net.rodofire.easierworldcreator.shapeutil.BlockLayer;
-import net.rodofire.easierworldcreator.util.MathUtil;
+import net.rodofire.easierworldcreator.blockdata.layer.BlockLayer;
+import net.rodofire.easierworldcreator.maths.MathUtil;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -82,10 +82,6 @@ public class BoostingMushroom extends BlockWithEntity {
         return new BoostingMushroomBlockEntity(pos, state);
     }
 
-    @Override
-    public BlockRenderType getRenderType(BlockState state) {
-        return BlockRenderType.ENTITYBLOCK_ANIMATED;
-    }
 
 
     @Override

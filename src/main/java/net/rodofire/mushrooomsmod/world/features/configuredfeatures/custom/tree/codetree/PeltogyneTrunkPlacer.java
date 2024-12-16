@@ -1,8 +1,6 @@
 package net.rodofire.mushrooomsmod.world.features.configuredfeatures.custom.tree.codetree;
 
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -13,15 +11,15 @@ import net.minecraft.world.gen.feature.TreeFeatureConfig;
 import net.minecraft.world.gen.foliage.FoliagePlacer;
 import net.minecraft.world.gen.trunk.TrunkPlacer;
 import net.minecraft.world.gen.trunk.TrunkPlacerType;
-import net.rodofire.easierworldcreator.shapegen.LineGen;
-import net.rodofire.easierworldcreator.shapeutil.BlockLayer;
-import net.rodofire.easierworldcreator.shapeutil.Shape;
-import net.rodofire.easierworldcreator.util.FastMaths;
-import net.rodofire.easierworldcreator.util.MathUtil;
-import net.rodofire.easierworldcreator.worldgenutil.WorldGenUtil;
+import net.rodofire.easierworldcreator.blockdata.layer.BlockLayer;
+import net.rodofire.easierworldcreator.blockdata.layer.BlockLayerComparator;
+import net.rodofire.easierworldcreator.maths.FastMaths;
+import net.rodofire.easierworldcreator.maths.MathUtil;
+import net.rodofire.easierworldcreator.shape.block.gen.LineGen;
+import net.rodofire.easierworldcreator.shape.block.instanciator.AbstractBlockShapeBase;
+import net.rodofire.easierworldcreator.util.WorldGenUtil;
 import net.rodofire.mushrooomsmod.world.features.configuredfeatures.custom.tree.ModTrunkPlacerTypes;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.BiConsumer;
@@ -29,7 +27,6 @@ import java.util.function.BiConsumer;
 public class PeltogyneTrunkPlacer extends TrunkPlacer {
     public static final PeltogyneTrunkPlacer INSTANCE = new PeltogyneTrunkPlacer(6,6,6);
     public static final MapCodec<PeltogyneTrunkPlacer> CODEC = MapCodec.unit(() -> INSTANCE);
-
     public PeltogyneTrunkPlacer(int baseHeight, int firstRandomHeight, int secondRandomHeight) {
         super(baseHeight, firstRandomHeight, secondRandomHeight);
     }
@@ -80,8 +77,10 @@ public class PeltogyneTrunkPlacer extends TrunkPlacer {
 
         BlockPos direction = new BlockPos(randomX, randomY, randomZ);
 
-        LineGen line = new LineGen((StructureWorldAccess) world, startPos, Shape.PlaceMoment.OTHER, startPos.add(direction));
-        line.setBlockLayers(new BlockLayer(config.trunkProvider.get(random, startPos)));
+
+        LineGen line = new LineGen((StructureWorldAccess) world, startPos, AbstractBlockShapeBase.PlaceMoment.OTHER, startPos.add(direction));
+        line.setBlockLayer(new BlockLayerComparator(new BlockLayer(config.trunkProvider.get(random, startPos))));
+
         line.place();
 
         return new FoliagePlacer.TreeNode(startPos.add(direction), 0, false);

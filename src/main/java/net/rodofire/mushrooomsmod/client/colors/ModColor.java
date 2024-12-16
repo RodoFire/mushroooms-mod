@@ -9,7 +9,7 @@ public class ModColor {
     public static void createBlockColors() {
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> {
                     if (world == null || pos == null) {
-                        return FoliageColors.getDefaultColor();
+                        return FoliageColors.DEFAULT;
                     }
                     return BiomeColors.getFoliageColor(world, pos);
                 }
@@ -18,8 +18,8 @@ public class ModColor {
     }
 
     public static void createItemColors() {
-        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> FoliageColors.getDefaultColor()
-                , ModBlocks.OAK_BERRIES_LEAVES.asItem());
+        /*ColorProviderRegistry.Item.register((stack, tintIndex) -> FoliageColors.getDefaultColor()
+                , ModBlocks.OAK_BERRIES_LEAVES.asItem());*/
 
     }
 }

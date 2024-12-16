@@ -2,11 +2,15 @@ package net.rodofire.mushrooomsmod.world.features.configuredfeatures.custom.mush
 
 import com.mojang.serialization.Codec;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.StructureWorldAccess;
-import net.rodofire.easierworldcreator.worldgenutil.GenCircles;
+import net.rodofire.easierworldcreator.shape.block.simplegen.GenCircles;
 import net.rodofire.mushrooomsmod.world.features.config.ModMushroomFeatureConfig;
+
+import java.util.List;
+import java.util.Set;
 
 
 public class CustomGreenMushroomFeature extends CustomGreenMushroom {
@@ -40,7 +44,7 @@ public class CustomGreenMushroomFeature extends CustomGreenMushroom {
     protected void placecaps(BlockPos start, BlockPos.Mutable mutable, StructureWorldAccess world, int large, int height, BlockState blockState) {
         //generate circle
         mutable.set(start, 0, height, 0);
-        GenCircles.generateFullCircle(world, large, blockState, mutable);
+        GenCircles.generateFullCircle(world, large, mutable, false, Set.of(Blocks.MUSHROOM_STEM), List.of(blockState));
     }
 
 

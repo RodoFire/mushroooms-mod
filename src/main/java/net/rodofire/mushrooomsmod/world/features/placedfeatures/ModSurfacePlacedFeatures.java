@@ -26,7 +26,7 @@ public class ModSurfacePlacedFeatures {
     public static final RegistryKey<PlacedFeature> PURPLE_MUSHROOM_TREE_SURFACE_PLACED_KEY = registerKey("purple_mushrooom_tree_surface_placed_key");
     public static final RegistryKey<PlacedFeature> GREEN_MUSHROOM_TREE_SURFACE_PLACED_KEY = registerKey("green_mushrooom_tree_surface_placed_key");
     public static final RegistryKey<PlacedFeature> ORANGE_MUSHROOM_TREE_SURFACE_PLACED_KEY = registerKey("orange_mushrooom_tree_surface_placed_key");
-    public static final RegistryKey<PlacedFeature> YELLOW_MUSHROOM_TREE_SURFACE_PLACED_KEY = registerKey("yellow_mushrooom_tree_surface_placed_key");
+    public static final RegistryKey<PlacedFeature> YELLOW_MUSHROOM_TREE_SURFACE_PLACED_KEY_WG = registerKey("yellow_mushrooom_tree_surface_placed_key_wg");
     public static final RegistryKey<PlacedFeature> RED_MUSHROOM_TREE_SURFACE_PLACED_KEY = registerKey("red_mushrooom_tree_surface_placed_key");
     public static final RegistryKey<PlacedFeature> BROWN_MUSHROOM_TREE_SURFACE_PLACED_KEY = registerKey("brown_mushrooom_tree_surface_placed_key");
 
@@ -117,11 +117,11 @@ public class ModSurfacePlacedFeatures {
 
         //Mushrooms
         register(context, PINK_LUMINESCENT_MUSHROOM_TREE_SURFACE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.PINK_LUMINESCENT_MUSHROOM_TREE_KEY), VegetationPlacedFeatures.treeModifiersWithWouldSurvive(PlacedFeatures.createCountExtraModifier(1, 0.1f, 2), ModBlocks.LUMINESCENT_PINK_MUSHROOM));
-        register(context, BLUE_MUSHROOM_TREE_SURFACE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.BLUE_MUSHROOM_TREE_KEY), VegetationPlacedFeatures.treeModifiersWithWouldSurvive(PlacedFeatures.createCountExtraModifier(6, 0.2f, 3), ModBlocks.BLUE_MUSHROOM));
-        register(context, GREEN_MUSHROOM_TREE_SURFACE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.GREEN_MUSHROOM_TREE_KEY), CountPlacementModifier.of(10), SquarePlacementModifier.of(), PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP, BiomePlacementModifier.of());
+        register(context, BLUE_MUSHROOM_TREE_SURFACE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.BLUE_MUSHROOM_TREE_KEY_WG), VegetationPlacedFeatures.treeModifiersWithWouldSurvive(PlacedFeatures.createCountExtraModifier(6, 0.2f, 3), ModBlocks.BLUE_MUSHROOM));
+        register(context, GREEN_MUSHROOM_TREE_SURFACE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.GREEN_MUSHROOM_TREE_KEY), CountPlacementModifier.of(1), SquarePlacementModifier.of(), PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP, BiomePlacementModifier.of());
         register(context, PURPLE_MUSHROOM_SURFACE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.PURPLE_MUSHROOM_TREE_KEY), CountPlacementModifier.of(10), SquarePlacementModifier.of(), PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP, BiomePlacementModifier.of());
-        register(context, ORANGE_MUSHROOM_TREE_SURFACE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.ORANGE_MUSHROOM_TREE_KEY), CountPlacementModifier.of(10), SquarePlacementModifier.of(), PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP, BiomePlacementModifier.of());
-        register(context, YELLOW_MUSHROOM_TREE_SURFACE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.YELLOW_MUSHROOM_TREE_KEY), CountPlacementModifier.of(10), SquarePlacementModifier.of(), PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP, BiomePlacementModifier.of());
+        register(context, ORANGE_MUSHROOM_TREE_SURFACE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.ORANGE_MUSHROOM_TREE_KEY_WG), RarityFilterPlacementModifier.of(2), SquarePlacementModifier.of(), PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP, BiomePlacementModifier.of());
+        register(context, YELLOW_MUSHROOM_TREE_SURFACE_PLACED_KEY_WG, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.YELLOW_MUSHROOM_TREE_KEY_WG), RarityFilterPlacementModifier.of(2), SquarePlacementModifier.of(), PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP, BiomePlacementModifier.of());
         register(context, BROWN_MUSHROOM_TREE_SURFACE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(TreeConfiguredFeatures.HUGE_BROWN_MUSHROOM), CountPlacementModifier.of(10), SquarePlacementModifier.of(), PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP, BiomePlacementModifier.of());
         register(context, RED_MUSHROOM_TREE_SURFACE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(TreeConfiguredFeatures.HUGE_RED_MUSHROOM), CountPlacementModifier.of(10), SquarePlacementModifier.of(), PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP, BiomePlacementModifier.of());
 

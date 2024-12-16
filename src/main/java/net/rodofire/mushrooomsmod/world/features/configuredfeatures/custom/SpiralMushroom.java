@@ -10,12 +10,12 @@ import net.minecraft.world.StructureWorldAccess;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.util.FeatureContext;
-import net.rodofire.easierworldcreator.shapegen.SpiralGen;
-import net.rodofire.easierworldcreator.shapeutil.BlockLayer;
-import net.rodofire.easierworldcreator.shapeutil.Shape;
+import net.rodofire.easierworldcreator.blockdata.layer.BlockLayer;
+import net.rodofire.easierworldcreator.blockdata.layer.BlockLayerComparator;
+import net.rodofire.easierworldcreator.shape.block.gen.SpiralGen;
+import net.rodofire.easierworldcreator.shape.block.instanciator.AbstractBlockShapeBase;
 import net.rodofire.mushrooomsmod.block.ModBlocks;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.Set;
 
@@ -49,10 +49,11 @@ public class SpiralMushroom extends Feature<DefaultFeatureConfig> {
 
         int large = Random.create().nextBetween(5, 10);
 
-        SpiralGen spiral = new SpiralGen(world, pos, Shape.PlaceMoment.OTHER, large, Random.create().nextBetween(25, 50));
+        SpiralGen spiral = new SpiralGen(world, pos, AbstractBlockShapeBase.PlaceMoment.OTHER, large, Random.create().nextBetween(25, 50));
         spiral.setSpiralType(SpiralGen.SpiralType.LARGE_OUTLINE);
 
-        spiral.setBlockLayers(new BlockLayer(List.of(block, block, block, block, block, block, block2, block2, block2, block2, block3, block3, block4)));
+        BlockLayer layer = new BlockLayer(List.of(block, block2,  block3, block4), List.of((short)6,(short) 4,(short) 2,(short) 1));
+        spiral.setBlockLayer(new BlockLayerComparator(layer));
 
 
         spiral.setOutlineRadiusX(2);

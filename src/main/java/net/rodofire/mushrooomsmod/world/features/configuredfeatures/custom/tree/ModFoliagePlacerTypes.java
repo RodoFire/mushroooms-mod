@@ -13,6 +13,6 @@ public class ModFoliagePlacerTypes {
     public static final FoliagePlacerType<ColorfulTreeFoliagePlacer> COLORFUL_TREE_FOLIAGE_PLACER = FoliagePlacerTypeInvoker.callRegister("colorful_tree_foliage_placer", ColorfulTreeFoliagePlacer.CODEC);
 
     public static void register() {
-        MushrooomsMod.LOGGER.info("Registering Foliage Placers");
+        MushrooomsMod.LOGGER.info("Registering Trunkplacers");
     }
 }

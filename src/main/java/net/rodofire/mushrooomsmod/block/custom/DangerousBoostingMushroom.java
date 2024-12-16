@@ -79,10 +79,6 @@ public class DangerousBoostingMushroom extends BlockWithEntity {
         return new DangerousBoostingMushroomBlockEntity(pos, state);
     }
 
-    @Override
-    public BlockRenderType getRenderType(BlockState state) {
-        return BlockRenderType.ENTITYBLOCK_ANIMATED;
-    }
 
     @Override
     public void appendTooltip(ItemStack stack, Item.TooltipContext context, List<Text> tooltip, TooltipType options) {

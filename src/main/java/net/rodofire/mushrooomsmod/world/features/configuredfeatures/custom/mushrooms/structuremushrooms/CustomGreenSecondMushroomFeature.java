@@ -50,15 +50,11 @@ public class CustomGreenSecondMushroomFeature extends CustomGreenSecondMushroom 
             heightb.add((Random.create().nextBetween(heightb.get(2) + 1, (height * 3) / 4)));
         }
         values.add(heightb.size());
-        for (int i = 0; i < heightb.size(); ++i) {
-            values.add(heightb.get(i));
-        }
+        values.addAll(heightb);
 
         ArrayList<Integer> directions = getTrunkDirection(direction, heightb.size() - 1, coordinates);
 
-        for (int i = 0; i < directions.size(); ++i) {
-            values.add(directions.get(i));
-        }
+        values.addAll(directions);
 
         return values;
     }
@@ -78,24 +74,24 @@ public class CustomGreenSecondMushroomFeature extends CustomGreenSecondMushroom 
         int newrandom = Random.create().nextBetween(0, 1);
 
 
-        switch (direction) {
-            case 0:
+        randomz = switch (direction) {
+            case 0 -> {
                 randomx = randomx + newrandom;
-                randomz = randomz + (1 - newrandom);
-                break;
-            case 1:
+                yield randomz + (1 - newrandom);
+            }
+            case 1 -> {
                 randomx = randomx + newrandom;
-                randomz = randomz - (1 - newrandom);
-                break;
-            case 2:
+                yield randomz - (1 - newrandom);
+            }
+            case 2 -> {
                 randomx = randomx - newrandom;
-                randomz = randomz + (1 - newrandom);
-                break;
-            default:
+                yield randomz + (1 - newrandom);
+            }
+            default -> {
                 randomx = randomx - newrandom;
-                randomz = randomz - (1 - newrandom);
-                break;
-        }
+                yield randomz - (1 - newrandom);
+            }
+        };
         coordinates.add(randomx);
         coordinates.add(randomz);
         return getTrunkDirection(direction, stop - 1, coordinates);
@@ -167,8 +163,8 @@ public class CustomGreenSecondMushroomFeature extends CustomGreenSecondMushroom 
         large = coordinatesRotation[0];
         large1 = coordinatesRotation[1];
         if (!world.isClient()) {
-            NbtPlacer secondCap = new NbtPlacer((ServerWorld) world, Identifier.of(MushrooomsMod.MOD_ID, path));
-            secondCap.place(1.0f, mutable, new BlockPos(large, 0, large1), BlockMirror.NONE, blockRotation, true);
+            NbtPlacer firstCap = new NbtPlacer((ServerWorld) world, Identifier.of(MushrooomsMod.MOD_ID, path));
+            firstCap.place(1.0f, mutable, new BlockPos(large, 0, large1), BlockMirror.NONE, blockRotation, true);
         }
     }
 
@@ -195,25 +191,17 @@ public class CustomGreenSecondMushroomFeature extends CustomGreenSecondMushroom 
     }
 
     protected Integer getCap(int large) {
-        switch (large) {
-            case 1:
-                return Random.create().nextBetween(1, 6);
-            case 2:
-                return Random.createLocal().nextBetween(1, 5);
-            case 3:
-                return Random.createLocal().nextBetween(1, 8);
-            default:
-                return Random.create().nextBetween(1, 10);
-        }
+        return switch (large) {
+            case 1 -> Random.create().nextBetween(1, 6);
+            case 2 -> Random.createLocal().nextBetween(1, 5);
+            case 3 -> Random.createLocal().nextBetween(1, 8);
+            default -> Random.create().nextBetween(1, 10);
+        };
     }
 
     protected Integer[] getCoordinatesRotation(int rotation, int large) {
         int large1;
         switch (rotation) {
-            default:
-                large1 = large;
-                large = -large;
-                break;
             case 2:
                 large1 = large;
                 break;
@@ -224,27 +212,21 @@ public class CustomGreenSecondMushroomFeature extends CustomGreenSecondMushroom 
                 large = -large;
                 large1 = large;
                 break;
+            default:
+                large1 = large;
+                large = -large;
+                break;
         }
         return new Integer[]{large, large1};
     }
 
     protected BlockRotation getBlockRotation(int rotation) {
-        BlockRotation blockRotation;
-        switch (rotation) {
-            case 0:
-                blockRotation = BlockRotation.NONE;
-                break;
-            case 1:
-                blockRotation = BlockRotation.CLOCKWISE_90;
-                break;
-            case 2:
-                blockRotation = BlockRotation.CLOCKWISE_180;
-                break;
-            default:
-                blockRotation = BlockRotation.COUNTERCLOCKWISE_90;
-                break;
-        }
-        return blockRotation;
+        return switch (rotation) {
+            case 0 -> BlockRotation.NONE;
+            case 1 -> BlockRotation.CLOCKWISE_90;
+            case 2 -> BlockRotation.CLOCKWISE_180;
+            default -> BlockRotation.COUNTERCLOCKWISE_90;
+        };
     }
 
 

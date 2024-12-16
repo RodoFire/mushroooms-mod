@@ -4,7 +4,7 @@ import com.mojang.serialization.Codec;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
-import net.rodofire.easierworldcreator.shapeutil.BlockLayer;
+import net.rodofire.easierworldcreator.blockdata.layer.BlockLayer;
 import net.rodofire.mushrooomsmod.world.features.configuredfeatures.custom.util.RockUtil;
 
 public abstract class SakuraPlainRock extends DefaultRockFeature {

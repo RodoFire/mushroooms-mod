@@ -2,6 +2,7 @@ package net.rodofire.mushrooomsmod.world.features.configuredfeatures.custom.mush
 
 import com.mojang.serialization.Codec;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
@@ -45,6 +46,11 @@ public abstract class CustomGreenMushroom extends Feature<ModMushroomFeatureConf
         boolean bigcap = false;
         int height = Random.create().nextBetween(5, 20);
         int large = Random.create().nextBetween(2, 7);
+
+        if (structureWorldAccess.getBlockState(blockPos).isOf(Blocks.WATER))
+            return false;
+        if (!structureWorldAccess.getBlockState(blockPos.down()).isIn(BlockTags.MUSHROOM_GROW_BLOCK))
+            return false;
 
         if (!canGenerate(structureWorldAccess, blockPos, height, mutable = new BlockPos.Mutable(), large)) return false;
 

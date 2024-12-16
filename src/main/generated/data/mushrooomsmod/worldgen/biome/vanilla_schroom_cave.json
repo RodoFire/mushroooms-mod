@@ -7,6 +7,7 @@
   "downfall": 0.3,
   "effects": {
     "fog_color": 8111592,
+    "music_volume": 1.0,
     "sky_color": 1615078,
     "water_color": 4159204,
     "water_fog_color": 329011

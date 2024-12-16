@@ -17,7 +17,6 @@ public class ModPlacedFeatures {
 
     private static final PlacementModifier NOT_IN_SURFACE_WATER_MODIFIER = SurfaceWaterDepthFilterPlacementModifier.of(0);
 
-
     private static ImmutableList.Builder<PlacementModifier> undergroundStoneLevelTreeModifiersBuilder(PlacementModifier countModifier) {
         return ((ImmutableList.Builder) ImmutableList.builder().add(countModifier)).add(SquarePlacementModifier.of()).add(NOT_IN_SURFACE_WATER_MODIFIER).add(STONE_LEVEL).add(BiomePlacementModifier.of());
     }
@@ -32,6 +31,5 @@ public class ModPlacedFeatures {
 
     public static List<PlacementModifier> undergroundDeepslateLevelTreeModifiersWithWouldSurvive(PlacementModifier modifier, Block block) {
         return (undergroundDeepslateLevelTreeModifiersBuilder(modifier)).add(BlockFilterPlacementModifier.of(BlockPredicate.wouldSurvive(block.getDefaultState(), BlockPos.ORIGIN))).build();
-
     }
 }

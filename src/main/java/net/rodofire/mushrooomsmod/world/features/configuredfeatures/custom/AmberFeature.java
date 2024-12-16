@@ -8,8 +8,8 @@ import net.minecraft.world.StructureWorldAccess;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.util.FeatureContext;
-import net.rodofire.easierworldcreator.worldgenutil.FastNoiseLite;
-import net.rodofire.easierworldcreator.worldgenutil.WorldGenUtil;
+import net.rodofire.easierworldcreator.util.FastNoiseLite;
+import net.rodofire.easierworldcreator.util.WorldGenUtil;
 import net.rodofire.mushrooomsmod.block.ModBlocks;
 
 public class AmberFeature extends Feature<DefaultFeatureConfig> {

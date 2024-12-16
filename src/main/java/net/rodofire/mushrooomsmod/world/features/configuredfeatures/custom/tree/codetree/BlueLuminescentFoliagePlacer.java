@@ -9,18 +9,13 @@ import net.minecraft.world.TestableWorld;
 import net.minecraft.world.gen.feature.TreeFeatureConfig;
 import net.minecraft.world.gen.foliage.FoliagePlacer;
 import net.minecraft.world.gen.foliage.FoliagePlacerType;
-import net.rodofire.easierworldcreator.worldgenutil.FastNoiseLite;
+import net.rodofire.easierworldcreator.util.FastNoiseLite;
 import net.rodofire.mushrooomsmod.world.features.configuredfeatures.custom.tree.ModFoliagePlacerTypes;
 
 public class BlueLuminescentFoliagePlacer extends FoliagePlacer {
-    /*public static final MapCodec<BlueLuminescentFoliagePlacer> CODEC = RecordCodecBuilder.create(chestnutFoliagePlacerInstance ->
-            fillFoliagePlacerFields(chestnutFoliagePlacerInstance).and(Codec.intRange(0, 12).fieldOf("height")
-                    .forGetter(instance -> instance.height)).apply(chestnutFoliagePlacerInstance, BlueLuminescentFoliagePlacer::new));*/
-
-
     public static final BlueLuminescentFoliagePlacer INSTANCE = new BlueLuminescentFoliagePlacer(ConstantIntProvider.create(4), ConstantIntProvider.create(1), 3);
     public static final MapCodec<BlueLuminescentFoliagePlacer> CODEC = MapCodec.unit(() -> INSTANCE);
-    private final int height;
+    final int height;
 
     public BlueLuminescentFoliagePlacer(IntProvider radius, IntProvider offset, int height) {
         super(radius, offset);

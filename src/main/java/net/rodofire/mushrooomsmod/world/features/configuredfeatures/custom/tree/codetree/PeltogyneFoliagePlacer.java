@@ -1,8 +1,6 @@
 package net.rodofire.mushrooomsmod.world.features.configuredfeatures.custom.tree.codetree;
 
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.util.math.intprovider.ConstantIntProvider;
 import net.minecraft.util.math.intprovider.IntProvider;
 import net.minecraft.util.math.random.Random;
@@ -11,17 +9,15 @@ import net.minecraft.world.TestableWorld;
 import net.minecraft.world.gen.feature.TreeFeatureConfig;
 import net.minecraft.world.gen.foliage.FoliagePlacer;
 import net.minecraft.world.gen.foliage.FoliagePlacerType;
-import net.rodofire.easierworldcreator.shapegen.SphereGen;
-import net.rodofire.easierworldcreator.shapeutil.BlockLayer;
-import net.rodofire.easierworldcreator.shapeutil.Shape;
+import net.rodofire.easierworldcreator.blockdata.layer.BlockLayer;
+import net.rodofire.easierworldcreator.blockdata.layer.BlockLayerComparator;
+import net.rodofire.easierworldcreator.shape.block.gen.SphereGen;
+import net.rodofire.easierworldcreator.shape.block.instanciator.AbstractBlockShapeBase;
 import net.rodofire.mushrooomsmod.world.features.configuredfeatures.custom.tree.ModFoliagePlacerTypes;
-
-import java.io.IOException;
 
 public class PeltogyneFoliagePlacer extends FoliagePlacer {
     public static final PeltogyneFoliagePlacer INSTANCE = new PeltogyneFoliagePlacer(ConstantIntProvider.create(4), ConstantIntProvider.create(1), 3);
-    public static final MapCodec<PeltogyneFoliagePlacer> CODEC = MapCodec.unit(() -> INSTANCE);
-    private final int height;
+    public static final MapCodec<PeltogyneFoliagePlacer> CODEC = MapCodec.unit(() -> INSTANCE);private final int height;
 
     public PeltogyneFoliagePlacer(IntProvider radius, IntProvider offset, int height) {
         super(radius, offset);
@@ -35,8 +31,10 @@ public class PeltogyneFoliagePlacer extends FoliagePlacer {
 
     @Override
     protected void generate(TestableWorld world, BlockPlacer placer, Random random, TreeFeatureConfig config, int trunkHeight, TreeNode treeNode, int foliageHeight, int radius, int offset) {
-        SphereGen sphereGen = new SphereGen((StructureWorldAccess) world, treeNode.getCenter(), Shape.PlaceMoment.OTHER, Random.create().nextBetween(2, 3));
-        sphereGen.setBlockLayers(new BlockLayer(config.foliageProvider.get(random, treeNode.getCenter())));
+
+        SphereGen sphereGen = new SphereGen((StructureWorldAccess) world, treeNode.getCenter(), AbstractBlockShapeBase.PlaceMoment.OTHER, Random.create().nextBetween(2, 3));
+        sphereGen.setBlockLayer(new BlockLayerComparator(new BlockLayer(config.foliageProvider.get(random, treeNode.getCenter()))));
+
         sphereGen.place();
     }
 

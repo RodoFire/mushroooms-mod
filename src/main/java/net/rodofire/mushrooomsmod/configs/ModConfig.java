@@ -12,7 +12,6 @@ import net.rodofire.mushrooomsmod.MushrooomsMod;
 //licensed under CC0 - 1.0
 
 @Config(name = MushrooomsMod.MOD_ID)
-@Config.Gui.Background("mushrooomsmod:textures/block/mushroom_block_blue_luminescent.png")
 public class ModConfig extends PartitioningSerializer.GlobalData {
 
 
