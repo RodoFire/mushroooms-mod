@@ -1,7 +1,6 @@
-package net.rodofire.mushrooomsmod.item.Custom;
+package net.rodofire.mushrooomsmod.item.custom;
 
 import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.component.ComponentType;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnReason;
 import net.minecraft.item.Item;
@@ -19,7 +18,6 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.rodofire.mushrooomsmod.entity.ModEntities;
 import net.rodofire.mushrooomsmod.entity.custom.InventoryArmorStandEntity;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.function.Consumer;

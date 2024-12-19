@@ -1,13 +1,11 @@
-package net.rodofire.mushrooomsmod.item.Custom;
+package net.rodofire.mushrooomsmod.item.custom;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.text.Text;
-import net.minecraft.world.World;
 import net.rodofire.mushrooomsmod.item.ModItems;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 

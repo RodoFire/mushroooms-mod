@@ -1,21 +1,11 @@
-package net.rodofire.mushrooomsmod.item.Custom;
+package net.rodofire.mushrooomsmod.item.custom;
 
-import com.google.common.collect.ImmutableMultimap;
-import com.google.common.collect.Multimap;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.component.type.AttributeModifierSlot;
-import net.minecraft.component.type.AttributeModifiersComponent;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.attribute.EntityAttribute;
-import net.minecraft.entity.attribute.EntityAttributeModifier;
-import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventory;
-import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ToolMaterial;
@@ -33,10 +23,8 @@ import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 import net.rodofire.mushrooomsmod.block.ModBlocks;
 import net.rodofire.mushrooomsmod.recipe.ForgeRecipe;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
-import java.util.Optional;
 
 public class HammerItem extends Item {
     int maxcrushableblocks;
@@ -61,7 +49,7 @@ public class HammerItem extends Item {
                     .map(recipe -> ((ForgeRecipe) recipe.value()).craft(singleStackRecipeInput, world.getRegistryManager()))
                     .orElse(stack);
 
-            System.out.println(stack + "   " + itemStack2);
+            System.out.println("hammer: "+stack + "   " + itemStack2);
             return itemStack2;
         }
 

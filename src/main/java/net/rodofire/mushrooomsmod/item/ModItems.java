@@ -16,7 +16,7 @@ import net.rodofire.mushrooomsmod.MushrooomsMod;
 import net.rodofire.mushrooomsmod.block.ModBlocks;
 import net.rodofire.mushrooomsmod.effect.ModStatusEffects;
 import net.rodofire.mushrooomsmod.entity.ModEntities;
-import net.rodofire.mushrooomsmod.item.Custom.*;
+import net.rodofire.mushrooomsmod.item.custom.*;
 import net.rodofire.mushrooomsmod.world.biome.overworld.ModOverworldBiomes;
 
 import java.util.function.Function;

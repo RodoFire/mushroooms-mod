@@ -1,4 +1,4 @@
-package net.rodofire.mushrooomsmod.item.Custom;
+package net.rodofire.mushrooomsmod.item.custom;
 
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -11,10 +11,7 @@ import net.minecraft.registry.RegistryKey;
 import net.minecraft.text.Text;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
-import net.rodofire.mushrooomsmod.item.ModFoodComponents;
-import net.rodofire.mushrooomsmod.item.ModItems;
 import net.rodofire.mushrooomsmod.world.biome.overworld.ModOverworldBiomes;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 

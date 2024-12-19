@@ -1,6 +1,7 @@
 plugins {
     id 'fabric-loom' version '1.9-SNAPSHOT'
     id 'maven-publish'
+    id "me.modmuss50.mod-publish-plugin" version "0.8.1"
 }
 
 version = project.mod_version
@@ -140,4 +141,42 @@ fabricApi {
     configureDataGeneration{
         client=true
     }
+}
+
+publishMods {
+    file = remapJar.archiveFile
+
+    changelog = file("changelog.md").text
+
+    modLoaders.add("fabric")
+    modLoaders.add("quilt")
+    curseforge {
+        accessToken = getApiKey()["CURSEFORGE_API_KEY"]
+        minecraftVersions.add("1.21.4")
+        projectId = "955698"
+        javaVersions.add(JavaVersion.VERSION_21)
+        serverRequired = true
+        clientRequired = true
+        requires("fabric-api")
+        changelogType = "markdown"
+        type = STABLE
+    }
+
+    modrinth {
+        accessToken = getApiKey()["MODRINTH_API_KEY"]
+        minecraftVersions.add("1.21.4")
+        projectId = "hxHbPoS6"
+        requires("fabric-api")
+        requires("cloth-config")
+        requires("terrablender")
+        requires("geckolib")
+        requires("ewc")
+        type = ALPHA
+    }
+}
+
+static def getApiKey() {
+    def Properties props = new Properties()
+    props.load(new FileInputStream(new File('api.properties')))
+    return props
 }

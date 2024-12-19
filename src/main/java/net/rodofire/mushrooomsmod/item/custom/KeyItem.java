@@ -1,4 +1,4 @@
-package net.rodofire.mushrooomsmod.item.Custom;
+package net.rodofire.mushrooomsmod.item.custom;
 
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.component.DataComponentTypes;
