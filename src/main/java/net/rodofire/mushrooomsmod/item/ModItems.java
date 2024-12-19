@@ -4,16 +4,14 @@ import net.minecraft.block.Block;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.NbtComponent;
 import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.SpawnEggItem;
-import net.minecraft.item.ToolMaterial;
+import net.minecraft.item.*;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.Direction;
 import net.rodofire.mushrooomsmod.MushrooomsMod;
 import net.rodofire.mushrooomsmod.block.ModBlocks;
 import net.rodofire.mushrooomsmod.effect.ModStatusEffects;
@@ -48,7 +46,7 @@ public class ModItems {
     public static final Item COOKED_YELLOW_BERRIES = registerItem("berries_cooked_yellow", settings -> new Item(settings.food(ModFoodComponents.COOKED_YELLOW_BERRIES, ModConsumableComponents.COOKED_YELLOW_BERRIES)));
 
     //Lights
-    //public static final Item GREEN_TORCH = registerItem("torch_green_item", settings -> new VerticallyAttachableBlockItem(ModBlocks.GREEN_TORCH, ModBlocks.WALL_GREEN_TORCH, Direction.DOWN, settings.useBlockPrefixedTranslationKey()));
+    public static final Item GREEN_TORCH = registerItem("torch_green_item", settings -> new VerticallyAttachableBlockItem(ModBlocks.GREEN_TORCH, ModBlocks.WALL_GREEN_TORCH, Direction.DOWN, settings.useBlockPrefixedTranslationKey()));
 
     //Egg
     public static final Item GROKI_SPAWN_EGG = registerItem("groki_spawn_egg", settings -> new SpawnEggItem(ModEntities.GROKI, settings));

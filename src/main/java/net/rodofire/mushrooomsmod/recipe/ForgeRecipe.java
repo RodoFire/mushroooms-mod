@@ -34,6 +34,7 @@ public record ForgeRecipe(@NotNull Ingredient recipeItem,
 
     @Override
     public ItemStack craft(SingleStackRecipeInput input, RegistryWrapper.WrapperLookup lookup) {
+        System.out.println(input.item() + "   " + output.copy());
         return output.copy();
     }
 

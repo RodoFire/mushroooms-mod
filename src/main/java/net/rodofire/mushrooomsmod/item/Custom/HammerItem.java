@@ -60,6 +60,8 @@ public class HammerItem extends Item {
             ItemStack itemStack2 = (ItemStack) matchGetter.getFirstMatch(singleStackRecipeInput, serverWorld)
                     .map(recipe -> ((ForgeRecipe) recipe.value()).craft(singleStackRecipeInput, world.getRegistryManager()))
                     .orElse(stack);
+
+            System.out.println(stack + "   " + itemStack2);
             return itemStack2;
         }
 

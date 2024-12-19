@@ -1,7 +1,7 @@
 {
   "type": "mushrooomsmod:forge_crafting",
   "ingredient": "mushrooomsmod:amber_item",
-  "output": {
+  "output": {"count": 2,
     "id": "mushrooomsmod:amber_crushed_item"
   }
 }

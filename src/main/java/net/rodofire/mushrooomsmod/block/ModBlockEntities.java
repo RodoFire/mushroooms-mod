@@ -20,7 +20,9 @@ import java.util.Set;
 public class ModBlockEntities {
     public static void registerBlockEntities() {
         MushrooomsMod.LOGGER.info("Registering Block Entities");
-    }    public static final BlockEntityType<ForgeBlockEntity> FORGE_BLOCK_ENTITY = Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of(MushrooomsMod.MOD_ID, "forge_be")
+        BlockEntityType.CAMPFIRE.addSupportedBlock(ModBlocks.GREEN_CAMPFIRE);
+    }
+    public static final BlockEntityType<ForgeBlockEntity> FORGE_BLOCK_ENTITY = Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of(MushrooomsMod.MOD_ID, "forge_be")
             , FabricBlockEntityTypeBuilder.create(ForgeBlockEntity::new, ModBlocks.FORGE_BLOCK).build());
 
     public static final BlockEntityType<BoostingMushroomBlockEntity> BOOSTING_MUSHROOM_ENTITY = Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of(MushrooomsMod.MOD_ID, "boosting_mushroom_be")
@@ -31,6 +33,7 @@ public class ModBlockEntities {
 
     public static final BlockEntityType<RapangeFlowersBlockEntity> RAPANGE_FLOWERS_BLOCK_ENTITY = Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of(MushrooomsMod.MOD_ID, "rapange_flowers_be")
             , FabricBlockEntityTypeBuilder.create(RapangeFlowersBlockEntity::new, ModBlocks.RAPANGE_FLOWERS).build());
+
 
 
 }

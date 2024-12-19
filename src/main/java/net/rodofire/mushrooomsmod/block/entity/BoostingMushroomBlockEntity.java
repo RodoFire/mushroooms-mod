@@ -35,6 +35,7 @@ public class BoostingMushroomBlockEntity extends BlockEntity implements GeoBlock
 
 
 
+
     @Override
     public double getTick(Object blockEntity) {
         return RenderUtil.getCurrentTick();
