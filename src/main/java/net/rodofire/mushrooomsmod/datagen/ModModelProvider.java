@@ -240,8 +240,9 @@ public class ModModelProvider extends FabricModelProvider {
                 )
         );
 
-        generator.blockStateCollector.accept(VariantsBlockStateSupplier.create(ModBlocks.MUSHROOM_BOOSTING, BlockStateVariant.create().put(VariantSettings.MODEL, Identifier.of(MushrooomsMod.MOD_ID, "item/mushroom_boost_item"))));
-        generator.blockStateCollector.accept(VariantsBlockStateSupplier.create(ModBlocks.DANGEROUS_MUSHROOM_BOOSTING, BlockStateVariant.create().put(VariantSettings.MODEL, Identifier.of(MushrooomsMod.MOD_ID, "item/mushroom_boost_item"))));
+        generator.blockStateCollector.accept(VariantsBlockStateSupplier.create(ModBlocks.MUSHROOM_BOOSTING, BlockStateVariant.create().put(VariantSettings.MODEL, Identifier.of(MushrooomsMod.MOD_ID, "block/mushroom_boost"))));
+        generator.blockStateCollector.accept(VariantsBlockStateSupplier.create(ModBlocks.DANGEROUS_MUSHROOM_BOOSTING, BlockStateVariant.create().put(VariantSettings.MODEL, Identifier.of(MushrooomsMod.MOD_ID, "block/mushroom_boost"))));
+        generator.blockStateCollector.accept(VariantsBlockStateSupplier.create(ModBlocks.RAPANGE_FLOWERS, BlockStateVariant.create().put(VariantSettings.MODEL, Identifier.of(MushrooomsMod.MOD_ID, "block/rapange_flowers"))));
 
 
         //deepslate crystal

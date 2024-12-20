@@ -23,6 +23,7 @@ import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 import net.rodofire.mushrooomsmod.block.ModBlocks;
 import net.rodofire.mushrooomsmod.recipe.ForgeRecipe;
+import net.rodofire.mushrooomsmod.recipe.ModRecipes;
 
 import java.util.List;
 
@@ -41,7 +42,7 @@ public class HammerItem extends Item {
         if (world instanceof ServerWorld serverWorld) {
 
             ServerRecipeManager.MatchGetter<SingleStackRecipeInput, ForgeRecipe> matchGetter = ServerRecipeManager.createCachedMatchGetter(
-                    ForgeRecipe.Type.INSTANCE
+                    ModRecipes.FORGING_TYPE
             );
             SingleStackRecipeInput singleStackRecipeInput = new SingleStackRecipeInput(stack);
 
