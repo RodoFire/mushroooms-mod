@@ -1,7 +1,7 @@
 package net.rodofire.mushrooomsmod;
 
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
+import net.minecraft.text.Text;
 import net.rodofire.mushrooomsmod.block.BlockUtils;
 import net.rodofire.mushrooomsmod.block.ModBlockEntities;
 import net.rodofire.mushrooomsmod.block.ModBlocks;
@@ -9,7 +9,6 @@ import net.rodofire.mushrooomsmod.configs.ModConfig;
 import net.rodofire.mushrooomsmod.effect.ModStatusEffects;
 import net.rodofire.mushrooomsmod.entity.ModEntities;
 import net.rodofire.mushrooomsmod.entity.ModEntitiesAttribute;
-import net.rodofire.mushrooomsmod.event.PlayerTickHandler;
 import net.rodofire.mushrooomsmod.item.ModItemGroup;
 import net.rodofire.mushrooomsmod.item.ModItems;
 import net.rodofire.mushrooomsmod.networking.ModNetwork;
@@ -34,45 +33,50 @@ public class MushrooomsMod implements ModInitializer {
 
     @Override
     public void onInitialize() {
-
+        LOGGER.info("[MushrooomsMod] Initializing :");
+        LOGGER.info("-[Blocks] Initializing :");
+        //blocks
         ModBlocks.registerModBlocks();
         ModBlockEntities.registerBlockEntities();
 
         BlockUtils.registerStripable();
         BlockUtils.registerFlammable();
 
+        LOGGER.info("-[Items] Initializing :");
+        //items
         ModItems.registerModItems();
         ModItemGroup.registerItemGroup();
+        GeckoLib.initialize();
 
+        LOGGER.info("-[Entities] Initializing :");
+        //entities
         ModEntities.registerModENtities();
         ModEntitiesAttribute.registerAttributes();
 
+        LOGGER.info("-[World-Gen] Initializing :");
+        //world-gen
+        ModTrunkPlacerTypes.registerTrunkPlacers();
+        ModFoliagePlacerTypes.registerFoliagePlacers();
+        ModDecoratorTypes.registerDecorators();
+        ModWorldGeneration.registerModWorldGen();
+        ModFeatures.registerFeatures();
 
+
+        LOGGER.info("-[Misc] Initializing :");
         ModParticles.registerParticles();
         ModStatusEffects.registerEffects();
 
         ModSounds.registerModSound();
-
-        ModDecoratorTypes.registerDecorators();
-        ModTrunkPlacerTypes.register();
-        ModFoliagePlacerTypes.register();
-
-        ModWorldGeneration.generateModWorldGen();
-        ModFeatures.addFeatures();
 
 
         ModLootTableModifier.modifyLootTable();
 
         ModRecipes.registerRecipes();
 
-        GeckoLib.initialize();
-
         ModNetwork.registerC2SPackets();
 
-        ServerTickEvents.START_SERVER_TICK.register(new PlayerTickHandler());
+        System.out.println(Text.translatable("block.mushrooomsmod.mushroom_block_green"));
 
-
-        LOGGER.info("Starting MushrooomsMod!");
-
+        LOGGER.info("[MushrooomsMod] Started!");
     }
 }

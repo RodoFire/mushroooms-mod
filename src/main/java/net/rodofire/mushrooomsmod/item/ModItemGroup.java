@@ -258,6 +258,7 @@ public class ModItemGroup {
                         entries.add(ModItems.CRYSTAL_GOLEM_SPAWN_EGG);
                         //entries.add(ModItems.MOSQUITO_SPAWN_EGG);
                         entries.add(ModItems.SCHROOM_STICK_SPAWN_EGG);
+                        entries.add(ModItems.SQUIRREL_STICK_SPAWN_EGG);
 
                         //crystal
                         entries.add(ModItems.PINK_CRYSTAL_ITEM);
@@ -296,6 +297,6 @@ public class ModItemGroup {
                     }).build());
 
     public static void registerItemGroup() {
-        MushrooomsMod.LOGGER.info("Registering Mod Item Group for Mushrooomsmod");
+        MushrooomsMod.LOGGER.info("|\tRegistering Item Group");
     }
 }

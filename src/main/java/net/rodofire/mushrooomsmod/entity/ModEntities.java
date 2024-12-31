@@ -14,16 +14,23 @@ import net.rodofire.mushrooomsmod.MushrooomsMod;
 import net.rodofire.mushrooomsmod.entity.custom.*;
 
 public class ModEntities {
+    /* ---------- Monsters ---------- */
+    public static final EntityType<CrystalCreeperEntity> CRYSTAL_CREEPER = register("crystal_creeper", CrystalCreeperEntity::new, SpawnGroup.MONSTER, 0.6f, 1.7f);
+
+    /* ---------- Animals ---------- */
     public static final EntityType<GrokiEntity> GROKI = register("groki",GrokiEntity::new, SpawnGroup.CREATURE, 0.9f, 1.45f);
     public static final EntityType<BoleteCowEntity> BOLETE_COW = register("bolete_cow",BoleteCowEntity::new, SpawnGroup.CREATURE, 1.3f, 1.8f);
     public static final EntityType<PlotiEntity> PLOTI = register("ploti", PlotiEntity::new, SpawnGroup.CREATURE, 0.25f, 0.3f);
-    public static final EntityType<CrystalCreeperEntity> CRYSTAL_CREEPER = register("crystal_creeper", CrystalCreeperEntity::new, SpawnGroup.MONSTER, 0.6f, 1.7f);
-    public static final EntityType<CrystalGolemEntity> CRYSTAL_GOLEM = register("crystal_golem",CrystalGolemEntity::new, SpawnGroup.CREATURE, 1.2f, 2.8f);
     public static final EntityType<SchroomStickEntity> SCHROOM_STICK = register("schroom_stick",SchroomStickEntity::new, SpawnGroup.CREATURE, 0.4f, 1.6f);
+    public static final EntityType<SquirrelEntity> SQUIRREL = register("squirrel", SquirrelEntity::new, SpawnGroup.CREATURE, 0.5f, 0.6f);
+
+    /* ---------- Golems ---------- */
+    public static final EntityType<CrystalGolemEntity> CRYSTAL_GOLEM = register("crystal_golem",CrystalGolemEntity::new, SpawnGroup.CREATURE, 1.2f, 2.8f);
+
+    /* ---------- Misc ---------- */
     public static final EntityType<InventoryArmorStandEntity> INVENTORY_ARMOR_STAND_ENTITY = register("inventory_armor_stand",InventoryArmorStandEntity::new, SpawnGroup.MISC, 0.9f, 1.8f);
     public static final EntityType<LockedInventoryArmorStand> LOCKED_INVENTORY_ARMOR_STAND = register("locked_inventory_armor_stand", LockedInventoryArmorStand::new, SpawnGroup.MISC, 0.9f, 1.8f);
 
-    //public static final EntityType<SchroomStickEntity> SCHROOM_STICK = register("schroom_stick",SchroomStickEntity::new, SpawnGroup.CREATURE, 0.3f, 1.6f);
     /*public static final EntityType<MosquitoEntity> MOSQUITO_ENTITY = Registry.register(Registries.ENTITY_TYPE,
             new Identifier(MushrooomsMod.MOD_ID, "mosquito"), FabricEntityTypeBuilder.create(SpawnGroup.AMBIENT, MosquitoEntity::new)
                     .dimensions(EntityDimensions.fixed(0.2f, 0.5f)).build());*/
@@ -35,7 +42,7 @@ public class ModEntities {
     }
 
     public static void registerModENtities(){
-        MushrooomsMod.LOGGER.info("Registering Entities For Mushrooomsmod");
+        MushrooomsMod.LOGGER.info("|\tRegistering Entities");
     }
 
 }

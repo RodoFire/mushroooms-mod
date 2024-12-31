@@ -27,6 +27,6 @@ public class ModSounds {
     }
 
     public static void registerModSound() {
-        MushrooomsMod.LOGGER.info("registering sounds");
+        MushrooomsMod.LOGGER.info("|\t-Registering Sounds");
     }
 }
