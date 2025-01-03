@@ -5,7 +5,7 @@ import net.minecraft.text.Text;
 import net.rodofire.mushrooomsmod.block.BlockUtils;
 import net.rodofire.mushrooomsmod.block.ModBlockEntities;
 import net.rodofire.mushrooomsmod.block.ModBlocks;
-import net.rodofire.mushrooomsmod.configs.ModConfig;
+import net.rodofire.mushrooomsmod.config.MushrooomsConfig;
 import net.rodofire.mushrooomsmod.effect.ModStatusEffects;
 import net.rodofire.mushrooomsmod.entity.ModEntities;
 import net.rodofire.mushrooomsmod.entity.ModEntitiesAttribute;
@@ -29,11 +29,14 @@ public class MushrooomsMod implements ModInitializer {
 
     public static final String MOD_ID = "mushrooomsmod";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
-    public static ModConfig CONFIG;
+    public static MushrooomsConfig CONFIG;
 
     @Override
     public void onInitialize() {
         LOGGER.info("[MushrooomsMod] Initializing :");
+        LOGGER.info("-[Config] Initializing :");
+        MushrooomsConfig.initConfig();
+
         LOGGER.info("-[Blocks] Initializing :");
         //blocks
         ModBlocks.registerModBlocks();
@@ -75,7 +78,6 @@ public class MushrooomsMod implements ModInitializer {
 
         ModNetwork.registerC2SPackets();
 
-        System.out.println(Text.translatable("block.mushrooomsmod.mushroom_block_green"));
 
         LOGGER.info("[MushrooomsMod] Started!");
     }
