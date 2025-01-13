@@ -5,6 +5,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.Pair;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.StructureWorldAccess;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
@@ -16,8 +17,8 @@ import net.rodofire.easierworldcreator.shape.block.gen.SpiralGen;
 import net.rodofire.easierworldcreator.shape.block.instanciator.AbstractBlockShapeBase;
 import net.rodofire.mushrooomsmod.block.ModBlocks;
 
-import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public class SpiralMushroom extends Feature<DefaultFeatureConfig> {
@@ -66,8 +67,8 @@ public class SpiralMushroom extends Feature<DefaultFeatureConfig> {
         spiral.setSpiralOffset(Random.create().nextBetween(0, 360));
         spiral.setYRotation(Random.create().nextBetween(-20, 20));
 
-        List<Set<BlockPos>> posList = spiral.getBlockPos();
-        if (!canPlace(world, posList)) return false;
+        Map<ChunkPos, Set<BlockPos>> posList = spiral.getBlockPos();
+        if (!canPlace(world, posList.values().stream().toList())) return false;
 
         spiral.place(posList);
 
