@@ -134,7 +134,7 @@
 				}
 			}
 		},
-		"animation.model.un_go_idle": {
+		"animation.squirrel.un_go_idle": {
 			"loop": "hold_on_last_frame",
 			"animation_length": 0.75,
 			"bones": {
