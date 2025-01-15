@@ -16,7 +16,6 @@ import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.passive.VillagerEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -288,6 +287,7 @@ public class SchroomStickEntity extends AnimalEntity implements GeoEntity {
         public void stop() {
             super.stop();
             this.schroomStickEntity.setJump(false);
+            this.schroomStickEntity.setPose(EntityPose.STANDING);
         }
 
         private void applyDirectionalJump() {
