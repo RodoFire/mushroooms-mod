@@ -10,7 +10,6 @@ import net.minecraft.entity.passive.CowEntity;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
@@ -38,8 +37,8 @@ public class BoleteCowEntity extends CowEntity implements GeoEntity {
     public void registerControllers(AnimatableManager.ControllerRegistrar controllerRegistrar) {
         controllerRegistrar.add(new AnimationController<GeoAnimatable>(this, "controller", 0, this::predicate));
     }
+
     public static boolean isValidNaturalSpawn(EntityType<? extends AnimalEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
-        System.out.println(world.getBlockState(pos.down()).isIn(ModTags.Blocks.MUSHROOM_SPAWNABLE) + "   " + world.getBlockState(pos.down()));
         return world.getBlockState(pos.down()).isIn(ModTags.Blocks.MUSHROOM_SPAWNABLE);
     }
 
