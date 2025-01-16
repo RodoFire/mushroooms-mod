@@ -248,8 +248,8 @@ public class ModItemGroup {
 
 
                         //Music Disk
-                        entries.add(ModItems.HYMNE_FRANCAIS_MUSIC_DISC);
-                        entries.add(ModItems.HYMNE_URSS_MUSIC_DISC);
+                        //entries.add(ModItems.HYMNE_FRANCAIS_MUSIC_DISC);
+                        //entries.add(ModItems.HYMNE_URSS_MUSIC_DISC);
 
                         entries.add(ModItems.GROKI_SPAWN_EGG);
                         entries.add(ModItems.BOLETE_COW_SPAWN_EGG);
