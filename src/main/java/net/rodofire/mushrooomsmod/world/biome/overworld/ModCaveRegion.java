@@ -28,7 +28,7 @@ public class ModCaveRegion extends Region {
                 .humidity(ParameterUtils.Humidity.span(ParameterUtils.Humidity.NEUTRAL, ParameterUtils.Humidity.WET))
                 .continentalness(ParameterUtils.Continentalness.DEEP_OCEAN, ParameterUtils.Continentalness.OCEAN)
                 .erosion(ParameterUtils.Erosion.EROSION_0, ParameterUtils.Erosion.EROSION_1)
-                .depth(ParameterUtils.Depth.UNDERGROUND)
+                .depth(MultiNoiseUtil.ParameterRange.of(0.4F, 1.1F))
                 .weirdness(ParameterUtils.Weirdness.FULL_RANGE)
                 .build().forEach(point -> builder.add(point, ModOverworldBiomes.BLUE_LUMINESCENT_SHROOM_CAVE));
 
@@ -45,20 +45,20 @@ public class ModCaveRegion extends Region {
         //Vanilla Cave
         new ParameterUtils.ParameterPointListBuilder()
                 .temperature(ParameterUtils.Temperature.span(ParameterUtils.Temperature.COOL, ParameterUtils.Temperature.NEUTRAL))
-                .humidity(ParameterUtils.Humidity.span(ParameterUtils.Humidity.NEUTRAL, ParameterUtils.Humidity.HUMID))
-                .continentalness(MultiNoiseUtil.ParameterRange.of(0.03f, 0.55f))
-                .erosion(ParameterUtils.Erosion.EROSION_0, ParameterUtils.Erosion.EROSION_1)
+                .humidity(MultiNoiseUtil.ParameterRange.of(-0.2f, 0.6f))
+                .continentalness(MultiNoiseUtil.ParameterRange.of(0.2f, 0.75f))
+                .erosion(MultiNoiseUtil.ParameterRange.of(-0.5f, 0.7f))
                 .depth(ParameterUtils.Depth.UNDERGROUND)
-                .weirdness(MultiNoiseUtil.ParameterRange.of(-0.7f, 1.0f))
+                .weirdness(MultiNoiseUtil.ParameterRange.of(0.6f, 1.0f))
                 .build().forEach(point -> builder.add(point, ModOverworldBiomes.VANILLA_SHROOM_CAVE));
 
         //Crystal Cave
         new ParameterUtils.ParameterPointListBuilder()
-                .temperature(ParameterUtils.Temperature.HOT)
-                .humidity(ParameterUtils.Humidity.NEUTRAL)
-                .continentalness(ParameterUtils.Continentalness.MID_INLAND)
-                .erosion(ParameterUtils.Erosion.EROSION_3)
-                .depth(ParameterUtils.Depth.UNDERGROUND)
+                .temperature(MultiNoiseUtil.ParameterRange.of(0f, 1.0f))
+                .humidity(MultiNoiseUtil.ParameterRange.of(-1f, 0.5f))
+                .continentalness(MultiNoiseUtil.ParameterRange.of(0.5f, 1.0f))
+                .erosion(MultiNoiseUtil.ParameterRange.of(0f, 1.0f))
+                .depth(MultiNoiseUtil.ParameterRange.of(0.2F, 1.1F))
                 .weirdness(MultiNoiseUtil.ParameterRange.of(0.03f, 0.55f))
                 .build().forEach(point -> builder.add(point, ModOverworldBiomes.CRYSTAL_CAVE));
 

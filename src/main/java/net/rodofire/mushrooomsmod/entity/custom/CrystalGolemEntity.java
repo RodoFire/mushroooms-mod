@@ -1,12 +1,10 @@
 package net.rodofire.mushrooomsmod.entity.custom;
 
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityStatuses;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.*;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
@@ -14,20 +12,25 @@ import net.minecraft.entity.mob.Angerable;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.passive.GolemEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.TimeHelper;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldAccess;
 import net.rodofire.mushrooomsmod.sound.ModSounds;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.GeoAnimatable;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.core.animatable.instance.SingletonAnimatableInstanceCache;
+import software.bernie.geckolib.core.animation.AnimationState;
 import software.bernie.geckolib.core.animation.*;
 import software.bernie.geckolib.core.object.PlayState;
 
@@ -67,12 +70,12 @@ public class CrystalGolemEntity extends GolemEntity implements Angerable, GeoEnt
         this.goalSelector.add(3, new WanderAroundGoal(this, 0.2f));
         this.targetSelector.add(4, new RevengeGoal(this));
         this.goalSelector.add(5, new LookAtEntityGoal(this, PlayerEntity.class, 6.0f));
-        this.targetSelector.add(3, new ActiveTargetGoal<PlayerEntity>(this, PlayerEntity.class, 10, true, false, this::shouldAngerAt));
-        this.targetSelector.add(3, new ActiveTargetGoal<MobEntity>(this, MobEntity.class, 5, false, false, this::shouldAngerAt));
-        this.targetSelector.add(4, new UniversalAngerGoal<CrystalGolemEntity>(this, false));
+        this.targetSelector.add(1, new ActiveTargetGoal<>(this, PlayerEntity.class, 10, true, false, this::shouldAngerAt));
+        this.targetSelector.add(2, new ActiveTargetGoal<>(this, MobEntity.class, 5, false, false, this::shouldAngerAt));
+        this.targetSelector.add(3, new UniversalAngerGoal<>(this, false));
     }
 
-    public static DefaultAttributeContainer.Builder createCrystalGolemAttributes() {
+    public static DefaultAttributeContainer.Builder setAttributes() {
         return GolemEntity.createLivingAttributes().add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.2f)
                 .add(EntityAttributes.GENERIC_MAX_HEALTH, 70.0f)
                 .add(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE, 2.5)
@@ -83,6 +86,11 @@ public class CrystalGolemEntity extends GolemEntity implements Angerable, GeoEnt
     private float getAttackDamage() {
         return (float) this.getAttributeValue(EntityAttributes.GENERIC_ATTACK_DAMAGE);
     }
+    public static boolean canMobSpawn(EntityType<? extends MobEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
+        BlockPos blockPos = pos.down();
+        return spawnReason == SpawnReason.SPAWNER || world.getBlockState(blockPos).isOpaqueFullCube(world, blockPos);
+    }
+
 
     @Override
     public boolean tryAttack(Entity target) {
@@ -122,8 +130,26 @@ public class CrystalGolemEntity extends GolemEntity implements Angerable, GeoEnt
         super.tickMovement();
     }
 
-    //TODO
-    //make the golem invulnerable to arrows
+    /*@Override
+    protected float modifyAppliedDamage(DamageSource source, float amount) {
+        if (source.getSource() instanceof PersistentProjectileEntity) {
+            float f = this.random.nextInt(4)==0? 0.0f : 0.25f;
+            source.getSource().setOnFireFor(1);
+            return f * amount;
+        }
+        return super.modifyAppliedDamage(source, amount);
+    }*/
+
+    @Override
+    public boolean damage(DamageSource source, float amount) {
+        if (source.getSource() instanceof PersistentProjectileEntity && this.random.nextInt(2) == 0) {
+            return false;
+        }
+        return super.damage(source, amount);
+    }
+
+
+
 
     private boolean attack() {
         Box boundingBox = this.getBoundingBox().expand(5);
