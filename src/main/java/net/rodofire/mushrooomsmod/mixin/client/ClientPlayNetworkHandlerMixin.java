@@ -32,15 +32,17 @@ public abstract class ClientPlayNetworkHandlerMixin {
             return;
         }
         assert client.world != null;
-        if (!client.world.isClient) {return;}
+        if (!client.world.isClient) {
+            return;
+        }
 
         if (client.player.getWorld().isClient()) {
             if (MushrooomsConfig.clientWarnMessage()) {
-            MutableText gitissues =  Text.literal("GithubIssues")
-                    .styled(style -> style.withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://github.com/RodoFire/mushroooms-mod-source-1.20.1/issues")))
-                    .styled(style -> style.withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, Text.of("Click here to go to the GitHub"))))
-                    .styled(style -> style.withColor(Formatting.BLUE))
-                    .styled(style -> style.withUnderline(true));
+                MutableText gitissues = Text.literal("GithubIssues")
+                        .styled(style -> style.withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://github.com/RodoFire/mushroooms-mod-source-1.20.1/issues")))
+                        .styled(style -> style.withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, Text.of("Click here to go to the GitHub"))))
+                        .styled(style -> style.withColor(Formatting.BLUE))
+                        .styled(style -> style.withUnderline(true));
                 client.player.sendMessage(Text.of("MushrooomsMod : Note that this mod is still on beta and a lot of new things are going to come. Please be aware that some existing features provided by this mod might change. \n You can desactivate this message in the config.\n You see any bug or you have an idea on how to improve the mod : ").copy().append(gitissues));
 
             } else {
