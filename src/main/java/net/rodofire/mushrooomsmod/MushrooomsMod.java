@@ -54,6 +54,7 @@ public class MushrooomsMod implements ModInitializer {
         LOGGER.info("-[Entities] Initializing :");
         //entities
         ModEntities.registerModENtities();
+        ModEntities.spawnRestriction();
         ModEntitiesAttribute.registerAttributes();
 
         LOGGER.info("-[World-Gen] Initializing :");
