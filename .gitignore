@@ -5,6 +5,7 @@
 build/
 out/
 classes/
+api.properties
 
 # eclipse
 
@@ -32,6 +33,7 @@ bin/
 # fabric
 
 run/
+src/main/generated/
 
 # java
 

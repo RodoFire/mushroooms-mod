@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "mushrooomsmod:block/grass_tall_blue_luminescent_top"
-  }
-}

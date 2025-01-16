@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/door_bottom_left",
-  "textures": {
-    "bottom": "mushrooomsmod:block/door_blue_luminescent_bottom",
-    "top": "mushrooomsmod:block/door_blue_luminescent_top"
-  }
-}

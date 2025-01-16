@@ -18,7 +18,6 @@ import net.rodofire.easierworldcreator.shape.block.instanciator.AbstractBlockSha
 import net.rodofire.easierworldcreator.shape.block.instanciator.AbstractBlockShapePlaceType;
 import net.rodofire.easierworldcreator.util.WorldGenUtil;
 import net.rodofire.mushrooomsmod.block.ModBlocks;
-import net.rodofire.mushrooomsmod.world.features.configuredfeatures.custom.mushrooms.codemushrooms.oth.YellowMushroomOTH;
 
 import java.util.*;
 
@@ -37,23 +36,43 @@ public class YellowMushroomWGFeature extends YellowMushroomWG {
         for (int i = 0; i < 4; i++) {
             LineGen line = new LineGen(world, pos, AbstractBlockShapeBase.PlaceMoment.OTHER, end);
             line.setBlockLayer(new BlockLayerComparator(new BlockLayer(Blocks.MUSHROOM_STEM.getDefaultState())));
-            posList.addAll(BlockListUtil.unDivideBlockList(line.getBlockListWithVerification(line.getBlockPos())).get(0).getPosList());
+            posList.addAll(
+                    line.getBlockPos().values().stream()
+                            .flatMap(Set::stream)
+                            .toList()
+            );
 
             line = new LineGen(world, pos.north().up(Random.create().nextBetween(-1, 1)), AbstractBlockShapeBase.PlaceMoment.OTHER, end.north().up(Random.create().nextBetween(-1, 1)));
             line.setBlockLayer(new BlockLayerComparator(new BlockLayer(Blocks.MUSHROOM_STEM.getDefaultState())));
-            posList.addAll(BlockListUtil.unDivideBlockList(line.getBlockListWithVerification(line.getBlockPos())).get(0).getPosList());
+            posList.addAll(
+                    line.getBlockPos().values().stream()
+                            .flatMap(Set::stream)
+                            .toList()
+            );
 
             line = new LineGen(world, pos.south().up(Random.create().nextBetween(-1, 1)), AbstractBlockShapeBase.PlaceMoment.OTHER, end.south().up(Random.create().nextBetween(-1, 1)));
             line.setBlockLayer(new BlockLayerComparator(new BlockLayer(Blocks.MUSHROOM_STEM.getDefaultState())));
-            posList.addAll(BlockListUtil.unDivideBlockList(line.getBlockListWithVerification(line.getBlockPos())).get(0).getPosList());
+            posList.addAll(
+                    line.getBlockPos().values().stream()
+                            .flatMap(Set::stream)
+                            .toList()
+            );
 
             line = new LineGen(world, pos.east().up(Random.create().nextBetween(-1, 1)), AbstractBlockShapeBase.PlaceMoment.OTHER, end.up(Random.create().nextBetween(-1, 1)));
             line.setBlockLayer(new BlockLayerComparator(new BlockLayer(Blocks.MUSHROOM_STEM.getDefaultState())));
-            posList.addAll(BlockListUtil.unDivideBlockList(line.getBlockListWithVerification(line.getBlockPos())).get(0).getPosList());
+            posList.addAll(
+                    line.getBlockPos().values().stream()
+                            .flatMap(Set::stream)
+                            .toList()
+            );
 
             line = new LineGen(world, pos.west().up(Random.create().nextBetween(-1, 1)), AbstractBlockShapeBase.PlaceMoment.OTHER, end.up(Random.create().nextBetween(-1, 1)));
             line.setBlockLayer(new BlockLayerComparator(new BlockLayer(Blocks.MUSHROOM_STEM.getDefaultState())));
-            posList.addAll(BlockListUtil.unDivideBlockList(line.getBlockListWithVerification(line.getBlockPos())).get(0).getPosList());
+            posList.addAll(
+                    line.getBlockPos().values().stream()
+                            .flatMap(Set::stream)
+                            .toList()
+            );
         }
 
 
@@ -66,7 +85,7 @@ public class YellowMushroomWGFeature extends YellowMushroomWG {
     protected DefaultBlockListComparator generateTrunk(StructureWorldAccess world, BlockPos pos, BlockPos end, int height, HugeMushroomFeatureConfig config) {
         LineGen line = new LineGen(world, pos, AbstractBlockShapeBase.PlaceMoment.OTHER, end);
         line.setBlockLayer(new BlockLayerComparator(new BlockLayer(Blocks.MUSHROOM_STEM.getDefaultState())));
-        return new DefaultBlockListComparator(BlockListUtil.unDivideBlockList(line.getBlockListWithVerification(line.getBlockPos())));
+        return line.getBlockListWithVerification(line.getBlockPosList(line.getBlockPos()));
     }
 
     @Override
@@ -120,12 +139,12 @@ public class YellowMushroomWGFeature extends YellowMushroomWG {
 
     protected boolean place(StructureWorldAccess world, BlockPos pos, BlockPos pos2, DefaultBlockListComparator coordinates, SphereGen sphere, SphereGen secondSphere) {
         Set<BlockPos> posSet = new HashSet<>();
-        List<Set<BlockPos>> posSphere = sphere.getBlockPos();
-        for (Set<BlockPos> blockPosSet : posSphere) {
+        Map<ChunkPos, Set<BlockPos>> posSphere = sphere.getBlockPos();
+        for (Set<BlockPos> blockPosSet : posSphere.values()) {
             posSet.addAll(blockPosSet);
         }
         posSphere = secondSphere.getBlockPos();
-        for (Set<BlockPos> blockPosSet : posSphere) {
+        for (Set<BlockPos> blockPosSet : posSphere.values()) {
             posSet.removeAll(blockPosSet);
         }
 
@@ -134,8 +153,7 @@ public class YellowMushroomWGFeature extends YellowMushroomWG {
             WorldGenUtil.modifyChunkMap(pos1, chunkMap);
         }
 
-        List<Set<DefaultBlockList>> blockList = sphere.getBlockListWithVerification(new ArrayList<>(chunkMap.values()));
-        DefaultBlockListComparator comparator = new DefaultBlockListComparator(BlockListUtil.unDivideBlockList(blockList));
+        DefaultBlockListComparator comparator = sphere.getBlockListWithVerification(new ArrayList<>(chunkMap.values()));
         coordinates.placeAll(world);
         comparator.placeAll(world);
         return true;

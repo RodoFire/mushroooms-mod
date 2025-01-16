@@ -1,6 +1,7 @@
 package net.rodofire.mushrooomsmod.entity.custom;
 
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
@@ -11,9 +12,12 @@ import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldAccess;
 import net.rodofire.mushrooomsmod.entity.ModEntities;
+import net.rodofire.mushrooomsmod.util.ModTags;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.GeoAnimatable;
@@ -32,6 +36,10 @@ public class PlotiEntity extends AnimalEntity implements GeoEntity {
 
     public PlotiEntity(EntityType<? extends AnimalEntity> entityType, World world) {
         super(entityType, world);
+    }
+
+    public static boolean isValidNaturalSpawn(EntityType<? extends AnimalEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
+        return world.getBlockState(pos.down()).isIn(ModTags.Blocks.MUSHROOM_SPAWNABLE);
     }
 
     public static DefaultAttributeContainer.Builder setAttributes() {
@@ -83,9 +91,9 @@ public class PlotiEntity extends AnimalEntity implements GeoEntity {
         } else if (this.isSit() && geoAnimatableAnimationState.isMoving()) {
             geoAnimatableAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.ploti.side_walking", Animation.LoopType.LOOP));
         } else if (this.isSitting()) {
-            geoAnimatableAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.ploti.sit", Animation.LoopType.HOLD_ON_LAST_FRAME));
+            geoAnimatableAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.ploti.sitting", Animation.LoopType.HOLD_ON_LAST_FRAME));
         } else if (this.isUnsitting()) {
-            geoAnimatableAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.ploti.unsit", Animation.LoopType.HOLD_ON_LAST_FRAME));
+            geoAnimatableAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.ploti.unsitting", Animation.LoopType.HOLD_ON_LAST_FRAME));
         } else {
             geoAnimatableAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.ploti.idle", Animation.LoopType.LOOP));
         }

@@ -326,6 +326,11 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.PELTOGYNE_STRIPPED_WOOD)
                 .add(ModBlocks.PELTOGYNE_PLANKS);
 
-
+        getOrCreateTagBuilder(ModTags.Blocks.MUSHROOM_SPAWNABLE)
+                .add(Blocks.MYCELIUM)
+                .add(Blocks.COARSE_DIRT)
+                .add(Blocks.GRASS_BLOCK)
+                .add(Blocks.DIRT)
+                .add(Blocks.ROOTED_DIRT);
     }
 }

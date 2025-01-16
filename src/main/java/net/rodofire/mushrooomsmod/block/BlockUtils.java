@@ -2,9 +2,11 @@ package net.rodofire.mushrooomsmod.block;
 
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
+import net.rodofire.mushrooomsmod.MushrooomsMod;
 
 public class BlockUtils {
     public static void registerStripable() {
+        MushrooomsMod.LOGGER.info("|\t-Registering Stripable Blocks");
         StrippableBlockRegistry.register(ModBlocks.BLUE_LUMINESCENT_LOG, ModBlocks.BLUE_LUMINESCENT_STRIPPED_LOG);
         StrippableBlockRegistry.register(ModBlocks.BLUE_LUMINESCENT_WOOD, ModBlocks.BLUE_LUMINESCENT_STRIPPED_WOOD);
 
@@ -13,6 +15,7 @@ public class BlockUtils {
     }
 
     public static void registerFlammable() {
+        MushrooomsMod.LOGGER.info("|\t-Registering Flamable Blocks");
         FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.BLUE_LUMINESCENT_LOG, 5, 5);
         FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.BLUE_LUMINESCENT_STRIPPED_LOG, 5, 5);
         FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.BLUE_LUMINESCENT_WOOD, 5, 5);

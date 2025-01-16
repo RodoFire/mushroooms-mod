@@ -1,15 +1,14 @@
 package net.rodofire.mushrooomsmod;
 
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
+import net.minecraft.text.Text;
 import net.rodofire.mushrooomsmod.block.BlockUtils;
 import net.rodofire.mushrooomsmod.block.ModBlockEntities;
 import net.rodofire.mushrooomsmod.block.ModBlocks;
-import net.rodofire.mushrooomsmod.configs.ModConfig;
+import net.rodofire.mushrooomsmod.config.MushrooomsConfig;
 import net.rodofire.mushrooomsmod.effect.ModStatusEffects;
 import net.rodofire.mushrooomsmod.entity.ModEntities;
 import net.rodofire.mushrooomsmod.entity.ModEntitiesAttribute;
-import net.rodofire.mushrooomsmod.event.PlayerTickHandler;
 import net.rodofire.mushrooomsmod.item.ModItemGroup;
 import net.rodofire.mushrooomsmod.item.ModItems;
 import net.rodofire.mushrooomsmod.networking.ModNetwork;
@@ -30,49 +29,57 @@ public class MushrooomsMod implements ModInitializer {
 
     public static final String MOD_ID = "mushrooomsmod";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
-    public static ModConfig CONFIG;
+    public static MushrooomsConfig CONFIG;
 
     @Override
     public void onInitialize() {
+        LOGGER.info("[MushrooomsMod] Initializing :");
+        LOGGER.info("-[Config] Initializing :");
+        MushrooomsConfig.initConfig();
 
+        LOGGER.info("-[Blocks] Initializing :");
+        //blocks
         ModBlocks.registerModBlocks();
         ModBlockEntities.registerBlockEntities();
 
         BlockUtils.registerStripable();
         BlockUtils.registerFlammable();
 
+        LOGGER.info("-[Items] Initializing :");
+        //items
         ModItems.registerModItems();
         ModItemGroup.registerItemGroup();
+        GeckoLib.initialize();
 
+        LOGGER.info("-[Entities] Initializing :");
+        //entities
         ModEntities.registerModENtities();
+        ModEntities.spawnRestriction();
         ModEntitiesAttribute.registerAttributes();
 
+        LOGGER.info("-[World-Gen] Initializing :");
+        //world-gen
+        ModTrunkPlacerTypes.registerTrunkPlacers();
+        ModFoliagePlacerTypes.registerFoliagePlacers();
+        ModDecoratorTypes.registerDecorators();
+        ModWorldGeneration.registerModWorldGen();
+        ModFeatures.registerFeatures();
 
+
+        LOGGER.info("-[Misc] Initializing :");
         ModParticles.registerParticles();
         ModStatusEffects.registerEffects();
 
         ModSounds.registerModSound();
-
-        ModDecoratorTypes.registerDecorators();
-        ModTrunkPlacerTypes.register();
-        ModFoliagePlacerTypes.register();
-
-        ModWorldGeneration.generateModWorldGen();
-        ModFeatures.addFeatures();
 
 
         ModLootTableModifier.modifyLootTable();
 
         ModRecipes.registerRecipes();
 
-        GeckoLib.initialize();
-
         ModNetwork.registerC2SPackets();
 
-        ServerTickEvents.START_SERVER_TICK.register(new PlayerTickHandler());
 
-
-        LOGGER.info("Starting MushrooomsMod!");
-
+        LOGGER.info("[MushrooomsMod] Started!");
     }
 }
