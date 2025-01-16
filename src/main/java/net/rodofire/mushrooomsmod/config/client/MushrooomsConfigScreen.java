@@ -5,12 +5,12 @@ import net.minecraft.client.gui.screen.ConfirmLinkScreen;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Util;
-import net.rodofire.easierworldcreator.EasierWorldCreator;
+import net.rodofire.easierworldcreator.Ewc;
 import net.rodofire.easierworldcreator.client.hud.widget.ImageButtonWidget;
 import net.rodofire.easierworldcreator.config.ConfigCategory;
 import net.rodofire.easierworldcreator.config.client.DefaultConfigScreen;
 import net.rodofire.mushrooomsmod.MushrooomsMod;
-import net.rodofire.mushrooomsmod.config.MushrooomsConfig;
+import net.rodofire.mushrooomsmod.config.MushrooomsClientConfig;
 import org.spongepowered.asm.mixin.Unique;
 
 import java.util.ArrayList;
@@ -18,11 +18,11 @@ import java.util.List;
 
 public class MushrooomsConfigScreen extends DefaultConfigScreen {
     //*/icons
-    private static final Identifier DISCORD_ICON = Identifier.of(EasierWorldCreator.MOD_ID, "textures/gui/discord.png");
-    private static final Identifier GITHUB_ICON = Identifier.of(EasierWorldCreator.MOD_ID, "textures/gui/github.png");
-    private static final Identifier KOFI_ICON = Identifier.of(EasierWorldCreator.MOD_ID, "textures/gui/kofi.png");
-    private static final Identifier CURSEFORGE_ICON = Identifier.of(EasierWorldCreator.MOD_ID, "textures/gui/curseforge.png");
-    private static final Identifier MODRINTH_ICON = Identifier.of(EasierWorldCreator.MOD_ID, "textures/gui/modrinth.png");
+    private static final Identifier DISCORD_ICON = new Identifier(Ewc.MOD_ID, "textures/gui/discord.png");
+    private static final Identifier GITHUB_ICON = Identifier.of(Ewc.MOD_ID, "textures/gui/github.png");
+    private static final Identifier KOFI_ICON = Identifier.of(Ewc.MOD_ID, "textures/gui/kofi.png");
+    private static final Identifier CURSEFORGE_ICON = Identifier.of(Ewc.MOD_ID, "textures/gui/curseforge.png");
+    private static final Identifier MODRINTH_ICON = Identifier.of(Ewc.MOD_ID, "textures/gui/modrinth.png");
 
     //links
     private static final String DISCORD_LINK = "https://discord.gg/bAQRUxNyFj";
@@ -32,7 +32,7 @@ public class MushrooomsConfigScreen extends DefaultConfigScreen {
     private static final String MODRINTH_LINK = "https://modrinth.com/mod/mushroooms";
 
     public MushrooomsConfigScreen(Screen parent) {
-        super(parent, MushrooomsConfig.CONFIG, MushrooomsMod.MOD_ID, Identifier.of(MushrooomsMod.MOD_ID, "textures/gui/config_background.png"), 1920, 1080, 0xAFAFAFFF, 0xC8000000);
+        super(parent, MushrooomsClientConfig.CLIENT_CONFIG, MushrooomsMod.MOD_ID, Identifier.of(MushrooomsMod.MOD_ID, "textures/gui/config_background.png"), 1920, 1080, 0xAFAFAFFF, 0xC8000000);
     }
 
     @Override
