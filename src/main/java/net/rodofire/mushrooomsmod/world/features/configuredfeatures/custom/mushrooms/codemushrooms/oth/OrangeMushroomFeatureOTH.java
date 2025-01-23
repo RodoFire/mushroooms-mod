@@ -110,11 +110,11 @@ public class OrangeMushroomFeatureOTH extends OrangeMushroomOTH {
     @Override
     protected void place(StructureWorldAccess world, BlockPos pos, BlockPos pos2, DefaultBlockListComparator coordinates, SphereGen sphere, SphereGen secondSphere) {
         Set<BlockPos> posSet = new HashSet<>();
-        List<Set<BlockPos>> posSphere = sphere.getBlockPos();
+        List<Set<BlockPos>> posSphere = sphere.getBlockPosList(sphere.getBlockPos());
         for (Set<BlockPos> blockPosSet : posSphere) {
             posSet.addAll(blockPosSet);
         }
-        posSphere = secondSphere.getBlockPos();
+        posSphere = secondSphere.getBlockPosList(secondSphere.getBlockPos());
         for (Set<BlockPos> blockPosSet : posSphere) {
             posSet.removeAll(blockPosSet);
         }
@@ -131,8 +131,7 @@ public class OrangeMushroomFeatureOTH extends OrangeMushroomOTH {
         }
         System.out.println("hudeif");
 
-        List<Set<DefaultBlockList>> blockList = sphere.getBlockListWithVerification(new ArrayList<>(chunkMap.values()));
-        DefaultBlockListComparator comparator = new DefaultBlockListComparator(BlockListUtil.unDivideBlockList(blockList));
+        DefaultBlockListComparator comparator = sphere.getBlockListWithVerification(new ArrayList<>(chunkMap.values()));
         BlockSorter sorter = new BlockSorter(BlockSorter.BlockSorterType.FROM_POINT_INVERTED);
         sorter.setCenterPoint(pos);
 

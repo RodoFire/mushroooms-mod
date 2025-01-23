@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "mushrooomsmod:item/fleur_berries_item"
-  }
-}

@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/tinted_cross",
-  "textures": {
-    "cross": "mushrooomsmod:block/grass_tall_blue_luminescent_top"
-  }
-}

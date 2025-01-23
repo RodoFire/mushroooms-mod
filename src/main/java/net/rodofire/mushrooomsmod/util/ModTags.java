@@ -11,6 +11,7 @@ public class ModTags {
     public static class Blocks {
         public static final TagKey<Block> MUSHROOM_PLANT = createTag("mushroom_plant");
         public static final TagKey<Block> GRASS = createTag("mushroom_plant");
+        public static final TagKey<Block> MUSHROOM_SPAWNABLE = createTag("mushroom_spawnable");
 
         private static TagKey<Block> createTag(String name) {
             return TagKey.of(RegistryKeys.BLOCK, new Identifier(MushrooomsMod.MOD_ID, name));

@@ -24,6 +24,6 @@ public class ModWorldGenerator extends FabricDynamicRegistryProvider {
 
     @Override
     public String getName() {
-        return MushrooomsMod.MOD_ID;
+        return MushrooomsMod.MOD_ID + "_world";
     }
 }

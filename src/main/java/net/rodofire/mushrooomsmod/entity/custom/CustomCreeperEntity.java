@@ -11,7 +11,6 @@ import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.mob.HostileEntity;
-import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.passive.CatEntity;
 import net.minecraft.entity.passive.GoatEntity;
 import net.minecraft.entity.passive.OcelotEntity;

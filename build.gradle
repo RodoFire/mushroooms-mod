@@ -1,6 +1,7 @@
 plugins {
 	id 'fabric-loom' version '1.7-SNAPSHOT'
 	id 'maven-publish'
+	id "me.modmuss50.mod-publish-plugin" version "0.8.1"
 }
 
 version = project.mod_version
@@ -128,4 +129,36 @@ publishing {
 		// The repositories here will be used for publishing your artifact, not for
 		// retrieving dependencies.
 	}
+}
+
+publishMods {
+	file = remapJar.archiveFile
+
+	changelog = file("changelog.md").text
+
+	modLoaders.add("fabric")
+	modLoaders.add("quilt")
+	curseforge {
+		accessToken = getApiKey()["CURSEFORGE_API_KEY"]
+		minecraftVersions.add("1.20.1")
+		projectId = "955698"
+		javaVersions.add(JavaVersion.VERSION_17)
+		serverRequired = true
+		requires("fabric-api")
+		changelogType = "markdown"
+	}
+
+	modrinth {
+		accessToken = getApiKey()["MODRINTH_API_KEY"]
+		minecraftVersions.add("1.20.1")
+		projectId = "hxHbPoS6"
+		requires("fabric-api")
+		type = ALPHA
+	}
+}
+
+static def getApiKey() {
+	def Properties props = new Properties()
+	props.load(new FileInputStream(new File('api.properties')))
+	return props
 }

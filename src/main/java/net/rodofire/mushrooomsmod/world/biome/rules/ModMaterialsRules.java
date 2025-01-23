@@ -33,7 +33,7 @@ public class ModMaterialsRules {
     private static final MaterialRules.MaterialCondition DEEPSLATE_LEVEL = MaterialRules.verticalGradient("deepslate", YOffset.fixed(0), YOffset.fixed(8));
     private static final MaterialRules.MaterialCondition STONE_CAVE_LEVEL = MaterialRules.aboveY(YOffset.fixed(0), 1);
     private static final MaterialRules.MaterialCondition ABOVE_TOP = MaterialRules.aboveY(YOffset.belowTop(-2), 0);
-    private static final MaterialRules.MaterialCondition BELOW_TOP = MaterialRules.not(MaterialRules.aboveY(YOffset.belowTop(10), 1));
+    private static final MaterialRules.MaterialCondition BELOW_TOP = MaterialRules.not(MaterialRules.aboveY(YOffset.belowTop(6), 1));
     private static final MaterialRules.MaterialCondition ABOVE_WATER = MaterialRules.aboveY(YOffset.fixed(60), 0);
     private static final MaterialRules.MaterialCondition IS_AT_OR_ABOVE_WATER = MaterialRules.water(-1, 0);
 

@@ -4,6 +4,7 @@ import com.mojang.serialization.Codec;
 import net.minecraft.block.Blocks;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.StructureWorldAccess;
 import net.minecraft.world.gen.feature.Feature;
@@ -18,6 +19,7 @@ import net.rodofire.easierworldcreator.shape.block.instanciator.AbstractBlockSha
 import net.rodofire.mushrooomsmod.block.ModBlocks;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public abstract class YellowMushroomOTH extends Feature<HugeMushroomFeatureConfig> {
@@ -38,8 +40,8 @@ public abstract class YellowMushroomOTH extends Feature<HugeMushroomFeatureConfi
             }
         }
         LineGen line = new LineGen(world, start.up(2), AbstractBlockShapeBase.PlaceMoment.OTHER, end);
-        List<Set<BlockPos>> posList = line.getBlockPos();
-        for (Set<BlockPos> set : posList) {
+        Map<ChunkPos, Set<BlockPos>> posList = line.getBlockPos();
+        for (Set<BlockPos> set : posList.values()) {
             for (BlockPos pos : set) {
                 if (BlockPlaceUtil.verifyBlock(world, false, null, pos)
                         && BlockPlaceUtil.verifyBlock(world, false, null, pos.north())

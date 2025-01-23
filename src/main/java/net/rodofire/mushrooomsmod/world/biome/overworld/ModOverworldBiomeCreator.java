@@ -23,10 +23,10 @@ public class ModOverworldBiomeCreator {
                     new GenerationSettings.LookupBackedBuilder(context.getRegistryLookup(RegistryKeys.PLACED_FEATURE),
                             context.getRegistryLookup(RegistryKeys.CONFIGURED_CARVER));
 
-            ModBiomeFeatures.globalOverworldGeneration(biomeBuilder);
+            ModBiomeFeatures.LookupBuilder.globalOverworldGeneration(biomeBuilder);
             DefaultBiomeFeatures.addDefaultOres(biomeBuilder);
 
-            ModBiomeFeatures.SurfaceBiomes.addSchroomIsland1Features(biomeBuilder);
+            ModBiomeFeatures.LookupBuilder.SurfaceBiomes.addSchroomIsland1Features(biomeBuilder);
 
             return new Biome.Builder()
                     .precipitation(true)
@@ -57,13 +57,13 @@ public class ModOverworldBiomeCreator {
                     new GenerationSettings.LookupBackedBuilder(context.getRegistryLookup(RegistryKeys.PLACED_FEATURE),
                             context.getRegistryLookup(RegistryKeys.CONFIGURED_CARVER));
 
-            ModBiomeFeatures.globalOverworldGeneration(biomeBuilder);
+            ModBiomeFeatures.LookupBuilder.globalOverworldGeneration(biomeBuilder);
             DefaultBiomeFeatures.addMossyRocks(biomeBuilder);
             DefaultBiomeFeatures.addDefaultOres(biomeBuilder);
 
             biomeBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, VegetationPlacedFeatures.TREES_PLAINS);
 
-            ModBiomeFeatures.SurfaceBiomes.addSchroomIsland1Features(biomeBuilder);
+            ModBiomeFeatures.LookupBuilder.SurfaceBiomes.addSchroomIsland1Features(biomeBuilder);
 
             return new Biome.Builder()
                     .precipitation(true)
@@ -95,8 +95,8 @@ public class ModOverworldBiomeCreator {
                     new GenerationSettings.LookupBackedBuilder(context.getRegistryLookup(RegistryKeys.PLACED_FEATURE),
                             context.getRegistryLookup(RegistryKeys.CONFIGURED_CARVER));
 
-            ModBiomeFeatures.globalOverworldGeneration(biomeBuilder);
-            ModBiomeFeatures.SurfaceBiomes.addSakuraForestFeatures(biomeBuilder);
+            ModBiomeFeatures.LookupBuilder.globalOverworldGeneration(biomeBuilder);
+            ModBiomeFeatures.LookupBuilder.SurfaceBiomes.addSakuraForestFeatures(biomeBuilder);
 
 
             return new Biome.Builder()
@@ -126,12 +126,12 @@ public class ModOverworldBiomeCreator {
                     new GenerationSettings.LookupBackedBuilder(context.getRegistryLookup(RegistryKeys.PLACED_FEATURE),
                             context.getRegistryLookup(RegistryKeys.CONFIGURED_CARVER));
 
-            ModBiomeFeatures.globalOverworldGeneration(biomeBuilder);
+            ModBiomeFeatures.LookupBuilder.globalOverworldGeneration(biomeBuilder);
             DefaultBiomeFeatures.addDefaultOres(biomeBuilder);
 
             biomeBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, VegetationPlacedFeatures.TREES_PLAINS);
             biomeBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, VegetationPlacedFeatures.PATCH_GRASS_PLAIN);
-            ModBiomeFeatures.SurfaceBiomes.addColorfulPlainsFeatures(biomeBuilder);
+            ModBiomeFeatures.LookupBuilder.SurfaceBiomes.addColorfulPlainsFeatures(biomeBuilder);
 
             return new Biome.Builder()
                     .precipitation(true)
@@ -168,7 +168,7 @@ public class ModOverworldBiomeCreator {
             DefaultBiomeFeatures.addFrozenTopLayer(biomeBuilder);
             DefaultBiomeFeatures.addDefaultOres(biomeBuilder);
 
-            ModBiomeFeatures.SurfaceBiomes.addColorfulForestFeatures(biomeBuilder);
+            ModBiomeFeatures.LookupBuilder.SurfaceBiomes.addColorfulForestFeatures(biomeBuilder);
 
             return new Biome.Builder()
                     .precipitation(true)
@@ -199,12 +199,12 @@ public class ModOverworldBiomeCreator {
                     new GenerationSettings.LookupBackedBuilder(context.getRegistryLookup(RegistryKeys.PLACED_FEATURE),
                             context.getRegistryLookup(RegistryKeys.CONFIGURED_CARVER));
 
-            ModBiomeFeatures.globalOverworldGeneration(biomeBuilder);
+            ModBiomeFeatures.LookupBuilder.globalOverworldGeneration(biomeBuilder);
             DefaultBiomeFeatures.addForestGrass(biomeBuilder);
             DefaultBiomeFeatures.addDefaultMushrooms(biomeBuilder);
             DefaultBiomeFeatures.addDefaultVegetation(biomeBuilder);
 
-            ModBiomeFeatures.SurfaceBiomes.addBlueMushroomForestFeatures(biomeBuilder);
+            ModBiomeFeatures.LookupBuilder.SurfaceBiomes.addBlueMushroomForestFeatures(biomeBuilder);
 
 
             return new Biome.Builder()
@@ -230,6 +230,7 @@ public class ModOverworldBiomeCreator {
     static class UnderGroundBiomes {
         public static Biome createVanillaSchroomCave(Registerable<Biome> context) {
             SpawnSettings.Builder spawnBuilder = new SpawnSettings.Builder();
+            ModBiomeFeatures.MobBuilder.UndergroundBiomes.addVanillaSchroomCaveMobs(spawnBuilder);
 
             DefaultBiomeFeatures.addMushroomMobs(spawnBuilder);
 
@@ -237,10 +238,10 @@ public class ModOverworldBiomeCreator {
                     new GenerationSettings.LookupBackedBuilder(context.getRegistryLookup(RegistryKeys.PLACED_FEATURE),
                             context.getRegistryLookup(RegistryKeys.CONFIGURED_CARVER));
 
-            ModBiomeFeatures.globalOverworldGeneration(biomeBuilder);
+            ModBiomeFeatures.LookupBuilder.globalOverworldGeneration(biomeBuilder);
             DefaultBiomeFeatures.addDefaultOres(biomeBuilder);
 
-            ModBiomeFeatures.UndergroundBiome.addMushroomCaveFeatures(biomeBuilder);
+            ModBiomeFeatures.LookupBuilder.UndergroundBiome.addMushroomCaveFeatures(biomeBuilder);
 
             return new Biome.Builder()
                     .precipitation(true)
@@ -268,8 +269,8 @@ public class ModOverworldBiomeCreator {
                     new GenerationSettings.LookupBackedBuilder(context.getRegistryLookup(RegistryKeys.PLACED_FEATURE),
                             context.getRegistryLookup(RegistryKeys.CONFIGURED_CARVER));
 
-            ModBiomeFeatures.globalOverworldGeneration(biomeBuilder);
-            ModBiomeFeatures.UndergroundBiome.addCrystalCaveFeatures(biomeBuilder);
+            ModBiomeFeatures.LookupBuilder.globalOverworldGeneration(biomeBuilder);
+            ModBiomeFeatures.LookupBuilder.UndergroundBiome.addCrystalCaveFeatures(biomeBuilder);
 
             biomeBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, VegetationPlacedFeatures.TREES_PLAINS);
 
@@ -299,10 +300,10 @@ public class ModOverworldBiomeCreator {
                     new GenerationSettings.LookupBackedBuilder(context.getRegistryLookup(RegistryKeys.PLACED_FEATURE),
                             context.getRegistryLookup(RegistryKeys.CONFIGURED_CARVER));
 
-            ModBiomeFeatures.globalOverworldGeneration(biomeBuilder);
+            ModBiomeFeatures.LookupBuilder.globalOverworldGeneration(biomeBuilder);
             DefaultBiomeFeatures.addDefaultOres(biomeBuilder);
 
-            ModBiomeFeatures.UndergroundBiome.addForestCaveFeatures(biomeBuilder);
+            ModBiomeFeatures.LookupBuilder.UndergroundBiome.addForestCaveFeatures(biomeBuilder);
 
             return new Biome.Builder()
                     .precipitation(true)
@@ -330,11 +331,11 @@ public class ModOverworldBiomeCreator {
                     new GenerationSettings.LookupBackedBuilder(context.getRegistryLookup(RegistryKeys.PLACED_FEATURE),
                             context.getRegistryLookup(RegistryKeys.CONFIGURED_CARVER));
 
-            ModBiomeFeatures.globalOverworldGeneration(biomeBuilder);
+            ModBiomeFeatures.LookupBuilder.globalOverworldGeneration(biomeBuilder);
 
             biomeBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, VegetationPlacedFeatures.TREES_PLAINS);
 
-            ModBiomeFeatures.UndergroundBiome.addBlueLuminescentCaveFlowers(biomeBuilder);
+            ModBiomeFeatures.LookupBuilder.UndergroundBiome.addBlueLuminescentCaveFlowers(biomeBuilder);
 
             return new Biome.Builder()
                     .precipitation(true)
@@ -364,8 +365,8 @@ public class ModOverworldBiomeCreator {
                     new GenerationSettings.LookupBackedBuilder(context.getRegistryLookup(RegistryKeys.PLACED_FEATURE),
                             context.getRegistryLookup(RegistryKeys.CONFIGURED_CARVER));
 
-            ModBiomeFeatures.globalOverworldGeneration(biomeBuilder);
-            ModBiomeFeatures.UndergroundBiome.addPurpleSchroomCaveFeatures(biomeBuilder);
+            ModBiomeFeatures.LookupBuilder.globalOverworldGeneration(biomeBuilder);
+            ModBiomeFeatures.LookupBuilder.UndergroundBiome.addPurpleSchroomCaveFeatures(biomeBuilder);
 
             return new Biome.Builder()
                     .precipitation(true)

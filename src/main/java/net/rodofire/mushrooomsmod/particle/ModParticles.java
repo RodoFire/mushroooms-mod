@@ -13,6 +13,7 @@ public class ModParticles {
     public static final DefaultParticleType FORGE_PARTICLE = FabricParticleTypes.simple();
 
     public static void registerParticles() {
+        MushrooomsMod.LOGGER.info("|\t-Registering Particles");
         Registry.register(Registries.PARTICLE_TYPE, new Identifier(MushrooomsMod.MOD_ID, "greenfire_particle"),
                 GREENFIRE_PARTICLE);
         Registry.register(Registries.PARTICLE_TYPE, new Identifier(MushrooomsMod.MOD_ID, "pink_crystal_particle"),

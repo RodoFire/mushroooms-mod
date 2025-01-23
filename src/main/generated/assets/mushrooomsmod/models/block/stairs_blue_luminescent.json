@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/stairs",
-  "textures": {
-    "bottom": "mushrooomsmod:block/planks_blue_luminescent",
-    "side": "mushrooomsmod:block/planks_blue_luminescent",
-    "top": "mushrooomsmod:block/planks_blue_luminescent"
-  }
-}

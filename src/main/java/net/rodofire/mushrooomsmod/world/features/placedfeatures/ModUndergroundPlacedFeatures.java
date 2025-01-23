@@ -5,8 +5,10 @@ import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.entry.RegistryEntry;
+import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.gen.YOffset;
+import net.minecraft.world.gen.blockpredicate.BlockPredicate;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.placementmodifier.*;
 import net.rodofire.mushrooomsmod.MushrooomsMod;
@@ -85,6 +87,7 @@ public class ModUndergroundPlacedFeatures {
     //Ore
     public static final RegistryKey<PlacedFeature> RHYOLITE_UNDERGROUND_PLACED_KEY = registerKey("rhyolite_underground_placed_key");
     public static final RegistryKey<PlacedFeature> AMBER_MINERAL_UNDERGROUND_PLACED_FEATURE = registerKey("amber_mineral_underground_placed_key");
+
     public static void bootstrap(Registerable<PlacedFeature> context) {
         var configuredFeatureRegistryEntryLookup = context.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE);
         //Mushrooms
@@ -143,13 +146,13 @@ public class ModUndergroundPlacedFeatures {
 
 
         //Crystal
-        register(context, RED_CRYSTAL_UNDERGROUND_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.RED_CRYSTAL_KEY), CountPlacementModifier.of(40), SquarePlacementModifier.of(), ModPlacedFeatures.CAVE_LEVEL, BiomePlacementModifier.of());
-        register(context, BLUE_CRYSTAL_UNDERGROUND_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.BLUE_CRYSTAL_KEY), CountPlacementModifier.of(40), SquarePlacementModifier.of(), ModPlacedFeatures.CAVE_LEVEL, BiomePlacementModifier.of());
-        register(context, WHITE_CRYSTAL_UNDERGROUND_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.WHITE_CRYSTAL_KEY), CountPlacementModifier.of(40), SquarePlacementModifier.of(), ModPlacedFeatures.CAVE_LEVEL, BiomePlacementModifier.of());
-        register(context, RED_CRYSTAL_PILLAR_UNDERGROUND_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.RED_CRYSTAL_PILLAR_KEY), CountPlacementModifier.of(13), SquarePlacementModifier.of(), ModPlacedFeatures.CAVE_LEVEL, BiomePlacementModifier.of());
-        register(context, BLUE_CRYSTAL_PILLAR_UNDERGROUND_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.BLUE_CRYSTAL_PILLAR_KEY), CountPlacementModifier.of(13), SquarePlacementModifier.of(), ModPlacedFeatures.CAVE_LEVEL, BiomePlacementModifier.of());
-        register(context, WHITE_CRYSTAL_PILLAR_UNDERGROUND_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.WHITE_CRYSTAL_PILLAR_KEY), CountPlacementModifier.of(13), SquarePlacementModifier.of(), ModPlacedFeatures.CAVE_LEVEL, BiomePlacementModifier.of());
-        register(context, CRYSTAL_BLUE_UNDERGROUND_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.CRYSTAL_BLUE_KEY), CountPlacementModifier.of(26), SquarePlacementModifier.of(), ModPlacedFeatures.CAVE_LEVEL, BiomePlacementModifier.of());
+        register(context, RED_CRYSTAL_UNDERGROUND_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.RED_CRYSTAL_KEY), CountPlacementModifier.of(40), BlockFilterPlacementModifier.of(BlockPredicate.matchingBlockTag(BlockTags.BASE_STONE_OVERWORLD)), SquarePlacementModifier.of(), ModPlacedFeatures.CAVE_LEVEL, BiomePlacementModifier.of());
+        register(context, BLUE_CRYSTAL_UNDERGROUND_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.BLUE_CRYSTAL_KEY), CountPlacementModifier.of(40), BlockFilterPlacementModifier.of(BlockPredicate.matchingBlockTag(BlockTags.BASE_STONE_OVERWORLD)), SquarePlacementModifier.of(), ModPlacedFeatures.CAVE_LEVEL, BiomePlacementModifier.of());
+        register(context, WHITE_CRYSTAL_UNDERGROUND_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.WHITE_CRYSTAL_KEY), CountPlacementModifier.of(40), BlockFilterPlacementModifier.of(BlockPredicate.matchingBlockTag(BlockTags.BASE_STONE_OVERWORLD)), SquarePlacementModifier.of(), ModPlacedFeatures.CAVE_LEVEL, BiomePlacementModifier.of());
+        register(context, RED_CRYSTAL_PILLAR_UNDERGROUND_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.RED_CRYSTAL_PILLAR_KEY), CountPlacementModifier.of(13), BlockFilterPlacementModifier.of(BlockPredicate.matchingBlockTag(BlockTags.BASE_STONE_OVERWORLD)), SquarePlacementModifier.of(), ModPlacedFeatures.CAVE_LEVEL, BiomePlacementModifier.of());
+        register(context, BLUE_CRYSTAL_PILLAR_UNDERGROUND_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.BLUE_CRYSTAL_PILLAR_KEY), CountPlacementModifier.of(13), BlockFilterPlacementModifier.of(BlockPredicate.matchingBlockTag(BlockTags.BASE_STONE_OVERWORLD)), SquarePlacementModifier.of(), ModPlacedFeatures.CAVE_LEVEL, BiomePlacementModifier.of());
+        register(context, WHITE_CRYSTAL_PILLAR_UNDERGROUND_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.WHITE_CRYSTAL_PILLAR_KEY), CountPlacementModifier.of(13), BlockFilterPlacementModifier.of(BlockPredicate.matchingBlockTag(BlockTags.BASE_STONE_OVERWORLD)), SquarePlacementModifier.of(), ModPlacedFeatures.CAVE_LEVEL, BiomePlacementModifier.of());
+        register(context, CRYSTAL_BLUE_UNDERGROUND_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.CRYSTAL_BLUE_KEY), CountPlacementModifier.of(26), BlockFilterPlacementModifier.of(BlockPredicate.matchingBlockTag(BlockTags.BASE_STONE_OVERWORLD)), SquarePlacementModifier.of(), ModPlacedFeatures.CAVE_LEVEL, BiomePlacementModifier.of());
 
         //Ore
         register(context, RHYOLITE_UNDERGROUND_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.RHYOLITE_KEY),

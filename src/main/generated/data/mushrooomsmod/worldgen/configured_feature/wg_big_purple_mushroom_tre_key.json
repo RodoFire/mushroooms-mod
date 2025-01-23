@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:wg_huge_big_purple_mushroom_feature",
-  "config": {
-    "maxcapsize": 6,
-    "maxheight": 20,
-    "mincapsize": 2,
-    "minheight": 8
-  }
-}

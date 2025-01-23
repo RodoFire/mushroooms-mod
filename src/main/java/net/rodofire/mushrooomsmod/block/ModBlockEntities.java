@@ -25,6 +25,6 @@ public class ModBlockEntities {
             , FabricBlockEntityTypeBuilder.create(RapangeFlowersBlockEntity::new, ModBlocks.RAPANGE_FLOWERS).build());
 
     public static void registerBlockEntities() {
-        MushrooomsMod.LOGGER.info("Registering Block Entities");
+        MushrooomsMod.LOGGER.info("|\t-Registering Block Entities");
     }
 }

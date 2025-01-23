@@ -22,8 +22,6 @@ import net.rodofire.easierworldcreator.shape.block.instanciator.AbstractBlockSha
 import net.rodofire.mushrooomsmod.block.ModBlocks;
 import net.rodofire.mushrooomsmod.world.features.configuredfeatures.custom.tree.ModFoliagePlacerTypes;
 
-import java.io.IOException;
-
 public class ColorfulTreeFoliagePlacer extends FoliagePlacer {
     public static final Codec<ColorfulTreeFoliagePlacer> CODEC = RecordCodecBuilder.create(objectInstance ->
             fillFoliagePlacerFields(objectInstance).and(Codec.intRange(0, 12).fieldOf("height")

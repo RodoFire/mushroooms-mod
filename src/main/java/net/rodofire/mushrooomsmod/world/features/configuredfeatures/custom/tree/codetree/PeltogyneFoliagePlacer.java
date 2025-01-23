@@ -15,8 +15,6 @@ import net.rodofire.easierworldcreator.shape.block.gen.SphereGen;
 import net.rodofire.easierworldcreator.shape.block.instanciator.AbstractBlockShapeBase;
 import net.rodofire.mushrooomsmod.world.features.configuredfeatures.custom.tree.ModFoliagePlacerTypes;
 
-import java.io.IOException;
-
 public class PeltogyneFoliagePlacer extends FoliagePlacer {
     public static final Codec<PeltogyneFoliagePlacer> CODEC = RecordCodecBuilder.create(peltogyneFoliagePlacerInstance ->
             fillFoliagePlacerFields(peltogyneFoliagePlacerInstance).and(Codec.intRange(0, 12).fieldOf("height")

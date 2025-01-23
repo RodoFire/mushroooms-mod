@@ -2,6 +2,7 @@ package net.rodofire.mushrooomsmod.world.biome;
 
 import net.minecraft.util.Identifier;
 import net.rodofire.mushrooomsmod.MushrooomsMod;
+import net.rodofire.mushrooomsmod.config.MushrooomsConfig;
 import net.rodofire.mushrooomsmod.world.biome.overworld.ModCaveRegion;
 import net.rodofire.mushrooomsmod.world.biome.overworld.ModOverworldRegion;
 import net.rodofire.mushrooomsmod.world.biome.overworld.ModOverworldRegionSimplified;
@@ -12,33 +13,19 @@ import terrablender.api.TerraBlenderApi;
 
 public class ModTerrablenderAPI implements TerraBlenderApi {
     public static int getCommonBiomesSpawnRate() {
-        if (MushrooomsMod.CONFIG == null) {
-            MushrooomsMod.LOGGER.error("cannot get common biomes spawn rate, CONFIG == null, returning 4");
-            return 4;
-        }
-        if (MushrooomsMod.CONFIG.server == null) {
-            MushrooomsMod.LOGGER.error("cannot get common biomes spawn rate, CONFIG == null, returning 4");
-            return 4;
-        }
-        return MushrooomsMod.CONFIG.server.getCommonBiomeSpawnRate();
+        return MushrooomsConfig.getCommonBiomeSpawnRate();
     }
 
     public static int getCaveBiomesSpawnRate() {
-        if (MushrooomsMod.CONFIG == null) {
-            MushrooomsMod.LOGGER.error("cannot get common biomes spawn rate, CONFIG == null, returning 4");
-            return 4;
-        }
-        if (MushrooomsMod.CONFIG.server == null) {
-            MushrooomsMod.LOGGER.error("cannot get common biomes spawn rate, CONFIG == null, returning 4");
-            return 4;
-        }
-        return MushrooomsMod.CONFIG.server.getCaveBiomeSpawnRate();
+        return MushrooomsConfig.getCavesBiomesSpawnRate();
     }
 
     @Override
     public void onTerraBlenderInitialized() {
-        /*AutoConfig.register(ModConfig.class, PartitioningSerializer.wrap(JanksonConfigSerializer::new));
-        MushrooomsMod.CONFIG = AutoConfig.getConfigHolder(ModConfig.class).getConfig();*/
+        if(!MushrooomsConfig.init){
+            MushrooomsMod.LOGGER.info("-[Mushrooomsmod Config] Initializing :");
+            MushrooomsConfig.initConfig();
+        }
         Regions.register(new ModOverworldRegion(new Identifier(MushrooomsMod.MOD_ID, "overworld"), getCommonBiomesSpawnRate()));
         Regions.register(new ModCaveRegion(new Identifier(MushrooomsMod.MOD_ID, "overworld_caves"), getCaveBiomesSpawnRate()));
         Regions.register(new ModOverworldRegionSimplified(new Identifier(MushrooomsMod.MOD_ID, "overworld_simplified"), 4));

@@ -3,6 +3,7 @@ package net.rodofire.mushrooomsmod.world.features.configuredfeatures.custom;
 import com.mojang.serialization.Codec;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.StructureWorldAccess;
 import net.minecraft.world.gen.feature.Feature;
@@ -18,6 +19,7 @@ import net.rodofire.mushrooomsmod.world.features.config.ArchConfig;
 import net.rodofire.mushrooomsmod.world.features.configuredfeatures.custom.util.RockUtil;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public class SakuraArchFeature extends Feature<ArchConfig> {
@@ -30,12 +32,14 @@ public class SakuraArchFeature extends Feature<ArchConfig> {
     public boolean generate(FeatureContext<ArchConfig> context) {
         StructureWorldAccess world = context.getWorld();
         BlockPos pos = context.getOrigin();
+        System.out.println("generation");
 
         boolean bl = false;
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 20; i++) {
             if (world.getBlockState(pos.down(i)).isOpaqueFullCube(world, pos.down(i))) bl = true;
         }
         if (!bl) return false;
+        System.out.println("bl");
 
         FastNoiseLite noise = new FastNoiseLite((int) world.getSeed());
         noise.SetFrequency(0.1f);
@@ -76,9 +80,9 @@ public class SakuraArchFeature extends Feature<ArchConfig> {
         torus.setYRotation(rotattionY);
         //torus.setSecondxrotation(Random.create().nextBetween(0, 180));
 
-        List<Set<BlockPos>> poslist = torus.getBlockPos();
+        Map<ChunkPos, Set<BlockPos>> poslist = torus.getBlockPos();
 
-        for (Set<BlockPos> set : poslist) {
+        for (Set<BlockPos> set : poslist.values()) {
             set.removeIf(pos1 -> noise.GetNoise(pos1.getX(), pos1.getY(), pos1.getZ()) <= -0.8f);
         }
 
@@ -94,7 +98,7 @@ public class SakuraArchFeature extends Feature<ArchConfig> {
         cylinder.setYrotation(-rotattionY - 90);
         cylinder2.setYrotation(-rotattionY - 90);*/
 
-
+        System.out.println("place");
         torus.place(poslist);
         //cylinder.place();
         //cylinder2.place();
