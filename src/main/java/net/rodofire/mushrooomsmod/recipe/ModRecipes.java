@@ -23,6 +23,6 @@ public class ModRecipes {
     }
 
     public static void registerRecipes() {
-        MushrooomsMod.LOGGER.info("Registering Recipes");
+        MushrooomsMod.LOGGER.info("|\t-Registering Recipes");
     }
 }

@@ -9,7 +9,6 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.StructureWorldAccess;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
-import net.rodofire.easierworldcreator.blockdata.blocklist.BlockListUtil;
 import net.rodofire.easierworldcreator.blockdata.blocklist.basic.DefaultBlockList;
 import net.rodofire.easierworldcreator.blockdata.blocklist.basic.comparator.DefaultBlockListComparator;
 import net.rodofire.easierworldcreator.blockdata.layer.BlockLayer;
@@ -106,12 +105,12 @@ public class OrangeMushroomFeatureWG extends OrangeMushroomWG {
     @Override
     protected void place(StructureWorldAccess world, BlockPos pos, BlockPos pos2, DefaultBlockListComparator coordinates, SphereGen sphere, SphereGen secondSphere) {
         Set<BlockPos> posSet = new HashSet<>();
-        List<Set<BlockPos>> posSphere = sphere.getBlockPos();
-        for (Set<BlockPos> blockPosSet : posSphere) {
+        Map<ChunkPos, Set<BlockPos>> posSphere = sphere.getBlockPos();
+        for (Set<BlockPos> blockPosSet : posSphere.values()) {
             posSet.addAll(blockPosSet);
         }
         posSphere = secondSphere.getBlockPos();
-        for (Set<BlockPos> blockPosSet : posSphere) {
+        for (Set<BlockPos> blockPosSet : posSphere.values()) {
             posSet.removeAll(blockPosSet);
         }
 
@@ -125,8 +124,7 @@ public class OrangeMushroomFeatureWG extends OrangeMushroomWG {
             WorldGenUtil.modifyChunkMap(pos1, chunkMap);
         }
 
-        List<Set<DefaultBlockList>> blockList = sphere.getBlockListWithVerification(new ArrayList<>(chunkMap.values()));
-        DefaultBlockListComparator comparator = new DefaultBlockListComparator(BlockListUtil.unDivideBlockList(blockList));
+        DefaultBlockListComparator comparator = sphere.getBlockListWithVerification(new ArrayList<>(chunkMap.values()));
         comparator.placeAll(world);
         coordinates.placeAll(world);
     }

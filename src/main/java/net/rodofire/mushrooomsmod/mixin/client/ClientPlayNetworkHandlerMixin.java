@@ -12,6 +12,7 @@ import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.rodofire.mushrooomsmod.MushrooomsMod;
+import net.rodofire.mushrooomsmod.config.MushrooomsConfig;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -40,7 +41,7 @@ public abstract class ClientPlayNetworkHandlerMixin extends ClientCommonNetworkH
 
         if (client.player.getWorld().isClient()) {
 
-            if (MushrooomsMod.CONFIG.client.getWarningMessage()) {
+            if (MushrooomsConfig.clientWarnMessage()) {
             MutableText gitissues =  Text.literal("GithubIssues")
 
                     .styled(style -> style.withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://github.com/RodoFire/mushroooms-mod-source-1.20.1/issues")))

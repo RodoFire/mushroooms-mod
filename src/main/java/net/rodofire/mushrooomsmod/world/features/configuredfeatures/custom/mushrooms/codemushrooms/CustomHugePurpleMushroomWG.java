@@ -24,9 +24,10 @@ public abstract class CustomHugePurpleMushroomWG extends Feature<PurpleMushroomC
         StructureWorldAccess world = context.getWorld();
         BlockPos pos = context.getOrigin();
         PurpleMushroomConfig config = context.getConfig();
+        Random random = context.getRandom();
 
         int capNumber = MathUtil.getRandomBoolean(0.3f) ? 2 : 3;
-        Integer[] directions = getDirections(capNumber);
+        int[] directions = getDirections(capNumber, random);
 
         if (capNumber == 3) end = new BlockPos[3];
         else end = new BlockPos[3];
@@ -66,15 +67,15 @@ public abstract class CustomHugePurpleMushroomWG extends Feature<PurpleMushroomC
      *
      * @param caps le nombre de caps du champignon géant
      */
-    Integer[] getDirections(int caps) {
-        int actualDirection = Random.create().nextBetween(0, 7);
+    int[] getDirections(int caps, Random random) {
+        int actualDirection = random.nextBetween(0, 7);
         if (caps == 3) {
-            int random1 = Random.create().nextBetween(2, 4);
+            int random1 = random.nextBetween(2, 4);
             int secondDirection = actualDirection + random1 % 8;
-            int thirdDirection = secondDirection + Random.create().nextBetween(2, 6 - random1) % 8;
-            return new Integer[]{actualDirection, secondDirection, thirdDirection};
+            int thirdDirection = secondDirection + random.nextBetween(2, 6 - random1) % 8;
+            return new int[]{actualDirection, secondDirection, thirdDirection};
         }
-        return new Integer[]{actualDirection, actualDirection + Random.create().nextBetween(2, 6) % 8};
+        return new int[]{actualDirection, actualDirection + random.nextBetween(2, 6) % 8};
     }
 
     protected abstract DefaultBlockList getTrunkCoordinates(BlockPos base, int direction, int cap,PurpleMushroomConfig config);

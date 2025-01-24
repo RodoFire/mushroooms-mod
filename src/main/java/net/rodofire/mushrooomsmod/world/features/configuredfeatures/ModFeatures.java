@@ -3,6 +3,7 @@ package net.rodofire.mushrooomsmod.world.features.configuredfeatures;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.world.gen.feature.*;
+import net.rodofire.mushrooomsmod.MushrooomsMod;
 import net.rodofire.mushrooomsmod.world.features.config.*;
 import net.rodofire.mushrooomsmod.world.features.configuredfeatures.custom.SimpleBlockFeature;
 import net.rodofire.mushrooomsmod.world.features.configuredfeatures.custom.*;
@@ -70,7 +71,8 @@ public abstract class ModFeatures<FC extends FeatureConfig> {
     //dev
     public static Feature<ModSimpleBlockFeatureConfig> FEATURE_TESTER;
 
-    public static void addFeatures() {
+    public static void registerFeatures() {
+        MushrooomsMod.LOGGER.info("|\t-Registering Features");
         HUGE_PURPLE_MUSHROOM = registercustomfeature("huge_purple_mushroom", new CustomPurpleMushroomFeature(HugeMushroomFeatureConfig.CODEC));
         HUGE_GREEN_MUSHROOM = registercustomfeature("huge_green_mushroom", new CustomGreenMushroomFeature(ModMushroomFeatureConfig.CODEC));
         HUGE_BLUE_LUMINESCENT_MUSHROOM = registercustomfeature("huge_blue_luminescent_mushroom", new CustomLuminescentBlueMushroomFeature(HugeMushroomFeatureConfig.CODEC));

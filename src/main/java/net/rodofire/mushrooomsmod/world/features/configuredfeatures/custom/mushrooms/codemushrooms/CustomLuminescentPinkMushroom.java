@@ -6,7 +6,6 @@ import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
-import net.minecraft.world.Heightmap;
 import net.minecraft.world.StructureWorldAccess;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.gen.feature.Feature;
@@ -62,10 +61,6 @@ public abstract class CustomLuminescentPinkMushroom extends Feature<HugeMushroom
     }
 
     protected boolean canGenerate(WorldAccess world, BlockPos pos, int height, BlockPos.Mutable mutablePos, HugeMushroomFeatureConfig config) {
-        int i = pos.getY();
-        if (i < world.getBottomY() + 1 || i + height + 1 >= world.getDimension().height()) {
-            return false;
-        }
         BlockState blockState = world.getBlockState(pos.down());
         if (!HugeMushroomFeature.isSoil(blockState) && !blockState.isIn(BlockTags.MUSHROOM_GROW_BLOCK)) {
             return false;

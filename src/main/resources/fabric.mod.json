@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "mushrooomsmod",
-  "version": "0.0.17-1.21.4",
+  "version": "0.0.18-1.21.4",
   "name": "Mushroooms Mod",
   "description": "This is my first mod where I try to add new mushrooms a bunch of things to minecraft!",
   "authors": [
@@ -16,9 +16,6 @@
   "icon": "assets/mushrooomsmod/icon.png",
   "environment": "*",
   "entrypoints": {
-    "preLaunch": [
-      "net.rodofire.mushrooomsmod.MushrooomsModPreLaunch"
-    ],
     "main": [
       "net.rodofire.mushrooomsmod.MushrooomsMod"
     ],
@@ -49,7 +46,7 @@
     "terrablender" : ">=4.2.0.1",
     "fabric-api": "*",
     "cloth-config": ">=16.0.141",
-    "easierworldcreator": "2.3.4-1.21"
+    "easierworldcreator": "*"
   },
   "suggests": {
     "another-mod": "*"

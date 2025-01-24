@@ -4,6 +4,7 @@ import com.mojang.serialization.Codec;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.Pair;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.StructureWorldAccess;
@@ -43,20 +44,22 @@ public class CustomBlueMushroomFeatureWG extends CustomBlueMushroom {
         BlockLayer layer = new BlockLayer(List.of(ModBlocks.BLUE_MUSHROOM_BLOCK.getDefaultState(), ModBlocks.BLUE_ALTERED_MUSHROOM_BLOCK.getDefaultState()), List.of((short) 3, (short) 1));
         sphere.setBlockLayer(new BlockLayerComparator(layer));
         sphere.setLayerPlace(AbstractBlockShapePlaceType.LayerPlace.RANDOM);
-        List<Set<BlockPos>> posList = sphere.getBlockPos();
+        Map<ChunkPos, Set<BlockPos>> posList = sphere.getBlockPos();
 
         Map<Pair<Integer, Integer>, Float> offset = new HashMap<>();
-        List<Set<BlockPos>> newPosList = new ArrayList<>();
-        int index = 0;
-        for (Set<BlockPos> set : posList) {
-            newPosList.add(new HashSet<>());
+        Map<ChunkPos, Set<BlockPos>> newPosList = new HashMap<>();
+        for (Set<BlockPos> set : posList.values()) {
+            ChunkPos chunkPos = new ChunkPos(set.stream().findFirst().orElse(new BlockPos(0, 0, 0)));
+            Set<BlockPos> posSet = new HashSet<>();
             for (BlockPos pos1 : set) {
+                chunkPos = new ChunkPos(pos1);
                 Pair<Integer, Integer> plan = new Pair<>(pos1.getX(), pos1.getZ());
                 offset.computeIfAbsent(plan, k -> noise.GetNoise(pos1.getX(), pos1.getZ()));
                 float a = offset.get(plan);
-                newPosList.get(index).add(pos1.add(new BlockPos(0, (int) (3 * a), 0)));
+                posSet.add(pos1.add(new BlockPos(0, (int) (3 * a), 0)));
             }
-            index++;
+            if (!posSet.isEmpty())
+                newPosList.put(chunkPos, posSet);
         }
 
         sphere.place(newPosList);

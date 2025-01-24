@@ -310,8 +310,8 @@ public class ModModelProvider extends FabricModelProvider {
         generator.registerSpawnEgg(ModItems.PLOTI_SPAWN_EGG, 0x674f35, 0x4e361c);
         generator.registerSpawnEgg(ModItems.CRYSTAL_CREEPER_SPAWN_EGG, 0x50D122, 0xDE310F);
         generator.registerSpawnEgg(ModItems.CRYSTAL_GOLEM_SPAWN_EGG, 0x9A9A9A, 0xE57FF3);
-        //generator.registerSpawnEgg(ModItems.SCHROOM_STICK_SPAWN_EGG, ModelIds.getMinecraftNamespacedItem("template_spawn_egg"));
-        //generator.registerSpawnEgg(ModItems.MOSQUITO_SPAWN_EGG, ModelIds.getMinecraftNamespacedItem("template_spawn_egg"));
+        generator.registerSpawnEgg(ModItems.SQUIRREL_STICK_SPAWN_EGG, 0xedad34, 0xffeecd);
+        generator.registerSpawnEgg(ModItems.SCHROOM_STICK_SPAWN_EGG, 0xd3ccc4, 0xd81a1a);
 
         generator.output.accept(ModBlocks.BIG_GREEN_MUSHROOM.asItem(), ItemModels.basic(Identifier.of(MushrooomsMod.MOD_ID, "item/mushroom_big_green")));
         generator.output.accept(ModBlocks.BIG_PURPLE_MUSHROOM.asItem(), ItemModels.basic(Identifier.of(MushrooomsMod.MOD_ID, "item/mushroom_big_purple")));

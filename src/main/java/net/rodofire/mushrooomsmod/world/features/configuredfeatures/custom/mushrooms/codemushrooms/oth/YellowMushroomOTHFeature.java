@@ -8,7 +8,6 @@ import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.StructureWorldAccess;
 import net.minecraft.world.gen.feature.HugeMushroomFeatureConfig;
-import net.rodofire.easierworldcreator.blockdata.blocklist.BlockListUtil;
 import net.rodofire.easierworldcreator.blockdata.blocklist.basic.DefaultBlockList;
 import net.rodofire.easierworldcreator.blockdata.blocklist.basic.comparator.DefaultBlockListComparator;
 import net.rodofire.easierworldcreator.blockdata.blocklist.ordered.comparator.DefaultOrderedBlockListComparator;
@@ -40,23 +39,43 @@ public class YellowMushroomOTHFeature extends YellowMushroomOTH {
         for (int i = 0; i < 4; i++) {
             LineGen line = new LineGen(world, pos, AbstractBlockShapeBase.PlaceMoment.ANIMATED_OTHER, end);
             line.setBlockLayer(new BlockLayerComparator(new BlockLayer(Blocks.MUSHROOM_STEM.getDefaultState())));
-            posList.addAll(BlockListUtil.unDivideBlockList(line.getBlockListWithVerification(line.getBlockPos())).get(0).getPosList());
+            posList.addAll(
+                    line.getBlockPos().values().stream()
+                            .flatMap(Set::stream)
+                            .toList()
+            );
 
             line = new LineGen(world, pos.north().up(Random.create().nextBetween(-1, 1)), AbstractBlockShapeBase.PlaceMoment.ANIMATED_OTHER, end.north().up(Random.create().nextBetween(-1, 1)));
             line.setBlockLayer(new BlockLayerComparator(new BlockLayer(Blocks.MUSHROOM_STEM.getDefaultState())));
-            posList.addAll(BlockListUtil.unDivideBlockList(line.getBlockListWithVerification(line.getBlockPos())).get(0).getPosList());
+            posList.addAll(
+                    line.getBlockPos().values().stream()
+                            .flatMap(Set::stream)
+                            .toList()
+            );
 
             line = new LineGen(world, pos.south().up(Random.create().nextBetween(-1, 1)), AbstractBlockShapeBase.PlaceMoment.ANIMATED_OTHER, end.south().up(Random.create().nextBetween(-1, 1)));
             line.setBlockLayer(new BlockLayerComparator(new BlockLayer(Blocks.MUSHROOM_STEM.getDefaultState())));
-            posList.addAll(BlockListUtil.unDivideBlockList(line.getBlockListWithVerification(line.getBlockPos())).get(0).getPosList());
+            posList.addAll(
+                    line.getBlockPos().values().stream()
+                            .flatMap(Set::stream)
+                            .toList()
+            );
 
             line = new LineGen(world, pos.east().up(Random.create().nextBetween(-1, 1)), AbstractBlockShapeBase.PlaceMoment.ANIMATED_OTHER, end.up(Random.create().nextBetween(-1, 1)));
             line.setBlockLayer(new BlockLayerComparator(new BlockLayer(Blocks.MUSHROOM_STEM.getDefaultState())));
-            posList.addAll(BlockListUtil.unDivideBlockList(line.getBlockListWithVerification(line.getBlockPos())).get(0).getPosList());
+            posList.addAll(
+                    line.getBlockPos().values().stream()
+                            .flatMap(Set::stream)
+                            .toList()
+            );
 
             line = new LineGen(world, pos.west().up(Random.create().nextBetween(-1, 1)), AbstractBlockShapeBase.PlaceMoment.ANIMATED_OTHER, end.up(Random.create().nextBetween(-1, 1)));
             line.setBlockLayer(new BlockLayerComparator(new BlockLayer(Blocks.MUSHROOM_STEM.getDefaultState())));
-            posList.addAll(BlockListUtil.unDivideBlockList(line.getBlockListWithVerification(line.getBlockPos())).get(0).getPosList());
+            posList.addAll(
+                    line.getBlockPos().values().stream()
+                            .flatMap(Set::stream)
+                            .toList()
+            );
         }
 
 
@@ -69,7 +88,7 @@ public class YellowMushroomOTHFeature extends YellowMushroomOTH {
     protected DefaultBlockListComparator generateTrunk(StructureWorldAccess world, BlockPos pos, BlockPos end, int height, HugeMushroomFeatureConfig config) {
         LineGen line = new LineGen(world, pos, AbstractBlockShapeBase.PlaceMoment.ANIMATED_OTHER, end);
         line.setBlockLayer(new BlockLayerComparator(new BlockLayer(Blocks.MUSHROOM_STEM.getDefaultState())));
-        return new DefaultBlockListComparator(BlockListUtil.unDivideBlockList(line.getBlockListWithVerification(line.getBlockPos())));
+        return line.getBlockListWithVerification(line.getBlockPosList(line.getBlockPos()));
     }
 
     @Override
@@ -123,12 +142,12 @@ public class YellowMushroomOTHFeature extends YellowMushroomOTH {
 
     protected boolean place(StructureWorldAccess world, BlockPos pos, BlockPos pos2, DefaultBlockListComparator coordinates, SphereGen sphere, SphereGen secondSphere) {
         Set<BlockPos> posSet = new HashSet<>();
-        List<Set<BlockPos>> posSphere = sphere.getBlockPos();
-        for (Set<BlockPos> blockPosSet : posSphere) {
+        Map<ChunkPos, Set<BlockPos>> posSphere = sphere.getBlockPos();
+        for (Set<BlockPos> blockPosSet : posSphere.values()) {
             posSet.addAll(blockPosSet);
         }
         posSphere = secondSphere.getBlockPos();
-        for (Set<BlockPos> blockPosSet : posSphere) {
+        for (Set<BlockPos> blockPosSet : posSphere.values()) {
             posSet.removeAll(blockPosSet);
         }
 
@@ -137,8 +156,7 @@ public class YellowMushroomOTHFeature extends YellowMushroomOTH {
             WorldGenUtil.modifyChunkMap(pos1, chunkMap);
         }
 
-        List<Set<DefaultBlockList>> blockList = sphere.getBlockListWithVerification(new ArrayList<>(chunkMap.values()));
-        DefaultBlockListComparator comparator = new DefaultBlockListComparator(BlockListUtil.unDivideBlockList(blockList));
+        DefaultBlockListComparator comparator = sphere.getBlockListWithVerification(new ArrayList<>(chunkMap.values()));
         BlockSorter sorter = new BlockSorter(BlockSorter.BlockSorterType.FROM_POINT_INVERTED);
         sorter.setCenterPoint(pos);
 

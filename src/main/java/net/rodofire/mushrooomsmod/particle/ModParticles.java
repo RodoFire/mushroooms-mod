@@ -13,12 +13,12 @@ public class ModParticles {
     public static final SimpleParticleType FORGE_PARTICLE = FabricParticleTypes.simple();
 
     public static void registerParticles() {
+        MushrooomsMod.LOGGER.info("|\t-Registering Particles");
         Registry.register(Registries.PARTICLE_TYPE, Identifier.of(MushrooomsMod.MOD_ID, "greenfire_particle"),
                 GREENFIRE_PARTICLE);
         Registry.register(Registries.PARTICLE_TYPE, Identifier.of(MushrooomsMod.MOD_ID, "pink_crystal_particle"),
                 PINK_CRYSTAL_PARTICLE);
         Registry.register(Registries.PARTICLE_TYPE, Identifier.of(MushrooomsMod.MOD_ID, "forge_particle"),
                 FORGE_PARTICLE);
-        MushrooomsMod.LOGGER.info("Registering Particles");
     }
 }

@@ -54,9 +54,8 @@ public class ModItems {
     public static final Item PLOTI_SPAWN_EGG = registerItem("ploti_spawn_egg", settings -> new SpawnEggItem(ModEntities.PLOTI, settings));
     public static final Item CRYSTAL_CREEPER_SPAWN_EGG = registerItem("crystal_creeper_spawn_egg", settings -> new SpawnEggItem(ModEntities.CRYSTAL_CREEPER, settings));
     public static final Item CRYSTAL_GOLEM_SPAWN_EGG = registerItem("crystal_golem_spawn_egg", settings -> new SpawnEggItem(ModEntities.CRYSTAL_GOLEM, settings));
-    //public static final Item SCHROOM_STICK_SPAWN_EGG = registerItem("schroom_stick_spawn_egg", settings -> new SpawnEggItem(ModEntities.SCHROOM_STICK, 0xd3ccc4, 0xd81a1a, settings));
-    //public static final Item MOSQUITO_SPAWN_EGG = registerItem("mosquito_spawn_egg", new SpawnEggItem(ModEntities.MOSQUITO_ENTITY, 0x897540, 0x222221, settings));
-
+    public static final Item SCHROOM_STICK_SPAWN_EGG = registerItem("schroom_stick_spawn_egg", settings -> new SpawnEggItem(ModEntities.SCHROOM_STICK, settings));
+    public static final Item SQUIRREL_STICK_SPAWN_EGG = registerItem("squirrel_spawn_egg", settings -> new SpawnEggItem(ModEntities.SQUIRREL, settings));
 
     //Crystals related
     public static final Item CRUSHED_DIAMOND = registerItem("crushed_diamond", Item::new);
@@ -82,6 +81,6 @@ public class ModItems {
     }
 
     public static void registerModItems() {
-        MushrooomsMod.LOGGER.info("Registering Items");
+        MushrooomsMod.LOGGER.info("|\t-Registering Items");
     }
 }

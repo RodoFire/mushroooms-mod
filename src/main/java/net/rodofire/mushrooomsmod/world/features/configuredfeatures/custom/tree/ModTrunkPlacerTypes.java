@@ -12,7 +12,7 @@ public class ModTrunkPlacerTypes {
     public static final TrunkPlacerType<?> PELTOGYNE_TRUNK_PLACER = TrunkPlacerTypeInvoker.callRegister("peltogyne_trunk_placer", PeltogyneTrunkPlacer.CODEC);
     public static final TrunkPlacerType<?> COLORFUL_TREE_TRUNK_PLACER = TrunkPlacerTypeInvoker.callRegister("colorful_tree_trunk_placer", ColorfulTreeTrunkPlacer.CODEC);
 
-    public static void register() {
-        MushrooomsMod.LOGGER.info("Registering Trunkplacers");
+    public static void registerTrunkPlacers() {
+        MushrooomsMod.LOGGER.info("|\tRegistering TrunkPlacers");
     }
 }

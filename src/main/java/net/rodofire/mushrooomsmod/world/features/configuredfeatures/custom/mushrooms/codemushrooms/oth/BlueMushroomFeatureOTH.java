@@ -6,7 +6,6 @@ import net.minecraft.util.Pair;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.StructureWorldAccess;
-import net.rodofire.easierworldcreator.blockdata.blocklist.BlockListUtil;
 import net.rodofire.easierworldcreator.blockdata.blocklist.basic.DefaultBlockList;
 import net.rodofire.easierworldcreator.blockdata.blocklist.basic.comparator.DefaultBlockListComparator;
 import net.rodofire.easierworldcreator.blockdata.layer.BlockLayer;
@@ -46,7 +45,7 @@ public class BlueMushroomFeatureOTH extends CustomBlueMushroom {
         BlockLayer layer = new BlockLayer(List.of(ModBlocks.BLUE_MUSHROOM_BLOCK.getDefaultState(),ModBlocks.BLUE_ALTERED_MUSHROOM_BLOCK.getDefaultState()), List.of((short)3,(short)1));
         sphere.setBlockLayer(new BlockLayerComparator(layer));
         sphere.setLayerPlace(AbstractBlockShapePlaceType.LayerPlace.RANDOM);
-        List<Set<BlockPos>> posList = sphere.getBlockPos();
+        List<Set<BlockPos>> posList = sphere.getBlockPosList(sphere.getBlockPos());
 
         ///on ajoute du bruit
         //éviter de calculer trop de buit
@@ -74,7 +73,7 @@ public class BlueMushroomFeatureOTH extends CustomBlueMushroom {
         ///on collecte la blockList du truenk et du cap, et on place
         DefaultBlockListComparator comparator = new DefaultBlockListComparator();
         comparator.put(blockLists);
-        comparator.put(BlockListUtil.unDivideBlockList(sphere.getBlockListWithVerification(sphere.getBlockPos())));
+        comparator.put(sphere.getBlockListWithVerification(newPosList).get());
         animator.placeFromBlockList(comparator);
     }
 

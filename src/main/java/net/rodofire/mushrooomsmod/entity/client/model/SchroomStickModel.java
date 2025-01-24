@@ -8,14 +8,14 @@ import software.bernie.geckolib.model.GeoModel;
 import software.bernie.geckolib.renderer.GeoRenderer;
 
 public class SchroomStickModel extends GeoModel<SchroomStickEntity> {
-
     @Override
-    public Identifier getModelResource(SchroomStickEntity animatable, @Nullable GeoRenderer<SchroomStickEntity> renderer) {
+    public Identifier getModelResource(SchroomStickEntity schroomStickEntity, @Nullable GeoRenderer<SchroomStickEntity> geoRenderer) {
         return Identifier.of(MushrooomsMod.MOD_ID, "geo/schroom_stick.geo.json");
+
     }
 
     @Override
-    public Identifier getTextureResource(SchroomStickEntity animatable, @Nullable GeoRenderer<SchroomStickEntity> renderer) {
+    public Identifier getTextureResource(SchroomStickEntity schroomStickEntity, @Nullable GeoRenderer<SchroomStickEntity> geoRenderer) {
         return Identifier.of(MushrooomsMod.MOD_ID, "textures/entity/schroom_stick.png");
     }
 

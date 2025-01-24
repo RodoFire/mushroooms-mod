@@ -376,6 +376,6 @@ public class ModBlocks {
     }
 
     public static void registerModBlocks() {
-        MushrooomsMod.LOGGER.info("Registering Blocks");
+        MushrooomsMod.LOGGER.info("|\t-Registering Blocks.");
     }
 }

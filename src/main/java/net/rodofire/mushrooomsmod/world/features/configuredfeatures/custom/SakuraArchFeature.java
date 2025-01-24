@@ -3,6 +3,7 @@ package net.rodofire.mushrooomsmod.world.features.configuredfeatures.custom;
 import com.mojang.serialization.Codec;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.StructureWorldAccess;
 import net.minecraft.world.gen.feature.Feature;
@@ -18,6 +19,7 @@ import net.rodofire.mushrooomsmod.world.features.config.ArchConfig;
 import net.rodofire.mushrooomsmod.world.features.configuredfeatures.custom.util.RockUtil;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public class SakuraArchFeature extends Feature<ArchConfig> {
@@ -30,12 +32,14 @@ public class SakuraArchFeature extends Feature<ArchConfig> {
     public boolean generate(FeatureContext<ArchConfig> context) {
         StructureWorldAccess world = context.getWorld();
         BlockPos pos = context.getOrigin();
+        System.out.println("generation");
 
         boolean bl = false;
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 20; i++) {
             if (world.getBlockState(pos.down(i)).isOpaqueFullCube()) bl = true;
         }
         if (!bl) return false;
+        System.out.println("bl");
 
         FastNoiseLite noise = new FastNoiseLite((int) world.getSeed());
         noise.SetFrequency(0.1f);
@@ -55,7 +59,7 @@ public class SakuraArchFeature extends Feature<ArchConfig> {
         stone.setBlocksToForce(Set.of(Blocks.GRASS_BLOCK, Blocks.DIRT));
         torus.setBlockLayer(new BlockLayerComparator(List.of(
                 new BlockLayer(
-                        Blocks.GRASS_BLOCK.getDefaultState(), 1),
+                        Blocks.GRASS_BLOCK.getDefaultState(), 2),
                 stone)));
 
         //torus.setTorusType(TorusGen.TorusType.HORIZONTAL_HALF);
@@ -69,18 +73,18 @@ public class SakuraArchFeature extends Feature<ArchConfig> {
         torus.setOuterRadiusZ(radiusz);
         torus.setLayersType(AbstractBlockShapeLayer.LayersType.SURFACE);
 
-        int rotationZ = Random.create().nextBetween(0, 180);
-        int rotattionY = -Random.create().nextBetween(50, 140);
+        int rotationY = Random.create().nextBetween(0, 180);
+        int rotationZ = -Random.create().nextBetween(50, 140);
 
         torus.setZRotation(rotationZ);
-        torus.setYRotation(rotattionY);
+        torus.setYRotation(rotationY);
         //torus.setSecondxrotation(Random.create().nextBetween(0, 180));
 
-        List<Set<BlockPos>> poslist = torus.getBlockPos();
+        Map<ChunkPos, Set<BlockPos>> poslist = torus.getBlockPos();
 
-        for (Set<BlockPos> set : poslist) {
+        /*for (Set<BlockPos> set : poslist.values()) {
             set.removeIf(pos1 -> noise.GetNoise(pos1.getX(), pos1.getY(), pos1.getZ()) <= -0.8f);
-        }
+        }*/
 
         /*BlockPos pos1 = new BlockPos((int) (radiusx * FastMaths.getFastCos(rotationX)), 0, (int) (radiusz * FastMaths.getFastSin(rotationX)));
         BlockPos pos2 = new BlockPos((int) (-radiusx * FastMaths.getFastCos(rotationX)), 0, (int) (-radiusz * FastMaths.getFastSin(rotationX)));
@@ -93,7 +97,6 @@ public class SakuraArchFeature extends Feature<ArchConfig> {
 
         cylinder.setYrotation(-rotattionY - 90);
         cylinder2.setYrotation(-rotattionY - 90);*/
-
 
         torus.place(poslist);
         //cylinder.place();

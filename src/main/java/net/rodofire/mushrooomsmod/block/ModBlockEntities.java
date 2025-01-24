@@ -19,7 +19,7 @@ import java.util.Set;
 
 public class ModBlockEntities {
     public static void registerBlockEntities() {
-        MushrooomsMod.LOGGER.info("Registering Block Entities");
+        MushrooomsMod.LOGGER.info("|\t-Registering Blocks.");
         BlockEntityType.CAMPFIRE.addSupportedBlock(ModBlocks.GREEN_CAMPFIRE);
     }
     public static final BlockEntityType<ForgeBlockEntity> FORGE_BLOCK_ENTITY = Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of(MushrooomsMod.MOD_ID, "forge_be")
