@@ -105,6 +105,7 @@ public class ModSurfacePlacedFeatures {
     //terrain
     public static final RegistryKey<PlacedFeature> SAKURA_ARCH_SURFACE_PLACED_KEY = registerKey("arch_surface_placed_key");
     public static final RegistryKey<PlacedFeature> SAKURA_ROCK_STRAIGHT_PLACED_KEY = registerKey("sakura_rock_straight_placed_key");
+    public static final RegistryKey<PlacedFeature> SAKURA_ROCK_FLAT_PLACED_KEY = registerKey("sakura_rock_flat_placed_key");
     public static final RegistryKey<PlacedFeature> SPIRAL_MUSHROOM_FEATURE = registerKey("spiral_mushroom_feature");
 
 
@@ -192,8 +193,9 @@ public class ModSurfacePlacedFeatures {
         register(context, COLORFUL_BUSH_SURFACE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.COLORFUL_BUSH_KEY), CountPlacementModifier.of(1), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BiomePlacementModifier.of());
 
         //terrain
-        register(context, SAKURA_ARCH_SURFACE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.SAKURA_ARCH_KEY), RarityFilterPlacementModifier.of(25), SquarePlacementModifier.of(), PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP, BiomePlacementModifier.of());
-        register(context, SAKURA_ROCK_STRAIGHT_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.SAKURA_ROCK_STRAIGHT_KEY), RarityFilterPlacementModifier.of(1), SquarePlacementModifier.of(), PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP, BiomePlacementModifier.of());
+        register(context, SAKURA_ARCH_SURFACE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.SAKURA_ARCH_KEY), RarityFilterPlacementModifier.of(32), SquarePlacementModifier.of(), PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP, BiomePlacementModifier.of());
+        register(context, SAKURA_ROCK_STRAIGHT_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.SAKURA_ROCK_STRAIGHT_KEY), RarityFilterPlacementModifier.of(2), SquarePlacementModifier.of(), PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP, BiomePlacementModifier.of());
+        register(context, SAKURA_ROCK_FLAT_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.SAKURA_ROCK_FLAT_KEY), RarityFilterPlacementModifier.of(5), SquarePlacementModifier.of(), PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP, BiomePlacementModifier.of());
         register(context, SPIRAL_MUSHROOM_FEATURE, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.SPIRAL_MUSHROOM_KEY), CountPlacementModifier.of(4), SquarePlacementModifier.of(), PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP, BiomePlacementModifier.of());
 
     }

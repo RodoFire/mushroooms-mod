@@ -1,7 +1,11 @@
 package net.rodofire.mushrooomsmod.world.features.configuredfeatures.custom.mushrooms.codemushrooms.wg;
 
 import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.longs.Long2FloatOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongArrayList;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
 import net.minecraft.block.Blocks;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.Pair;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
@@ -9,14 +13,19 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.StructureWorldAccess;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
-import net.rodofire.easierworldcreator.blockdata.blocklist.basic.DefaultBlockList;
-import net.rodofire.easierworldcreator.blockdata.blocklist.basic.comparator.DefaultBlockListComparator;
+import net.rodofire.easierworldcreator.blockdata.blocklist.BlockList;
+import net.rodofire.easierworldcreator.blockdata.blocklist.BlockListManager;
+import net.rodofire.easierworldcreator.blockdata.blocklist.DividedBlockListManager;
 import net.rodofire.easierworldcreator.blockdata.layer.BlockLayer;
-import net.rodofire.easierworldcreator.blockdata.layer.BlockLayerComparator;
+import net.rodofire.easierworldcreator.blockdata.layer.BlockLayerManager;
 import net.rodofire.easierworldcreator.shape.block.gen.SphereGen;
-import net.rodofire.easierworldcreator.shape.block.instanciator.AbstractBlockShapeBase;
+import net.rodofire.easierworldcreator.shape.block.layer.LayerManager;
+import net.rodofire.easierworldcreator.shape.block.placer.LayerPlacer;
+import net.rodofire.easierworldcreator.shape.block.placer.ShapePlacer;
 import net.rodofire.easierworldcreator.util.FastNoiseLite;
+import net.rodofire.easierworldcreator.util.LongPosHelper;
 import net.rodofire.easierworldcreator.util.WorldGenUtil;
+import net.rodofire.mushrooomsmod.MushrooomsMod;
 import net.rodofire.mushrooomsmod.block.ModBlocks;
 
 import java.util.*;
@@ -27,10 +36,11 @@ public class OrangeMushroomFeatureWG extends OrangeMushroomWG {
     }
 
     @Override
-    protected DefaultBlockList getHugeTrunk(StructureWorldAccess world, Random random, BlockPos pos, int radius, int height) {
-        List<BlockPos> posList = new ArrayList<>();
+    protected DividedBlockListManager getHugeTrunk(StructureWorldAccess world, Random random, BlockPos pos, int radius, int height) {
+        LongArrayList posList = new LongArrayList();
+        long encodedPos = LongPosHelper.encodeBlockPos(pos);
         for (int i = 0; i < height; i++) {
-            posList.add(pos.up(i));
+            posList.add(LongPosHelper.up(encodedPos, i));
         }
 
         for (int i = -2; i <= 2; i++) {
@@ -39,7 +49,7 @@ public class OrangeMushroomFeatureWG extends OrangeMushroomWG {
                 if (distance != 0 && distance != 4) {
                     int partialHeight = (int) ((float) random.nextBetween(3, 8) / distance);
                     for (int k = 0; k < partialHeight; k++) {
-                        posList.add(pos.add(i, k, j));
+                        posList.add(LongPosHelper.add(encodedPos, i, k, j));
                     }
                 }
             }
@@ -50,19 +60,22 @@ public class OrangeMushroomFeatureWG extends OrangeMushroomWG {
                 if (distance != 0 && distance != 4) {
                     int partialHeight = (int) ((float) random.nextBetween(3, 8) / distance);
                     for (int k = 0; k < partialHeight; k++) {
-                        posList.add(end.add(i, -k, j));
+                        posList.add(LongPosHelper.encodeBlockPos(end.add(i, -k, j)));
                     }
                 }
             }
         }
-        return new DefaultBlockList(posList, Blocks.MUSHROOM_STEM.getDefaultState());
+        DividedBlockListManager dividedManager = new DividedBlockListManager();
+        dividedManager.put(Blocks.MUSHROOM_STEM.getDefaultState(), posList);
+        return dividedManager;
     }
 
     @Override
-    protected DefaultBlockList getTrunk(StructureWorldAccess world, Random random, BlockPos pos, int radius, int height) {
-        List<BlockPos> posList = new ArrayList<>();
+    protected DividedBlockListManager getTrunk(StructureWorldAccess world, Random random, BlockPos pos, int radius, int height) {
+        LongArrayList posList = new LongArrayList();
+        long encodedPos = LongPosHelper.encodeBlockPos(pos);
         for (int i = 0; i < height; i++) {
-            posList.add(pos.up(i));
+            posList.add(LongPosHelper.up(encodedPos, i));
         }
 
         for (int i = -1; i <= 1; i++) {
@@ -71,7 +84,7 @@ public class OrangeMushroomFeatureWG extends OrangeMushroomWG {
                 if (distance != 0) {
                     int partialHeight = (int) ((float) random.nextBetween(2, 6) / distance);
                     for (int k = 0; k < partialHeight; k++) {
-                        posList.add(pos.add(i, k, j));
+                        posList.add(LongPosHelper.add(encodedPos, i, k, j));
                     }
                 }
             }
@@ -82,50 +95,61 @@ public class OrangeMushroomFeatureWG extends OrangeMushroomWG {
                 if (distance != 0) {
                     int partialHeight = (int) ((float) random.nextBetween(2, 6) / distance);
                     for (int k = 0; k < partialHeight; k++) {
-                        posList.add(end.add(i, -k, j));
+                        posList.add(LongPosHelper.encodeBlockPos(end.add(i, -k, j)));
                     }
                 }
             }
         }
-        return new DefaultBlockList(posList, Blocks.MUSHROOM_STEM.getDefaultState());
+        DividedBlockListManager dividedManager = new DividedBlockListManager();
+        dividedManager.put(Blocks.MUSHROOM_STEM.getDefaultState(), posList);
+        return dividedManager;
     }
 
     @Override
-    protected SphereGen[] getCap(StructureWorldAccess world, Random random, BlockPos pos, int radius, int radiusY, DefaultBlockList trunk) {
-        SphereGen sphere = new SphereGen(world, end.down(radiusY / 2), AbstractBlockShapeBase.PlaceMoment.OTHER, radius);
+    protected SphereGen[] getCap(StructureWorldAccess world, Random random, BlockPos pos, int radius, int radiusY, DividedBlockListManager trunk) {
+        SphereGen sphere = new SphereGen(end.down(radiusY / 2), radius);
         sphere.setRadiusY(radiusY);
         sphere.setHalfSphere(SphereGen.SphereType.HALF);
         sphere.setHalfSphereDirection(Direction.UP);
-        sphere.setBlockLayer(new BlockLayerComparator(new BlockLayer(List.of(ModBlocks.ORANGE_MUSHROOM_BLOCK.getDefaultState(), ModBlocks.ORANGE_ALTERED_MUSHROOM_BLOCK.getDefaultState(), ModBlocks.ORANGE_DEGRADATED_MUSHROOM_BLOCK.getDefaultState()), List.of((short) 4, (short) 2, (short) 1))));
-        SphereGen voidSphere = new SphereGen(world, end.down(radiusY), AbstractBlockShapeBase.PlaceMoment.OTHER, (int) (radius * 1.3f));
+       SphereGen voidSphere = new SphereGen(end.down(radiusY), (int) (radius * 1.3f));
         voidSphere.setRadiusY(radiusY);
         return new SphereGen[]{sphere, voidSphere};
     }
 
     @Override
-    protected void place(StructureWorldAccess world, BlockPos pos, BlockPos pos2, DefaultBlockListComparator coordinates, SphereGen sphere, SphereGen secondSphere) {
-        Set<BlockPos> posSet = new HashSet<>();
-        Map<ChunkPos, Set<BlockPos>> posSphere = sphere.getBlockPos();
-        for (Set<BlockPos> blockPosSet : posSphere.values()) {
-            posSet.addAll(blockPosSet);
-        }
-        posSphere = secondSphere.getBlockPos();
-        for (Set<BlockPos> blockPosSet : posSphere.values()) {
-            posSet.removeAll(blockPosSet);
-        }
+    protected void place(StructureWorldAccess world, BlockPos pos, BlockPos pos2, DividedBlockListManager coordinates, SphereGen sphere, SphereGen secondSphere) {
+        Map<ChunkPos, LongOpenHashSet> posSphere = sphere.getShapeCoordinates();
+        Map<ChunkPos, LongOpenHashSet> maskPos = secondSphere.getShapeCoordinates();
+        Map<ChunkPos, LongOpenHashSet> newSet = new HashMap<>();
 
-        Map<Pair<Integer, Integer>, Float> noiseMap = new HashMap<>();
+        posSphere.forEach((chunkPos, longSet) -> longSet.removeAll(maskPos.get(chunkPos)));
+
+        Long2FloatOpenHashMap noiseMap = new Long2FloatOpenHashMap();
         FastNoiseLite noise = new FastNoiseLite((int) world.getSeed());
         noise.SetFrequency(0.1f);
-        Map<ChunkPos, Set<BlockPos>> chunkMap = new HashMap<>();
-        for (BlockPos pos1 : posSet) {
-            Pair<Integer, Integer> pair = new Pair<>(pos1.getX(), pos1.getZ());
-            noiseMap.computeIfAbsent(pair, fun -> noise.GetNoise(pair.getLeft(), pair.getRight()));
-            WorldGenUtil.modifyChunkMap(pos1, chunkMap);
+        for (Map.Entry<ChunkPos, LongOpenHashSet> entry : posSphere.entrySet()) {
+            LongOpenHashSet newPos = new LongOpenHashSet();
+            for (long pos1 : entry.getValue()) {
+                long noise2d = (long) LongPosHelper.decodeX(pos1) << 32 + LongPosHelper.decodeZ(pos1);
+                noiseMap.computeIfAbsent(noise2d, (value) -> noise.GetNoise(value >> 32, value & 0xFFFF));
+                newPos.add(LongPosHelper.up(pos1, (int) (3 * noiseMap.get(noise2d))));
+            }
+            newSet.put(entry.getKey(), newPos);
         }
+        LayerManager layerManager = new LayerManager(
+                LayerManager.Type.SURFACE,
+                new BlockLayerManager(
+                        new BlockLayer(
+                                new LayerPlacer(LayerPlacer.PlacingType.RANDOM),
+                                List.of(ModBlocks.ORANGE_MUSHROOM_BLOCK.getDefaultState(), ModBlocks.ORANGE_ALTERED_MUSHROOM_BLOCK.getDefaultState(), ModBlocks.ORANGE_DEGRADATED_MUSHROOM_BLOCK.getDefaultState()),
+                                List.of((short) 4, (short) 2, (short) 1))
+                )
+        );
 
-        DefaultBlockListComparator comparator = sphere.getBlockListWithVerification(new ArrayList<>(chunkMap.values()));
-        comparator.placeAll(world);
-        coordinates.placeAll(world);
+
+        coordinates.put(layerManager.getDivided(newSet));
+
+        ShapePlacer placer = new ShapePlacer(world, ShapePlacer.PlaceMoment.WORLD_GEN, pos, Identifier.of(MushrooomsMod.MOD_ID, "orange_mushroom"));
+        placer.place(coordinates);
     }
 }

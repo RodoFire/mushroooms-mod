@@ -1,17 +1,20 @@
 package net.rodofire.mushrooomsmod.world.features.configuredfeatures.custom.mushrooms.codemushrooms.oth;
 
 import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.longs.LongShortImmutablePair;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.StructureWorldAccess;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.util.FeatureContext;
-import net.rodofire.easierworldcreator.blockdata.blocklist.basic.DefaultBlockList;
-import net.rodofire.easierworldcreator.blockdata.blocklist.ordered.comparator.DefaultOrderedBlockListComparator;
+import net.rodofire.easierworldcreator.blockdata.blocklist.BlockList;
+import net.rodofire.easierworldcreator.blockdata.blocklist.BlockListManager;
+import net.rodofire.easierworldcreator.blockdata.blocklist.OrderedBlockListManager;
 import net.rodofire.easierworldcreator.blockdata.sorter.BlockSorter;
 import net.rodofire.easierworldcreator.maths.MathUtil;
-import net.rodofire.easierworldcreator.placer.blocks.animator.StructurePlaceAnimator;
-import net.rodofire.easierworldcreator.placer.blocks.util.BlockPlaceUtil;
+import net.rodofire.easierworldcreator.shape.block.placer.animator.StructurePlaceAnimator;
+import net.rodofire.easierworldcreator.util.BlockPlaceUtil;
+import net.rodofire.easierworldcreator.util.LongPosHelper;
 import net.rodofire.mushrooomsmod.world.features.config.PurpleMushroomConfig;
 
 public abstract class HugePurpleMushroomOTH extends Feature<PurpleMushroomConfig> {
@@ -22,9 +25,9 @@ public abstract class HugePurpleMushroomOTH extends Feature<PurpleMushroomConfig
         super(configCodec);
     }
 
-    public boolean canGenerate(StructureWorldAccess world, DefaultOrderedBlockListComparator comparator) {
-        for (BlockPos pos : comparator.getBlockPosSet()) {
-            if (BlockPlaceUtil.verifyBlock(world, false, null, pos))
+    public boolean canGenerate(StructureWorldAccess world, OrderedBlockListManager manager) {
+        for (LongShortImmutablePair pos : manager.getPosList()) {
+            if (BlockPlaceUtil.verifyBlock(world, false, null, LongPosHelper.decodeBlockPos(pos.leftLong())))
                 continue;
             return false;
         }
@@ -37,7 +40,7 @@ public abstract class HugePurpleMushroomOTH extends Feature<PurpleMushroomConfig
     }
 
     boolean generate(FeatureContext<PurpleMushroomConfig> context, int i) {
-        if(i==3)
+        if (i == 3)
             return false;
 
         StructureWorldAccess world = context.getWorld();
@@ -45,7 +48,7 @@ public abstract class HugePurpleMushroomOTH extends Feature<PurpleMushroomConfig
         PurpleMushroomConfig config = context.getConfig();
 
         int capNumber = MathUtil.getRandomBoolean(0.3f) ? 2 : 3;
-        Integer[] directions = getDirections(capNumber);
+        int[] directions = getDirections(capNumber);
 
         if (capNumber == 3) end = new BlockPos[3];
         else end = new BlockPos[3];
@@ -53,21 +56,21 @@ public abstract class HugePurpleMushroomOTH extends Feature<PurpleMushroomConfig
         BlockSorter sorter = new BlockSorter(BlockSorter.BlockSorterType.FROM_POINT);
         sorter.setCenterPoint(pos);
 
-        DefaultOrderedBlockListComparator ordered = new DefaultOrderedBlockListComparator();
+        OrderedBlockListManager ordered = new OrderedBlockListManager();
 
 
         ///on récupère les blockList des troncs et des caps
-        DefaultBlockList blockList = this.getTrunkCoordinates(pos, directions[0], 0, config);
-        ordered.put(blockList.getBlockState(), blockList.getPosList());
+        BlockList blockList = this.getTrunkCoordinates(pos, directions[0], 0, config);
+        ordered.put(blockList.getState(), blockList.getPosList());
         ordered.put(this.getCapCoordinates(end[0], config));
 
         blockList = this.getTrunkCoordinates(pos, directions[1], 1, config);
-        ordered.put(blockList.getBlockState(), blockList.getPosList());
+        ordered.put(blockList.getState(), blockList.getPosList());
         ordered.put(this.getCapCoordinates(end[1], config));
 
         if (capNumber == 3) {
             blockList = this.getTrunkCoordinates(pos, directions[2], 2, config);
-            ordered.put(blockList.getBlockState(), blockList.getPosList());
+            ordered.put(blockList.getState(), blockList.getPosList());
             ordered.put(this.getCapCoordinates(end[2], config));
         }
 
@@ -78,10 +81,10 @@ public abstract class HugePurpleMushroomOTH extends Feature<PurpleMushroomConfig
         return true;
     }
 
-    private void place(StructureWorldAccess world, DefaultOrderedBlockListComparator blockListList) {
+    private void place(StructureWorldAccess world, OrderedBlockListManager blockListList) {
         StructurePlaceAnimator animator = new StructurePlaceAnimator(world, new BlockSorter(BlockSorter.BlockSorterType.FROM_POINT), StructurePlaceAnimator.AnimatorTime.CONSTANT_BLOCKS_PER_TICK);
         animator.setBlocksPerTick(3);
-        animator.place(new BlockSorter(BlockSorter.BlockSorterType.INVERSE).sortBlockList(blockListList));
+        animator.place(new BlockSorter(BlockSorter.BlockSorterType.INVERSE).sortOrderedBlockList(blockListList));
     }
 
     /**
@@ -89,18 +92,18 @@ public abstract class HugePurpleMushroomOTH extends Feature<PurpleMushroomConfig
      *
      * @param caps le nombre de caps du champignon géant
      */
-    Integer[] getDirections(int caps) {
+    int[] getDirections(int caps) {
         int actualDirection = Random.create().nextBetween(0, 7);
         if (caps == 3) {
             int random1 = Random.create().nextBetween(2, 4);
             int secondDirection = actualDirection + random1 % 8;
             int thirdDirection = secondDirection + Random.create().nextBetween(2, 6 - random1) % 8;
-            return new Integer[]{actualDirection, secondDirection, thirdDirection};
+            return new int[]{actualDirection, secondDirection, thirdDirection};
         }
-        return new Integer[]{actualDirection, actualDirection + Random.create().nextBetween(2, 6) % 8};
+        return new int[]{actualDirection, actualDirection + Random.create().nextBetween(2, 6) % 8};
     }
 
-    protected abstract DefaultBlockList getTrunkCoordinates(BlockPos base, int direction, int cap, PurpleMushroomConfig config);
+    protected abstract BlockList getTrunkCoordinates(BlockPos base, int direction, int cap, PurpleMushroomConfig config);
 
-    protected abstract DefaultOrderedBlockListComparator getCapCoordinates(BlockPos pos, PurpleMushroomConfig config);
+    protected abstract OrderedBlockListManager getCapCoordinates(BlockPos pos, PurpleMushroomConfig config);
 }

@@ -8,6 +8,7 @@ import software.bernie.geckolib.model.GeoModel;
 import software.bernie.geckolib.renderer.GeoRenderer;
 
 public class SquirrelModel extends GeoModel<SquirrelEntity> {
+
     @Override
     public Identifier getModelResource(SquirrelEntity entity, @Nullable GeoRenderer<SquirrelEntity> geoRenderer) {
         return Identifier.of(MushrooomsMod.MOD_ID, "geo/squirrel.geo.json");

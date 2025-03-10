@@ -1,23 +1,30 @@
 package net.rodofire.mushrooomsmod.world.features.configuredfeatures.custom.mushrooms.codemushrooms.oth;
 
 import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.longs.Long2FloatOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
 import net.minecraft.block.BlockState;
+import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.util.Pair;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.StructureWorldAccess;
-import net.rodofire.easierworldcreator.blockdata.blocklist.basic.DefaultBlockList;
-import net.rodofire.easierworldcreator.blockdata.blocklist.basic.comparator.DefaultBlockListComparator;
+import net.rodofire.easierworldcreator.blockdata.StructurePlacementRuleManager;
+import net.rodofire.easierworldcreator.blockdata.blocklist.BlockList;
+import net.rodofire.easierworldcreator.blockdata.blocklist.BlockListManager;
 import net.rodofire.easierworldcreator.blockdata.layer.BlockLayer;
-import net.rodofire.easierworldcreator.blockdata.layer.BlockLayerComparator;
+import net.rodofire.easierworldcreator.blockdata.layer.BlockLayerManager;
 import net.rodofire.easierworldcreator.blockdata.sorter.BlockSorter;
 import net.rodofire.easierworldcreator.maths.FastMaths;
 import net.rodofire.easierworldcreator.maths.MathUtil;
-import net.rodofire.easierworldcreator.placer.blocks.animator.StructurePlaceAnimator;
 import net.rodofire.easierworldcreator.shape.block.gen.SphereGen;
-import net.rodofire.easierworldcreator.shape.block.instanciator.AbstractBlockShapeBase;
-import net.rodofire.easierworldcreator.shape.block.instanciator.AbstractBlockShapePlaceType;
+import net.rodofire.easierworldcreator.shape.block.layer.LayerManager;
+import net.rodofire.easierworldcreator.shape.block.placer.LayerPlacer;
+import net.rodofire.easierworldcreator.shape.block.placer.animator.StructurePlaceAnimator;
+import net.rodofire.easierworldcreator.shape.block.rotations.Rotator;
 import net.rodofire.easierworldcreator.util.FastNoiseLite;
+import net.rodofire.easierworldcreator.util.LongPosHelper;
 import net.rodofire.mushrooomsmod.block.ModBlocks;
 import net.rodofire.mushrooomsmod.world.features.config.ModMushroomFeatureConfig;
 import net.rodofire.mushrooomsmod.world.features.configuredfeatures.custom.mushrooms.codemushrooms.CustomBlueMushroom;
@@ -33,35 +40,51 @@ public class BlueMushroomFeatureOTH extends CustomBlueMushroom {
      * méthode pour générer un large cap de champignon bleu dans un cas animé. On calcule les coordonnées d'un cylindre auquel on ajoute du bruit et on place le cylindre
      */
     @Override
-    public void generateLargeCap(StructureWorldAccess world, Random random, BlockPos pos, int maxlarge, BlockState state, int large, int height, DefaultBlockList blockLists, int yOffset) {
+    public void generateLargeCap(StructureWorldAccess world, Random random, BlockPos pos, int maxlarge, BlockState state, int large, int height, BlockList blockLists, int yOffset) {
         FastNoiseLite noise = new FastNoiseLite((int) world.getSeed());
         noise.SetNoiseType(FastNoiseLite.NoiseType.Perlin);
         noise.SetFrequency(0.06f);
 
-        SphereGen sphere = new SphereGen(world, pos, AbstractBlockShapeBase.PlaceMoment.ANIMATED_OTHER, large);
+        SphereGen sphere = new SphereGen(pos, large);
+        sphere.setRotator(
+                new Rotator(pos,
+                        0,
+                        MathUtil.getRandomOpposite() * (random.nextBetween(0, 20) + random.nextBetween(0, 10)),
+                        random.nextBetween(0, 360)
+                )
+        );
         sphere.setRadiusY(height);
-        sphere.setZRotation(MathUtil.getRandomOpposite() * (random.nextBetween(0, 20) + random.nextBetween(0, 10)));
-        sphere.setSecondYRotation(random.nextBetween(0, 360));
-        BlockLayer layer = new BlockLayer(List.of(ModBlocks.BLUE_MUSHROOM_BLOCK.getDefaultState(),ModBlocks.BLUE_ALTERED_MUSHROOM_BLOCK.getDefaultState()), List.of((short)3,(short)1));
-        sphere.setBlockLayer(new BlockLayerComparator(layer));
-        sphere.setLayerPlace(AbstractBlockShapePlaceType.LayerPlace.RANDOM);
-        List<Set<BlockPos>> posList = sphere.getBlockPosList(sphere.getBlockPos());
+
+        BlockLayer layer = new BlockLayer(new LayerPlacer(LayerPlacer.PlacingType.RANDOM),
+                List.of(ModBlocks.BLUE_MUSHROOM_BLOCK.getDefaultState(), ModBlocks.BLUE_ALTERED_MUSHROOM_BLOCK.getDefaultState()), List.of((short) 3, (short) 1)
+        );
+        StructurePlacementRuleManager tuler = new StructurePlacementRuleManager();
+        tuler.addTagKey(BlockTags.FLOWERS);
+        layer.setRuler(tuler);
+
+        LayerManager layerManager = new LayerManager(LayerManager.Type.SURFACE,
+                new BlockLayerManager(layer)
+        );
+
+
+        Map<ChunkPos, LongOpenHashSet> posList = sphere.getShapeCoordinates();
+
 
         ///on ajoute du bruit
         //éviter de calculer trop de buit
-        Map<Pair<Integer, Integer>, Float> offset = new HashMap<>();
+        Long2FloatOpenHashMap noiseMap = new Long2FloatOpenHashMap(posList.size());
         //les nouvelles positions
-        List<Set<BlockPos>> newPosList = new ArrayList<>();
-        int index = 0;
-        for (Set<BlockPos> set : posList) {
-            newPosList.add(new HashSet<>());
-            for (BlockPos pos1 : set) {
-                Pair<Integer, Integer> plan = new Pair<>(pos1.getX(), pos1.getZ());
-                offset.computeIfAbsent(plan, k -> noise.GetNoise(pos1.getX(), pos1.getZ()));
-                float a = offset.get(plan);
-                newPosList.get(index).add(pos1.add(new BlockPos(0, (int) (3 * a), 0)));
+        Map<ChunkPos, LongOpenHashSet> newPos = new HashMap<>();
+        for (Map.Entry<ChunkPos, LongOpenHashSet> set : posList.entrySet()) {
+            LongOpenHashSet posSet = new LongOpenHashSet();
+            for (long pos1 : set.getValue()) {
+                long noise2d = (((long) LongPosHelper.decodeX(pos1) & 0xFFFF) << 32) | (LongPosHelper.decodeZ(pos1) & 0xFFFF);
+                noiseMap.computeIfAbsent(noise2d, (value) -> noise.GetNoise(value >> 32, value & 0xFFFF));
+                float a = noiseMap.get(noise2d);
+                posSet.add(LongPosHelper.up(pos1, (int) (3 * a)));
             }
-            index++;
+            if (!posSet.isEmpty())
+                newPos.put(set.getKey(), posSet);
         }
         ///on initialise l'animator
         BlockSorter sorter = new BlockSorter(BlockSorter.BlockSorterType.FROM_POINT);
@@ -71,14 +94,15 @@ public class BlueMushroomFeatureOTH extends CustomBlueMushroom {
         animator.setBounds(new Pair<>(10, 130));
 
         ///on collecte la blockList du truenk et du cap, et on place
-        DefaultBlockListComparator comparator = new DefaultBlockListComparator();
-        comparator.put(blockLists);
-        comparator.put(sphere.getBlockListWithVerification(newPosList).get());
-        animator.placeFromBlockList(comparator);
+        BlockListManager manager = new BlockListManager();
+        manager.put(blockLists);
+
+        manager.put(layerManager.get(newPos));
+        animator.place(manager);
     }
 
     @Override
-    public DefaultBlockList generateLargeTrunk(StructureWorldAccess world, Random random, BlockPos pos, BlockState trunk, boolean force, int height, int maxlarge, int minlarge) {
+    public BlockList generateLargeTrunk(StructureWorldAccess world, Random random, BlockPos pos, BlockState trunk, boolean force, int height, int maxlarge, int minlarge) {
         BlockPos.Mutable mutable = new BlockPos.Mutable();
 
         FastNoiseLite noise = new FastNoiseLite((int) world.getSeed());
@@ -104,7 +128,7 @@ public class BlueMushroomFeatureOTH extends CustomBlueMushroom {
                     mutable.set(pos, x, u, z);
                     float t = 4 * noise.GetNoise(mutable.getX(), mutable.getZ());
                     if (u == 0) {
-                        for (int i = 0; i < t * 4 + 1; i++) {
+                        for (int i = 0; i < Math.abs(t) * 4 + 3; i++) {
                             posList.add(mutable.down(i));
                         }
                     }
@@ -120,6 +144,6 @@ public class BlueMushroomFeatureOTH extends CustomBlueMushroom {
                 }
             }
         }
-        return new DefaultBlockList(posList, trunk);
+        return new BlockList(trunk, posList);
     }
 }

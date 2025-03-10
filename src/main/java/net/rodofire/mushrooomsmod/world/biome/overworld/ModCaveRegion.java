@@ -21,7 +21,7 @@ public class ModCaveRegion extends Region {
     @Override
     public void addBiomes(Registry<Biome> registry, Consumer<Pair<MultiNoiseUtil.NoiseHypercube, RegistryKey<Biome>>> mapper) {
         VanillaParameterOverlayBuilder builder = new VanillaParameterOverlayBuilder();
-
+        BiomesRegion region = new BiomesRegion(builder);
         //Blue Luminescent Schroom Cave
         new ParameterUtils.ParameterPointListBuilder()
                 .temperature(ParameterUtils.Temperature.ICY)
@@ -71,6 +71,34 @@ public class ModCaveRegion extends Region {
                 .depth(ParameterUtils.Depth.UNDERGROUND)
                 .weirdness(MultiNoiseUtil.ParameterRange.of(-1f, 0.05f))
                 .build().forEach(point -> builder.add(point, ModOverworldBiomes.FOREST_CAVE));
+
+        region.addBiome(
+                -0.5f, 0.5f,
+                -1f, -0.4f,
+                0f, 1f,
+                -1f, 0f,
+                0.2f, 1.1f,
+                0.3f, 1f,
+                ModOverworldBiomes.ROCKY_CAVE
+        );
+
+        region.addBiome(
+                0.2f, 0.55f,
+                0.3f, 1.0f,
+                0f, 1f,
+                -1f, 0f,
+                0.2f, 1.1f,
+                0.1f, 1f,
+                ModOverworldBiomes.MOSSY_CAVE
+        );
+        /*new ParameterUtils.ParameterPointListBuilder()
+                .temperature(MultiNoiseUtil.ParameterRange.of(-1F, 0.5F))
+                .humidity(MultiNoiseUtil.ParameterRange.of(-1F, 0F))
+                .continentalness(MultiNoiseUtil.ParameterRange.of(0F, 1F))
+                .erosion(MultiNoiseUtil.ParameterRange.of(-1f, 0f))
+                .depth(MultiNoiseUtil.ParameterRange.of(0.2F, 1.1F))
+                .weirdness(MultiNoiseUtil.ParameterRange.of(0f, 1f))
+                .build().forEach(point -> builder.add(point, ModOverworldBiomes.ROCKY_CAVE));*/
 
         builder.build().forEach(mapper);
     }

@@ -9,7 +9,7 @@ import net.rodofire.mushrooomsmod.MushrooomsMod;
 
 public class ModOverworldBiomes {
     /*----------Surface----------*/
-    public static final RegistryKey<Biome> SHROOM_ISLAND1 = registerBiome("shroom_island1");
+    public static final RegistryKey<Biome> MUSHROOM_SHIRE = registerBiome("shroom_island1");
     //Schroom island with different mushrooms than the first biome
     public static final RegistryKey<Biome> SHROOM_ISLAND2 = registerBiome("shroom_island2");
     public static final RegistryKey<Biome> SAKURA_FOREST = registerBiome("sakura_forest");
@@ -24,10 +24,12 @@ public class ModOverworldBiomes {
     public static final RegistryKey<Biome> VANILLA_SHROOM_CAVE = registerBiome("vanilla_schroom_cave");
     public static final RegistryKey<Biome> CRYSTAL_CAVE = registerBiome("crystal_cave");
     public static final RegistryKey<Biome> FOREST_CAVE = registerBiome("forest_cave");
+    public static final RegistryKey<Biome> ROCKY_CAVE = registerBiome("rocky_cave");
+    public static final RegistryKey<Biome> MOSSY_CAVE = registerBiome("mossy_cave");
 
     public static void bootstrap(Registerable<Biome> context) {
         //Surface
-        //context.register(SHROOM_ISLAND1, ModOverworldBiomeCreator.SurFaceBiomes.createShroomIsland1(context));
+        //context.register(MUSHROOM_SHIRE, ModOverworldBiomeCreator.SurFaceBiomes.createMushroomShire(context));
         //context.register(SHROOM_ISLAND2, ModOverworldBiomeCreator.SurFaceBiomes.createShroomIsland2(context));
         context.register(SAKURA_FOREST, ModOverworldBiomeCreator.SurFaceBiomes.createSakuraForest(context));
         context.register(COLORFUL_PLAINS, ModOverworldBiomeCreator.SurFaceBiomes.createColorfulPlains(context));
@@ -40,9 +42,11 @@ public class ModOverworldBiomes {
         context.register(VANILLA_SHROOM_CAVE, ModOverworldBiomeCreator.UnderGroundBiomes.createVanillaSchroomCave(context));
         context.register(CRYSTAL_CAVE, ModOverworldBiomeCreator.UnderGroundBiomes.createCrystalCave(context));
         context.register(FOREST_CAVE, ModOverworldBiomeCreator.UnderGroundBiomes.createForestCave(context));
+        context.register(ROCKY_CAVE, ModOverworldBiomeCreator.UnderGroundBiomes.createRockyCave(context));
+        context.register(MOSSY_CAVE, ModOverworldBiomeCreator.UnderGroundBiomes.createMossyCave(context));
     }
 
     public static RegistryKey<Biome> registerBiome(String id) {
-        return RegistryKey.of(RegistryKeys.BIOME,Identifier.of(MushrooomsMod.MOD_ID, id));
+        return RegistryKey.of(RegistryKeys.BIOME, Identifier.of(MushrooomsMod.MOD_ID, id));
     }
 }

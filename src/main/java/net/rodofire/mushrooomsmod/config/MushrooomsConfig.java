@@ -2,6 +2,7 @@ package net.rodofire.mushrooomsmod.config;
 
 import net.rodofire.easierworldcreator.config.ConfigCategory;
 import net.rodofire.easierworldcreator.config.ModConfig;
+import net.rodofire.easierworldcreator.config.objects.BooleanConfigObject;
 import net.rodofire.easierworldcreator.config.objects.IntegerConfigObject;
 import net.rodofire.mushrooomsmod.MushrooomsMod;
 
@@ -13,6 +14,11 @@ public class MushrooomsConfig {
 
     public static void initConfig() {
         MushrooomsMod.LOGGER.info("|\t-Registering Config" );
+        BooleanConfigObject bool = new BooleanConfigObject(false, "reduce surface rules performance impact by limiting the rules quality", "fast_surface_rules");
+        bool.requireRestart = true;
+        SERVER.addBoolean(bool);
+
+
         IntegerConfigObject int1 = new IntegerConfigObject(
                 4,
                 1,
@@ -36,8 +42,8 @@ public class MushrooomsConfig {
 
         CLIENT.addBoolean("beta_warning_message", "send warning chat message upon world join", true);
 
-        CONFIG.addCategories(SERVER);
         CONFIG.addCategories(CLIENT);
+        CONFIG.addCategories(SERVER);
 
         CONFIG.init();
         init = true;
@@ -53,5 +59,9 @@ public class MushrooomsConfig {
 
     public static int getCavesBiomesSpawnRate() {
         return CONFIG.getCategory("server").getInts().get("cave_biome_spawn_rate").getActualValue();
+    }
+
+    public static boolean getFastSurfaceRules() {
+        return CONFIG.getCategory("server").getBools().get("fast_surface_rules").getActualValue();
     }
 }

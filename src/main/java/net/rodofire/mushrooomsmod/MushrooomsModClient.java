@@ -3,11 +3,13 @@ package net.rodofire.mushrooomsmod;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
+import net.rodofire.easierworldcreator.config.ModConfig;
 import net.rodofire.mushrooomsmod.client.blocks.ModBlockEntityRenderFactory;
 import net.rodofire.mushrooomsmod.client.blocks.ModBlockRenderType;
 import net.rodofire.mushrooomsmod.client.colors.ModColor;
 import net.rodofire.mushrooomsmod.client.entity.ModEntitiesRenderRegistry;
 import net.rodofire.mushrooomsmod.client.hud.HammerHUDOverlay;
+import net.rodofire.mushrooomsmod.config.MushrooomsClientConfig;
 import net.rodofire.mushrooomsmod.networking.ModNetwork;
 import net.rodofire.mushrooomsmod.particle.ModParticles;
 import net.rodofire.mushrooomsmod.particle.custom.GreenfireParticle;
@@ -16,6 +18,7 @@ public class MushrooomsModClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
+        MushrooomsMod.LOGGER.info("[MushrooomsmodMod] Client Initialization");
         ModNetwork.registerS2CPackets();
 
         //colors
@@ -37,6 +40,8 @@ public class MushrooomsModClient implements ClientModInitializer {
 
         //Particle
         ParticleFactoryRegistry.getInstance().register(ModParticles.GREENFIRE_PARTICLE, GreenfireParticle.Factory::new);
+
+        MushrooomsClientConfig.init();
     }
 
 }

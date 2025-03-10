@@ -1,6 +1,7 @@
 package net.rodofire.mushrooomsmod.world.features.configuredfeatures.custom.mushrooms.codemushrooms.wg;
 
 import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
 import net.minecraft.block.Blocks;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.util.math.BlockPos;
@@ -10,18 +11,30 @@ import net.minecraft.world.StructureWorldAccess;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.HugeMushroomFeatureConfig;
 import net.minecraft.world.gen.feature.util.FeatureContext;
-import net.rodofire.easierworldcreator.blockdata.blocklist.basic.comparator.DefaultBlockListComparator;
+import net.rodofire.easierworldcreator.blockdata.blocklist.DividedBlockListManager;
+import net.rodofire.easierworldcreator.blockdata.layer.BlockLayer;
 import net.rodofire.easierworldcreator.maths.MathUtil;
-import net.rodofire.easierworldcreator.placer.blocks.util.BlockPlaceUtil;
 import net.rodofire.easierworldcreator.shape.block.gen.LineGen;
 import net.rodofire.easierworldcreator.shape.block.gen.SphereGen;
-import net.rodofire.easierworldcreator.shape.block.instanciator.AbstractBlockShapeBase;
+import net.rodofire.easierworldcreator.shape.block.placer.LayerPlacer;
+import net.rodofire.easierworldcreator.util.BlockPlaceUtil;
+import net.rodofire.easierworldcreator.util.LongPosHelper;
+import net.rodofire.mushrooomsmod.block.ModBlocks;
 
+import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 public abstract class YellowMushroomWG extends Feature<HugeMushroomFeatureConfig> {
+    BlockLayer capLayer = new BlockLayer(
+            new LayerPlacer(LayerPlacer.PlacingType.RANDOM),
+            List.of(ModBlocks.YELLOW_MUSHROOM_BLOCK.getDefaultState(), ModBlocks.YELLOW_ALTERED_MUSHROOM_BLOCK.getDefaultState()),
+            List.of((short) 2, (short) 1)
+    );
 
+    BlockLayer trunkLayer = new BlockLayer(
+            new LayerPlacer(LayerPlacer.PlacingType.RANDOM),
+            Blocks.MUSHROOM_STEM.getDefaultState()
+    );
     public YellowMushroomWG(Codec<HugeMushroomFeatureConfig> configCodec) {
         super(configCodec);
     }
@@ -37,10 +50,11 @@ public abstract class YellowMushroomWG extends Feature<HugeMushroomFeatureConfig
                 }
             }
         }
-        LineGen line = new LineGen(world, start.up(2), AbstractBlockShapeBase.PlaceMoment.OTHER, end);
-        Map<ChunkPos, Set<BlockPos>> posList = line.getBlockPos();
-        for (Set<BlockPos> set : posList.values()) {
-            for (BlockPos pos : set) {
+        LineGen line = new LineGen( start.up(2),  end);
+        Map<ChunkPos, LongOpenHashSet> posList = line.getShapeCoordinates();
+        for (LongOpenHashSet set : posList.values()) {
+            for (long encodedPos : set) {
+                BlockPos pos = LongPosHelper.decodeBlockPos(encodedPos);
                 if (BlockPlaceUtil.verifyBlock(world, false, null, pos)
                         && BlockPlaceUtil.verifyBlock(world, false, null, pos.north())
                         && BlockPlaceUtil.verifyBlock(world, false, null, pos.south())
@@ -68,7 +82,7 @@ public abstract class YellowMushroomWG extends Feature<HugeMushroomFeatureConfig
         int large;
         int height;
 
-        DefaultBlockListComparator coordinates;
+        DividedBlockListManager coordinates;
 
         BlockPos end;
 
@@ -86,7 +100,7 @@ public abstract class YellowMushroomWG extends Feature<HugeMushroomFeatureConfig
                 return false;
 
 
-            coordinates = this.generateHugeTrunk(world, blockPos, end, height, hugeMushroomFeatureConfig);
+            coordinates = this.generateHugeTrunk(world, blockPos, end, height, hugeMushroomFeatureConfig, random);
         } else {
             height = Random.create().nextBetween(6, 18);
             large = Random.create().nextBetween(3, 6);
@@ -103,21 +117,21 @@ public abstract class YellowMushroomWG extends Feature<HugeMushroomFeatureConfig
         }
         SphereGen[] spheres;
         if (flatCap) {
-            spheres = this.generateFlatterCap(world, blockPos, end, hugeMushroomFeatureConfig, height, large, coordinates);
+            spheres = this.generateFlatterCap(world, blockPos, end, hugeMushroomFeatureConfig, height, large, coordinates, random);
         } else {
-            spheres = this.generateCap(world, blockPos, end, hugeMushroomFeatureConfig, height, large, coordinates);
+            spheres = this.generateCap(world, blockPos, end, hugeMushroomFeatureConfig, height, large, coordinates, random);
         }
 
         return this.place(world, blockPos, end, coordinates, spheres[0], spheres[1]);
     }
 
-    protected abstract DefaultBlockListComparator generateHugeTrunk(StructureWorldAccess world, BlockPos pos, BlockPos pos2, int height, HugeMushroomFeatureConfig config);
+    protected abstract DividedBlockListManager generateHugeTrunk(StructureWorldAccess world, BlockPos pos, BlockPos pos2, int height, HugeMushroomFeatureConfig config, Random random);
 
-    protected abstract DefaultBlockListComparator generateTrunk(StructureWorldAccess world, BlockPos pos, BlockPos pos2, int height, HugeMushroomFeatureConfig config);
+    protected abstract DividedBlockListManager generateTrunk(StructureWorldAccess world, BlockPos pos, BlockPos pos2, int height, HugeMushroomFeatureConfig config);
 
-    protected abstract SphereGen[] generateCap(StructureWorldAccess world, BlockPos pos, BlockPos pos2, HugeMushroomFeatureConfig var6, int height, int large, DefaultBlockListComparator coordinates);
+    protected abstract SphereGen[] generateCap(StructureWorldAccess world, BlockPos pos, BlockPos pos2, HugeMushroomFeatureConfig var6, int height, int large, DividedBlockListManager coordinates, Random random);
 
-    protected abstract SphereGen[] generateFlatterCap(StructureWorldAccess world, BlockPos pos, BlockPos pos2, HugeMushroomFeatureConfig var6, int height, int large, DefaultBlockListComparator coordinates);
+    protected abstract SphereGen[] generateFlatterCap(StructureWorldAccess world, BlockPos pos, BlockPos pos2, HugeMushroomFeatureConfig var6, int height, int large, DividedBlockListManager coordinates, Random random);
 
-    protected abstract boolean place(StructureWorldAccess world, BlockPos pos, BlockPos pos2, DefaultBlockListComparator coordinates, SphereGen sphere, SphereGen secondSphere);
+    protected abstract boolean place(StructureWorldAccess world, BlockPos pos, BlockPos pos2, DividedBlockListManager coordinates, SphereGen sphere, SphereGen secondSphere);
 }

@@ -3,12 +3,12 @@ package net.rodofire.mushrooomsmod.world.features.configuredfeatures.custom.mush
 import com.mojang.serialization.Codec;
 import net.minecraft.block.BlockState;
 import net.minecraft.registry.RegistryKey;
-import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.BlockMirror;
 import net.minecraft.util.BlockRotation;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
+import net.minecraft.world.StructureWorldAccess;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.HugeMushroomFeatureConfig;
@@ -30,7 +30,7 @@ public class CustomGreenSecondMushroomFeature extends CustomGreenSecondMushroom 
 
     @Override
     protected ArrayList<Integer> getCoordinates(WorldAccess world, Random random, BlockPos pos, BlockPos.Mutable mutable, int height, HugeMushroomFeatureConfig config) {
-        int direction = Random.create().nextBetween(0, 3);
+        int direction = random.nextBetween(0, 3);
         ArrayList<Integer> heightb = new ArrayList<>();
         ArrayList<Integer> coordinates = new ArrayList<>();
         coordinates.add(0);
@@ -41,13 +41,13 @@ public class CustomGreenSecondMushroomFeature extends CustomGreenSecondMushroom 
         ArrayList<Integer> values = new ArrayList<>();
 
         if (height < 7) {
-            heightb.add(Random.create().nextBetween(height / 3, 2 * height / 3 - 1));
-            heightb.add((Random.create().nextBetween(heightb.get(1) + 1, (height * 2) / 3)));
+            heightb.add(random.nextBetween(height / 3, 2 * height / 3 - 1));
+            heightb.add((random.nextBetween(heightb.get(1) + 1, (height * 2) / 3)));
         } else {
 
-            heightb.add(Random.create().nextBetween(height / 4, height / 2));
-            heightb.add((Random.create().nextBetween(heightb.get(1) + 1, (height * 3) / 4 - 1)));
-            heightb.add((Random.create().nextBetween(heightb.get(2) + 1, (height * 3) / 4)));
+            heightb.add(random.nextBetween(height / 4, height / 2));
+            heightb.add((random.nextBetween(heightb.get(1) + 1, (height * 3) / 4 - 1)));
+            heightb.add((random.nextBetween(heightb.get(2) + 1, (height * 3) / 4)));
         }
         values.add(heightb.size());
         values.addAll(heightb);
@@ -71,7 +71,7 @@ public class CustomGreenSecondMushroomFeature extends CustomGreenSecondMushroom 
             randomx = coordinates.get(coordinates.size() - 2);
             randomz = coordinates.get(coordinates.size() - 1);
         }
-        int newrandom = Random.create().nextBetween(0, 1);
+        int newrandom = random.nextBetween(0, 1);
 
 
         randomz = switch (direction) {
@@ -126,7 +126,7 @@ public class CustomGreenSecondMushroomFeature extends CustomGreenSecondMushroom 
     protected Integer[] generateFirstCap(WorldAccess world, Random random, BlockPos start, int y, Integer[] coordinates, BlockPos.Mutable mutable, HugeMushroomFeatureConfig config, int large) {
         int cap = getCap(large);
         int large1;
-        int rotation = Random.create().nextInt(4);
+        int rotation = random.nextInt(4);
         BlockRotation blockRotation;
 
         String path = "green_cap/first_cap/green_first_cap_" + large + "_" + cap;
@@ -140,10 +140,7 @@ public class CustomGreenSecondMushroomFeature extends CustomGreenSecondMushroom 
         large1 = coordinatesRotation[1];
 
 
-        if (!world.isClient()) {
-            NbtPlacer firstCap = new NbtPlacer((ServerWorld) world, Identifier.of(MushrooomsMod.MOD_ID, path));
-            firstCap.place(1.0f, mutable, new BlockPos(large, 0, large1), BlockMirror.NONE, blockRotation, true);
-        }
+        place(world, mutable, large, large1, path, blockRotation);
         return new Integer[]{rotation, cap};
     }
 
@@ -152,7 +149,7 @@ public class CustomGreenSecondMushroomFeature extends CustomGreenSecondMushroom 
         int large1;
         BlockRotation blockRotation;
 
-        String path = "green_cap/second_cap/green_second_cap_" + large + "_" + cap + "_" + Random.create().nextBetween(1, 2);
+        String path = "green_cap/second_cap/green_second_cap_" + large + "_" + cap + "_" + random.nextBetween(1, 2);
 
 
         mutable.set(start, coordinates[0], height - 1, coordinates[1]);
@@ -162,10 +159,7 @@ public class CustomGreenSecondMushroomFeature extends CustomGreenSecondMushroom 
         Integer[] coordinatesRotation = getCoordinatesRotation(rotation, large + 1);
         large = coordinatesRotation[0];
         large1 = coordinatesRotation[1];
-        if (!world.isClient()) {
-            NbtPlacer firstCap = new NbtPlacer((ServerWorld) world, Identifier.of(MushrooomsMod.MOD_ID, path));
-            firstCap.place(1.0f, mutable, new BlockPos(large, 0, large1), BlockMirror.NONE, blockRotation, true);
-        }
+        place(world, mutable, large, large1, path, blockRotation);
     }
 
     @Override
@@ -184,18 +178,23 @@ public class CustomGreenSecondMushroomFeature extends CustomGreenSecondMushroom 
         large = coordinatesRotation[0];
         large1 = coordinatesRotation[1];
 
+        place(world, mutable, large, large1, path, blockRotation);
+    }
+
+    private static void place(WorldAccess world, BlockPos.Mutable mutable, int large, int large1, String path, BlockRotation blockRotation) {
         if (!world.isClient()) {
-            NbtPlacer firstCap = new NbtPlacer((ServerWorld) world, Identifier.of(MushrooomsMod.MOD_ID, path));
-            firstCap.place(1.0f, mutable, new BlockPos(large, 0, large1), BlockMirror.NONE, blockRotation, true);
+            BlockPos pivot = new BlockPos(large, 0, large1);
+            NbtPlacer firstCap = new NbtPlacer((StructureWorldAccess) world, Identifier.of(MushrooomsMod.MOD_ID, path));
+            firstCap.place(1.0f, mutable.add(pivot), pivot, BlockMirror.NONE, blockRotation, true);
         }
     }
 
     protected Integer getCap(int large) {
         return switch (large) {
-            case 1 -> Random.create().nextBetween(1, 6);
+            case 1 -> random.nextBetween(1, 6);
             case 2 -> Random.createLocal().nextBetween(1, 5);
             case 3 -> Random.createLocal().nextBetween(1, 8);
-            default -> Random.create().nextBetween(1, 10);
+            default -> random.nextBetween(1, 10);
         };
     }
 
@@ -237,48 +236,38 @@ public class CustomGreenSecondMushroomFeature extends CustomGreenSecondMushroom 
         int randomz;
         int x;
         int z;
-        int down = Random.create().nextBetween(1, large * 2);
+        int down = random.nextBetween(1, large * 2);
         int random2 = 5;
 
         for (int i = 0; i <= down; ++i) {
-            int random1 = Random.create().nextBetween(0, 3);
+            int random1 = random.nextBetween(0, 3);
 
-            if (random1 == random2) random1 = (random1 + Random.create().nextBetween(1, 3)) % 4;
+            if (random1 == random2) random1 = (random1 + random.nextBetween(1, 3)) % 4;
 
             if (random1 == 0) {
-                x = Random.create().nextBetween(-large - 1, large + 1);
+                x = random.nextBetween(-large - 1, large + 1);
                 z = large + 1;
             } else if (random1 == 1) {
-                x = Random.create().nextBetween(-large - 1, large + 1);
+                x = random.nextBetween(-large - 1, large + 1);
                 z = -large - 1;
             } else if (random1 == 2) {
-                z = Random.create().nextBetween(-large - 1, large + 1);
+                z = random.nextBetween(-large - 1, large + 1);
                 x = large + 1;
             } else {
-                z = Random.create().nextBetween(-large - 1, large + 1);
+                z = random.nextBetween(-large - 1, large + 1);
                 x = -large - 1;
             }
 
-
-            if (x < 0) {
-                randomx = 1;
-            } else {
-                randomx = -1;
-            }
-
-            if (z < 0) {
-                randomz = 1;
-            } else {
-                randomz = -1;
-            }
+            randomx = x < 0 ? 1 : -1;
+            randomz = z < 0 ? 1 : -1;
 
             mutable.set(pos, x, height - 2, z);
 
-            boolean blockontop = world.getBlockState(mutable.up()).isOf(blockstate.getBlock());
+            boolean blockOnTop = world.getBlockState(mutable.up()).isOf(blockstate.getBlock());
 
-            while (!blockontop) {
+            while (!blockOnTop) {
 
-                if (Math.abs(x) > large + 1 || Math.abs(z) > large + 1) return;
+                if (Math.abs(x) > large + 1 || Math.abs(z) > large + 1) break;
 
                 x = x + randomx;
                 mutable.set(pos, x, height - 2, z);
@@ -291,7 +280,7 @@ public class CustomGreenSecondMushroomFeature extends CustomGreenSecondMushroom 
                 if (world.getBlockState(mutable.up()).isOf(blockstate.getBlock())) break;
             }
 
-            int randomj = Random.create().nextBetween(0, 2);
+            int randomj = random.nextBetween(0, 2);
 
             for (int j = 0; j <= randomj; ++j) {
                 mutable.set(pos, x, height - 2 - j, z);

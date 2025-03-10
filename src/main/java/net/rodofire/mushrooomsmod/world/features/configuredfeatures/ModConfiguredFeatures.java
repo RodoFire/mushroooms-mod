@@ -1,9 +1,12 @@
 package net.rodofire.mushrooomsmod.world.features.configuredfeatures;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.VineBlock;
 import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.entry.RegistryEntryList;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.state.property.Properties;
 import net.minecraft.structure.rule.BlockMatchRuleTest;
@@ -131,6 +134,7 @@ public class ModConfiguredFeatures<FC extends FeatureConfig> {
     public static final RegistryKey<ConfiguredFeature<?, ?>> TINY_GRASSS_KEY = registerKey("tiny_grass_key");
     public static final RegistryKey<ConfiguredFeature<?, ?>> GRASS_KEY = registerKey("grass_key");
     public static final RegistryKey<ConfiguredFeature<?, ?>> DENSE_GRASS_KEY = registerKey("dense_grass_key");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> DENSE_TALL_GRASS_KEY = registerKey("dense_tall_grass_key");
     public static final RegistryKey<ConfiguredFeature<?, ?>> GRASS_BLUE_LUMINESCENT_KEY = registerKey("grass_blue_luminescent_key");
     public static final RegistryKey<ConfiguredFeature<?, ?>> TALL_GRASS_BLUE_LUMINESCENT_KEY = registerKey("grass_tall_blue_luminescent_key");
 
@@ -138,10 +142,13 @@ public class ModConfiguredFeatures<FC extends FeatureConfig> {
     public static final RegistryKey<ConfiguredFeature<?, ?>> BLUE_LUMINESCENT_VINES_UP_KEY = registerKey("blue_luminescent_vines_up_key");
     public static final RegistryKey<ConfiguredFeature<?, ?>> BLUE_LUMINESCENT_VINES_DOWN_KEY = registerKey("blue_luminescent_vines_down_key");
     public static final RegistryKey<ConfiguredFeature<?, ?>> HANGING_ROOT_KEY = registerKey("hanging_root_key");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> VINES_KEY = registerKey("vines_key");
 
     //Bush
     public static final RegistryKey<ConfiguredFeature<?, ?>> BUSH_KEY = registerKey("bush_key");
     public static final RegistryKey<ConfiguredFeature<?, ?>> COLORFUL_BUSH_KEY = registerKey("colorful_bush_key");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> CAVE_BUSH_KEY = registerKey("cave_bush_key");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> CAVE_TOP_BUSH_KEY = registerKey("cave_top_bush_key");
 
     //Crystal
     public static final RegistryKey<ConfiguredFeature<?, ?>> RED_CRYSTAL_KEY = registerKey("red_crystal_key");
@@ -160,6 +167,12 @@ public class ModConfiguredFeatures<FC extends FeatureConfig> {
     //terrain
     public static final RegistryKey<ConfiguredFeature<?, ?>> SAKURA_ARCH_KEY = registerKey("sakura_arch_key");
     public static final RegistryKey<ConfiguredFeature<?, ?>> SAKURA_ROCK_STRAIGHT_KEY = registerKey("sakura_rock_straight_key");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> SAKURA_ROCK_FLAT_KEY = registerKey("sakura_rock_flat_key");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> ROCKY_STALACTITE_KEY = registerKey("rocky_stalactite_key");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> MOSSY_STALACTITE_KEY = registerKey("mossy_stalactite_key");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> HUGE_STALACTITE_KEY = registerKey("huge_stalactite_key");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> TINY_PUDDLE_KEY = registerKey("tiny_puddle_key");
+
     public static final RegistryKey<ConfiguredFeature<?, ?>> SPIRAL_MUSHROOM_KEY = registerKey("spiral_mushroom_key");
 
     //Dev
@@ -289,15 +302,39 @@ public class ModConfiguredFeatures<FC extends FeatureConfig> {
         register(context, TALL_GRASS_BLUE_LUMINESCENT_KEY, Feature.FLOWER, new RandomPatchFeatureConfig(43, 12, 3, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.BLUE_LUMINESCENT_TALL_GRASS)))));
         register(context, GRASS_KEY, Feature.FLOWER, new RandomPatchFeatureConfig(40, 12, 3, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(Blocks.SHORT_GRASS)))));
         register(context, DENSE_GRASS_KEY, Feature.FLOWER, new RandomPatchFeatureConfig(80, 12, 3, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(Blocks.SHORT_GRASS)))));
+        register(context, DENSE_TALL_GRASS_KEY, Feature.FLOWER, new RandomPatchFeatureConfig(80, 12, 3, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(Blocks.TALL_GRASS)))));
 
         //vines
         register(context, BLUE_LUMINESCENT_VINES_UP_KEY, ModFeatures.BLUE_LUMINESCENT_VINES, new TwistingVinesFeatureConfig(8, 1, 20));
         register(context, BLUE_LUMINESCENT_VINES_DOWN_KEY, ModFeatures.SIMPLE_VINES, new DirectionConfig(Direction.DOWN, BlockStateProvider.of(ModBlocks.BLUE_LUMINESCENT_VINES)));
         register(context, HANGING_ROOT_KEY, ModFeatures.SIMPLE_BLOCK, new ModSimpleBlockFeatureConfig(BlockStateProvider.of(Blocks.HANGING_ROOTS)));
+        register(context, VINES_KEY, ModFeatures.HANGING_VINES_GROW_FEATURES,
+                new HangingGrowthFeatureConfig((VineBlock) Blocks.VINE,
+                        20,
+                        23,
+                        false,
+                        false,
+                        true,
+                        0.35f,
+                        RegistryEntryList.of(
+                                Block::getRegistryEntry,
+                                Blocks.STONE,
+                                Blocks.COBBLESTONE,
+                                Blocks.MOSSY_COBBLESTONE,
+                                Blocks.ANDESITE,
+                                Blocks.DIORITE,
+                                Blocks.GRANITE,
+                                Blocks.DRIPSTONE_BLOCK,
+                                Blocks.CALCITE,
+                                Blocks.TUFF,
+                                Blocks.DEEPSLATE
+                        )));
 
         //Bush
         register(context, BUSH_KEY, ModFeatures.BUSH, new DefaultFeatureConfig());
         register(context, COLORFUL_BUSH_KEY, ModFeatures.COLORFUL_BUSH, new DefaultFeatureConfig());
+        register(context, CAVE_BUSH_KEY, ModFeatures.CAVE_BUSH, new DefaultFeatureConfig());
+        register(context, CAVE_TOP_BUSH_KEY, ModFeatures.CAVE_TOP_BUSH, new DefaultFeatureConfig());
 
         //Crystal
         register(context, RED_CRYSTAL_KEY, ModFeatures.CRYSTAL, new CrystalConfig(15, 9, BlockStateProvider.of(ModBlocks.RED_CRYSTAL)));
@@ -324,7 +361,12 @@ public class ModConfiguredFeatures<FC extends FeatureConfig> {
         //terrain
         register(context, SAKURA_ARCH_KEY, ModFeatures.ARCH, new ArchConfig(10, 3, 60, 30, 30, 30, 30));
         register(context, SAKURA_ROCK_STRAIGHT_KEY, ModFeatures.SAKURA_ROCK_STRAIGHT, new DefaultFeatureConfig());
+        register(context, SAKURA_ROCK_FLAT_KEY, ModFeatures.SAKURA_ROCK_FLAT, new DefaultFeatureConfig());
+        register(context, ROCKY_STALACTITE_KEY, ModFeatures.ROCKY_STALACTITE, new StalactiteFeatureConfig(52));
+        register(context, MOSSY_STALACTITE_KEY, ModFeatures.MOSSY_STALACTITE, new StalactiteFeatureConfig(39));
+        register(context, HUGE_STALACTITE_KEY, ModFeatures.HUGE_STALACTITE, new DefaultFeatureConfig());
         register(context, SPIRAL_MUSHROOM_KEY, ModFeatures.SPIRAL_MUSHROOM, new DefaultFeatureConfig());
+        register(context, TINY_PUDDLE_KEY, ModFeatures.TINY_PUDDLE, new DefaultFeatureConfig());
 
         //Dev
         register(context, FEATURE_TESTER_KEY, ModFeatures.FEATURE_TESTER, new ModSimpleBlockFeatureConfig(BlockStateProvider.of(Blocks.REDSTONE_BLOCK)));

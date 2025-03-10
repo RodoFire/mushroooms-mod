@@ -4,9 +4,10 @@
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "item.BrushItemMixin",
-    "world.FoliagePlacerTypeInvoker",
-    "world.TreeDecoratorTypeInvoker",
-    "world.TrunkPlacerTypeInvoker"
+    "world.gen.FoliagePlacerTypeInvoker",
+    "world.gen.TreeDecoratorTypeInvoker",
+    "world.gen.TrunkPlacerTypeInvoker",
+    "world.gen.PlacementModifierTypeInvoker"
   ],
   "injectors": {
     "defaultRequire": 1

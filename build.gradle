@@ -34,21 +34,6 @@ repositories {
     maven { url "https://maven.terraformersmc.com/releases/" }
 }
 
-/*loom {
-    runs {
-        // This adds a new gradle task that runs the datagen API: "gradlew runDatagen"
-        datagen {
-            inherit client()
-            name "Data Generation"
-            vmArg "-Dfabric-api.datagen"
-            vmArg "-Dfabric-api.datagen.output-dir=${file("src/main/generated")}"
-            vmArg "-Dfabric-api.datagen.modid=mushrooomsmod"
-
-            runDir "build/datagen"
-        }
-    }
-}*/
-
 // Add the generated resources to the main source set
 sourceSets {
     main {
@@ -57,6 +42,11 @@ sourceSets {
                     'src/main/generated'
             ]
         }
+    }
+}
+fabricApi {
+    configureDataGeneration{
+        client=true
     }
 }
 dependencies {
@@ -82,7 +72,7 @@ dependencies {
     modApi "dev.architectury:architectury-fabric:15.0.1"
 
 
-    modImplementation 'maven.modrinth:ewc:2.4.8-1.21.4'
+    modImplementation 'maven.modrinth:ewc:3.0.9+1.21.4'
 
 
     modApi "com.terraformersmc:modmenu:13.0.0-beta.1"
@@ -117,28 +107,6 @@ jar {
     }
 }
 
-// configure the maven publication
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            from components.java
-        }
-    }
-
-    // See https://docs.gradle.org/current/userguide/publishing_maven.html for information on how to set up publishing.
-    repositories {
-
-        // Add repositories to publish to here.
-        // Notice: This block does NOT have the same function as the block in the top level.
-        // The repositories here will be used for publishing your artifact, not for
-        // retrieving dependencies.
-    }
-}
-fabricApi {
-    configureDataGeneration{
-        client=true
-    }
-}
 
 publishMods {
     file = remapJar.archiveFile

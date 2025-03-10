@@ -128,27 +128,22 @@ public class CrystalGolemEntity extends GolemEntity implements Angerable, GeoEnt
         if (source.getSource() instanceof PersistentProjectileEntity && this.random.nextInt(2) == 0) {
             return false;
         }
-        return super.damage(world, source, amount);
+        return super.damage(world,source, amount);
     }
-
-    //TODO
-    //make the golem invulnerable to arrows
 
     private boolean attack() {
         Box boundingBox = this.getBoundingBox().expand(5);
         List<LivingEntity> entitiesInRadius = this.getWorld().getEntitiesByClass(LivingEntity.class, boundingBox, x -> true);
         int i =0;
 
-        //apply knockback and damages to entites around the golem
-        for (LivingEntity entity : entitiesInRadius) {
-            if (entity == this) continue;
-            Vec3d pull = this.getPos().subtract(entity.getPos());
-            float f = this.getAttackDamage();
-            float g = (int) f > 0 ? f / 2.0f + (float) this.random.nextInt((int) f) : f;
-            World world = entity.getWorld();
-            if(world instanceof ServerWorld) {
-                ServerWorld serverWorld = (ServerWorld) world;
+        if(this.getWorld() instanceof ServerWorld serverWorld) {
 
+            //apply knockback and damages to entites around the golem
+            for (LivingEntity entity : entitiesInRadius) {
+                if (entity == this) continue;
+                Vec3d pull = this.getPos().subtract(entity.getPos());
+                float f = this.getAttackDamage();
+                float g = (int) f > 0 ? f / 2.0f + (float) this.random.nextInt((int) f) : f;
                 boolean bl = entity.damage(serverWorld, this.getDamageSources().mobAttack(this), g);
                 if (pull.horizontalLength() > 5 || !bl) {
                     continue;

@@ -9,13 +9,13 @@ import net.rodofire.mushrooomsmod.world.features.placedfeatures.ModUndergroundPl
 public class ModOreGeneration {
     public static void generateOres() {
         BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(),
-                GenerationStep.Feature.UNDERGROUND_ORES, ModUndergroundPlacedFeatures.RHYOLITE_UNDERGROUND_PLACED_KEY);
+                GenerationStep.Feature.UNDERGROUND_ORES, ModUndergroundPlacedFeatures.RHYOLITE_KEY);
 
         BiomeModifications.addFeature(BiomeSelectors.foundInTheNether(),
                 GenerationStep.Feature.UNDERGROUND_ORES, ModNetherPlacedFeatures.AMBER_ORE_NETHER_PLACED_FEATURES);
 
         BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(),
-                GenerationStep.Feature.UNDERGROUND_ORES, ModUndergroundPlacedFeatures.AMBER_MINERAL_UNDERGROUND_PLACED_FEATURE);
+                GenerationStep.Feature.UNDERGROUND_ORES, ModUndergroundPlacedFeatures.AMBER_MINERAL_KEY);
 
     }
 }

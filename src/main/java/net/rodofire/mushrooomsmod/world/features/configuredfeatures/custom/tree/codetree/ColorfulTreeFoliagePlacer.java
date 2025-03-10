@@ -14,11 +14,12 @@ import net.minecraft.world.gen.feature.TreeFeature;
 import net.minecraft.world.gen.feature.TreeFeatureConfig;
 import net.minecraft.world.gen.foliage.FoliagePlacer;
 import net.minecraft.world.gen.foliage.FoliagePlacerType;
-import net.rodofire.easierworldcreator.blockdata.layer.BlockLayer;
-import net.rodofire.easierworldcreator.blockdata.layer.BlockLayerComparator;
+import net.rodofire.easierworldcreator.blockdata.layer.BlockLayerManager;
 import net.rodofire.easierworldcreator.maths.MathUtil;
 import net.rodofire.easierworldcreator.shape.block.gen.SphereGen;
-import net.rodofire.easierworldcreator.shape.block.instanciator.AbstractBlockShapeBase;
+import net.rodofire.easierworldcreator.shape.block.layer.LayerManager;
+import net.rodofire.easierworldcreator.shape.block.placer.LayerPlacer;
+import net.rodofire.easierworldcreator.shape.block.placer.ShapePlacer;
 import net.rodofire.mushrooomsmod.block.ModBlocks;
 import net.rodofire.mushrooomsmod.world.features.configuredfeatures.custom.tree.ModFoliagePlacerTypes;
 
@@ -55,13 +56,16 @@ public class ColorfulTreeFoliagePlacer extends FoliagePlacer {
     @Override
     protected void generate(TestableWorld world, BlockPlacer placer, Random random, TreeFeatureConfig config, int trunkHeight, TreeNode treeNode, int foliageHeight, int radius, int offset) {
         int radiusB = Random.create().nextBetween(4, 5);
-        SphereGen sphere = new SphereGen((StructureWorldAccess) world, treeNode.getCenter(), AbstractBlockShapeBase.PlaceMoment.OTHER, radiusB);
+        SphereGen sphere = new SphereGen(treeNode.getCenter(), radiusB);
         sphere.setHalfSphere(SphereGen.SphereType.HALF);
         BlockState state = getLeaveBlock().with(Properties.PERSISTENT, true);
 
-        sphere.setBlockLayer(new BlockLayerComparator(new BlockLayer(state)));
+        ShapePlacer placer1 = new ShapePlacer((StructureWorldAccess) world, ShapePlacer.PlaceMoment.OTHER, treeNode.getCenter());
+        placer1.place(sphere.getShapeCoordinates(), new LayerManager(
+                LayerManager.Type.SURFACE,
+                new BlockLayerManager(new LayerPlacer(LayerPlacer.PlacingType.NOISE2D), state, (short) 1)
+        ));
 
-        sphere.place();
         for (int x = -radiusB; x <= radiusB; x++) {
             int xx = x * x;
             for (int z = -radiusB; z <= radiusB; z++) {

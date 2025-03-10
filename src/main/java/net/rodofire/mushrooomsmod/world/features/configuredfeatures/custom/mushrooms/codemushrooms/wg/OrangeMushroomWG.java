@@ -9,11 +9,10 @@ import net.minecraft.world.StructureWorldAccess;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.util.FeatureContext;
-import net.rodofire.easierworldcreator.blockdata.blocklist.basic.DefaultBlockList;
-import net.rodofire.easierworldcreator.blockdata.blocklist.basic.comparator.DefaultBlockListComparator;
+import net.rodofire.easierworldcreator.blockdata.blocklist.DividedBlockListManager;
 import net.rodofire.easierworldcreator.maths.MathUtil;
-import net.rodofire.easierworldcreator.placer.blocks.util.BlockPlaceUtil;
 import net.rodofire.easierworldcreator.shape.block.gen.SphereGen;
+import net.rodofire.easierworldcreator.util.BlockPlaceUtil;
 
 public abstract class OrangeMushroomWG extends Feature<DefaultFeatureConfig> {
     protected BlockPos end;
@@ -53,7 +52,7 @@ public abstract class OrangeMushroomWG extends Feature<DefaultFeatureConfig> {
         if(!world.getBlockState(pos.down()).isIn(BlockTags.MUSHROOM_GROW_BLOCK))
             return false;
 
-        DefaultBlockList blockList;
+        DividedBlockListManager blockList;
         int radius;
         int radiusY;
 
@@ -82,17 +81,17 @@ public abstract class OrangeMushroomWG extends Feature<DefaultFeatureConfig> {
             blockList = this.getTrunk(world, random, pos, radius, height);
         }
         SphereGen[] spgeres = this.getCap(world, random, pos, radius, radiusY, blockList);
-        this.place(world, pos, end, new DefaultBlockListComparator(blockList), spgeres[0], spgeres[1]);
+        this.place(world, pos, end, blockList, spgeres[0], spgeres[1]);
         return true;
     }
 
-    protected abstract DefaultBlockList getHugeTrunk(StructureWorldAccess world, Random random, BlockPos pos, int radius, int height);
+    protected abstract DividedBlockListManager getHugeTrunk(StructureWorldAccess world, Random random, BlockPos pos, int radius, int height);
 
 
-    protected abstract DefaultBlockList getTrunk(StructureWorldAccess world, Random random, BlockPos pos, int radius, int height);
+    protected abstract DividedBlockListManager getTrunk(StructureWorldAccess world, Random random, BlockPos pos, int radius, int height);
 
-    protected abstract SphereGen[] getCap(StructureWorldAccess world, Random random, BlockPos pos, int radius, int radiusY, DefaultBlockList trunk);
+    protected abstract SphereGen[] getCap(StructureWorldAccess world, Random random, BlockPos pos, int radius, int radiusY, DividedBlockListManager trunk);
 
 
-    protected abstract void place(StructureWorldAccess world, BlockPos pos, BlockPos pos2, DefaultBlockListComparator coordinates, SphereGen sphere, SphereGen secondSphere);
+    protected abstract void place(StructureWorldAccess world, BlockPos pos, BlockPos pos2, DividedBlockListManager coordinates, SphereGen sphere, SphereGen secondSphere);
 }

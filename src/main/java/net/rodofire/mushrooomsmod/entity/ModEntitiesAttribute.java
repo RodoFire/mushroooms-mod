@@ -11,7 +11,7 @@ public class ModEntitiesAttribute {
         registerAnimals();
         registerGolems();
         registerMisc();
-        MushrooomsMod.LOGGER.info("|\tRegistering Entities Attributes");
+        MushrooomsMod.LOGGER.info("|\t-Registering Entities Attributes");
     }
     public static void registerMonsters() {
         FabricDefaultAttributeRegistry.register(ModEntities.CRYSTAL_CREEPER, CustomCreeperEntity.createCreeperAttributes());

@@ -5,6 +5,8 @@ import net.minecraft.block.Blocks;
 import net.minecraft.util.math.random.Random;
 import net.rodofire.easierworldcreator.blockdata.layer.BlockLayer;
 import net.rodofire.easierworldcreator.maths.MathUtil;
+import net.rodofire.easierworldcreator.shape.block.placer.LayerPlacer;
+import net.rodofire.easierworldcreator.util.FastNoiseLite;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,7 +16,7 @@ public class RockUtil {
     private static final BlockState[] STATES = new BlockState[]{Blocks.COBBLESTONE.getDefaultState(), Blocks.MOSSY_COBBLESTONE.getDefaultState(), Blocks.TUFF.getDefaultState()};
 
 
-    public static BlockLayer getRandomBlockLayer(int random, int baseRandom, BlockState base, BlockState... addition) {
+    public static BlockLayer getRandomBlockLayer(int random, int baseRandom, BlockState base, long seed, BlockState... addition) {
         List<BlockState> blockStates = new ArrayList<>();
         for (int i = 0; i < baseRandom; i++) {
             blockStates.add(base);
@@ -24,7 +26,9 @@ public class RockUtil {
                 blockStates.add(state);
             }
         }
-        return new BlockLayer(blockStates);
+        FastNoiseLite noise = new FastNoiseLite((int) seed);
+        noise.SetFrequency(0.07f);
+        return new BlockLayer(new LayerPlacer(LayerPlacer.PlacingType.NOISE3D, noise), blockStates);
     }
 
     public static BlockState[] getRandomStone() {

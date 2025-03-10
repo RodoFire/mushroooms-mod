@@ -12,6 +12,11 @@ public class ModTags {
         public static final TagKey<Block> MUSHROOM_PLANT = createTag("mushroom_plant");
         public static final TagKey<Block> GRASS = createTag("mushroom_plant");
         public static final TagKey<Block> MUSHROOM_SPAWNABLE = createTag("mushroom_spawnable");
+        public static final TagKey<Block> ROCKY_STALACTITE_BASE = createTag("rocky_stalactite_base");
+        public static final TagKey<Block> MOSSY_STALACTITE_BASE = createTag("mossy_stalactite_base");
+        public static final TagKey<Block> ROCKY_STALACTITE_TOP = createTag("rocky_stalactite_top");
+        public static final TagKey<Block> MOSSY_STALACTITE_TOP = createTag("mossy_stalactite_top");
+        public static final TagKey<Block> FLUIDS = createTag("fluids");
 
         private static TagKey<Block> createTag(String name) {
             return TagKey.of(RegistryKeys.BLOCK, Identifier.of(MushrooomsMod.MOD_ID, name));
@@ -27,7 +32,6 @@ public class ModTags {
 
         public static final TagKey<Item> BLUE_LUMINESCENT_LOGS = createTag("blue_luminescent_logs");
         public static final TagKey<Item> PELTOGYNE_LOGS = createTag("peltogyne_logs");
-
 
 
         private static TagKey<Item> createTag(String name) {

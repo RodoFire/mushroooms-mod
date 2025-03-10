@@ -1,24 +1,33 @@
 package net.rodofire.mushrooomsmod.world.features.configuredfeatures.custom;
 
 import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
 import net.minecraft.block.Blocks;
+import net.minecraft.registry.tag.BlockTags;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.StructureWorldAccess;
+import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.util.FeatureContext;
+import net.rodofire.easierworldcreator.blockdata.StructurePlacementRuleManager;
 import net.rodofire.easierworldcreator.blockdata.layer.BlockLayer;
-import net.rodofire.easierworldcreator.blockdata.layer.BlockLayerComparator;
+import net.rodofire.easierworldcreator.blockdata.layer.BlockLayerManager;
 import net.rodofire.easierworldcreator.shape.block.gen.TorusGen;
-import net.rodofire.easierworldcreator.shape.block.instanciator.AbstractBlockShapeBase;
-import net.rodofire.easierworldcreator.shape.block.instanciator.AbstractBlockShapeLayer;
-import net.rodofire.easierworldcreator.shape.block.instanciator.AbstractBlockShapePlaceType;
+import net.rodofire.easierworldcreator.shape.block.layer.LayerManager;
+import net.rodofire.easierworldcreator.shape.block.placer.LayerPlacer;
+import net.rodofire.easierworldcreator.shape.block.placer.ShapePlacer;
+import net.rodofire.easierworldcreator.shape.block.placer.WGShapeData;
+import net.rodofire.easierworldcreator.shape.block.placer.WGShapeHandler;
+import net.rodofire.easierworldcreator.shape.block.rotations.Rotator;
 import net.rodofire.easierworldcreator.util.FastNoiseLite;
+import net.rodofire.mushrooomsmod.MushrooomsMod;
+import net.rodofire.mushrooomsmod.util.ModTags;
 import net.rodofire.mushrooomsmod.world.features.config.ArchConfig;
 import net.rodofire.mushrooomsmod.world.features.configuredfeatures.custom.util.RockUtil;
 
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -32,55 +41,71 @@ public class SakuraArchFeature extends Feature<ArchConfig> {
     public boolean generate(FeatureContext<ArchConfig> context) {
         StructureWorldAccess world = context.getWorld();
         BlockPos pos = context.getOrigin();
-        System.out.println("generation");
+        Random random = context.getRandom();
 
         boolean bl = false;
         for (int i = 0; i < 20; i++) {
             if (world.getBlockState(pos.down(i)).isOpaqueFullCube()) bl = true;
         }
         if (!bl) return false;
-        System.out.println("bl");
 
         FastNoiseLite noise = new FastNoiseLite((int) world.getSeed());
         noise.SetFrequency(0.1f);
 
-        int radiusx = Random.create().nextBetween(10, 23);
-        int radiusz = Random.create().nextBetween(10, 23);
-        int innerRadius = Random.create().nextBetween(2, 7);
+        int radiusx = random.nextBetween(13, 35);
+        int radiusz = random.nextBetween(13, 35);
+        int innerRadius = random.nextBetween(2, 7);
 
-        TorusGen torus = new TorusGen(world, pos, AbstractBlockShapeBase.PlaceMoment.WORLD_GEN, innerRadius, radiusx);
+        TorusGen torus = new TorusGen(pos, innerRadius, radiusx);
+        torus.setOuterRadiusZ(radiusz);
 
         BlockLayer stone = RockUtil.getRandomBlockLayer(
-                Random.create().nextBetween(3, 5),
-                Random.create().nextBetween(2, 5),
+                random.nextBetween(3, 5),
+                random.nextBetween(2, 5),
                 Blocks.STONE.getDefaultState(),
+                world.getSeed(),
                 RockUtil.getRandomStone(Blocks.TUFF.getDefaultState()));
 
-        stone.setBlocksToForce(Set.of(Blocks.GRASS_BLOCK, Blocks.DIRT));
-        torus.setBlockLayer(new BlockLayerComparator(List.of(
-                new BlockLayer(
-                        Blocks.GRASS_BLOCK.getDefaultState(), 2),
-                stone)));
+        BlockLayer grass = new BlockLayer(new LayerPlacer(LayerPlacer.PlacingType.RANDOM), Blocks.GRASS_BLOCK.getDefaultState(), 1);
+
+        StructurePlacementRuleManager stoneRule = new StructurePlacementRuleManager();
+        stoneRule.addTagKeys(Set.of(
+                BlockTags.DIRT, ModTags.Blocks.FLUIDS, BlockTags.LEAVES
+        ));
+
+        StructurePlacementRuleManager grassRule = new StructurePlacementRuleManager();
+        grassRule.addTagKeys(Set.of(
+                ModTags.Blocks.FLUIDS, BlockTags.LEAVES
+        ));
+
+        grass.setRuler(grassRule);
+        stone.setRuler(stoneRule);
+
 
         //torus.setTorusType(TorusGen.TorusType.HORIZONTAL_HALF);
 
 
-        torus.setLayerPlace(AbstractBlockShapePlaceType.LayerPlace.NOISE3D);
-        FastNoiseLite placeNoise = new FastNoiseLite((int) world.getSeed());
-        placeNoise.SetFrequency(0.2f);
-        torus.setNoise(placeNoise);
+        LayerManager layerManager = new LayerManager(LayerManager.Type.SURFACE,
+                new BlockLayerManager(grass, stone)
+        );
 
-        torus.setOuterRadiusZ(radiusz);
-        torus.setLayersType(AbstractBlockShapeLayer.LayersType.SURFACE);
+        Rotator rotator = new Rotator(
+                pos,
+                random.nextBetween(-10, -10),
+                -random.nextBetween(40, 140),
+                random.nextBetween(0, 360)
+        );
 
-        int rotationY = Random.create().nextBetween(0, 180);
-        int rotationZ = -Random.create().nextBetween(50, 140);
+        torus.setRotator(rotator);
+        torus.setTorusType(TorusGen.TorusType.HORIZONTAL_HALF);
 
-        torus.setZRotation(rotationZ);
-        torus.setYRotation(rotationY);
         //torus.setSecondxrotation(Random.create().nextBetween(0, 180));
 
-        Map<ChunkPos, Set<BlockPos>> poslist = torus.getBlockPos();
+        Map<ChunkPos, LongOpenHashSet> posList = torus.getShapeCoordinates();
+
+        ShapePlacer placer = new ShapePlacer(world, ShapePlacer.PlaceMoment.WORLD_GEN, WGShapeData.ofStep(GenerationStep.Feature.TOP_LAYER_MODIFICATION, MushrooomsMod.MOD_ID + "-sakura_arch"), pos, Identifier.of(MushrooomsMod.MOD_ID, "sakura_arch"));
+        placer.place(posList, layerManager);
+
 
         /*for (Set<BlockPos> set : poslist.values()) {
             set.removeIf(pos1 -> noise.GetNoise(pos1.getX(), pos1.getY(), pos1.getZ()) <= -0.8f);
@@ -97,8 +122,6 @@ public class SakuraArchFeature extends Feature<ArchConfig> {
 
         cylinder.setYrotation(-rotattionY - 90);
         cylinder2.setYrotation(-rotattionY - 90);*/
-
-        torus.place(poslist);
         //cylinder.place();
         //cylinder2.place();
 

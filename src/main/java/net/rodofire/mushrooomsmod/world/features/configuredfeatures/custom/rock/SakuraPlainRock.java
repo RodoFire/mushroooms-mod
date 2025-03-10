@@ -13,11 +13,12 @@ public abstract class SakuraPlainRock extends DefaultRockFeature {
     }
 
     @Override
-    public BlockLayer getBlockLayer() {
+    public BlockLayer getBlockLayer(long seed) {
         return RockUtil.getRandomBlockLayer(
                 Random.create().nextBetween(3, 7),
                 Random.create().nextBetween(1, 5),
                 Blocks.STONE.getDefaultState(),
+                seed,
                 RockUtil.getRandomStone(Blocks.TUFF.getDefaultState()));
     }
 }

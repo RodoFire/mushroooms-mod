@@ -6,7 +6,7 @@ import net.rodofire.mushrooomsmod.config.MushrooomsConfig;
 import net.rodofire.mushrooomsmod.world.biome.overworld.ModCaveRegion;
 import net.rodofire.mushrooomsmod.world.biome.overworld.ModOverworldRegion;
 import net.rodofire.mushrooomsmod.world.biome.overworld.ModOverworldRegionSimplified;
-import net.rodofire.mushrooomsmod.world.biome.rules.ModMaterialsRules;
+import net.rodofire.mushrooomsmod.world.biome.rules.ModOverWorldSurfaceRules;
 import terrablender.api.Regions;
 import terrablender.api.SurfaceRuleManager;
 import terrablender.api.TerraBlenderApi;
@@ -29,6 +29,6 @@ public class ModTerrablenderAPI implements TerraBlenderApi {
         Regions.register(new ModOverworldRegion(Identifier.of(MushrooomsMod.MOD_ID, "overworld"), getCommonBiomesSpawnRate()));
         Regions.register(new ModCaveRegion(Identifier.of(MushrooomsMod.MOD_ID, "overworld_caves"), getCaveBiomesSpawnRate()));
         Regions.register(new ModOverworldRegionSimplified(Identifier.of(MushrooomsMod.MOD_ID, "overworld_simplified"), 4));
-        SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, MushrooomsMod.MOD_ID, ModMaterialsRules.makeRules());
+        SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, MushrooomsMod.MOD_ID, ModOverWorldSurfaceRules.makeRules());
     }
 }

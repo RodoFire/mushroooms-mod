@@ -32,4 +32,5 @@ public class ModEntitiesRenderRegistry {
     public static void registerGolems(){
         EntityRendererRegistry.register(ModEntities.CRYSTAL_GOLEM, CrystalGolemRenderer::new);
     }
+
 }

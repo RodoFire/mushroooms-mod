@@ -5,9 +5,9 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
-import net.rodofire.easierworldcreator.blockdata.blocklist.basic.DefaultBlockList;
-import net.rodofire.easierworldcreator.blockdata.blocklist.basic.comparator.DefaultBlockListComparator;
-import net.rodofire.easierworldcreator.blockdata.blocklist.ordered.comparator.DefaultOrderedBlockListComparator;
+import net.rodofire.easierworldcreator.blockdata.blocklist.BlockList;
+import net.rodofire.easierworldcreator.blockdata.blocklist.BlockListManager;
+import net.rodofire.easierworldcreator.blockdata.blocklist.OrderedBlockListManager;
 import net.rodofire.easierworldcreator.blockdata.sorter.BlockSorter;
 import net.rodofire.easierworldcreator.maths.MathUtil;
 import net.rodofire.mushrooomsmod.block.ModBlocks;
@@ -26,7 +26,7 @@ public class HugePurpleMushroomOTHFeature extends HugePurpleMushroomOTH {
     }
 
     @Override
-    protected DefaultBlockList getTrunkCoordinates(BlockPos base, int direction, int trunk, PurpleMushroomConfig config) {
+    protected BlockList getTrunkCoordinates(BlockPos base, int direction, int trunk, PurpleMushroomConfig config) {
         calculateDirection(direction);
         return calculateTrunkCoordinates(direction, base, trunk, config);
     }
@@ -93,7 +93,7 @@ public class HugePurpleMushroomOTHFeature extends HugePurpleMushroomOTH {
     /**
      * méthode pour calculer les coordonnées du trunk
      */
-    private DefaultBlockList calculateTrunkCoordinates(int direction, BlockPos pos, int trunk, PurpleMushroomConfig config) {
+    private BlockList calculateTrunkCoordinates(int direction, BlockPos pos, int trunk, PurpleMushroomConfig config) {
         ///on calcule la direction
         calculateDirection(direction);
         int startHeight = Random.create().nextBetween(1, 6);
@@ -105,13 +105,13 @@ public class HugePurpleMushroomOTHFeature extends HugePurpleMushroomOTH {
             posList.add(pos.up(i));
 
         pos = pos.up(startHeight);
-        DefaultBlockList blockList = new DefaultBlockList(posList, Blocks.MUSHROOM_STEM.getDefaultState());
+        BlockList blockList = new BlockList(Blocks.MUSHROOM_STEM.getDefaultState(), posList);
         int actualHeight = startHeight;
         int oldHeight = 3;
 
         ///on ajoute un offset jusqu'a la fin
         do {
-            blockList.addBlockPos(moveTrunk(direction, blockList.getLastPos(), oldHeight, actualHeight));
+            blockList.addAllPos(moveTrunk(direction, blockList.getLastPos(), oldHeight, actualHeight));
             oldHeight = blockList.getLastPos().getY() - actualHeight - pos.getY();
             actualHeight += oldHeight;
         } while (actualHeight < maxHeight);
@@ -123,10 +123,10 @@ public class HugePurpleMushroomOTHFeature extends HugePurpleMushroomOTH {
 
 
     @Override
-    protected DefaultOrderedBlockListComparator getCapCoordinates(BlockPos pos, PurpleMushroomConfig config) {
+    protected OrderedBlockListManager getCapCoordinates(BlockPos pos, PurpleMushroomConfig config) {
         int height = Random.create().nextBetween(2, 3);
         int radius = getRadius(config);
-        DefaultBlockListComparator blockLists = new DefaultBlockListComparator();
+        BlockListManager blockLists = new BlockListManager();
 
 
         for (int i = -radius; i <= radius; i++) {
@@ -162,7 +162,7 @@ public class HugePurpleMushroomOTHFeature extends HugePurpleMushroomOTH {
         }
         BlockSorter sorter = new BlockSorter(BlockSorter.BlockSorterType.FROM_POINT_INVERTED);
         sorter.setCenterPoint(pos);
-        return blockLists.getOrderedSorted(sorter);
+        return blockLists.getOrdered(sorter);
     }
 
     public int getRadius(PurpleMushroomConfig config) {

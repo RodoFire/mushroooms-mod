@@ -236,9 +236,17 @@
   "itemgroup.mushroooms": "Mushroooms",
   "effect.mushrooomsmod.flickering": "Flickering",
   "config.mushrooomsmod.common_biome_spawn_rate": "Common Biomes Spawn Rate",
-  "config.mushrooomsmod.common_biome_spawn_rate.description": "define how often should the custom biomes spawn, high values (10+) will make the other biomes much rarer",
+  "config.mushrooomsmod.common_biome_spawn_rate.description": "define how often should the custom biomes spawn, high values (6+) will make the other biomes much rarer",
   "config.mushrooomsmod.cave_biome_spawn_rate": "Cave Biomes Spawn Rate",
-  "config.mushrooomsmod.cave_biome_spawn_rate.description": "define how often should the custom caves biomes spawn, high values (10+) will make the other biomes much rarer",
+  "config.mushrooomsmod.cave_biome_spawn_rate.description": "define how often should the custom caves biomes spawn, high values (6+) will make the other biomes much rarer",
   "config.mushrooomsmod.beta_warning_message": "Beta Warning Message",
-  "config.mushrooomsmod.beta_warning_message.description": "send warning chat messege upon world join"
+  "config.mushrooomsmod.beta_warning_message.description": "send warning chat messege upon world join",
+  "config.mushrooomsmod.fast_surface_rules": "Fast Surface Rules",
+  "config.mushrooomsmod.fast_surface_rules.concept": "Surface Rules define how terrain blocks are placed based on various parameters such as biome, altitude, depth, and noise values. Surface Rule Application: The game decides which blocks should be placed on the surface based on various factors.\n\nSurface Rules control block placement dynamically:\n\n- Biome-Specific Layers: Grass appears in plains, sand in deserts, and podzol in taiga forests.\n- Height-Dependent Adjustments: Snow generates in cold biomes, but only at high altitudes.\n- Depth-Based Transitions: A thin dirt layer often covers stone, creating natural-looking ground formations.\n- Noise-Based Variations: Certain blocks, like coarse dirt or patches of gravel, are added randomly for more diversity.\n\n Those are vanilla examples. World gen mods uses the same concept. The 'Fast Surface Rules' mode simplifies mushrooomsmod calculations to improve performance. The mod surface rules are much less complex when using fast surface rules resulting in speed up world generation.\n\nWhat changes on the mod?\n\n- The number of biome checks remains the same, ensuring biome identity is preserved.\n- Complex layering and noise-based variations are reduced, making biomes less detailed.\n- Some terrain features may appear more uniform or predictable, but chunk generation speeds up significantly.\n\nUse this mode if you prioritize performance over highly detailed terrain transitions.",
+  "config.mushrooomsmod.fast_surface_rules.description": "improve the mod chunk generation speed by reducing surface rules quality",
+  "config.mushrooomsmod.fast_surface_rules.default": "default surface rules",
+  "config.mushrooomsmod.fast_surface_rules.fast": "fast surface rules",
+  "config.mushrooomsmod.fast_surface_rules.graph": "performance comparison graph between fast and default surface rules",
+  "config.mushrooomsmod.fast_surface_rules.comparison": "comparison between fast and default surface rules on mossy cave biome"
+
 }

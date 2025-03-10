@@ -15,6 +15,7 @@ import net.minecraft.world.gen.feature.util.FeatureContext;
 import java.util.ArrayList;
 
 public abstract class CustomGreenSecondMushroom extends Feature<HugeMushroomFeatureConfig> {
+    Random random;
 
 
     public CustomGreenSecondMushroom(Codec<HugeMushroomFeatureConfig> configCodec) {
@@ -77,6 +78,7 @@ public abstract class CustomGreenSecondMushroom extends Feature<HugeMushroomFeat
         StructureWorldAccess structureWorldAccess = context.getWorld();
         BlockPos blockPos = context.getOrigin();
         Random random = context.getRandom();
+        this.random = random;
         HugeMushroomFeatureConfig hugeMushroomFeatureConfig = context.getConfig();
         mutable = new BlockPos.Mutable();
         boolean threecap = true;
@@ -85,8 +87,8 @@ public abstract class CustomGreenSecondMushroom extends Feature<HugeMushroomFeat
         ArrayList<Integer> heightb = new ArrayList<>();
         ArrayList<Integer> coordinates = new ArrayList<>();
 
-        int large = Random.create().nextBetween(1, 4);
-        int height = Random.create().nextBetween(5, 12);
+        int large = random.nextBetween(1, 4);
+        int height = random.nextBetween(5, 12);
 
         ArrayList<Integer> values = getCoordinates(structureWorldAccess, random, blockPos, mutable, height, hugeMushroomFeatureConfig);
         for (int i = 1; i < values.get(0) + 1; ++i) {
@@ -95,7 +97,7 @@ public abstract class CustomGreenSecondMushroom extends Feature<HugeMushroomFeat
         for (int i = values.get(0) + 1; i < values.size(); ++i) {
             coordinates.add(values.get(i));
         }
-        if (Random.create().nextBetween(0, 3) == 0) {
+        if (random.nextBetween(0, 3) == 0) {
             threecap = false;
         }
 
@@ -117,7 +119,7 @@ public abstract class CustomGreenSecondMushroom extends Feature<HugeMushroomFeat
             if (large == 1) {
                 secondlarge = 0;
             } else {
-                secondlarge = large - Random.create().nextBetween(2, large);
+                secondlarge = large - random.nextBetween(2, large);
             }
             this.generateThirdCap(structureWorldAccess, random, blockPos, height + 2, lastcoordinates, mutable, hugeMushroomFeatureConfig, secondlarge, rotation);
         }

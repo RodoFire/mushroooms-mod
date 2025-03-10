@@ -332,5 +332,38 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(Blocks.GRASS_BLOCK)
                 .add(Blocks.DIRT)
                 .add(Blocks.ROOTED_DIRT);
+
+        getOrCreateTagBuilder(BlockTags.OVERWORLD_CARVER_REPLACEABLES)
+                .add(Blocks.COBBLESTONE)
+                .add(Blocks.MOSSY_COBBLESTONE)
+                .add(Blocks.COBBLED_DEEPSLATE);
+
+        getOrCreateTagBuilder(ModTags.Blocks.ROCKY_STALACTITE_BASE)
+                .add(Blocks.COBBLESTONE)
+                .add(Blocks.MOSSY_COBBLESTONE)
+                .add(Blocks.TUFF)
+                .add(Blocks.STONE);
+
+        getOrCreateTagBuilder(ModTags.Blocks.ROCKY_STALACTITE_TOP)
+                .add(Blocks.COBBLESTONE_WALL)
+                .add(Blocks.MOSSY_COBBLESTONE_WALL)
+                .add(Blocks.ANDESITE_WALL);
+
+        getOrCreateTagBuilder(ModTags.Blocks.MOSSY_STALACTITE_BASE)
+                .add(Blocks.COBBLESTONE)
+                .add(Blocks.MOSSY_COBBLESTONE)
+                .add(Blocks.TUFF)
+                .add(Blocks.STONE)
+                .add(Blocks.MOSS_BLOCK);
+
+        getOrCreateTagBuilder(ModTags.Blocks.MOSSY_STALACTITE_TOP)
+                .add(Blocks.COBBLESTONE_WALL)
+                .add(Blocks.MOSSY_COBBLESTONE_WALL)
+                .add(Blocks.ANDESITE_WALL);
+
+        getOrCreateTagBuilder(ModTags.Blocks.FLUIDS)
+                .add(Blocks.WATER)
+                .add(Blocks.LAVA);
+
     }
 }

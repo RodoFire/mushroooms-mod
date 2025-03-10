@@ -1,6 +1,8 @@
 package net.rodofire.mushrooomsmod.world.features.configuredfeatures.custom.mushrooms.codemushrooms.oth;
 
 import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.longs.LongArrayList;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.Pair;
 import net.minecraft.util.math.BlockPos;
@@ -8,18 +10,17 @@ import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.StructureWorldAccess;
 import net.minecraft.world.gen.feature.HugeMushroomFeatureConfig;
-import net.rodofire.easierworldcreator.blockdata.blocklist.basic.DefaultBlockList;
-import net.rodofire.easierworldcreator.blockdata.blocklist.basic.comparator.DefaultBlockListComparator;
-import net.rodofire.easierworldcreator.blockdata.blocklist.ordered.comparator.DefaultOrderedBlockListComparator;
+import net.rodofire.easierworldcreator.blockdata.blocklist.BlockListManager;
+import net.rodofire.easierworldcreator.blockdata.blocklist.OrderedBlockListManager;
 import net.rodofire.easierworldcreator.blockdata.layer.BlockLayer;
-import net.rodofire.easierworldcreator.blockdata.layer.BlockLayerComparator;
+import net.rodofire.easierworldcreator.blockdata.layer.BlockLayerManager;
 import net.rodofire.easierworldcreator.blockdata.sorter.BlockSorter;
-import net.rodofire.easierworldcreator.placer.blocks.animator.StructurePlaceAnimator;
 import net.rodofire.easierworldcreator.shape.block.gen.LineGen;
 import net.rodofire.easierworldcreator.shape.block.gen.SphereGen;
-import net.rodofire.easierworldcreator.shape.block.instanciator.AbstractBlockShapeBase;
-import net.rodofire.easierworldcreator.shape.block.instanciator.AbstractBlockShapePlaceType;
-import net.rodofire.easierworldcreator.util.WorldGenUtil;
+import net.rodofire.easierworldcreator.shape.block.layer.LayerManager;
+import net.rodofire.easierworldcreator.shape.block.placer.animator.StructurePlaceAnimator;
+import net.rodofire.easierworldcreator.shape.block.rotations.Rotator;
+import net.rodofire.easierworldcreator.util.LongPosHelper;
 import net.rodofire.mushrooomsmod.block.ModBlocks;
 
 import java.util.*;
@@ -31,143 +32,129 @@ public class YellowMushroomOTHFeature extends YellowMushroomOTH {
     }
 
     @Override
-    protected DefaultBlockListComparator generateHugeTrunk(StructureWorldAccess world, BlockPos pos, BlockPos end, int height, HugeMushroomFeatureConfig config) {
-        DefaultBlockListComparator blockList = new DefaultBlockListComparator();
+    protected BlockListManager generateHugeTrunk(StructureWorldAccess world, BlockPos pos, BlockPos end, int height, HugeMushroomFeatureConfig config, Random random) {
+        BlockListManager blockList = new BlockListManager();
 
         //on créé plusieurs lignes qui vont servir à appaissir le tronc.
-        Set<BlockPos> posList = new HashSet<>();
+        LongOpenHashSet posList = new LongOpenHashSet();
+        LineGen line = new LineGen(pos, end);
         for (int i = 0; i < 4; i++) {
-            LineGen line = new LineGen(world, pos, AbstractBlockShapeBase.PlaceMoment.ANIMATED_OTHER, end);
-            line.setBlockLayer(new BlockLayerComparator(new BlockLayer(Blocks.MUSHROOM_STEM.getDefaultState())));
             posList.addAll(
-                    line.getBlockPos().values().stream()
+                    line.getShapeCoordinates().values().stream()
                             .flatMap(Set::stream)
                             .toList()
             );
 
-            line = new LineGen(world, pos.north().up(Random.create().nextBetween(-1, 1)), AbstractBlockShapeBase.PlaceMoment.ANIMATED_OTHER, end.north().up(Random.create().nextBetween(-1, 1)));
-            line.setBlockLayer(new BlockLayerComparator(new BlockLayer(Blocks.MUSHROOM_STEM.getDefaultState())));
+            line = new LineGen(pos.north().up(random.nextBetween(-1, 1)), end.north().up(random.nextBetween(-1, 1)));
             posList.addAll(
-                    line.getBlockPos().values().stream()
+                    line.getShapeCoordinates().values().stream()
                             .flatMap(Set::stream)
                             .toList()
             );
 
-            line = new LineGen(world, pos.south().up(Random.create().nextBetween(-1, 1)), AbstractBlockShapeBase.PlaceMoment.ANIMATED_OTHER, end.south().up(Random.create().nextBetween(-1, 1)));
-            line.setBlockLayer(new BlockLayerComparator(new BlockLayer(Blocks.MUSHROOM_STEM.getDefaultState())));
+            line = new LineGen(pos.south().up(random.nextBetween(-1, 1)), end.south().up(random.nextBetween(-1, 1)));
             posList.addAll(
-                    line.getBlockPos().values().stream()
+                    line.getShapeCoordinates().values().stream()
                             .flatMap(Set::stream)
                             .toList()
             );
 
-            line = new LineGen(world, pos.east().up(Random.create().nextBetween(-1, 1)), AbstractBlockShapeBase.PlaceMoment.ANIMATED_OTHER, end.up(Random.create().nextBetween(-1, 1)));
-            line.setBlockLayer(new BlockLayerComparator(new BlockLayer(Blocks.MUSHROOM_STEM.getDefaultState())));
+            line = new LineGen(pos.east().up(random.nextBetween(-1, 1)), end.up(random.nextBetween(-1, 1)));
             posList.addAll(
-                    line.getBlockPos().values().stream()
+                    line.getShapeCoordinates().values().stream()
                             .flatMap(Set::stream)
                             .toList()
             );
 
-            line = new LineGen(world, pos.west().up(Random.create().nextBetween(-1, 1)), AbstractBlockShapeBase.PlaceMoment.ANIMATED_OTHER, end.up(Random.create().nextBetween(-1, 1)));
-            line.setBlockLayer(new BlockLayerComparator(new BlockLayer(Blocks.MUSHROOM_STEM.getDefaultState())));
+            line = new LineGen(pos.west().up(random.nextBetween(-1, 1)), end.up(random.nextBetween(-1, 1)));
             posList.addAll(
-                    line.getBlockPos().values().stream()
+                    line.getShapeCoordinates().values().stream()
                             .flatMap(Set::stream)
                             .toList()
             );
         }
 
-
-        blockList.put(new DefaultBlockList(posList.stream().toList(), Blocks.MUSHROOM_STEM.getDefaultState()));
+        LongArrayList finalPos = new LongArrayList(posList);
+        blockList.put(Blocks.MUSHROOM_STEM.getDefaultState(), finalPos);
 
         return blockList;
     }
 
     @Override
-    protected DefaultBlockListComparator generateTrunk(StructureWorldAccess world, BlockPos pos, BlockPos end, int height, HugeMushroomFeatureConfig config) {
-        LineGen line = new LineGen(world, pos, AbstractBlockShapeBase.PlaceMoment.ANIMATED_OTHER, end);
-        line.setBlockLayer(new BlockLayerComparator(new BlockLayer(Blocks.MUSHROOM_STEM.getDefaultState())));
-        return line.getBlockListWithVerification(line.getBlockPosList(line.getBlockPos()));
+    protected BlockListManager generateTrunk(StructureWorldAccess world, BlockPos pos, BlockPos end, int height, HugeMushroomFeatureConfig config) {
+        LineGen line = new LineGen(pos, end);
+        LayerManager layerManager = new LayerManager(LayerManager.Type.SURFACE, new BlockLayerManager(trunkLayer));
+        return layerManager.get(line.getShapeCoordinates());
     }
 
     @Override
-    protected SphereGen[] generateCap(StructureWorldAccess world, BlockPos pos, BlockPos pos2, HugeMushroomFeatureConfig var6, int height, int large, DefaultBlockListComparator coordinates) {
-        SphereGen sphere = new SphereGen(world, pos2.down(large / 2), AbstractBlockShapeBase.PlaceMoment.ANIMATED_OTHER, (int) (1.5 * large));
+    protected SphereGen[] generateCap(StructureWorldAccess world, BlockPos pos, BlockPos pos2, HugeMushroomFeatureConfig var6, int height, int large, BlockListManager coordinates, Random random) {
+        SphereGen sphere = new SphereGen(pos2.down(large / 2), (int) (1.5 * large));
         sphere.setRadiusY(large);
-        BlockLayer layer = new BlockLayer(List.of(ModBlocks.YELLOW_MUSHROOM_BLOCK.getDefaultState(), ModBlocks.YELLOW_ALTERED_MUSHROOM_BLOCK.getDefaultState()), List.of((short) 2, (short) 1));
-        sphere.setBlockLayer(new BlockLayerComparator(layer));
-        sphere.setLayerPlace(AbstractBlockShapePlaceType.LayerPlace.RANDOM);
 
 
-        int rot1 = Random.create().nextBetween(0, 30);
-        int rot2 = Random.create().nextBetween(0, 360);
-        sphere.setZRotation(rot1);
-        sphere.setSecondYRotation(rot2);
+        int rot1 = random.nextBetween(0, 30);
+        int rot2 = random.nextBetween(0, 360);
 
-        SphereGen secondSphere = new SphereGen(world, pos2.down(large), AbstractBlockShapeBase.PlaceMoment.ANIMATED_OTHER, (int) ((1.5 + (float) Random.create().nextBetween(0, 5) / 10) * (large - 1)));
+        Rotator rotator1 = new Rotator(pos2.down(large / 2), 0, rot1, rot2);
+        Rotator rotator2 = new Rotator(pos2.down(large), 0, rot1, rot2);
+        sphere.setRotator(rotator1);
+
+        SphereGen secondSphere = new SphereGen(pos2.down(large), (int) ((1.5 + (float) random.nextBetween(0, 5) / 10) * (large - 1)));
         secondSphere.setRadiusY(large);
 
-
-        secondSphere.setZRotation(rot1);
-        secondSphere.setSecondYRotation(rot2);
+        secondSphere.setRotator(rotator2);
 
         return new SphereGen[]{sphere, secondSphere};
     }
 
     @Override
-    protected SphereGen[] generateFlatterCap(StructureWorldAccess world, BlockPos pos, BlockPos pos2, HugeMushroomFeatureConfig var6, int height, int large, DefaultBlockListComparator coordinates) {
-        SphereGen sphere = new SphereGen(world, pos2.down(large / 2), AbstractBlockShapeBase.PlaceMoment.ANIMATED_OTHER, 2 * large);
+    protected SphereGen[] generateFlatterCap(StructureWorldAccess world, BlockPos pos, BlockPos pos2, HugeMushroomFeatureConfig var6, int height, int large, BlockListManager coordinates, Random random) {
+        SphereGen sphere = new SphereGen(pos2.down(large / 2), 2 * large);
         sphere.setRadiusY(large);
 
-        int rot1 = Random.create().nextBetween(0, 30);
-        int rot2 = Random.create().nextBetween(0, 360);
-        sphere.setZRotation(rot1);
-        sphere.setSecondYRotation(rot2);
+        int rot1 = random.nextBetween(0, 30);
+        int rot2 = random.nextBetween(0, 360);
 
-        BlockLayer layer = new BlockLayer(List.of(ModBlocks.YELLOW_MUSHROOM_BLOCK.getDefaultState(), ModBlocks.YELLOW_ALTERED_MUSHROOM_BLOCK.getDefaultState()), List.of((short) 2, (short) 1));
-        sphere.setBlockLayer(new BlockLayerComparator(layer));
-        sphere.setLayerPlace(AbstractBlockShapePlaceType.LayerPlace.RANDOM);
+        Rotator rotator1 = new Rotator(pos2.down(large / 2), 0, rot1, rot2);
+        Rotator rotator2 = new Rotator(pos2.down(large), 0, rot1, rot2);
 
-        SphereGen secondSphere = new SphereGen(world, pos2.down(large), AbstractBlockShapeBase.PlaceMoment.ANIMATED_OTHER, (int) ((2 + (float) Random.create().nextBetween(0, 4) / 10) * (large - 0.75f)));
+        sphere.setRotator(rotator1);
+
+        SphereGen secondSphere = new SphereGen(pos2.down(large), (int) ((2 + (float) random.nextBetween(0, 4) / 10) * (large - 0.75f)));
+
         secondSphere.setRadiusY(large);
 
-
-        secondSphere.setZRotation(rot1);
-        secondSphere.setSecondYRotation(rot2);
+        secondSphere.setRotator(rotator2);
 
         return new SphereGen[]{sphere, secondSphere};
     }
 
 
-    protected boolean place(StructureWorldAccess world, BlockPos pos, BlockPos pos2, DefaultBlockListComparator coordinates, SphereGen sphere, SphereGen secondSphere) {
-        Set<BlockPos> posSet = new HashSet<>();
-        Map<ChunkPos, Set<BlockPos>> posSphere = sphere.getBlockPos();
-        for (Set<BlockPos> blockPosSet : posSphere.values()) {
-            posSet.addAll(blockPosSet);
-        }
-        posSphere = secondSphere.getBlockPos();
-        for (Set<BlockPos> blockPosSet : posSphere.values()) {
-            posSet.removeAll(blockPosSet);
-        }
+    protected boolean place(StructureWorldAccess world, BlockPos pos, BlockPos pos2, BlockListManager manager, SphereGen sphere, SphereGen secondSphere) {
+        Map<ChunkPos, LongOpenHashSet> posSphere = sphere.getShapeCoordinates();
+        Map<ChunkPos, LongOpenHashSet> maskPosSet = secondSphere.getShapeCoordinates();
 
-        Map<ChunkPos, Set<BlockPos>> chunkMap = new HashMap<>();
-        for (BlockPos pos1 : posSet) {
-            WorldGenUtil.modifyChunkMap(pos1, chunkMap);
-        }
+        posSphere.forEach((chunkPos, coordinates) -> {
+            LongOpenHashSet mask = maskPosSet.get(chunkPos);
+            System.out.println(LongPosHelper.decodeBlockPos(coordinates.iterator().nextLong()));
+            if (mask == null) return;
+            coordinates.removeAll(mask);
+        });
+        LayerManager layerManager = new LayerManager(LayerManager.Type.SURFACE, new BlockLayerManager(capLayer));
 
-        DefaultBlockListComparator comparator = sphere.getBlockListWithVerification(new ArrayList<>(chunkMap.values()));
+
+        BlockListManager manager2 = layerManager.get(posSphere);
         BlockSorter sorter = new BlockSorter(BlockSorter.BlockSorterType.FROM_POINT_INVERTED);
         sorter.setCenterPoint(pos);
 
-
-        DefaultOrderedBlockListComparator comp = coordinates.getOrderedSorted(sorter);
+        OrderedBlockListManager comp = manager.getOrdered(sorter);
         sorter.setCenterPoint(pos2);
-        comp.put(comparator.getOrderedSorted(sorter));
+        comp.put(manager2.getOrdered(sorter));
 
         StructurePlaceAnimator animator = new StructurePlaceAnimator(world, sorter, StructurePlaceAnimator.AnimatorTime.LINEAR_TICKS);
         animator.setBounds(new Pair<>(1, 60));
-        animator.place(new BlockSorter(BlockSorter.BlockSorterType.INVERSE).sortBlockList(comp));
+        animator.place(new BlockSorter(BlockSorter.BlockSorterType.INVERSE).sortOrderedBlockList(comp));
 
         return true;
     }
