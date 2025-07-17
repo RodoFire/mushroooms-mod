@@ -32,3 +32,5 @@ build
 eclipse
 run
 runs
+
+api.properties
