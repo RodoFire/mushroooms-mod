@@ -1,0 +1,24 @@
+{
+  "type": "mushrooomsmod:hanging_vines_grow_feature",
+  "config": {
+    "block": "minecraft:vine",
+    "can_be_placed_on": [
+      "minecraft:stone",
+      "minecraft:cobblestone",
+      "minecraft:mossy_cobblestone",
+      "minecraft:andesite",
+      "minecraft:diorite",
+      "minecraft:granite",
+      "minecraft:dripstone_block",
+      "minecraft:calcite",
+      "minecraft:tuff",
+      "minecraft:deepslate"
+    ],
+    "can_place_on_ceiling": false,
+    "can_place_on_floor": false,
+    "can_place_on_wall": true,
+    "chance_of_spreading": 0.35,
+    "hanging_height": 23,
+    "search_range": 20
+  }
+}

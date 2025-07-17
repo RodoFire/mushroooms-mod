@@ -1,0 +1,9 @@
+accessWidener	v2 named
+
+accessible class net/minecraft/world/level/block/entity/BlockEntityType$BlockEntitySupplier
+
+# World
+accessible method net/minecraft/data/worldgen/biome/OverworldBiomes calculateSkyColor (F)I
+
+# Entities
+accessible method net/minecraft/world/entity/SpawnPlacements register (Lnet/minecraft/world/entity/EntityType;Lnet/minecraft/world/entity/SpawnPlacementType;Lnet/minecraft/world/level/levelgen/Heightmap$Types;Lnet/minecraft/world/entity/SpawnPlacements$SpawnPredicate;)V

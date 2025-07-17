@@ -1,0 +1,12 @@
+{
+  "type": "mushrooomsmod:simple_vines",
+  "config": {
+    "blockprovider": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "mushrooomsmod:vines_blue_luminescent"
+      }
+    },
+    "direction": "down"
+  }
+}

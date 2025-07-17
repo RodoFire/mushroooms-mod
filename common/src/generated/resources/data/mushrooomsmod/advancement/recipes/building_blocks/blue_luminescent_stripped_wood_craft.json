@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_log_stripped_blue_luminescent": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mushrooomsmod:log_stripped_blue_luminescent"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:blue_luminescent_stripped_wood_craft"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_log_stripped_blue_luminescent"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:blue_luminescent_stripped_wood_craft"
+    ]
+  }
+}

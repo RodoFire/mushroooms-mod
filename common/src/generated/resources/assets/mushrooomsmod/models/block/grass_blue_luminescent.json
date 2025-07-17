@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "mushrooomsmod:block/grass_blue_luminescent"
+  }
+}

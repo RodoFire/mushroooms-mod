@@ -1,0 +1,54 @@
+{
+    "schemaVersion": 1,
+    "id": "${mod_id}",
+    "version": "${version}",
+    "name": "${mod_name}",
+    "description": "${description}",
+    "authors": [
+        "${mod_author}"
+    ],
+    "contact": {
+        "homepage": "https://fabricmc.net/",
+        "sources": "https://github.com/FabricMC/fabric-example-mod"
+    },
+    "license": "${license}",
+    "icon": "icon.png",
+    "environment": "*",
+    "entrypoints": {
+        "main": [
+          "fr.rodofire.mushrooomsmod.MushrooomsModFabric"
+        ],
+        "fabric-datagen": [
+            "fr.rodofire.mushrooomsmod.MushrooomsModFabricDataGenerator"
+        ],
+        "client": [
+            "fr.rodofire.mushrooomsmod.MushrooomsModFabricClient"
+        ],
+        "terrablender" : [
+            "fr.rodofire.mushrooomsmod.FabricTerrablenderAPI"
+        ]
+    },
+    "mixins": [
+        "mushrooomsmod.mixins.json",
+        "mushrooomsmod.fabric.mixins.json"
+    ],
+    "depends": {
+        "fabricloader": ">=0.16.0",
+        "fabric-api": "*",
+        "minecraft": "1.21.1",
+        "java": ">=21"
+    },
+    "suggests": {
+        "ebe": "*"
+    },
+    "custom": {
+        "modmenu": {
+            "links": {
+                "discord": "https://discord.gg/bAQRUxNyFj"
+            },
+            "update_checker": true
+        }
+    },
+    "accessWidener": "mushrooomsmod.accesswidener"
+}
+  

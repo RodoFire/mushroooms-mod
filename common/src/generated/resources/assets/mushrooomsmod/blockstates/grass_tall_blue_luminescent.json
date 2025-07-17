@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "mushrooomsmod:block/grass_tall_blue_luminescent_bottom"
+    },
+    "half=upper": {
+      "model": "mushrooomsmod:block/grass_tall_blue_luminescent_top"
+    }
+  }
+}

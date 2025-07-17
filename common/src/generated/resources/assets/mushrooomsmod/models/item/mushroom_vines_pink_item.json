@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "mushrooomsmod:item/mushroom_vines_pink_item"
+  }
+}

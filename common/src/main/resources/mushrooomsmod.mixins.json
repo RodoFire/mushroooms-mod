@@ -1,0 +1,32 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "fr.rodofire.mushrooomsmod.mixin",
+  "refmap": "mushrooomsmod.refmap.json",
+  "compatibilityLevel": "JAVA_18",
+  "mixins": [
+    "block.ButtonBlockMixin",
+    "block.DoorBlockMixin",
+    "block.HalfTransparentBlockMixin",
+    "block.PressurePlateBlockMixin",
+    "block.SaplingBlockMixin",
+    "block.StairBlockMixin",
+    "block.TallGrassBlockMixin",
+    "block.TorchBlockMixin",
+    "block.TrapDoorBlockMixin",
+    "block.WallTorchBlockMixin",
+    "world.gen.FoliagePlacerTypeInvoker",
+    "world.gen.PlacementModifierTypeInvoker",
+    "world.gen.TreeDecoratorTypeInvoker",
+    "world.gen.TrunkPlacerTypeInvoker"
+  ],
+  "client": [
+    "client.ClientPlayNetworkHandlerMixin",
+    "client.renderer.blockentity.BlockEntityRendererInvoker"
+  ],
+  "server": [],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
+

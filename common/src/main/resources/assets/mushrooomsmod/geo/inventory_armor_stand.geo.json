@@ -1,0 +1,652 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"ResourceLocation": "geometry.unknown",
+				"texture_width": 64,
+				"texture_height": 64,
+				"visible_bounds_width": 2,
+				"visible_bounds_height": 4.5,
+				"visible_bounds_offset": [
+					0,
+					1.75,
+					0
+				]
+			},
+			"bones": [
+				{
+					"name": "entity",
+					"pivot": [
+						0,
+						0,
+						0
+					]
+				},
+				{
+					"name": "bottom",
+					"parent": "entity",
+					"pivot": [
+						0,
+						0,
+						0
+					],
+					"cubes": [
+						{
+							"origin": [
+								-8,
+								0,
+								-8
+							],
+							"size": [
+								16,
+								2,
+								16
+							],
+							"uv": [
+								0,
+								0
+							]
+						}
+					]
+				},
+				{
+					"name": "chargingball",
+					"parent": "entity",
+					"pivot": [
+						0,
+						0,
+						0
+					]
+				},
+				{
+					"name": "bar",
+					"parent": "chargingball",
+					"pivot": [
+						0,
+						0,
+						0
+					],
+					"cubes": [
+						{
+							"origin": [
+								5,
+								2,
+								-7
+							],
+							"size": [
+								2,
+								10,
+								2
+							],
+							"uv": [
+								22,
+								34
+							]
+						}
+					]
+				},
+				{
+					"name": "ball",
+					"parent": "chargingball",
+					"pivot": [
+						6,
+						14,
+						-8
+					],
+					"cubes": [
+						{
+							"origin": [
+								4,
+								12,
+								-8
+							],
+							"size": [
+								4,
+								4,
+								4
+							],
+							"uv": [
+								20,
+								22
+							]
+						}
+					]
+				},
+				{
+					"name": "armor_hanging",
+					"parent": "entity",
+					"pivot": [
+						7,
+						16,
+						-7
+					],
+					"cubes": [
+						{
+							"origin": [
+								-1,
+								2,
+								5
+							],
+							"size": [
+								2,
+								30,
+								2
+							],
+							"uv": [
+								0,
+								18
+							]
+						}
+					]
+				},
+				{
+					"name": "boots",
+					"parent": "armor_hanging",
+					"pivot": [
+						7,
+						16,
+						-7
+					],
+					"cubes": [
+						{
+							"origin": [
+								-1,
+								6,
+								-1
+							],
+							"size": [
+								2,
+								2,
+								6
+							],
+							"uv": [
+								8,
+								18
+							]
+						},
+						{
+							"origin": [
+								-1,
+								17,
+								-1
+							],
+							"size": [
+								2,
+								2,
+								6
+							],
+							"uv": [
+								0,
+								8
+							]
+						},
+						{
+							"origin": [
+								-1,
+								29,
+								-1
+							],
+							"size": [
+								2,
+								2,
+								6
+							],
+							"uv": [
+								0,
+								0
+							]
+						},
+						{
+							"origin": [
+								-3,
+								6,
+								-1
+							],
+							"size": [
+								6,
+								2,
+								2
+							],
+							"uv": [
+								8,
+								32
+							]
+						},
+						{
+							"origin": [
+								-3,
+								15,
+								-1
+							],
+							"size": [
+								6,
+								2,
+								2
+							],
+							"uv": [
+								22,
+								30
+							]
+						},
+						{
+							"origin": [
+								-3,
+								19,
+								-1
+							],
+							"size": [
+								6,
+								2,
+								2
+							],
+							"uv": [
+								18,
+								18
+							]
+						},
+						{
+							"origin": [
+								-2,
+								30,
+								-2
+							],
+							"size": [
+								4,
+								2,
+								4
+							],
+							"uv": [
+								8,
+								26
+							]
+						}
+					]
+				},
+				{
+					"name": "head",
+					"parent": "entity",
+					"pivot": [
+						0,
+						31,
+						0
+					],
+					"cubes": [
+						{
+							"origin": [
+								-3.5,
+								31,
+								-3.5
+							],
+							"size": [
+								7,
+								7,
+								7
+							],
+							"uv": [
+								32,
+								39
+							]
+						}
+					]
+				},
+				{
+					"name": "body",
+					"parent": "entity",
+					"pivot": [
+						0,
+						0,
+						0
+					]
+				},
+				{
+					"name": "armor_body",
+					"parent": "body",
+					"pivot": [
+						0,
+						29,
+						0
+					],
+					"cubes": [
+						{
+							"origin": [
+								-4,
+								19,
+								-2
+							],
+							"size": [
+								8,
+								11,
+								4
+							],
+							"uv": [
+								32,
+								39
+							]
+						}
+					]
+				},
+				{
+					"name": "right_arm",
+					"parent": "body",
+					"pivot": [
+						-5,
+						29,
+						0
+					],
+					"cubes": [
+						{
+							"origin": [
+								4,
+								19,
+								-2
+							],
+							"size": [
+								4,
+								11,
+								4
+							],
+							"uv": [
+								32,
+								39
+							]
+						}
+					]
+				},
+				{
+					"name": "left_arm",
+					"parent": "body",
+					"pivot": [
+						5,
+						29,
+						0
+					],
+					"cubes": [
+						{
+							"origin": [
+								-8,
+								19,
+								-2
+							],
+							"size": [
+								4,
+								11,
+								4
+							],
+							"uv": [
+								32,
+								39
+							]
+						}
+					]
+				},
+				{
+					"name": "armorBipedLeg",
+					"parent": "entity",
+					"pivot": [
+						0,
+						0,
+						0
+					]
+				},
+				{
+					"name": "left_leg",
+					"parent": "armorBipedLeg",
+					"pivot": [
+						2,
+						19,
+						0
+					],
+					"cubes": [
+						{
+							"origin": [
+								0,
+								9,
+								-2
+							],
+							"size": [
+								4,
+								15,
+								4
+							],
+							"uv": [
+								32,
+								39
+							]
+						}
+					]
+				},
+				{
+					"name": "right_leg",
+					"parent": "armorBipedLeg",
+					"pivot": [
+						-2,
+						19,
+						0
+					],
+					"cubes": [
+						{
+							"origin": [
+								-4,
+								9,
+								-2
+							],
+							"size": [
+								4,
+								15,
+								4
+							],
+							"uv": [
+								32,
+								39
+							]
+						}
+					]
+				},
+				{
+					"name": "feet",
+					"parent": "entity",
+					"pivot": [
+						0,
+						0,
+						0
+					]
+				},
+				{
+					"name": "left_foot",
+					"parent": "feet",
+					"pivot": [
+						2,
+						13,
+						0
+					],
+					"cubes": [
+						{
+							"origin": [
+								-4,
+								4,
+								-2
+							],
+							"size": [
+								4,
+								9,
+								4
+							],
+							"uv": [
+								32,
+								39
+							]
+						}
+					]
+				},
+				{
+					"name": "right_foot",
+					"parent": "feet",
+					"pivot": [
+						-2,
+						13,
+						0
+					],
+					"cubes": [
+						{
+							"origin": [
+								0,
+								4,
+								-2
+							],
+							"size": [
+								4,
+								9,
+								4
+							],
+							"uv": [
+								32,
+								39
+							]
+						}
+					]
+				},
+				{
+					"name": "item1hanging",
+					"parent": "entity",
+					"pivot": [
+						0,
+						0,
+						0
+					],
+					"cubes": [
+						{
+							"origin": [
+								-3,
+								2,
+								-6
+							],
+							"size": [
+								2,
+								4,
+								2
+							],
+							"uv": [
+								0,
+								44
+							]
+						},
+						{
+							"origin": [
+								-4,
+								6,
+								-7
+							],
+							"size": [
+								4,
+								1,
+								4
+							],
+							"uv": [
+								48,
+								0
+							]
+						}
+					]
+				},
+				{
+					"name": "item1",
+					"parent": "item1hanging",
+					"pivot": [
+						-2,
+						6.6,
+						-4
+					],
+					"cubes": [
+						{
+							"origin": [
+								-3,
+								7,
+								-6
+							],
+							"size": [
+								2,
+								2,
+								2
+							],
+							"uv": [
+								56,
+								42
+							]
+						}
+					]
+				},
+				{
+					"name": "item2hanging",
+					"parent": "entity",
+					"pivot": [
+						0,
+						0,
+						0
+					],
+					"cubes": [
+						{
+							"origin": [
+								-6,
+								2,
+								-1
+							],
+							"size": [
+								2,
+								2,
+								2
+							],
+							"uv": [
+								0,
+								20
+							]
+						},
+						{
+							"origin": [
+								-7,
+								4,
+								-2
+							],
+							"size": [
+								4,
+								1,
+								4
+							],
+							"uv": [
+								48,
+								0
+							]
+						}
+					]
+				},
+				{
+					"name": "item2",
+					"parent": "item2hanging",
+					"pivot": [
+						-6,
+						4.5,
+						2
+					],
+					"cubes": [
+						{
+							"origin": [
+								-6,
+								5,
+								-1
+							],
+							"size": [
+								2,
+								2,
+								2
+							],
+							"uv": [
+								56,
+								43
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,6 @@
+{
+  "type": "mushrooomsmod:giant_yellow_mushroom",
+  "biomes": "#mushrooomsmod:has_structure/giant_yellow_mushroom_biomes",
+  "spawn_overrides": {},
+  "step": "vegetal_decoration"
+}

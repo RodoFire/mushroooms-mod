@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "hanging=false": {
+      "model": "mushrooomsmod:block/lantern_green"
+    },
+    "hanging=true": {
+      "model": "mushrooomsmod:block/lantern_green_hanging"
+    }
+  }
+}

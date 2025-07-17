@@ -1,0 +1,239 @@
+package fr.rodofire.mushrooomsmod.client.blocks;
+
+import fr.rodofire.mushrooomsmod.block.ModBlocks;
+import net.minecraft.world.level.block.Block;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Supplier;
+
+public class ModBlockRenderType {
+    public static final List<Supplier<Block>> TRANSLUCENT_BLOCKS = new ArrayList<>();
+    public static final List<Supplier<Block>> CUTOUT_BLOCKS = new ArrayList<>();
+
+    public static void createTransludentBlocks() {
+        TRANSLUCENT_BLOCKS.add(ModBlocks.BLUE_LUMINESCENT_MUSHROOM_BLOCK);
+        TRANSLUCENT_BLOCKS.add(ModBlocks.PINK_LUMINESCENT_MUSHROOM_BLOCK);
+        TRANSLUCENT_BLOCKS.add(ModBlocks.BLUE_LUMINESCENT_MUSHROOM_STEM);
+        TRANSLUCENT_BLOCKS.add(ModBlocks.TRANSPARENT_MUSHROOM_STEM);
+
+
+        TRANSLUCENT_BLOCKS.add(ModBlocks.BLUE_LUMINESCENT_ALTERED_MUSHROOM_BLOCK);
+        TRANSLUCENT_BLOCKS.add(ModBlocks.BLUE_LUMINESCENT_FERMENTED_MUSHROOM_BLOCK);
+        TRANSLUCENT_BLOCKS.add(ModBlocks.BLUE_LUMINESCENT_DEGRADATED_MUSHROOM_BLOCK);
+
+        TRANSLUCENT_BLOCKS.add(ModBlocks.PINK_LUMINESCENT_ALTERED_MUSHROOM_BLOCK);
+        TRANSLUCENT_BLOCKS.add(ModBlocks.PINK_LUMINESCENT_DEGRADATED_MUSHROOM_BLOCK);
+        TRANSLUCENT_BLOCKS.add(ModBlocks.PINK_LUMINESCENT_FERMENTED_MUSHROOM_BLOCK);
+
+
+        TRANSLUCENT_BLOCKS.add(ModBlocks.PINK_LUMINESCENT_BODY_VINES);
+        TRANSLUCENT_BLOCKS.add(ModBlocks.PINK_LUMINESCENT_HEAD_VINES);
+
+
+        TRANSLUCENT_BLOCKS.add(ModBlocks.BIG_PURPLE_MUSHROOM);
+        TRANSLUCENT_BLOCKS.add(ModBlocks.BIG_GREEN_MUSHROOM);
+        TRANSLUCENT_BLOCKS.add(ModBlocks.MEDIUM_GREEN_MUSHROOM);
+        TRANSLUCENT_BLOCKS.add(ModBlocks.MEDIUM_PURPLE_MUSHROOM);
+        TRANSLUCENT_BLOCKS.add(ModBlocks.LITTLE_GREEN_MUSHROOM);
+        TRANSLUCENT_BLOCKS.add(ModBlocks.LITTLE_PURPLE_MUSHROOM);
+        TRANSLUCENT_BLOCKS.add(ModBlocks.TINY_PURPLE_MUSHROOM);
+        TRANSLUCENT_BLOCKS.add(ModBlocks.TINY_GREEN_MUSHROOM);
+
+
+        TRANSLUCENT_BLOCKS.add(ModBlocks.RED_CRYSTAL_BLOCK);
+        TRANSLUCENT_BLOCKS.add(ModBlocks.BLUE_CRYSTAL_BLOCK);
+        TRANSLUCENT_BLOCKS.add(ModBlocks.WHITE_CRYSTAL_BLOCK);
+        TRANSLUCENT_BLOCKS.add(ModBlocks.AMBER_MINERAL);
+    }
+
+    public static void createCutoutBlocks() {
+        //BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.OAK_BERRIES_LEAVES, RenderType.cutoutMipped());
+
+        //Mushrooms
+        CUTOUT_BLOCKS.add(ModBlocks.BLUE_MUSHROOM);
+        CUTOUT_BLOCKS.add(ModBlocks.GREEN_MUSHROOM);
+        CUTOUT_BLOCKS.add(ModBlocks.BLUE_LUMINESCENT_MUSHROOM);
+        CUTOUT_BLOCKS.add(ModBlocks.PURPLE_MUSHROOM);
+        CUTOUT_BLOCKS.add(ModBlocks.LUMINESCENT_PINK_MUSHROOM);
+        CUTOUT_BLOCKS.add(ModBlocks.ORANGE_MUSHROOM);
+        CUTOUT_BLOCKS.add(ModBlocks.YELLOW_MUSHROOM);
+        CUTOUT_BLOCKS.add(ModBlocks.FERTILE_RED_MUSHROOM);
+        CUTOUT_BLOCKS.add(ModBlocks.BUSHY_YELLOW_MUSHROOM);
+        CUTOUT_BLOCKS.add(ModBlocks.BRIGHT_YELLOW_MUSHROOM);
+
+
+
+
+        CUTOUT_BLOCKS.add(ModBlocks.STERILE_BLUE_MUSHROOM);
+        CUTOUT_BLOCKS.add(ModBlocks.MUSHROOM_SMALL_BROWN);
+        CUTOUT_BLOCKS.add(ModBlocks.MUSHROOM_SMALL_RED);
+        CUTOUT_BLOCKS.add(ModBlocks.MUSHROOM_DEATH_TRUMPET);
+        CUTOUT_BLOCKS.add(ModBlocks.SIDE_MUSHROOM_BLUE_LUMINESCENT);
+        CUTOUT_BLOCKS.add(ModBlocks.LOG_MUSHROOM_BROWN);
+
+
+        CUTOUT_BLOCKS.add(ModBlocks.POTTED_STERILE_BLUE_MUSHROOM);
+        CUTOUT_BLOCKS.add(ModBlocks.POTTED_MUSHROOM_SMALL_BROWN);
+        CUTOUT_BLOCKS.add(ModBlocks.POTTED_MUSHROOM_SMALL_RED);
+
+
+        CUTOUT_BLOCKS.add(ModBlocks.MUSHROOM_FLOWERS);
+        CUTOUT_BLOCKS.add(ModBlocks.OCULAE);
+        CUTOUT_BLOCKS.add(ModBlocks.SOL_OCCIDENTIS);
+        CUTOUT_BLOCKS.add(ModBlocks.CYANUS_RUBENS);
+        CUTOUT_BLOCKS.add(ModBlocks.CYANEA);
+        CUTOUT_BLOCKS.add(ModBlocks.FUTIALI);
+        CUTOUT_BLOCKS.add(ModBlocks.NOCTULICA);
+        CUTOUT_BLOCKS.add(ModBlocks.TURQUOSUM_STILUS);
+        CUTOUT_BLOCKS.add(ModBlocks.SAPHIRA_FLORENS);
+        CUTOUT_BLOCKS.add(ModBlocks.CAERULEA_VOLUBILIS);
+        CUTOUT_BLOCKS.add(ModBlocks.PREHISTORIC_ROSE);
+        CUTOUT_BLOCKS.add(ModBlocks.PREHISTO_PINK_SCHROOM);
+        CUTOUT_BLOCKS.add(ModBlocks.PREHISTO_BLUE_SCHROOM);
+        CUTOUT_BLOCKS.add(ModBlocks.PREHISTURPLE_SCHROOM);
+        CUTOUT_BLOCKS.add(ModBlocks.PREHISTO_GREEN_SCHROOM);
+
+        CUTOUT_BLOCKS.add(ModBlocks.BLUE_PERENNIAL);
+        CUTOUT_BLOCKS.add(ModBlocks.PINK_PERENNIAL);
+        CUTOUT_BLOCKS.add(ModBlocks.PURPLE_PERENNIAL);
+        CUTOUT_BLOCKS.add(ModBlocks.LUMINESCENT_PERENNIAL);
+        CUTOUT_BLOCKS.add(ModBlocks.YELLOW_PERENNIAL);
+        CUTOUT_BLOCKS.add(ModBlocks.GREEN_PERENNIAL);
+        CUTOUT_BLOCKS.add(ModBlocks.ORANGE_PERENNIAL);
+
+        CUTOUT_BLOCKS.add(ModBlocks.RED_QUINCE);
+        CUTOUT_BLOCKS.add(ModBlocks.YELLOW_QUINCE);
+        CUTOUT_BLOCKS.add(ModBlocks.TINY_LILAC);
+        CUTOUT_BLOCKS.add(ModBlocks.YELICE);
+        CUTOUT_BLOCKS.add(ModBlocks.FLAMESTHYSIA);
+        CUTOUT_BLOCKS.add(ModBlocks.APAGANTHE);
+        CUTOUT_BLOCKS.add(ModBlocks.PINK_HEATER);
+        CUTOUT_BLOCKS.add(ModBlocks.WYSTERIA);
+        CUTOUT_BLOCKS.add(ModBlocks.BLUEBELL);
+        CUTOUT_BLOCKS.add(ModBlocks.VIPERIN);
+        CUTOUT_BLOCKS.add(ModBlocks.HIBISCUS);
+        CUTOUT_BLOCKS.add(ModBlocks.PLATUM);
+        CUTOUT_BLOCKS.add(ModBlocks.DIANTHUS);
+        CUTOUT_BLOCKS.add(ModBlocks.CYCAS);
+        CUTOUT_BLOCKS.add(ModBlocks.ARUM);
+        CUTOUT_BLOCKS.add(ModBlocks.HYDRANGEA);
+        CUTOUT_BLOCKS.add(ModBlocks.ANEMONE);
+        CUTOUT_BLOCKS.add(ModBlocks.JACYNTHE);
+        CUTOUT_BLOCKS.add(ModBlocks.PERVENCHE);
+        CUTOUT_BLOCKS.add(ModBlocks.ACONIT);
+        CUTOUT_BLOCKS.add(ModBlocks.FLEUR_BERRIES);
+        CUTOUT_BLOCKS.add(ModBlocks.PICK_BLUE);
+
+
+        CUTOUT_BLOCKS.add(ModBlocks.TINY_GRASS);
+        CUTOUT_BLOCKS.add(ModBlocks.BLUE_LUMINESCENT_GRASS);
+        CUTOUT_BLOCKS.add(ModBlocks.BLUE_LUMINESCENT_TALL_GRASS);
+
+
+        CUTOUT_BLOCKS.add(ModBlocks.PINK_MUSHROOM_VINES);
+        CUTOUT_BLOCKS.add(ModBlocks.PINK_MUSHROOM_VINES_PLANT);
+        CUTOUT_BLOCKS.add(ModBlocks.BLUE_LUMINESCENT_VINES);
+
+
+        CUTOUT_BLOCKS.add(ModBlocks.POTTED_BLUE_LUMINESCENT_MUSHROOM);
+        CUTOUT_BLOCKS.add(ModBlocks.POTTED_PURPLE_MUSHROOM);
+        CUTOUT_BLOCKS.add(ModBlocks.POTTED_GREEN_MUSHROOM);
+        CUTOUT_BLOCKS.add(ModBlocks.POTTED_BLUE_MUSHROOM);
+        CUTOUT_BLOCKS.add(ModBlocks.POTTED_LUMINESCENT_PINK_MUSHROOM);
+        CUTOUT_BLOCKS.add(ModBlocks.POTTED_FERTILE_RED_MUSHROOM);
+        CUTOUT_BLOCKS.add(ModBlocks.POTTED_MUSHROOM_DEATH_TRUMPET);
+
+        CUTOUT_BLOCKS.add(ModBlocks.POTTED_CYANEA);
+        CUTOUT_BLOCKS.add(ModBlocks.POTTED_CYANUS_RUBENS);
+        CUTOUT_BLOCKS.add(ModBlocks.POTTED_SOL_OCCIDENTIS);
+        CUTOUT_BLOCKS.add(ModBlocks.POTTED_FUTIALI);
+        CUTOUT_BLOCKS.add(ModBlocks.POTTED_NOCTULICA);
+        CUTOUT_BLOCKS.add(ModBlocks.POTTED_OCULAE);
+        CUTOUT_BLOCKS.add(ModBlocks.POTTED_PREHISTORIC_ROSE);
+        CUTOUT_BLOCKS.add(ModBlocks.POTTED_PREHISTURPLE_SCHROOM);
+        CUTOUT_BLOCKS.add(ModBlocks.POTTED_PREHISTO_BLUE_SCHROOM);
+        CUTOUT_BLOCKS.add(ModBlocks.POTTED_PREHISTO_PINK_SCHROOM);
+        CUTOUT_BLOCKS.add(ModBlocks.POTTED_PREHISTO_GREEN_SCHROOM);
+
+        CUTOUT_BLOCKS.add(ModBlocks.POTTED_BLUE_PERENNIAL);
+        CUTOUT_BLOCKS.add(ModBlocks.POTTED_GREEN_PERENNIAL);
+        CUTOUT_BLOCKS.add(ModBlocks.POTTED_PINK_PERENNIAL);
+        CUTOUT_BLOCKS.add(ModBlocks.POTTED_LUMINESCENT_PERENNIAL);
+        CUTOUT_BLOCKS.add(ModBlocks.POTTED_PURPLE_PERENNIAL);
+        CUTOUT_BLOCKS.add(ModBlocks.POTTED_YELLOW_PERENNIAL);
+        CUTOUT_BLOCKS.add(ModBlocks.POTTED_ORANGE_PERENNIAL);
+
+        CUTOUT_BLOCKS.add(ModBlocks.POTTED_RED_QUINCE);
+        CUTOUT_BLOCKS.add(ModBlocks.POTTED_YELLOW_QUINCE);
+        CUTOUT_BLOCKS.add(ModBlocks.POTTED_YELICE);
+        CUTOUT_BLOCKS.add(ModBlocks.POTTED_FLAMESTHYSIA);
+        CUTOUT_BLOCKS.add(ModBlocks.POTTED_APAGANTHE);
+        CUTOUT_BLOCKS.add(ModBlocks.POTTED_WYSTERIA);
+        CUTOUT_BLOCKS.add(ModBlocks.POTTED_BLUEBELL);
+        CUTOUT_BLOCKS.add(ModBlocks.POTTED_VIPERIN);
+        CUTOUT_BLOCKS.add(ModBlocks.POTTED_HIBISCUS);
+        CUTOUT_BLOCKS.add(ModBlocks.POTTED_PLATUM);
+        CUTOUT_BLOCKS.add(ModBlocks.POTTED_DIANTHUS);
+        CUTOUT_BLOCKS.add(ModBlocks.POTTED_CYCAS);
+        CUTOUT_BLOCKS.add(ModBlocks.POTTED_ARUM);
+        CUTOUT_BLOCKS.add(ModBlocks.POTTED_HYDRANGEA);
+        CUTOUT_BLOCKS.add(ModBlocks.POTTED_ANEMONE);
+        CUTOUT_BLOCKS.add(ModBlocks.POTTED_JACYNTHE);
+        CUTOUT_BLOCKS.add(ModBlocks.POTTED_BLUE_LUMINESCENT_SAPPLING);
+        CUTOUT_BLOCKS.add(ModBlocks.OAK_BERRIES_SAPLING);
+
+
+        CUTOUT_BLOCKS.add(ModBlocks.BLUE_LUMINESCENT_LEAVES);
+        CUTOUT_BLOCKS.add(ModBlocks.RED_COLORFUL_LEAVES);
+        CUTOUT_BLOCKS.add(ModBlocks.GREEN_COLORFUL_LEAVES);
+        CUTOUT_BLOCKS.add(ModBlocks.YELLOW_COLORFUL_LEAVES);
+        CUTOUT_BLOCKS.add(ModBlocks.PURPLE_COLORFUL_LEAVES);
+        CUTOUT_BLOCKS.add(ModBlocks.BLUE_COLORFUL_LEAVES);
+        CUTOUT_BLOCKS.add(ModBlocks.PINK_COLORFUL_LEAVES);
+        CUTOUT_BLOCKS.add(ModBlocks.ORANGE_COLORFUL_LEAVES);
+        CUTOUT_BLOCKS.add(ModBlocks.OAK_BERRIES_LEAVES);
+        CUTOUT_BLOCKS.add(ModBlocks.PELTOGYNE_LEAVES);
+
+
+        CUTOUT_BLOCKS.add(ModBlocks.BLUE_LUMINESCENT_TRAPDOOR);
+        CUTOUT_BLOCKS.add(ModBlocks.PELTOGYNE_TRAPDOOR);
+
+        CUTOUT_BLOCKS.add(ModBlocks.BLUE_LUMINESCENT_DOOR);
+        CUTOUT_BLOCKS.add(ModBlocks.PELTOGYNE_DOOR);
+
+        CUTOUT_BLOCKS.add(ModBlocks.BLUE_LUMINESCENT_SAPPLING);
+        CUTOUT_BLOCKS.add(ModBlocks.PELTOGYNE_SAPLING);
+        CUTOUT_BLOCKS.add(ModBlocks.COLORFUL_TREE_SAPLING);
+
+        CUTOUT_BLOCKS.add(ModBlocks.BLUE_LUMINESCENT_SLAB);
+        CUTOUT_BLOCKS.add(ModBlocks.PELTOGYNE_SLAB);
+
+        CUTOUT_BLOCKS.add(ModBlocks.BLUE_LUMINESCENT_STAIRS);
+        CUTOUT_BLOCKS.add(ModBlocks.PELTOGYNE_STAIRS);
+
+
+        CUTOUT_BLOCKS.add(ModBlocks.GREEN_LANTERN);
+        CUTOUT_BLOCKS.add(ModBlocks.RED_LANTERN);
+        CUTOUT_BLOCKS.add(ModBlocks.GREEN_TORCH);
+        CUTOUT_BLOCKS.add(ModBlocks.WALL_GREEN_TORCH);
+        CUTOUT_BLOCKS.add(ModBlocks.GREEN_CAMPFIRE);
+
+
+        CUTOUT_BLOCKS.add(ModBlocks.BLUE_CRYSTAL);
+        CUTOUT_BLOCKS.add(ModBlocks.RED_CRYSTAL);
+        CUTOUT_BLOCKS.add(ModBlocks.WHITE_CRYSTAL);
+    }
+    
+    /*
+
+    public static void getCutout(Block block) {
+        BlockRenderLayerMap.INSTANCE.putBlock(block, RenderType.cutout());
+    }
+
+    public static void getTransludent(Block block) {
+        BlockRenderLayerMap.INSTANCE.putBlock(block, RenderType.translucent());
+    }
+    */
+
+}

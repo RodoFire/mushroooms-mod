@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "mushrooomsmod:block/sapling_colorful_tree"
+  }
+}

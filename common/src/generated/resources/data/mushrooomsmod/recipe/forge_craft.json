@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "R": {
+      "item": "minecraft:iron_block"
+    },
+    "S": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "pattern": [
+    "RRR",
+    " S ",
+    "SRS"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mushrooomsmod:forge_block"
+  }
+}

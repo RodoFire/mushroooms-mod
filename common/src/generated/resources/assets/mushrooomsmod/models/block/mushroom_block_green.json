@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "mushrooomsmod:block/mushroom_block_green"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "button",
+  "ingredients": [
+    {
+      "item": "mushrooomsmod:planks_peltogyne"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "mushrooomsmod:button_peltogyne"
+  }
+}

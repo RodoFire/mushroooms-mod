@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_perennial_pink": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mushrooomsmod:perennial_pink"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:pink_dye_from_perennial_pink"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_perennial_pink"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:pink_dye_from_perennial_pink"
+    ]
+  }
+}

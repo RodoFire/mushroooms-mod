@@ -1,0 +1,9 @@
+{
+  "type": "mushrooomsmod:huge_big_purple_mushroom_feature",
+  "config": {
+    "maxcapsize": 6,
+    "maxheight": 26,
+    "mincapsize": 2,
+    "minheight": 12
+  }
+}

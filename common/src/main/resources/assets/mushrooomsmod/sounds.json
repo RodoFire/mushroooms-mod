@@ -1,0 +1,60 @@
+{
+  "la_marseillaise_disc" : {
+    "sounds" : [
+      {
+        "name" : "mushrooomsmod:la_marseillaise_disc",
+        "stream" : true
+      }
+    ]
+  },
+  "hymne_urss" : {
+    "sounds" : [
+      {
+        "name" : "mushrooomsmod:hymne_urss",
+        "stream" : true
+      }
+    ]
+  },
+  "crystal_pink_break" : {
+    "subtitles" : "sounds.mushrooomsmod.pink_crystal_break",
+    "sounds" : [
+      "mushrooomsmod:crystal_pink_break"
+    ]
+  },
+  "crystal_pink_place" : {
+    "subtitles" : "sounds.mushrooomsmod.pink_crystal_place",
+    "sounds" : [
+      "mushrooomsmod:crystal_pink_place"
+    ]
+  },
+  "crystal_pink_hit" : {
+    "subtitles" : "sounds.mushrooomsmod.pink_crystal_hit",
+    "sounds" : [
+      "mushrooomsmod:crystal_pink_hit"
+    ]
+  },
+  "crystal_pink_fall" : {
+    "subtitles" : "sounds.mushrooomsmod.pink_crystal_fall",
+    "sounds" : [
+      "mushrooomsmod:crystal_pink_fall"
+    ]
+  },
+  "crystal_pink_step" : {
+    "subtitles" : "sounds.mushrooomsmod.pink_crystal_step",
+    "sounds" : [
+      "mushrooomsmod:crystal_pink_step"
+    ]
+  },
+  "stone_destroyed" : {
+    "subtitles" : "sounds.mushrooomsmod.stone_destroyed",
+    "sounds" : [
+      "mushrooomsmod:stone_destroyed"
+    ]
+  },
+  "boost_mushroom": {
+    "subtitles": "sounds.mushrooomsmod.boost_mushroom",
+    "sounds": [
+      "mushrooomsmod:boost_mushroom"
+    ]
+  }
+}

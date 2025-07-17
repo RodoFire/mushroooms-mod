@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "R": {
+      "item": "minecraft:iron_nugget"
+    },
+    "S": {
+      "item": "mushrooomsmod:torch_green_item"
+    }
+  },
+  "pattern": [
+    "RRR",
+    "RSR",
+    "RRR"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mushrooomsmod:lantern_green"
+  }
+}

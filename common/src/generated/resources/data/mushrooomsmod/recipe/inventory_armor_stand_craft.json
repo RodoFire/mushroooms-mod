@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "minecraft:chest"
+    },
+    "P": {
+      "item": "minecraft:smooth_stone_slab"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "SSS",
+    " C ",
+    "SPS"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mushrooomsmod:inventory_armor_stand_item"
+  }
+}

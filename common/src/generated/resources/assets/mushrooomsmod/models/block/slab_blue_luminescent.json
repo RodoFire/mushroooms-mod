@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "mushrooomsmod:block/planks_blue_luminescent",
+    "side": "mushrooomsmod:block/planks_blue_luminescent",
+    "top": "mushrooomsmod:block/planks_blue_luminescent"
+  }
+}

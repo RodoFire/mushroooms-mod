@@ -1,0 +1,8 @@
+{
+  "type": "mushrooomsmod:fleur_berries_feature",
+  "config": {
+    "horizontal_span": 9,
+    "tries": 55,
+    "vertical_span": 3
+  }
+}

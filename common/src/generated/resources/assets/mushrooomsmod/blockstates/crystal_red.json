@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "age=0,vertical_direction=down": {
+      "model": "mushrooomsmod:block/crystal_red_down_top"
+    },
+    "age=0,vertical_direction=up": {
+      "model": "mushrooomsmod:block/crystal_red_up_top"
+    },
+    "age=1,vertical_direction=down": {
+      "model": "mushrooomsmod:block/crystal_red_down_bottom"
+    },
+    "age=1,vertical_direction=up": {
+      "model": "mushrooomsmod:block/crystal_red_up_bottom"
+    }
+  }
+}

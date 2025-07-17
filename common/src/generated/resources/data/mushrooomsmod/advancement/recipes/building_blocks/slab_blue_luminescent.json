@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_planks_blue_luminescent": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mushrooomsmod:planks_blue_luminescent"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "mushrooomsmod:slab_blue_luminescent"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_planks_blue_luminescent"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "mushrooomsmod:slab_blue_luminescent"
+    ]
+  }
+}

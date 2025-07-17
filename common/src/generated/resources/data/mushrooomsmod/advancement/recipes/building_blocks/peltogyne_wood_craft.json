@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_log_peltogyne": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mushrooomsmod:log_peltogyne"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:peltogyne_wood_craft"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_log_peltogyne"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:peltogyne_wood_craft"
+    ]
+  }
+}

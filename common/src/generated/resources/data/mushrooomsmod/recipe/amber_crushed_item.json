@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "mushrooomsmod:amber_block"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "id": "mushrooomsmod:amber_crushed_item"
+  }
+}

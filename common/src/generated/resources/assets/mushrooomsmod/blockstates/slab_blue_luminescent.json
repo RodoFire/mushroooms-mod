@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "mushrooomsmod:block/slab_blue_luminescent"
+    },
+    "type=double": {
+      "model": "mushrooomsmod:block/planks_blue_luminescent"
+    },
+    "type=top": {
+      "model": "mushrooomsmod:block/slab_blue_luminescent_top"
+    }
+  }
+}

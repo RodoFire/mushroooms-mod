@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "R": {
+      "item": "minecraft:torch"
+    },
+    "S": {
+      "item": "minecraft:green_dye"
+    }
+  },
+  "pattern": [
+    "RS"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mushrooomsmod:torch_green_item"
+  }
+}

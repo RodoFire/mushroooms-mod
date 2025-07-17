@@ -1,0 +1,6 @@
+{
+  "type": "mushrooomsmod:purple_mushroom",
+  "biomes": "#mushrooomsmod:has_structure/purple_mushroom_biomes",
+  "spawn_overrides": {},
+  "step": "vegetal_decoration"
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "mushrooomsmod:item/mushroom_big_green_seed"
+  }
+}

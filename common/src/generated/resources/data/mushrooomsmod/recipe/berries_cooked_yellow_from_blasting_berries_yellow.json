@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 50,
+  "experience": 0.3,
+  "group": "yellow_berries",
+  "ingredient": {
+    "item": "mushrooomsmod:berries_yellow"
+  },
+  "result": {
+    "id": "mushrooomsmod:berries_cooked_yellow"
+  }
+}
