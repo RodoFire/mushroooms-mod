@@ -19,8 +19,8 @@ public class RegistryHandler<T> {
         this.regitryList = regitryList;
     }
 
-    public Supplier<T> register(String name, T toSupply) {
-        Supplier<T> supplier = Services.PLATFORM.register(toSupply, name, type);
+    public Supplier<T> register(String name, Supplier<T> toSupply) {
+        Supplier<T> supplier = Services.PLATFORM.register(type, toSupply, name);
         regitryList.add(supplier);
         return supplier;
     }

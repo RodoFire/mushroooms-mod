@@ -15,6 +15,7 @@
     "block.TorchBlockMixin",
     "block.TrapDoorBlockMixin",
     "block.WallTorchBlockMixin",
+    "item.BrushItemMixin",
     "world.gen.FoliagePlacerTypeInvoker",
     "world.gen.PlacementModifierTypeInvoker",
     "world.gen.TreeDecoratorTypeInvoker",

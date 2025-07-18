@@ -8,6 +8,6 @@ public class FabricTerrablenderAPI implements TerraBlenderApi {
     @Override
     public void onTerraBlenderInitialized() {
         MushrooomsModFabric.initializeFabric();
-        //ModTerrablenderAPI.initTerraBlender();
+        ModTerrablenderAPI.initTerraBlender();
     }
 }

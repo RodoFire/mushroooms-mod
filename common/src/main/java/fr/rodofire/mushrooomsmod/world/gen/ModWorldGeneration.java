@@ -22,14 +22,14 @@ public class ModWorldGeneration {
     public static void registerModWorldGen() {
         MushrooomsModConstants.LOGGER.info("|\t-Registering World Generation.");
         generateGrass();
-        generateFlowers();
+        //generateFlowers();
         generateOres();
 
     }
 
     public static void generateFlowers() {
-        registerModification(GenerationStep.Decoration.VEGETAL_DECORATION, ModSurfacePlacedFeatures.WYSTERIA, Biomes.SWAMP, Biomes.MANGROVE_SWAMP);
         registerModification(GenerationStep.Decoration.VEGETAL_DECORATION, ModSurfacePlacedFeatures.ACONIT, Biomes.SWAMP);
+        registerModification(GenerationStep.Decoration.VEGETAL_DECORATION, ModSurfacePlacedFeatures.WYSTERIA, Biomes.SWAMP, Biomes.MANGROVE_SWAMP);
     }
 
     public static void generateGrass() {

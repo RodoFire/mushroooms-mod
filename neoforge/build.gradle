@@ -68,15 +68,5 @@ repositories {
     }
 }
 
-sourceSets {
-    main {
-        resources {
-            srcDirs += [
-                    'src/main/generated'
-            ]
-        }
-    }
-}
-
 
 sourceSets.main.resources { srcDir 'src/generated/resources' }

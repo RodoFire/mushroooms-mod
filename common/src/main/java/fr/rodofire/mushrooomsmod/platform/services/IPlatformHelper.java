@@ -60,7 +60,7 @@ public interface IPlatformHelper {
 
     Supplier<CreativeModeTab> createCreativeTab(String name, Supplier<ItemStack> icon, List<Supplier<Item>> items);
 
-    <T> Supplier<T> register(T toRegister, String id, Registry<T> registry);
+    <T> Supplier<T> register(Registry<T> registry, Supplier<T> toRegister, String id);
 
     Supplier<SimpleParticleType> registerParticle(String id);
 

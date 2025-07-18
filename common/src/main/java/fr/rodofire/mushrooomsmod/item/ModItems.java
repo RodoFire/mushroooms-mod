@@ -76,7 +76,8 @@ public class ModItems {
 
 
     private static Supplier<Item> registerItem(String name, Item item) {
-        return ITEM_HANDLER.register(name, item);
+        Supplier<Item> itemSupplier = () -> item;
+        return ITEM_HANDLER.register(name, itemSupplier);
     }
 
     public static void registerModItems() {

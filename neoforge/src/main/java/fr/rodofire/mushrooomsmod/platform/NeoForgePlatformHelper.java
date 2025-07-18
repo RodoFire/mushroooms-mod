@@ -1,5 +1,7 @@
 package fr.rodofire.mushrooomsmod.platform;
 
+import fr.rodofire.mushrooomsmod.MushrooomsMod;
+import fr.rodofire.mushrooomsmod.MushrooomsModConstants;
 import fr.rodofire.mushrooomsmod.platform.services.IPlatformHelper;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.core.Registry;
@@ -22,6 +24,7 @@ import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.loading.FMLLoader;
+import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +34,6 @@ public class NeoForgePlatformHelper implements IPlatformHelper {
 
     @Override
     public String getPlatformName() {
-
         return "NeoForge";
     }
 
@@ -49,7 +51,7 @@ public class NeoForgePlatformHelper implements IPlatformHelper {
 
     @Override
     public Supplier<CreativeModeTab> createCreativeTab(String name, Supplier<ItemStack> icon, List<Supplier<Item>> items) {
-        return() -> Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, name, CreativeModeTab.builder()
+        return () -> Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, name, CreativeModeTab.builder()
                 .title(Component.translatable("itemgroup.mushroooms"))
                 .icon(icon)
                 .displayItems((context, entries) -> {
@@ -57,6 +59,11 @@ public class NeoForgePlatformHelper implements IPlatformHelper {
                 })
                 .withSearchBar()
                 .build());
+    }
+
+    @Override
+    public <T> Supplier<T> register(Registry<T> registry, Supplier<T> toRegister, String id) {
+        return DeferredRegister.create(registry.key().location(), MushrooomsModConstants.MOD_ID).register(id, toRegister);
     }
 
     @Override

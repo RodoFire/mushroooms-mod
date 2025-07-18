@@ -72,3 +72,14 @@ tasks.withType(JavaCompile).configureEach {
     it.options.release = 21
 }
 
+sourceSets {
+    main {
+        resources {
+            srcDirs += [
+                    'src/main/generated'
+            ]
+        }
+    }
+}
+
+

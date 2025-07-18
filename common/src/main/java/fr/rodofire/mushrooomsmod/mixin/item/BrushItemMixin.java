@@ -28,7 +28,7 @@ public abstract class BrushItemMixin extends Item {
         return ProjectileUtil.getHitResultOnViewVector((Entity)user, entity -> !entity.isSpectator() && entity.isPickable(), user.blockInteractionRange());
     }
 
-    @Inject(method = "usageTick", at = @At("TAIL"))
+    @Inject(method = "onUseTick", at = @At("TAIL"))
     public void amberBlock(Level world, LivingEntity user, ItemStack stack, int remainingUseTicks, CallbackInfo ci) {
         int i = this.getUseDuration(stack, user) - remainingUseTicks + 1;
         boolean bl = i % 10 == 5;

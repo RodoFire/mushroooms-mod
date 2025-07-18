@@ -63,8 +63,9 @@ public class FabricPlatformHelper implements IPlatformHelper {
     }
 
     @Override
-    public <T> Supplier<T> register(T toRegister, String id, Registry<T> registry) {
-        return () -> Registry.register(registry, ResourceLocation.fromNamespaceAndPath(MushrooomsModConstants.MOD_ID, id), toRegister);
+    public <T> Supplier<T> register(Registry<T> registry, Supplier<T> toRegister, String id) {
+        T value = Registry.register(registry, ResourceLocation.fromNamespaceAndPath(MushrooomsModConstants.MOD_ID, id), toRegister.get());
+        return () -> value;
     }
 
 

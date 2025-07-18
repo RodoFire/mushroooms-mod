@@ -26,6 +26,9 @@
         ],
         "terrablender" : [
             "fr.rodofire.mushrooomsmod.FabricTerrablenderAPI"
+        ],
+        "modmenu": [
+            "fr.rodofire.mushrooomsmod.compat.ModMenuCompat"
         ]
     },
     "mixins": [

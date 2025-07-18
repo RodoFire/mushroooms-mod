@@ -24,7 +24,8 @@ public interface ModStructurePieceType {
     Supplier<StructurePieceType> PURPLE_MUSHROOM = register("purple_mushroom", PurpleMushroomPiece::new);
 
     private static Supplier<StructurePieceType> register(String name, StructurePieceType type) {
-        return STRUCTURE_PIECE_TYPE_HANDLER.register(name, type);
+        Supplier<StructurePieceType> supplier = () -> type;
+        return STRUCTURE_PIECE_TYPE_HANDLER.register(name, supplier);
     }
 
     static void registerStructurePiecesType() {

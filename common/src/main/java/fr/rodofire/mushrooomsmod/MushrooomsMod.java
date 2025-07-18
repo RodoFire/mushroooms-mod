@@ -36,11 +36,6 @@ public class MushrooomsMod {
         MushrooomsModConstants.LOGGER.info("[MushrooomsMod] Initializing :");
         MushrooomsModConstants.LOGGER.info("-[Config] Initializing :");
         MushrooomsConfig.initConfig();
-        ModItemGroup.registerItemGroup();
-
-        MushrooomsModConstants.LOGGER.info("-[Items] Initializing :");
-        //items
-        ModItems.registerModItems();
 
         MushrooomsModConstants.LOGGER.info("-[Blocks] Initializing :");
         //blocks
@@ -49,6 +44,11 @@ public class MushrooomsMod {
 
         BlockUtils.registerStripable();
         BlockUtils.registerFlammable();
+
+        MushrooomsModConstants.LOGGER.info("-[Items] Initializing :");
+        //items
+        ModItems.registerModItems();
+        ModItemGroup.registerItemGroup();
 
         MushrooomsModConstants.LOGGER.info("-[Entities] Initializing :");
         //entities
