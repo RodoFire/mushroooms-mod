@@ -53,8 +53,6 @@ public class MushrooomsMod {
         MushrooomsModConstants.LOGGER.info("-[Entities] Initializing :");
         //entities
         ModEntities.registerModENtities();
-        ModEntities.spawnRestriction();
-        ModEntitiesAttribute.registerAttributes();
 
         MushrooomsModConstants.LOGGER.info("-[World-Gen] Initializing :");
         //world-gen

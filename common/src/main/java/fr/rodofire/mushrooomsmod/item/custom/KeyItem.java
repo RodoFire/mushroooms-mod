@@ -67,7 +67,7 @@ public class KeyItem extends Item {
                 float f = entity.getVisualRotationYInDegrees();
                 entity.remove(Entity.RemovalReason.DISCARDED);
                 Consumer<LockedInventoryArmorStand> consumer = EntityType.createDefaultStackConfig(worldServer, stack, user);
-                LockedInventoryArmorStand newEntity = ModEntities.LOCKED_INVENTORY_ARMOR_STAND.create(worldServer, consumer, pos, MobSpawnType.SPAWN_EGG, true, true);
+                LockedInventoryArmorStand newEntity = ModEntities.LOCKED_INVENTORY_ARMOR_STAND.get().create(worldServer, consumer, pos, MobSpawnType.SPAWN_EGG, true, true);
                 if (newEntity == null) {
                     return InteractionResult.FAIL;
                 }

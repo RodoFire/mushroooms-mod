@@ -38,11 +38,6 @@ public class PlotiEntity extends Animal implements GeoEntity {
         super(entityType, world);
     }
 
-    public static AttributeSupplier.Builder setAttributes() {
-        return Animal.createMobAttributes()
-                .add(Attributes.MAX_HEALTH, 10.0D)
-                .add(Attributes.MOVEMENT_SPEED, 0.25f);
-    }
 
     @Override
     protected void registerGoals() {
@@ -62,7 +57,7 @@ public class PlotiEntity extends Animal implements GeoEntity {
     @Nullable
     @Override
     public AgeableMob getBreedOffspring(ServerLevel world, AgeableMob entity) {
-        return ModEntities.PLOTI.create(world);
+        return ModEntities.PLOTI.get().create(world);
     }
 
     @Override

@@ -41,13 +41,7 @@ public class GrokiEntity extends Animal implements GeoEntity {
     @Nullable
     @Override
     public AgeableMob getBreedOffspring(ServerLevel world, AgeableMob entity) {
-        return ModEntities.GROKI.create(world);
-    }
-
-    public static AttributeSupplier.Builder setAttributes() {
-        return Animal.createMobAttributes()
-                .add(Attributes.MAX_HEALTH, 10.0D)
-                .add(Attributes.MOVEMENT_SPEED, 0.35f);
+        return ModEntities.GROKI.get().create(world);
     }
 
     @Override

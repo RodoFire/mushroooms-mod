@@ -48,11 +48,6 @@ public class SquirrelEntity extends Animal implements GeoEntity {
         return false;
     }
 
-    public static AttributeSupplier.Builder setAttributes() {
-        return Animal.createMobAttributes()
-                .add(Attributes.MAX_HEALTH, 12.0D)
-                .add(Attributes.MOVEMENT_SPEED, 0.6f);
-    }
 
     @Override
     protected void registerGoals() {
@@ -65,7 +60,7 @@ public class SquirrelEntity extends Animal implements GeoEntity {
 
     @Override
     public @Nullable AgeableMob getBreedOffspring(ServerLevel world, AgeableMob entity) {
-        return ModEntities.SQUIRREL.create(world);
+        return ModEntities.SQUIRREL.get().create(world);
     }
 
     @Override

@@ -62,16 +62,7 @@ public class CustomCreeperEntity
     private int headsDropped;
 
     public CustomCreeperEntity(EntityType<? extends CustomCreeperEntity> entityType, Level world) {
-
-        
-
         super((EntityType<? extends Monster>) entityType, world);
-    }
-
-    public static AttributeSupplier.Builder createCreeperAttributes() {
-        return Monster.createMonsterAttributes().add(Attributes.MOVEMENT_SPEED, 0.25)
-                .add(Attributes.MAX_HEALTH, 10.0D);
-
     }
 
     @Override

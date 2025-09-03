@@ -82,21 +82,21 @@ public class FabricPlatformHelper implements IPlatformHelper {
     }
 
     @Override
-    public <T extends Entity> void registerEntityRenderer(EntityType<? extends T> entityType, EntityRendererProvider<T> rendererFactory) {
-        EntityRendererRegistry.register(entityType, rendererFactory);
+    public <T extends A, A extends Entity> void registerEntityRenderer(Supplier<EntityType<T>> entityType, EntityRendererProvider<A> rendererFactory) {
+        EntityRendererRegistry.register(entityType.get(), rendererFactory);
     }
 
     @Override
-    public void registerEntityAtributes(EntityType<? extends LivingEntity> entityType, AttributeSupplier.Builder attributes) {
-        FabricDefaultAttributeRegistry.register(entityType, attributes);
+    public <T extends LivingEntity> void registerEntityAtributes(Supplier<EntityType<T> >entityType, AttributeSupplier.Builder attributes) {
+        FabricDefaultAttributeRegistry.register(entityType.get(), attributes);
     }
 
     @Override
-    public <T extends BlockEntity> Supplier<BlockEntityType<T>> registerBlockEntity(String id, BlockEntityType<T> build) {
+    public <T extends BlockEntity> Supplier<BlockEntityType<T>> registerBlockEntity(String id, Supplier<BlockEntityType<T>> build) {
         BlockEntityType<T> type = Registry.register(
                 BuiltInRegistries.BLOCK_ENTITY_TYPE,
                 ResourceLocation.fromNamespaceAndPath(MushrooomsModConstants.MOD_ID, id),
-                build
+                build.get()
         );
         return () -> type;
     }
@@ -106,5 +106,12 @@ public class FabricPlatformHelper implements IPlatformHelper {
         Arrays.stream(biome).forEach(biomeTagKey -> {
             BiomeModifications.addFeature(BiomeSelectors.tag(biomeTagKey), step, placedFeature);
         });
+    }
+
+    @Override
+    public <T extends Entity> Supplier<EntityType<T>> registerEntityType(String name, Supplier<EntityType<T>> o) {
+        ResourceLocation id = ResourceLocation.fromNamespaceAndPath(MushrooomsModConstants.MOD_ID, name);
+        EntityType<T> type = Registry.register(BuiltInRegistries.ENTITY_TYPE, id, o.get());
+        return () -> type; // Supplier stable
     }
 }

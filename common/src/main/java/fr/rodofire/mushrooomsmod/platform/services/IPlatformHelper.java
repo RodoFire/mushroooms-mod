@@ -66,11 +66,14 @@ public interface IPlatformHelper {
 
     void registerBiomeModfication( GenerationStep.Decoration step, ResourceKey<PlacedFeature> placedFeature, ResourceKey<Biome> ... biome);
 
-    <T extends Entity> void registerEntityRenderer(EntityType<? extends T> entityType, EntityRendererProvider<T> rendererFactory);
+    <T extends A, A extends Entity> void registerEntityRenderer(Supplier<EntityType<T>> entityType,
+                                               EntityRendererProvider<A> rendererFactory);
 
-    void registerEntityAtributes(EntityType<? extends LivingEntity> entityType, AttributeSupplier.Builder attributes);
+    <T extends LivingEntity> void registerEntityAtributes(Supplier<EntityType<T>> entityType, AttributeSupplier.Builder attributes);
 
-    <T extends BlockEntity> Supplier<BlockEntityType<T>> registerBlockEntity(String id, BlockEntityType<T> build);
+    <T extends BlockEntity> Supplier<BlockEntityType<T>> registerBlockEntity(String id, Supplier<BlockEntityType<T>> build);
 
     void registerBiomeModfication(GenerationStep.Decoration step, ResourceKey<PlacedFeature> placedFeature, TagKey<Biome>[] biome);
+
+    <T extends Entity> Supplier<EntityType<T>> registerEntityType(String name, Supplier<EntityType<T>> o);
 }

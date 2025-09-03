@@ -39,7 +39,7 @@ public class BoleteCowEntity extends Cow implements GeoEntity {
     @Nullable
     @Override
     public Cow getBreedOffspring(ServerLevel world, AgeableMob entity) {
-        return ModEntities.BOLETE_COW.create(world);
+        return ModEntities.BOLETE_COW.get().create(world);
     }
 
     @Override
@@ -51,11 +51,6 @@ public class BoleteCowEntity extends Cow implements GeoEntity {
         this.goalSelector.addGoal(5, new RandomLookAroundGoal(this));
     }
 
-    public static AttributeSupplier.Builder setAttributes() {
-        return Animal.createMobAttributes()
-                .add(Attributes.MAX_HEALTH, 20.0D)
-                .add(Attributes.MOVEMENT_SPEED, 0.45f);
-    }
 
     @Override
     public AnimatableInstanceCache getAnimatableInstanceCache() {

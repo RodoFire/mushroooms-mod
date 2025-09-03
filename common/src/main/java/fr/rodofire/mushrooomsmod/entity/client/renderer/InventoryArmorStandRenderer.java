@@ -25,7 +25,7 @@ import software.bernie.geckolib.renderer.layer.ItemArmorGeoLayer;
 import software.bernie.geckolib.renderer.specialty.DynamicGeoEntityRenderer;
 
 
-public class InventoryArmorStandRenderer extends DynamicGeoEntityRenderer<InventoryArmorStandEntity> {
+public class InventoryArmorStandRenderer extends DynamicGeoEntityRenderer< InventoryArmorStandEntity> {
     private static final String LEFT_BOOT = "left_foot";
     private static final String RIGHT_BOOT = "right_foot";
     private static final String LEFT_ARMOR_LEG = "left_leg";
